@@ -1,0 +1,186 @@
+好這個是講這個confidence measure 
+底下我們來說一下key word spotting 
+那key word spotting 是什麼
+那麼我們從開學第一週就說過了
+這個是語音辨識裡面另外一塊很重要的東西
+就是user 講了這段話之後
+我並不是要去辨識從頭到尾他講了什麼話
+我只要抓裡面他有沒有說某一個key word 
+或者說有沒有說某兩個key word 或者等等
+我只要抓裡面的key word 就好了
+至於別的地方他在說什麼其實我不管
+這些東西對我而言是不重要的
+那麼這就是所謂的key word spotting 
+也就是說呢你要決定在你有一個這個key word set 
+這個key word set 是我所pre defined
+我預先訂好的這一組key word set 
+我現在就是要看你這個聲音裡面有沒有那個有沒有任何一個key word 呢在那個裡面
+那別的東西我不管
+因此我並不需要去辨識所有的word in utterance 
+然後呢這個也因為這樣子所以呢我也許不很多辨識不出來沒有關係
+所以呢我我常常會對這個聲音的要求比較unconstrained 一點
+譬如說它也許是比較在吵雜的環境之下
+或者是比較這個讓他隨便說或者怎樣
+你只要把這個key word 說出來我能夠知道
+那這個是用在非常多的地方像speech understanding 
+或者是dialogue 裡面用的很多
+因為你可能就是要知道他講的這個
+舉例來講如果要買飛機票
+你我要問的就是你要從哪裡出發台北
+我要我要從台北出發我要到紐約去
+其實我要從台北出發裡面
+其實key word 只有台北兩個字
+那麼除了台北以外的其它的字呢都是廢話
+你要到哪裡去我要去紐約
+其實我就要抓到紐約那二個字
+其它字都是不重要的
+所以你在spoken diag dialogue 裡面
+或者是這個阿通常我們很講究的就是去抓到這裡面的key word 
+那key word spotting 的方法其實也是很多種
+那千變萬化也很難說哪一種最好
+因為事實上depends on 你你你沒有辦法define 一組key word set 然後說我們以這個為準
+然後把所有的實驗拿來做到底誰比較好
+因為不同的application 我要的key word 就是不一樣的
+那有的時候我要這堆key word 有的時候我要那堆key word 
+那麼到底哪一堆那麼在這堆key word 的時候很可能你用這個方法做出來是最好的
+當你換成另外另外一堆key word 的時候搞不好變成另外一種方法是最好的
+其實也沒有統一說哪一種最好
+那麼這個是一般來講的這個key word spotting 最基本的架構大概就是這樣子
+它包括三種部分
+三個部分第一個就是我用filler model 
+第二就是我用了剛才verification 
+第三個就是我做search 
+那我們來說一下什麼是所謂filler model 呢
+filler model 就是指除了key word 以外其它的所有東西
+我用一些model 去吃它
+讓它吃進去
+舉例來講就剛才這句話而言
+這是一個key word 
+我要抓到這個key word 是某一個key word 
+我要抓到這是某一個key word 
+之外的其它這些聲音呢
+那我希望有另外另外一組model 把它吃下去
+那就是所謂的filler 
+那其實這些我並不需要講究它到底是什麼word 不重要
+所以我不需要每個word 都有一個model 
+而是一大堆這個譬如說等於是就是all others 的意思
+all other words 
+我希望有一個model 是all other words 
+如果不一個不夠的話你給我兩三個也可以四五個也可以
+就這些就是所謂all other words 
+我就把所有的other word 都在這裡吃進去
+那麼因此呢你看到它這邊就像這樣
+譬如說我有一個key word model set 這個是我總共有n 個key word 
+我有n 個key word 
+那麼這裡面就是我的key word 的model 
+每一個key word 有一個hidden markov model 
+另外我還有一個filler set 
+我有m 個filler 
+那麼於是我真正的辭典裡面就只有這麼多了
+我就不需要那麼多word 
+這就是跟大字彙辨識不一樣的地方
+那麼我不見得還需要把六萬個word 都放在這裡
+當然後來也有人是那樣做的
+那是另外一種做法就是我我也就把六萬個word 都放在這裡面然後來辨識也可以
+但是基本上很多時候呢是可以不用那麼麻煩
+假設這邊是一百個key word 
+這邊我放五個filler model 
+那總共一百零五個model 就夠了
+於是你講的那句話裡面
+很可能你講那句話呢只有這個是一個key word k a 
+這是一個key word k b 
+其它這些東西是什麼
+都是我用filler model 來吃它
+所以很可能會發現某一個filler model 適合在這裡
+你因此你辨識出來變成一堆fi 一堆filler 
+然後中間填進來一個key word 
+又一堆filler 填進來一個key word 等等
+你變成一個這樣子的話那其實你就抓到了這兩個key word 
+至於這堆filler 對不對也無所謂啦
+那麼其實那都不重要
+我就要抓到這兩個filler 
+啊抓到這兩個key word 就是了
+那這個filler 是什麼呢
+這個depends 也不一定
+那麼有的時候有的人他只用一個filler model 
+我所有的all other words 通通train 成一個model 之後
+那我就一個就夠了
+那也有的人覺得一個不夠
+我要做兩三個或者四五個
+喔不同的
+讓它們吃一些不同的狀況
+那不管怎樣呢在這個裡面的話呢
+在這種狀況之下如果用這種方式來做的話
+我的總共的這個辭典不太大
+就是只有n 個key word 加上m 個filler 嘛
+所以我的辭典是比較小的
+我辨識起來比較容易
+所以呢我我只要管這樣就夠了
+那這個時候呢凡是你那個聲音裡面真的有key word 的話
+這個key word 的分數照說會比filler 來的高
+所以它比較容易出來
+反過來如果它不是那個key word 的話呢
+它八八成在key word model 裡分數會比較低
+但是在filler 裡面分數比較高
+如果它不是那個key word 的話
+所以那個filler 就會出來
+好這樣子所以呢我辨識出來就會得到一串這樣的東西
+那這就是用filler model 來處理
+再來呢當我知道這個是這個可能是key word a 這個可能是key word b 的時候
+再來我就做一次verification 就是我們剛才講的類似
+那verification 有很多種做法
+那最簡單的做法就是我們剛才講的這種
+用這種confidence measure 這種方法來做
+那你也可以做更複雜一點等等
+那如果是這樣子的話呢
+那我們就可以那這就是verification 
+你有每一個key word 你有n time model set 
+每一個key word 你可以用n time model 
+然後你可以做verification 
+你可以訂一個threshold 去判斷它是不是等等
+那當然你在做recognition 中間這個還是需要做search 嘛
+那只是說我現在這個辭典的詞詞數很少啦
+不要六萬
+我可以少
+所以我這個search 可以容易一點就是了
+那因此呢我們說基本上來講呢要做key 這個key word spotting 呢
+大概要用的東西包括這個filler model verification 還有search 
+那底下這個圖是說呢你可以去規定你的search 可以怎麼走
+譬如說如果你畫成這個圖的話就表示說我一開始可以有可以是從開始
+也可以連續走了好幾個filler 之後才看到一個key word 
+那key word 我可以連續好幾個key word 之後
+後面可以再接filler 等等
+看你這個圖怎麼畫的你就可以允許這個句子裡面出現怎麼樣的結構
+這是另外一種畫法
+那你也可以看到它的意思是說一開始的時候呢可以有一個filler 
+也可以有好幾個filler 
+也可以根本沒有filler 一開始就是進入我的key word 
+那key word 之後也可以就沒有別的東西了
+也可以有一個filler 
+也可以有好幾個filler 
+所以depend on 你這個圖怎麼畫
+你就可以允許這個句子結構是怎樣
+那這個point 是說如果我的key word 夠多的話
+我key word 還是一樣可以做成一個tree 
+就像這個一樣
+只是現在這個tree 很小沒有六萬個就是了
+如果你key word 有很多的話
+我仍然可以變成一個tree 的結構
+變成一個lexicon tree 的結構來做
+就我們做中文的部分而言
+那麼通常我們最可能的做法還是一樣
+譬如說每一個syllable 是一個arc 
+於是如果我的key word 有幾百個的話
+我還是可以變成一個由syllable 構成一個tree 就像這樣子
+那我的filler 會是什麼呢
+我可以把譬如說所有的聲母train 成一個聲母
+所有的韻母train 成一個韻母
+那這個聲母跟韻母的就是一個filler 
+連起來就是一個filler 的syllable 喔等等
+可以用這種方式來做
+那當然我們原來說過的八點零所說過的那些search 方法
+像a star 什麼multi path 等等其實都可以用喔
+這個depend on 你怎麼畫之後你要怎麼做都可以
+那這邊是講再進一步還可以在剛才的基本架構之下你還可以變很多花樣
+有各種各樣情形
+那我想我們這邊就把它跳過去了

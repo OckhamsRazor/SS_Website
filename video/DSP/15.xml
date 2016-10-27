@@ -1,0 +1,89 @@
+<playlist version="1" xmlns="http://xspf.org/ns/0/i">
+<title>15</title>
+<tracklist>
+<track>
+<title>Mismatch In Statistical Speech Recognition</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>1856.556</duration>
+<annotation>slides/DSP/15-1.jpg</annotation>
+<location>video/DSP/15-1.mp4</location>
+</track>
+<track>
+<title>Model Based Approach Example 1 - Parallel Model Combination (PMC)</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>494.13</duration>
+<annotation>slides/DSP/15-2.jpg</annotation>
+<location>video/DSP/15-2.mp4</location>
+</track>
+<track>
+<title>Model Based Approach Example 1 - Parallel Model Combination (PMC)</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>540.48</duration>
+<annotation>slides/DSP/15-3.jpg</annotation>
+<location>video/DSP/15-3.mp4</location>
+</track>
+<track>
+<title>Model Based Approach Example 1 - Parallel Model Combination (PMC)</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>710.55</duration>
+<annotation>slides/DSP/15-4.jpg</annotation>
+<location>video/DSP/15-4.mp4</location>
+</track>
+<track>
+<title>Model Based Approach Example 2 Vector Taylors Series</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>625.563</duration>
+<annotation>slides/DSP/15-5.jpg</annotation>
+<location>video/DSP/15-5.mp4</location>
+</track>
+<track>
+<title>Feature-based Approach Exmaple 1 - Cepstral Mean Substraction (CMS) And Signal Bias Removal</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>845.604</duration>
+<annotation>slides/DSP/15-6.jpg</annotation>
+<location>video/DSP/15-6.mp4</location>
+</track>
+<track>
+<title>Feature-based Approach Example 2 - RASTA (Relative Spectral) Temporal Filtering</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>713.34</duration>
+<annotation>slides/DSP/15-7.jpg</annotation>
+<location>video/DSP/15-7.mp4</location>
+</track>
+<track>
+<title>Features-based Approach Example 3 - Data-driven Temporal Filtering (1)</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>576.73</duration>
+<annotation>slides/DSP/15-8.jpg</annotation>
+<location>video/DSP/15-8.mp4</location>
+</track>
+<track>
+<title>Linear Discriminative Analysis (LDA)</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>1610.771</duration>
+<annotation>slides/DSP/15-9.jpg</annotation>
+<location>video/DSP/15-9.mp4</location>
+</track>
+<track>
+<title>Feature-based Approach Example 3 - Data Driven Temporal Filtering (2)</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>178.94</duration>
+<annotation>slides/DSP/15-10.jpg</annotation>
+<location>video/DSP/15-10.mp4</location>
+</track>
+<track>
+<title>Feature-based Approach Example 4 - Data Driven Filter Banks</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>258.46</duration>
+<annotation>slides/DSP/15-11.jpg</annotation>
+<location>video/DSP/15-11.mp4</location>
+</track>
+<track>
+<title>Speech Enhancement Example - Spectral Substraction (SS)</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>1207.428</duration>
+<annotation>slides/DSP/15-12.jpg</annotation>
+<location>video/DSP/15-12.mp4</location>
+</track>
+</tracklist>
+</playlist>

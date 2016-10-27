@@ -1,0 +1,149 @@
+那要再進一步改進的話呢怎麼樣做的更好
+最常用的第一個就就是我們之前提到的這個relevance feedback 
+以也就是說你可以把第一次找到的結果feedback 回去
+通常你第一次找到的最前面可能就是最重要的information 
+你把它feedback 回去那
+那一個最直接的標準的作法就是像這樣子那
+那這是什麼意思呢就是假設說
+user 輸入一個microsoft 那
+那麼你找到的你你你得到的文章呢你會從會從第一名排到第一百萬名
+那你可以把最前面的譬如說十筆還是二十筆還是五十筆還是五筆
+你把最前面的這個呢叫做叫做這個痾這個relevant doc doc 最接近的relevant document d r 
+然後你把這邊最不最不像的這堆呢叫做irrelevant 
+就是d 的irrelevant 
+那你如果這樣子的話呢你就可以把他們的那一些個的的d vector 加起來
+然後呢加回原來的那個q 去
+那什麼意思呢
+這就是我們剛才講的user 通常很懶惰
+當user 輸入一個microsoft 的時候
+其實他要找的也許是bill gate 
+也許是windows windows 
+也許是dot net 
+也許是office 或者是什麼什麼
+那麼但是是你現在只找了一個這一個他就只會找microsoft 的啦
+如果裡面文章裡面面沒有microsoft 這個字的話你那些什麼什麼都都沒有用
+那麼因此呢比較好的辦法是
+你如果把把用microsoft 所找到的最前面的譬譬如說五筆十筆二十筆一百筆
+這些東東西的vector 加回去
+你把這些個vector 加起來
+乘上一個weight 加回去
+那麼於是就會把你雖然一開始user user 只輸入一個microsoft 
+你就會把bill gate 也加回去了
+你會把windows 也加回去了
+你會把這些跟他相關的都加進這個q 裡面
+那麼因此呢你原來輸入的user 很懶惰他只輸輸入一個q 
+那個q 只有一個microsoft 
+但是呢你現在把那個最最前面的五筆十筆一百筆加回去之後
+你就會把跟microsoft 相關的的很多word 
+都加回去你的q 就會比較多東西了
+好那麼那你這邊用一個weight 來來來加回去
+同樣呢你也可可以最不相關的去扣掉
+那麼這個效果比較小前面那個比較大
+你把這個最不相關的裡面這個裡面的這個這裡面的vector 大概跟你你要的是最不像
+你可以把他扣掉啊
+所以這個也可以用減的那麼乘上上某一個weight 
+那如果這樣的話呢我就可以把原來的q 變成一個新的q pron 
+那這個q pron 顯然會比原來q 好很很多
+那這個就是這個所謂的這個relevance feedback 
+那這個做法是完全全自動的
+所以這這是所謂blind 
+那你就直接每一次的時候他自動可以做甚至於幾個iteration 
+那麼這麼一來的話呢通常常就會把很多相關而user 沒有用的term 都加進來
+那麼因此你會找到比較好的
+那這一類的東的的作法呢有另另外一個名詞其實就是所謂的query expansion 
+就是你怎麼樣把原來的query 把它expend 
+因為user 懶惰所以user 用的query 是最簡單的
+那你如何把它expend 
+那底下這裡講的是你還有另這另外外一個也常用的辦法就是你有一個term association 
+你如果為這裡的的所有的term 之間建立一個他們之間的association 的關係
+誰跟誰是有關係的
+因此呢你你的bill gates 跟microsoft 就是是有關係的
+他們的association 是很高的
+納麼因此呢當我user 輸入bill gates 的時候
+我就把自動把microsoft 加進來
+當我輸入microsoft 我就自動把bill gate 加進來
+那這個個就是我在做這個term association 
+所以呢這個講個就是用term association 來term association association 
+來做這個query expansion 
+那這個的的的基本精神是說ok 
+那你就要有一個term association 的matrix 
+一個association matrix 
+說明明第i 個term 跟第j 個term 就是是ti 跟t j 
+他們的關係到底怎樣
+那你其實有很多方法來算
+那詳細的我想我們這裡不講
+但是你基本上你可以猜的出出來
+哪個term 跟哪個term 會有什麼樣樣的關係你是可以算出他們的關係來的
+有很多種算法那
+那這裡講一種最簡單的算法
+就是假設對我這邊講的假
+假設他們如果出現
+在同一篇文章裡面越多次
+就表示他們關係越高那
+那bill gate 跟這個microsoft 老老是出現在同一篇文章裡面
+他們的關係就高
+microsoft 裡面老是會有software software 那
+那他們的關係就高
+microsoft 裡面老是會出現windows 他們們的關係就高
+那反過來呢microsoft 跟譬如說跟george george bush 有沒有關係
+可能很少
+microsoft 跟賓拉登有沒有關係
+可能根本就不會出現在同一篇文章裡面
+那他們的關係就很低
+所以以呢你最簡單的辦法就是我直接算他們有沒有出現在同一一篇文章裡面的算他們的這個frequency 
+那這個例子就是這這樣做
+那裡面的我現在是如果算term i 跟term j 的話
+就是t i 跟t j 
+那麼第i 個跟第j j 個他們的關係如何呢
+就數他們出現在一起的次數
+那麼fi 就是這個term i term t i 出現的文章的總數
+f j 呢就是term t j 文章出現的總數
+那麼f i j 呢就就是i 跟j 同時時出現在文章裡面的文章的總數
+那如果這樣一算的話這個就是這樣的意意思
+他就是個介於一到零之間的值
+你看什麼時候是一
+如果i 跟j 永遠出現在一起
+譬如說bill gate 跟microsoft 
+假設他們永遠出現在一起
+任任何一篇有了microsoft 就有bill gate 有了bill gate 就有microsoft 的話
+那麼他們在總共有幾篇呢有一百篇
+那fi 就是bill gate 一百篇
+f j 是microsoft 也也是一百篇
+f i j 是這兩個同時出現也也是一百篇
+如果這樣的話呢最後這個是一百這個也是是一百
+除起來就是一
+所以如果這兩個永遠出現在在同一篇文章裡面的話
+就得到一
+反過來如果一個是microsoft 另外一個是bill gate 另外一個是賓拉登
+好這這回完全沒有出現在一起
+那這這個是零這個值就是零
+所以他在介介於一跟零之間
+那你有有了這個值之後你就可以做像上上面這類似的事情
+不過我不用這個方法做我就直接把query 直接做expansion 
+就是我這個query 就改一一改
+我凡是以現在輸入的是這個term 這個query 裡面就是在講這個
+user 只有輸入這個字
+那這這跟term 跟誰有關的
+他跟這個的關係比較多
+他跟這個的關係比較多我就把這這邊也加一點分數進來
+乘某一個weight 的比例
+這個weight 跟他們之間的這個相相關關相關度有關嘛
+嘛如果他跟他關係比較大
+我乘一個比較大的weight 放進來
+那關係係比較小我乘一個個比較小的weight 放進來等等我就把一個相關相關的東西放進來我我就得到一個比較好的一個query 
+那就是query expansion 
+by term association 
+那把這些東西都做進來之後
+那基本本上vector space model 是一個最簡單的model 
+那效果也也不錯
+啊那麼你基本上來講你如果自己做個寫個程式來做這件事情的話你
+你只要做這個效果就不錯了
+那當然要真的要做的非常好像google 那樣
+那有很多學問
+那像google 那樣他得把全球球所有的網網頁
+他要在全球各地設sever 
+把全球的網頁都都把他index 進來通通弄好之後
+我可以瞬間找全球的東西
+那當然那就很很有學問
+但基本上你如果果光是講這個基本原理
+其實是很簡單他只是這樣的而已

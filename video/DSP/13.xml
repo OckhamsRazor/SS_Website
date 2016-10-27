@@ -1,0 +1,110 @@
+<playlist version="1" xmlns="http://xspf.org/ns/0/i">
+<title>13</title>
+<tracklist>
+<track>
+<title>Voice-enabled Web-based Applicationss</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>291.691</duration>
+<annotation>slides/DSP/13-1.jpg</annotation>
+<location>video/DSP/13-1.mp4</location>
+</track>
+<track>
+<title>Speech-based Information Retrieval</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>132.773</duration>
+<annotation>slides/DSP/13-2.jpg</annotation>
+<location>video/DSP/13-2.mp4</location>
+</track>
+<track>
+<title>Information Retrieval Processes</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>263.116</duration>
+<annotation>slides/DSP/13-3.jpg</annotation>
+<location>video/DSP/13-3.mp4</location>
+</track>
+<track>
+<title>Performance Measure</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>398.118</duration>
+<annotation>slides/DSP/13-4.jpg</annotation>
+<location>video/DSP/13-4.mp4</location>
+</track>
+<track>
+<title>Approaches To Speech-based Information Retrieval</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>768.75</duration>
+<annotation>slides/DSP/13-5.jpg</annotation>
+<location>video/DSP/13-5.mp4</location>
+</track>
+<track>
+<title>Vector Space Model</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>1199.7</duration>
+<annotation>slides/DSP/13-6.jpg</annotation>
+<location>video/DSP/13-6.mp4</location>
+</track>
+<track>
+<title>Improved Retrieval Technique Example</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>563.41</duration>
+<annotation>slides/DSP/13-7.jpg</annotation>
+<location>video/DSP/13-7.mp4</location>
+</track>
+<track>
+<title>Difficulties In Speech Based Information Retrieval For Chinese Language</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>423.712</duration>
+<annotation>slides/DSP/13-8.jpg</annotation>
+<location>video/DSP/13-8.mp4</location>
+</track>
+<track>
+<title>Syllable Level Indexing Features For Chinese Language</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>151.329</duration>
+<annotation>slides/DSP/13-9.jpg</annotation>
+<location>video/DSP/13-9.mp4</location>
+</track>
+<track>
+<title>Syllable Level Statistical Features</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>353.762</duration>
+<annotation>slides/DSP/13-10.jpg</annotation>
+<location>video/DSP/13-10.mp4</location>
+</track>
+<track>
+<title>Improved Syllable Level Indexing Features</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>433.943</duration>
+<annotation>slides/DSP/13-11.jpg</annotation>
+<location>video/DSP/13-11.mp4</location>
+</track>
+<track>
+<title>Hidden Markov Model (HMM) For Speech-based Information Retrieval</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>829.1</duration>
+<annotation>slides/DSP/13-12.jpg</annotation>
+<location>video/DSP/13-12.mp4</location>
+</track>
+<track>
+<title>Latent Semantic Indexing (LSI) Model For Speech-based Information Retrieval</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>288.59</duration>
+<annotation>slides/DSP/13-13.jpg</annotation>
+<location>video/DSP/13-13.mp4</location>
+</track>
+<track>
+<title>Speech-based Information Retrieval By Keywords - An Example</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>87.03</duration>
+<annotation>slides/DSP/13-14.jpg</annotation>
+<location>video/DSP/13-14.mp4</location>
+</track>
+<track>
+<title>Automatic Keyword/Key Phrase Extraction From Texts For Chinese Language</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>565.19</duration>
+<annotation>slides/DSP/13-15.jpg</annotation>
+<location>video/DSP/13-15.mp4</location>
+</track>
+</tracklist>
+</playlist>

@@ -1,0 +1,155 @@
+如果是這樣的話那我怎麼算它的perplexity
+就是底下這個式子
+這式子看起來有點複雜
+不過其實很簡單
+那它的意思應該就是說
+用我們剛才這個來講的話就是說
+我有一個測試的database 
+就是大d 
+它裡面有第一個句子叫做大w one
+第二個句子就做大w two 等等等等
+那麼這個長度是n one 這個長度是n two 等等等等
+那全部有多少個word 呢有大n 個word 
+而不是大n d 個word 
+那就是這邊所說的事情
+那如果是這樣的話那我怎麼算呢
+我其實就是把這裡面的每一個word 　
+每一個word 都可以根據前面它的condition 不管是bigram trigram 什麼gram
+根據它前面的condition 都可以算這個word 的機率嘛
+就是這個東西
+就是這個機率嘛
+那我就這個機率把整個sentence 通通取log 全部加起來
+所以每一個第一個第一個可能是要算它的unigram
+第二個算它的bigram 後面算它的trigram 等等
+我把這機率全部加起來
+然後呢那我就得到這一個
+我就得到這一個sentence 的和
+就是括號裡面這個東西對不對
+我就是把每一個機率這個從第一個字的unigram
+加上第二個字的bigram 第三個字的trigram 後面每一個每一個都有trigram 
+我都這樣去算
+那麼把它全部加起來
+就是這個式子
+然後呢我每個句子都做這件事
+全部加起來
+然後呢除以全部的字數
+那其實是什麼就是就是我在算所有的字的機率
+等於說是我每一個字都在算它的它的unigram
+它的bigram 
+然後它的trigram 等等
+我就把每一個通通都這樣算把每一個字出現的也就是說我的我的language model 本來就是在給我這一堆機率
+只是說這堆機率顯然你沒有辦法自己算
+一定要給我一篇文章給我一篇文章
+之後我才可以算每一個字每一個字的機率是多少
+你沒有給我一篇文章我沒辦法算嘛
+所以呢你就要給我一篇文章
+這篇文章就是我們所謂的test corpus
+那我有了這篇文章之後我就可以算每一個到底機率是多少
+那這個式子其實只是在算所有的機率的平均對不對
+你把所有的機率取log 再加起來再除以所有的字數
+就是在算平均嘛
+所以我就是把它這全部加起來這所有的機率我每一個字那每一個機率是什麼
+其實每一個機率就是我們這邊講的這麼一個東西
+它其實是一個distribution 裡面的某一個嘛
+那它其實是在算這種東西嘛
+那麼因此呢我其實是在算平均
+那這個全部加起來算平均是因為我取了log
+那如果取了log 加起來算平均的話
+相當於我先全部都這個取n 分之一然後加起來再取log 是一樣的嘛
+那你如果取n 分之一相當於是什麼相當於是做幾何平均嘛
+相當於在做幾何平均嘛
+那是什麼意思呢
+那其實我最後的這個perplexity 就是二的這個次方
+那二的這個次方的意思就跟我們之前講的這個二的這個次方是一樣的意思
+你其實是在算一個你其實是在算一個virtual vocabulary
+那這個講起來其實用底下這個講起來就很容易看
+就好比這樣子
+我的某一句裡面
+這是這個是unigram 
+它算出來相當於是一零二四分之一
+這個是bigram 算起來是五百一十二分之一
+這是trigram 算起來是兩百五十六分之一
+這是trigram 這是一百二十八分之一
+這是trigram 等等等等等等等等
+你把所有東西都平均起來看看到底這個language model這個language model 給我每一個word 都有一個機率
+那其實這個機率就是告訴我這個一零二四或者五百一十二或者兩百五十六就是告訴我這個size m pron 這個size 
+就是告訴我它的branching factor 
+就是告訴我這個constraint 大還是小
+就告訴我那個branching factor
+那這個東西那我現在要算它的平均
+怎麼算
+什麼叫平均
+我不是把一零二四跟五百一十二這些東西來平均不對的
+我應該是把這些個機率一零二四分之一這些東西來做一個幾何平均
+幾何平均之後再inverse 回來
+譬如說平均出來變成三百一十二
+那意思就是說in average 
+我每一次要看下一個word 是有三百一十二個可能
+所以呢in average 我的branching factor 是三百一十二對不對
+是這個意思
+所以我們這個式子寫了半天其實就是只不過是做這件事情而已
+ok
+那我等於是在算這個language model 給我每一次要predict 下一個字的時候
+每一次要算下一個字的時候就是在看你給我多好的多強的linguist constraint
+讓我這個selection 的range 多大或者是多小
+那因此呢那麼如果這是一零二四分之一相當於是說它有一零二四個這個一零二四分之一相當於我這邊這邊講的一八七二一樣的意思嘛
+等於說我其實branching factor 是一八七二
+我一零二四裡面我要選一個
+這相當於是五百一十二裡面選一個
+那平均起來在這整篇文章裡面
+這個整篇文章來數一次平均一下就知道我這個language model 到底給我怎麼樣的constraint 呢
+那不是把一零二四跟五一二去做平均
+而是把它們的分之一這個機率來做幾何平均
+之後的inverse 得到三百一十二
+那才是平均那這個意思等於是說in average 
+我要算每一個下一個字的時候是有三百一十二個選擇
+等於是在三百一十二個
+這個變成三百一十二
+對不對就等於說我這個m 等於三百一十二
+我在三我有一個等於說in average 每一次要選下一個字是有三百一十二equally probable 的字裡面
+要選一個
+那這樣的話呢這些東西其實就是所謂的一個average branching factor 
+所謂的average 是什麼average in the sense of geometric mean of 
+就是這個一零二四的倒數
+五百一十二的倒數它們的幾何平均
+那麼如果這樣看的話呢上面這個其實就是在做這件事
+我們這個這邊只是在做它的平均嘛
+平均之後再做二的幾次方回來其實就是在做這件事是一樣的意思
+所以呢這個是一個perplexity 
+這是這個language model 它的混淆度
+或者說也可以說就是它所提供的那個linguist constraint 
+那個linguist constraint
+也就是capability of language model 
+它可以predict 下一個word 那麼那麼這個這個的能力嘛
+那麼你在這個language model 就是在幫我predict 下一個字
+那麼它的這個constraint 有多強
+因此呢是越小越好對不對
+越小的話表示我的constraint 越緊
+那表示我的越好
+那麼因此呢我們可以根據那個language model 大小
+來看它的這個language model 好不好
+不過呢這個language model 我們不能自己來算
+一定要有一個test corpus 
+所謂test corpus 就是要有一個文章嘛
+一篇文章或者一萬篇文章要有這個東西之後
+每一篇文章算出來都不一樣的嘛
+所以一定要有一個測試的文章或者是一群文章
+然後做為test corpus
+這個時候你的language model 就可以去算
+你就可以知道它的能力有多強
+所以它是function of 這個p 是這個language model 
+就是這個p 
+我們就用這個我們就用這個p 的這個代表一個language model
+那這個language model 就是這個p 
+然後這個d 就是我的這個test corpus
+它是一個function of 這兩個東西
+它是一個function of 這兩個東西
+那這樣子的話呢我就可以算出這個language model 好壞
+那這個也就是我們講的perplexity
+也就是它的這個average 的branching factor
+那也就是我的這個也可以說就是一個跟我們這邊意思是一樣的就是size of 一個virtual vocabulary 
+就是in average 如果我得到三百一十二的話呢
+就是in average 我每一個字都相當於好像有一個三百一十二個word 的一個vocabulary 在那裡
+讓我來算
+等於是這樣的意思
+ok 好我們停在這裡休息十分鐘

@@ -1,0 +1,349 @@
+好那麼我們現在先要問這個matrix 到底是什麼
+你如果看這個w w transpose matrix 是什麼東西的話
+它其實告訴我word 跟word 之間的相似度
+什麼意思
+譬如說在這個在這個matrix 裡面的某一個
+這個是第i 個
+跟這個第j 個
+嗯這個是第i 個這個是第j 個的這個element 
+這兩個相乘的第i j 個element 這個東西到底是什麼意思
+你看這個值其實是什麼
+這個值其實是這邊的第i 個row 跟這邊的第j 個column 
+兩兩它乘它它乘它它乘它
+兩兩相乘加起來的
+那其實這個第j 個column 是什麼
+不就是這邊的第j 個row 嗎
+對不對
+這邊的第j 個column 就是這邊第j 個row 啊
+所以其實是什麼就是這兩個在做內積嘛
+其實就是第i 個row 跟第j 個row 在做內積
+其實也就是第i 個word 
+這是相當於第i 個word 
+這邊是相當於第j 個word 
+這兩個word 像不像嘛
+內積就是它像不像嘛對不對
+我都已經裡面都已經normalize 過了所以就是說它像它的相似度嘛
+因此呢我這個這個matrix w 跟w transpose 裡面的第i j 個element 
+其實就是第i 個跟第j 個row of w 它們在做內積而已
+也就是說它們之間的相似度
+好那麼有這個意思之後我們現在來看我把它拆開來是什麼意思
+這個拆開來的意思呢
+我們其實我們的目的就是底下要講的這件事
+這個跟上週我們講的eigen voice 的意思是完全一樣的
+當我用eigen value 把它拆開的時候呢
+很清楚地我照大小順序排列之後
+我可以把重要的值大的放到上面去
+當我把重要的值放到上面去之後
+我可以抽前面最重要的
+譬如說前面的這r 個
+這是我m 乘上r 這r 個
+然後這邊我也只抽r 個
+這是r 乘上r 個
+我這邊也只抽r 個
+那這就是r 乘上m 個
+那麼我如果只抽這個的話
+乘起來會almost 跟這個是完全一樣的
+那你回想我們這件事情在上週的eigen voice 裡面是在說怎麼樣的一件事
+我們上週在說的eigen voice 是說
+我把一大堆的把每一個speaker 的所有的參數做成一個大的vector 
+這個vector 可能多達它的dimension 可能四百八十萬個dimension 
+那麼於是呢我在這四百八十萬個dimension 上的每一點
+其實都代都代表一個speaker 的那一堆model 
+
+不過這個dimension 太大了怎麼辦
+我想辦法找一個它的subspace 
+譬如說這個是一個它的subspace 
+當然我現在沒有辦法畫那麼high dimension 的空間
+我只能畫三度空間
+於是它的sub subspace 變成是一個兩度空間的
+那麼於是呢我真正做的事情是把這裡的每一點通通投影到這上面來
+那到時候我會發現其實這個這個subspace 呢譬如說只有五十個dimension 
+那所有的點投到這五十變成一個很小的空間只有五十個dimension 
+而上面每一點呢都代表原來的每一個speaker 
+所以我這一點都可以對應回去
+這是我們在上週說的eigen voice 在在在做這件事情
+那現在要做這件事情是很像的
+你現在雖然我現在每一個word 是有譬如說大n 
+大n 是十萬篇文章所以它原來是十萬個dimension 的這麼多東西
+但是其實真的要這麼多嗎不見得
+我現在這個matrix 
+仍然代表這裡面所有十萬個word 裡面所有的的關係對不對
+我們已經說了這裡每一個都是代表i 跟j 之間的關係
+所以這個matrix 就是代表這十萬這兩萬個word 裡面所有的word 的關係
+而它的關係是用這個十萬篇文章來描述的
+是一個這麼大的一個matrix 
+但是其實我可以把它縮減成為我這邊只取r 
+這個r 是多少呢
+我這邊有沒有寫嗯我們有有在這
+我們通常做啦我們做過我們如果是以新聞來做的話
+我用各種新聞來做的話
+這個r 大概八百就可以了
+通常r 大概八百做到一千五百都差不多
+這不需要再大了
+所以雖然我這邊有十萬篇文章甚至於一百萬篇文章
+我其實大概r 只要八百個到一千五百個就可以了
+因此這個所有的的word 之間的relation 其實可以reduce 成為只有這r 個這r 個
+這八百個這八百個這八百個
+那麼你其實把這三個這個綠的matrix 乘起來呢
+跟這個是非常像的
+原因是剩下這些都很少
+這些都是非常常小的值了
+我這邊的時候已經是這個最大的值都在這裡了這裡面非常小的值你可以丟掉
+所以後面這堆eigen vector 跟這堆eigen vector 都是可以丟掉的
+那麼這畫這就是我們底下這邊所講的
+那麼這個本來是m 乘n 
+這個是m 乘n 乘m 
+那也就是這兩個matrix w 跟w transpose m 乘n 跟n 乘m 
+那麼我現在呢
+我可以簡化成為只有這個u 
+那我這樣的寫法的意思是說
+我如果只剩下r 個r 個column 的話這就是u 
+上面沒有bar 
+ok 那這個就變成這也變成u 上面沒有bar 
+所以呢我凡事沒有bar 的u 
+就是其實只有m 乘上r 
+然後呢這個是r 乘上r 
+然後這個呢是r 乘上m 
+這是u 的transpose 
+我這邊有寫bar 的
+就表示是dimension 是大m 
+沒有寫bar 的就是reduce 到只有r 個dimension 
+其中這個呢就只有r 個eigen vector 所構成的
+那麼如果是這樣的話這個意思是什麼呢
+那我們也許應該去了解一下
+你如果回去看matrix 的數學的話它會說
+其實這些eigen vector 告訴我是這樣的東西
+也就是說你每一個eigen vector 跟它的transpose 相乘
+再中在scaled by 它的eigen value 
+其實就是一個matrix 
+我們拿它的第一個eigen vector 而言
+我這個是一個e one
+這是一個column 
+那這個e one 的transpose 呢
+是一個row 
+這兩個相乘是什麼
+就是一個整個的matrix 對不對
+它跟它相乘是個整個的matrix 
+而這整個的matrix 它的weight 給它一個s i 的平方
+就是給它第一個eigen value 
+那就是這個的這個東西
+所以你可以想像呢
+我任何的一個eigen vector 跟它自己的row 跟column 去相乘
+就得到一個component matrix 
+e i 跟e i 的transpose 
+就是一個component matrix 
+我們給它一個weight 
+那個weight 就是它的eigen valuesi 平方
+那如果是這樣的話呢
+那麼這一個就是相當於這一個eigen vector 所構成的那一個component matrix  
+那因此呢我的這個這個matrix w w transpose 這個東西呢
+你可以看成是這一大堆加起來的
+那這一大堆加起來裡面那它的weight 就是這些個eigen vector eigen value 的值
+那我們說這個eigen value 的值它會把大部分的大的值都集中到上面來
+我們把它照大小排列
+大部分東西擠到這裡擠到這裡
+到後面變成很小很小
+所以後面這些個就不重要了嗎
+所以我這些雖然是全部的i 加起來才會等於原來的
+但是你只要加前面的大r 個
+譬如說r 等於八百的話
+你只要加前面的八百個幾乎就是原來的了
+那八百以後的那一大堆
+一直到十萬個其實都不重要了因為它非常小
+所以你就可以拿掉了
+於是呢我現在這個所有的word 之間的relation 
+我就可以reduce 到用這三個
+小的matrix 只有八百dimension 的來描述它綠色的這塊
+那就是我們這邊所用的這個東西
+這也就是我們講的一個dimensionality 的reduction 
+我只要選擇r 個eigen value 
+夠大的eigen value 值就好了
+那麼我們底下會說其實這八百個就代表八百個concept 
+或者說就是它的語意潛藏的concept 
+或者說就是它的topic 
+那這點我們底下再解釋
+那麼如果說是這樣的觀念
+你可以想像的話
+那麼我們反過來也可以做另外一件相同的事
+就是我現在做w 的transpose 再乘以w 
+那這個呢是完全相同的情形
+但是我反過來
+我先把它transpose 
+所以我得到一個這樣子的東西
+這是w 的transpose 
+它是n 乘m 
+然後乘上w 
+是這樣的一個這個是w 
+這是m 乘上n 
+所以這兩個乘完之後變成一個什麼呢
+變成一個n 乘n 的正方形
+n 乘n 的
+那這就是w transpose w 
+跟上面剛好反過來
+那它也是一個正方形啊
+所以我也可以做eigen value 跟eigen vector 
+那麼因此呢
+那同樣的情形你也可以看這裡面的第第i 個跟第j 個
+的這個element 的意思是什麼呢
+這邊的第i 個跟第j 個element 
+相當於是這邊的第i 個row 跟這邊的第j 個column 
+去它跟它相乘它跟它相乘去相加
+那這個第j 個
+那這個的第i 個row 是什麼
+就是這邊的第i 個column 嘛
+這其實就是這個嘛
+所以其實是在這兩個column 在做內積
+所以呢我們說它的i j element of 這個是什麼
+其實就是第i 個跟第j 個column 這個w 的第i 個跟第j 個column 在做內積
+其實就是這兩個document 之間相似的程度
+對不對
+所以呢就是說我現在這兩個document 之間有多像
+就是這個
+所以同樣的
+這項剛才的這裡每這個matrix 裡的每個element 是在描述兩兩word 之間有多像
+它們兩兩word 之間的關係是在這裡
+那這邊是在描述兩兩document 之間的關係是什麼
+那你如果兩兩關係document 之間的關係有了的話
+那你現在就是得到這個matrix ok
+所以呢這個這個matrix 裡面它的i j element 意義跟上面這個是完全對稱的
+它的是對word 我這個是對document 
+好如果有了這個的話我下一步也一樣我這個也一樣可以拆開來做
+三個eigen value 
+那麼於是呢我的第一個呢就是
+那它的所有的把它的所有的eigen vector 排起來
+我這邊寫做e one prime e two prime e 三等等
+一直到e n prime 
+這就是它的n 個eigen vector 
+所以呢我這個e這個e i 呢就是嗯應該是有寫在哪裡
+這個e i prime 就是它的orthonormal 的eigen vector 喔
+我這邊講的剛才這邊的e i 是orthonormal 的eigen vector 
+也就是說我這個eigen vector 求好之後都把它normalize 
+變成單位長
+變成normal 過的normalize 過的都是這個normalized 的eigen vector
+而且呢你可以證明所有的eigen vector 是互相orthogonal 的
+所以它們是orthonormal 的eigen vector 
+那我這裡也是一樣e i prime 也都是orthonormal 的eigen vector 
+那所謂orthonormal 的意思呢
+就是它們這個它跟它的transpose 它transpose 跟它相乘會變成identity 嘛
+對不對
+這個就是我們剛才說的它們都是orthonormal 
+所以它跟它如果直接去做它的transpose 跟它做的話呢
+就變成這個跟這個去做內積
+都是只有它跟它自己做內積別的都是零
+所以它們的這兩個相乘變成identity喔 
+這個式子的意思是這樣子嘛喔
+就是這個東西跟這個東西相乘的話
+u 的transpose 就是這個再乘上這個的話
+你如果這個東西乘上這個的話
+其實就是這裡的每一個跟這裡的每一個去做內積
+那它就變成是identity 
+這就是它的orthonormal 的意思啊
+那我這邊也是一樣
+好那這樣之後呢這是我的第一個matrix 
+然後第二個matrix 呢是所有的eigen value 
+也是一樣s one 的平方s two 的平方等等等等別的都是零
+還有第三個就是e one e two e one prime e two prime 等等
+喔一樣的
+這邊已經黑板不夠大了所以我們就不多畫
+不過你可以曉得就是跟上面一樣的意思
+這是e one prime e two prime 等等的一個一個row 
+等等一直到e n prime 
+當我得到這樣之後
+這就是我的這些個vveigen vec eigen vector 跟它的eigen value 
+不過這這裡有一點很有趣的地方是這些個eigen value 是一樣的
+所以我都寫成s one 的平方s two 的的平方跟這邊是一樣的
+不像這裡的話我寫e one 這裡寫e one prime 
+表示是不同的vector 
+e one prime 跟e one 是不同的vector 
+這邊是一樣的
+嗯一樣的但是呢它們的dimension 不同
+因為這邊是r 
+這邊是這個m 乘m 嘛
+這是m 個
+這個呢是n 乘n 是n 個
+那怎麼回事呢
+應該是說在m 跟n 裡面的那個minimum 的值之內的
+它們是一樣的
+那麼超過的話呢就都是零喔
+換句話說像我這邊所畫的這個大n 大於大m 
+所以你可以想像呢
+在前面的這m 個而言
+的這個就是這一個
+後面這些就都是零了
+這些eigen value 都是零了喔
+那為什麼會這樣這邊都是matrix 數學我這邊不在這裡講這些數學
+但是你可以想像是因為這個是w w transpose 
+這是w transpose 這是同樣的東西嘛
+這兩個其實是同樣的東西只是都是同樣的那個w 所產生出來的東西
+所以結果它們的只是說我都拿一個transpose 去乘乘在前面跟乘在後面的不同而已
+所以呢它們大小因此變得兩個不一樣
+但是它裡面真正的eigen value 的數目是相同的
+那什麼數目什麼相同法呢
+就是看誰比較小的那個是相同的
+超過了就是零ok 
+所以對i 大於m 跟n 的minimum 的那個地方的話它都是零了
+就是這個意思
+那除了這個之外我上面一樣按照大小數目來排列
+按照它的數值大小按照eigen value 的大小來排列
+那麼因此呢其實這個第一個就是它的第一個
+第二個就是它的第二個
+一直到第m 個就是第m 個
+後面就都是零了
+那麼於是你就可以想到其實這個e one prime 的這個eigen vector 
+跟這個e one 其實是有關係的
+因為它們都相對於同一個e one s one prime 的eigen value 啊
+等等這是我們底下要說到的
+那麼於是呢我就得到一個這樣子的關係
+那麼那麼我現在中間這塊呢就是我這邊所謂的s one 平方
+中間這個就是我的s one 平方
+就是指這個matrix 
+那中間這個呢我這邊叫做s two 的平方
+就是指這個matrix 
+好當我做到這步之後底下這些事情也是一樣
+我一樣的可以發現我只要取r 個
+就夠了
+我再取這裡面的r 個個最大的eigen value 
+譬如說r 是八百個
+我只要取這r 個就夠了
+那麼因此我這邊也就取r 個eigen vector 
+這邊我也取r 個
+那這三個相乘這三個小的相乘幾乎就跟這個一樣了
+那麼這就是我這邊所講的我這個叫做v 跟v transpose 
+這是大寫的v 的有一個bar 的
+那這上面這個叫做v 的bar 的transpose 
+那麼我當我寫了這個v 的bar 的時候是指全部的
+就是v 的bar 是指這整個的方的matrix 
+整個的方的v 的bar 的transpose 
+那當我把這個bar 拿掉的時候呢
+我就只抽了裡面的八百個ok 
+當我把這個bar 拿掉之後只抽裡面八百個所以這個剩下的呢
+就是我的v 的剩下八百個
+就是這邊的n 乘上r 
+因為我這邊現在只有只有這個八百個了
+那同樣的呢這個是我的
+這個這個就會變成我的v 的transpose 
+也是只有r 乘上n 
+我也變成只有八百個
+就是這邊的v 的n 乘上r 跟v 的transpose r 乘上n 
+那中間這個變成r 乘上r 
+所以這個s two 就變成變成這個是s two 的的r 乘上r 
+就是這個s two 的r 乘上r 
+就變成只有這個變成變成只有這個只有r 個了
+而這個r 乘r 跟這個是完全一樣所以two 可以就根本可以不要寫了
+那這個跟這個是一樣的所以呢就就變成只有這r 個eigen value 了
+那這就是我們在這邊所講的這兩件事情
+我們的這個dimensionality reduction 
+那這個意思也是一樣的
+就是說我的這個w t w 的transpose 乘上w 的這件事情
+我等於是把它拆成很多個component matrix 
+就是e i prime 乘上e i 的transpose 
+這裡的每一個eigen vector 跟它的transpose 去相乘
+就是一個matrix 
+那它的weight 就是它的eigen value 
+所以你可以寫成這麼多個component matrix 去相乘加起來就是它
+你如果這樣子寫的話
+那麼後面這些eigen value 都很小
+我都可以丟掉
+於是我就變成這樣子
+那當我變成這樣之後呢這回我可以做什麼事情
+這回可以做的事情是我們下一頁所說的

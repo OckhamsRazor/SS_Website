@@ -1,0 +1,163 @@
+但是我們什麼時候要 e  m 呢就是這樣做不出來的時候
+什麼時候是這樣做不出來的呢
+那就是我們底下講在很多時候你要算這些要算這個所謂 object  function 的時候根本算不出來
+因為它 depends  on  some 有一些個 intermediate 的 variable 
+那些我們不知道的 variable 我們稱之為 latent  data 
+它們是不是 observable 的我根本看不到所以我就求不出來
+所謂的要算這個所謂的這這個 object  function 
+我要算這個 object  function 所謂的 object  function 就是剛才的那個 criterion 
+不論你是這個嗯 maximum  likelihood 的這一個
+或者是 m  a  p 的這一個
+這就是所謂的 object  function 我們要 maximize 這個東西
+所以呢這個是所謂的 object  function 
+那麼在這個 case 下像剛才這個簡單的 example 裡面其實這個東西可以直接直接算算的出來
+可是呢在有一些比較難的問題裡面呢就是你在算這個 object  function 的過程之中呢
+你需要一些個中間的 variable 
+這堆中間的 variable 我們稱之為 latent  data 
+因為它們是不是 observable 你看不到的
+這個你知道 latent 這個字的意思是潛藏的就是你看不到的
+是潛藏的你看不到的中間有一堆你要求這個東西的時候中間有一堆 data 你是看不到的
+那麼因此呢你就沒有辦法真的去做這件事
+那一個很簡單的例子就是我們在第四點零講 h  m  m 的時候的 state  sequence 
+你記得我們在講 h  m  m 的時候是怎樣的
+我有一堆 state 在那裡跳過來跳過去
+然後我有一堆 observation 
+我這個 state 這樣跳過來
+我有一堆 observation 
+那問題是我並不知道到底它歸它它歸它
+到底誰歸誰我不知道
+那因此就是那一堆誰歸誰我不知道因此我很難 train 它嘛
+你記得我們當時怎麼辦我們用了很多辦法去去這個假設先先怎麼切然後怎麼切然後再經過很多個 iteration 
+像 segmental  k  mean 那弄來弄去之後都先假設它是這樣再跑一次先假設它是這樣切然後再跑一次
+因為其實我根本不知道它到底誰歸誰
+反過來你如果知道它歸它那好辦啦你如果知道這三個歸它你就用這三個 train 它
+這幾個來 train 它就好了那其實就是我們不知道它歸誰嘛喔
+那像這個情形這個 state  sequence 所謂 state  sequence 就是我不知道誰歸誰
+那這個就是這個我們在 train  h  m  m 的時候的所謂的 latent  data 
+那同理在很多時候你都有類似的情形就是我的 observation 跟我後我我在這個 case 我後面的 model 是這個 model 
+那這個 model 裡面有一堆參數就是 a  b  pi 
+應該你都很熟悉就是這堆東西也就是所謂的 lambda 
+對不對我現在要要 train 這一大堆參數 a  b  pi 要 train 這一大堆 lambda 
+可是呢我只有這一堆東西
+我這一堆東西是最外面的 observation 
+這個東西是最裡面的這一堆參數中間還隔了那個 state  state  sequence  q 我不知道
+那在這種情形之下我們就常常就要想辦法那這個時候用的辦法就是所謂的 e  m 
+也就是說我要想直接 estimate 這些個參數是做不到的
+因為你沒有這個你沒有這些個這個 latent  data 
+那麼舉一個最簡單的例子就是我們剛才講的你在做 h  m  m 的 training 的時候你如果不知道 state  sequence 這是滿難做的
+那我們在四點零那個時候我們說了一大堆的方法來做這件事
+其實那堆方法就是用 e  m 的只不過我們當時沒說而已
+那麼我們再下去你就會知道我們當時是如何使用這個 e  m 
+好那到底 e  m 是什麼呢我們剛才已經講了就是在欠缺中間的 data 情形之下
+我從最外層的 observation 要去 estimate 最內層的這些參數中間可能欠缺一些東西的時候所用的方所用的方法
+那 e  m 怎麼做呢 e  m 的基本精神就是底下的這兩句話
+什麼是 e  m  e  m 就是 expectation  and  maximization 
+我一面做 expectation 一面做 maximization 這是兩個 step 
+這兩個 step 構成一個 iteration 
+然後我一個一個 iteration 不斷的跑
+讓它去慢慢趨近我要的答案喔
+這就是 iteration 的方法它是一個 iterative  procedure 
+你記得我們在這個講四點零講 h  m  m 的時候
+我們的 problem 三 basic  problem 三就是一個這樣的 problem 
+那我們當時也是用一大堆 iteration 讓它慢慢慢慢趨近這個慢慢趨近得到這個 a  b  pi 
+那個 iteration 其實就是 e  m 
+好那麼什麼是 e  m 呢
+那麼我們現在來說它 e  m 其實就是這兩步這兩步的基本精神就是
+第一步做 estimation 怎麼做 ESTIMATION 
+我 base  on  current  estimate  of  parameters 
+我們還是一樣哦就是哦擦掉了我要的是這個 theta 
+譬如說 theta 是譬如說我要的是一堆參數 a  b  pi 好了
+假設說我 theta 是我要的一堆 model 的參數
+然後我有一堆 observation  x  x  one  x  two  x  t 
+我 given 這一堆given 這一堆最外層的 observation 我要去估計最內層的那一些個 theta 
+但是呢我沒有辦法直接估計中間少了很多東西怎麼辦
+我第一步呢就是我用 current  estimate  of 這些 parameter 
+換句話說呢假設我有一個 iteration 在進行
+在第 k 個 iteration 的時候我有第 k 個 iteration 所得到的 theta 
+假設我有一個現在在第 k 個 iteration 我得到的 theta 的話
+然後呢再根據 given  observation 這個 x 
+那 given 這兩個東西之後我想辦法去求一個未知的這個嗯 possible  distribution  of  the  latent  data 
+這個 latent  data 我們姑且我們說它叫做 z 
+z 呢譬如說是一個 latent  data 就是我不知道的
+z 是一個 latent  data 就是我介於中間的
+那麼我不知道的那其實有了這個 latent  data 我才能夠算我現在沒有那個的
+那怎麼辦呢我就去做一個 possible  distribution  of  the  latent  data 
+那麼所謂的 possible  distribution 就是我想辦法做一個 z 的 distribution 
+所謂的 z 的 distribution 就是說這個 z 呢可以是這樣可以是這樣
+各有一個機率譬如說這是 z  one 這是 z 的 m  
+z 可以有某一種 distribution 那麼每一個各有多少值我給它一個 distribution 
+那這個 z 的 distribution 怎麼來的我先根據這個估計一個 z 的 distribution 那我們姑且說這個也是第 k 個第 k 個的
+ok 那這個於是呢這樣子之下呢我就可以我就可以算我要的這個
+我我要的這個 object 這個 object  function 
+舉例來講剛才的那個 maximum  likelihood 
+假設我要的是 maximum  likelihood 就是這個嗯 given  theta 
+那這個當然也是指我的第 k 個 iteration 的時候
+這是 k 嗯寫錯了這是 k 
+於是我就可以算這個
+我我們剛才講我 z 不知道嘛 
+z 不知道的話我想辦法求一個 z 的 distribution 
+然後呢當 z 等於這個的時候呢我可以算出來是多少當 z 等於 z  one 的時候我可以算這個 z 等於 z  two 的時候我可以算這個等於多少當 z 等於每一個可能的 z 我都都做出來之後我得到一個我的
+這個是我的這個我要 maximize 的東西我要它等於 MAXIMIZE 
+在我們現在以 maximum  likelihood 為例就是這個
+如果是 m  a  p 的話是倒過來然而都可以
+那我們現在姑且以我在這個例子是講 maximum  likelihood 的情形
+那麼因此呢這個就是我們講的第一步所謂的 expectation 喔
+也就是說你你要求一個 expectation 
+我不知道怎麼求呢我只好先假設這個 z 有一個 distribution 
+我不知道 z 但是我至少可以說我想辦法求出這個 distribution 來 z 等於這個有一個機率等於這個等於有一個機率等於這個等於每一個都有一個機率
+我如果求的出這個機率的話我可以用這個機率的 distribution 來算出一個 z 在這個情形之下的那個 object  function 那個 maximum  likelihood 那個東西有是一個什麼值我算的出來
+那麼這就是這句話所說的意思喔我相對於 possible  distribution 
+包括它的 value 跟 probability 就是這些 value 跟它們的 probability 這就是它的 distribution 
+那這個 distribution 是是是是這個 latent  data 的 distribution 是那個 z 的 distribution 其實我們不知道的我們估計一個東西出來怎麼估計法
+是根據 current  estimate  of  the  PARAMETER 
+就是根據 current  estimate 就是現在這個 iteration 的這個參數的值以及我現在所 observe 到的東西哦
+所以呢根據這個 current  estimate  of  desired  PARAMETER  conditioned  on  given  observation 
+根據這兩個我得到這個 distribution 有了這個 distribution 我可以算這個 object  function 
+這是這是第一步講的 expectation 
+當這個做完之後我現在想辦法把它 maximize 
+這就是第二步這個這個所謂的 maximization 就是就是你把它來 maximize 這個
+然後呢那那這個 depend  on 你是 m  l 還是 m  a  p 還是什麼都可以我們這邊講的是 m  l 的例子
+那我現在想辦法把它 maximize 
+怎麼 maximize 法那我在中間調所有可能的 theta 
+因為我現在我現在既然已經有了這個東西了
+我既然已經有了這個東西了我可以調所有的調所有的 theta 
+看哪一個 theta 讓這個東西 maximum 因為我要這個東西 maximum 嘛
+我看這裡面什麼東西是 maximum 
+那麼我去我去調所有的 theta 讓它 maximum 的時候那個 theta 就是我的下一個新的 k 加一
+OK 所以呢這是第二第二步講的就是我想辦法產生一個新的 set  of  ESTIMATE  of  desired  parameter 
+就是 theta 我我由 k 變成 k 加一了
+也就是說我現在有了這個東西我就可以去調 theta 
+那麼調到哪一個 theta 使得這個式子最大的那就是 k 加一
+於是我就可以把這個 k 加一放到這邊來
+就是下一個 step 
+那這樣子這就是一個 iteration 然後這樣子一直走一直走一直走
+這樣讓我的 theta 慢慢趨近我要的喔
+那這樣子的畫法其實這個圖就是 e  m 的基本精神就是這樣
+那麼我們如果分清楚一點來看的話呢那他們就是 e 跟 m 的這兩個 step 
+一般的說法裡面所說的一個是 e 一個是 m 
+那你可以看到我在我在這裡根據這個來算出這個來
+這就是所謂的 e  step 就是 e  step 
+然後呢我之後呢我想辦法把這個東西 maximize 
+這就是所謂的 m  step 
+那麼這兩步 e 跟 m 不斷的不斷的 iterate 那就是所謂的 e  m  algorithm 
+ok 這樣那我想這樣應該清楚喔就是等於是說我現在不知道的是 theta 
+我我 observe 到的是 x 我還缺一樣東西就是 z 
+如果不缺這個 z 根本不要 e  m 了喔
+所以我們剛才前一頁講的如果只是一個 gaussian 的話一個 gaussian 根本就不缺那個那就不要 e  m 了
+那會要 e  m 是因為缺了一個 z 
+缺了一個 z 怎麼辦我就去估計 z 一個 distribution 出來
+它在每一 z 的每一個值都可以有一個機率
+那麼在這個這個怎麼估計法我想辦法用現在的 iteration 裡面所假設的一個 theta 值
+然後跟我的 observation 想辦法去估一個新的想辦法去估一個 z 的 distribution 
+那在那一個 distribution 之下我可以求出我要 maximize 的那個東西
+那當然那個只是根據這個狀況之下的所以呢我現在去可以去調我的所有可能的 theta 值
+讓這個東西最大
+那樣所得到的就是新的 theta 值就做下一個
+那這就是所謂的 e  m 
+這樣講起來是非常抽象的那麼我們底下會會有比較具體的例子來看這件事喔
+所以呢你看第二步所謂的 m  step 呢就是再 generate  a  new  set  of  estimate 
+就是我要求一個新的 theta 得到一個新的這個 theta 的 k 加一就是 new  set  of  estimate  
+by  maximizing  object  function 那這就是 m  step 
+那這兩個 e 跟 m 一直走就是了
+那麼這樣的話呢我們就可以保證我每一次 iteration 我的 object  function 是在增加喔
+每一次增加所以最後它會 converge 這是 e  m 的這個基本精神就是那那邊的那個圖

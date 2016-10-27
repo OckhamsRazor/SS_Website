@@ -1,0 +1,1606 @@
+我們今天最主要要講的不是這個而是 e  m  theory 所以我們今天要回到九點零我們來講的是 e  m 
+那麼九點零要說的其實是一些個重要的我們在這個語音這個領域一些很幾個比較重要的方法
+那麼我講的第一個是就是 e  m  theory  e  m  algorithm 
+那麼除了 e  m 之外第二個我後面要講的是這個 m  c  e 
+那麼 m  c  e 帶出來的就是 DISCRIMINATING  training 那這也是今天另外一個非常重要的研究領域喔
+那麼 m  c  e 講完之後第三個是 m  m  i  e 就是 Maximum  Mutual  Information 
+這個也許暫時沒時間講我們先講前面這兩個
+那麼我們先從 e  m 開始
+e  m 我們已經聽過很多次了因為我們從頭一直在講怎麼樣做 e m 
+一直在講用 e  m 幹嘛用 e  m 幹嘛那 e  m 是什麼
+e  m 它它主要是拿來估計某一個統計模型的參數
+ok 也就是說一個一個任何一個統計模型的的裡面的參數我們都
+我們一天到晚都要估計的但是呢你在估計的時候常常發生困難那我們常常就用 e  m 
+那麼一個最簡單的例子是 gaussian 
+那麼你可以想像假設我有一個東西是一個 gaussian 
+那麼這個 gaussian 的最主要的參數是什麼第一個它的 mean 第二個它的 variance 
+假設我有一堆 x 假設我有一堆 x 
+那麼譬如說 x  one  x  two 我有一大堆 x 這是我的 observation 
+當我有這一堆 observation 之後
+我要用一個 gaussian 來 model 它那就是要一個 mean 跟要一個 variance 
+那這個怎麼做呢如果只有這樣這是很容易啦
+那我們講的是說類似這樣的問題只是說沒有這麼容易而已
+那麼另外一個情形譬如說我現在不是一個 gaussian 我有好多個一個 gaussian 做不出來我有好多個 gaussian 可以做的出來那就是 g  m  m 對不對我可以做成一大堆 gaussian 
+那我要求每一個 gaussian 的 mean 跟每一個 gaussian 的 variance 
+欸那這時候就比較難了到底應該怎麼樣子去求它的每一個 mu  I 跟每一個 sigma  I
+等等那像這類的情形呢那都是我們講的就是
+你你要你要你要做某一個 probabilistic 的 model 
+上面有一堆參數你怎麼求這些參數 given 這一堆 observation 
+那當然你如果要用這一堆 observation 這一堆 observation 去求這一堆參數通常是有一個 criterion 
+所以我們通常就是說你有一個 given 的 criterion 在那個 criterion 之下你要來求這堆東西
+那我們這邊先舉兩個簡單的例子第一個 criterion 就是 maximum  likelihood 
+這是我們已經用了很多了所謂的 m  l 
+那第二個就是 m  a  p 就是 Maximum  A  Posterior 
+那這兩個是最常用的 criterion 
+那麼舉例來講所謂的 maximum  likelihood 那你已經應該已經非常熟悉我們一再的使用
+那它的基本精神就是我假設這些個 parameter 集合成一個 set 叫做 theta 
+也就是說這一堆這一堆東西叫做 theta 
+就是我的這些 mean 啦 variance 啦等等等等等等
+假設我有我有 n 個假設我有 n 個 gaussian 的話我就有 n 個 mean 跟 n 個 variance 
+這堆東西我叫做我的 parameter  set 就是 theta 
+那麼於是呢我所謂的如果如果我的 criterion 是 MAXIMUM  likelihood 的話
+那就是 m  l 的 criterion 那麼 m  l 的 criterion 就是這個東西等於 maximum 
+也就是說也就是說如果你我要找這組 set  theta 就是這組參數我要找這一組參數 theta  
+such  that 那麼 given 這些 theta 之下我 observe 到所有的 x 
+這個 x 就是我這邊的所有的 observation 這就這就是我的所有的所有的 observation  x 的機率是最大的
+也就是說 given 這一堆 theta 其實 given 這一堆 theta 的意思就是 given 這 given 這一堆 theta 的參數就表示這一個 distribution 已經做出來了
+那這個 distribution 裡面呢我看到這個的機率要最大對不對
+也就是你要找某一種你給他一個這個機率模型的長相
+然後裡面所有的參數你可以去調調到最後使得我在這個機在這個 model 之下我看到這些東西的機率是最大的
+那這個就是所謂的 maximum  likelihood 因為這個東西就是所謂的 likelihood  function 
+這是如果用 m  l 就是 maximum  likelihood 來作為我的 criterion 的話
+那如果不是用這個而是用 m  a  p 的話也一樣那這個你應該也很熟我們之前也已經講過很多次了
+m  a  p 是反過來是這個東西要 maximum 
+也就是說呢是 given 看到這些東西之後那麼那個這個 parameter  set 的機率最大的
+那是所謂的那個叫做 A  Posterior  probability 也就是事後的就是說假設我 observe 到 x 了
+在 given  given  observe 到這堆 x 的條件之下我去調所有的 theta 這裡面每一個都去調
+然後看到底那一組 theta 的機率是最大的
+因為 given 這一個東西之後的這裡每一個值都有它的機率
+因此我就變成是 given 這個 x 然後去調所有的 theta 看哪一個 theta 讓我最大
+那就是那這個東西就是所謂的 A  Posterior  probability 所以呢這就是所謂的 m  a  p 
+那 m  a  p 的這個機率跟 m  l 的機率這兩個剛好反過來就這樣子
+那我們之前也一再說過所以你應該是知道的那這個通常這個 A  Posterior 的這個機率通常是難求的
+所以呢我們常常是把他倒過來用 Bayes  theorem 變成變成這個乘上這個然後除以他等於 maximum 
+但是因為這個時候呢這個 x 是 given 的我要求的是 theta 
+所以這個 x 是 given 的所以呢這個除不除沒有關係我們不除它就剩下這兩個相乘
+所以呢通常這個 maximum  A  Posterior  probability 是變成是要這兩個相乘是 maximum 
+那前面第一項其實就是 m  l 的這個東西
+但是它比 m  l 多了第二項就是還有一個這個的 distribution 在
+那這是他們如果用 m  a  p 來做的話就是這樣子
+那我們現在講的 e  m 不是在講這兩件事
+而是說這是兩個例子
+就是 given 某一個 criterion 
+在 given  criterion 之下我要求這些東西的時候
+那所以呢可以是 m  l 的 criterion 我要 maximize 這個東西
+也可以是 m  a  p 的 criterion 我要 maximize 這個東西 
+or 是隨便其他什麼都可以
+只要你 given 一個 criterion 我要做要求這個求這些個 parameter  theta 
+那麼在某些狀況之下我們都會需要用 e  m 
+那麼這裡舉一個簡單的例子是在說這個 case 是簡單到不需要用 e  m 的例子
+它是說假設我只有一個 gaussian 
+當你現在有好多個 gaussian 的時候其實這個時候是可以用 e  m 來做的
+當你現在有一把 gaussian 我現在這麼多東西
+這麼多 observation 我假設有一把 gaussian 到底哪一個
+這個怎麼樣調這些 gaussian 的 mean 跟 variance 才能夠最好
+這個其實是用 e  m 比較好是可以用有很多方法來做但是 e  m 是一個比較好的方法
+但是反過來我今天如果只有一個
+喔我假設我只要一個 gaussian 
+它的 distribution 很簡單只有只有一個我只有一個 mean 跟一個 variance 
+那這個時候我只有一個
+這個 i 都不要了
+假設是這個 distribution 很簡單我其實用一個 GAUSSIAN 就夠了只有一個的話那這個時候其實你如果要的是 m  l 的 criterion 的話
+這個答案很簡單就是這樣喔
+那這是可以證明的我這邊不去證它不過你可以在很多課本上查得到
+就是說你你如果只用一個 gaussian 去 model 一堆 data 的話這一堆 x  n 這一堆 n 就是我的這一堆 observation 喔
+那這一堆 x  n 就是我的這一堆 observation 這每一個 x 可以是一個 n  dimension 的是一個 n  dimension 的 random  variable 
+那麼我現在如果有一堆 x 假設我只用一個 gaussian 
+它有一個 mean 跟一個 covariance 來做的話
+那這個答案很簡單你如果要的是用 m  l 的你要的是用 m  m  l 的 principle 的話呢
+其實我只要把所有的 x 拿來求它的 mean 
+那個 mean 就拿來當 mean 就好了
+然後有了 mean 之後我就可以求它的 covariance 
+那這就是那個 covariance 這樣答案就對了喔
+所以換句話說如果只用只用一個 gaussian 當然我這樣畫的是好像 one  d 的
+其實在這裡講的是一個 n  d 的 problem 
+假設這裡每一個 x 都是 n  dimension 
+然後我要用一個 gaussian 來來 model 它
+這一個 gaussian 其實就是我們這邊講這裡面的一個橢球那它有一個 mean
+這是它有一個 mean 然後呢它有它的肥度
+這個肥度在每一個 dimension 都有它的肥度那就是它的 covariance  matrix 
+那你如果是要求這兩個東西的話呢其實如果只有一個 gaussian 是很容易做的
+你就你就是把這一堆 data 分別去求它的 mean 跟 covariance 
+這一堆 data 得到的 mean 就是那個 maximum  likelihood 的 mean 
+那麼這樣子求出來的根據這個 mean 就可以求它的 covariance  matrix 
+那你得到的 covariance  matrix 就是它的 maximum  likelihood 的 covariance 
+這是你在很多課本上都可以查的到的一個非常基本的一個 maximum  likelihood 的 estimate 這樣就可以做出來
+所以你如果只有一個 gaussian 的話呢不用 e  m 這樣就出來了
+但是我們什麼時候要 e  m 呢就是這樣做不出來的時候
+什麼時候是這樣做不出來的呢
+那就是我們底下講在很多時候你要算這些要算這個所謂 object  function 的時候根本算不出來
+因為它 depends  on  some 有一些個 intermediate 的 variable 
+那些我們不知道的 variable 我們稱之為 latent  data 
+它們是不是 observable 的我根本看不到所以我就求不出來
+所謂的要算這個所謂的這這個 object  function 
+我要算這個 object  function 所謂的 object  function 就是剛才的那個 criterion 
+不論你是這個嗯 maximum  likelihood 的這一個
+或者是 m  a  p 的這一個
+這就是所謂的 object  function 我們要 maximize 這個東西
+所以呢這個是所謂的 object  function 
+那麼在這個 case 下像剛才這個簡單的 example 裡面其實這個東西可以直接直接算算的出來
+可是呢在有一些比較難的問題裡面呢就是你在算這個 object  function 的過程之中呢
+你需要一些個中間的 variable 
+這堆中間的 variable 我們稱之為 latent  data 
+因為它們是不是 observable 你看不到的
+這個你知道 latent 這個字的意思是潛藏的就是你看不到的
+是潛藏的你看不到的中間有一堆你要求這個東西的時候中間有一堆 data 你是看不到的
+那麼因此呢你就沒有辦法真的去做這件事
+那一個很簡單的例子就是我們在第四點零講 h  m  m 的時候的 state  sequence 
+你記得我們在講 h  m  m 的時候是怎樣的
+我有一堆 state 在那裡跳過來跳過去
+然後我有一堆 observation 
+我這個 state 這樣跳過來
+我有一堆 observation 
+那問題是我並不知道到底它歸它它歸它
+到底誰歸誰我不知道
+那因此就是那一堆誰歸誰我不知道因此我很難 train 它嘛
+你記得我們當時怎麼辦我們用了很多辦法去去這個假設先先怎麼切然後怎麼切然後再經過很多個 iteration 
+像 segmental  k  mean 那弄來弄去之後都先假設它是這樣再跑一次先假設它是這樣切然後再跑一次
+因為其實我根本不知道它到底誰歸誰
+反過來你如果知道它歸它那好辦啦你如果知道這三個歸它你就用這三個 train 它
+這幾個來 train 它就好了那其實就是我們不知道它歸誰嘛喔
+那像這個情形這個 state  sequence 所謂 state  sequence 就是我不知道誰歸誰
+那這個就是這個我們在 train  h  m  m 的時候的所謂的 latent  data 
+那同理在很多時候你都有類似的情形就是我的 observation 跟我後我我在這個 case 我後面的 model 是這個 model 
+那這個 model 裡面有一堆參數就是 a  b  pi 
+應該你都很熟悉就是這堆東西也就是所謂的 lambda 
+對不對我現在要要 train 這一大堆參數 a  b  pi 要 train 這一大堆 lambda 
+可是呢我只有這一堆東西
+我這一堆東西是最外面的 observation 
+這個東西是最裡面的這一堆參數中間還隔了那個 state  state  sequence  q 我不知道
+那在這種情形之下我們就常常就要想辦法那這個時候用的辦法就是所謂的 e  m 
+也就是說我要想直接 estimate 這些個參數是做不到的
+因為你沒有這個你沒有這些個這個 latent  data 
+那麼舉一個最簡單的例子就是我們剛才講的你在做 h  m  m 的 training 的時候你如果不知道 state  sequence 這是滿難做的
+那我們在四點零那個時候我們說了一大堆的方法來做這件事
+其實那堆方法就是用 e  m 的只不過我們當時沒說而已
+那麼我們再下去你就會知道我們當時是如何使用這個 e  m 
+好那到底 e  m 是什麼呢我們剛才已經講了就是在欠缺中間的 data 情形之下
+我從最外層的 observation 要去 estimate 最內層的這些參數中間可能欠缺一些東西的時候所用的方所用的方法
+那 e  m 怎麼做呢 e  m 的基本精神就是底下的這兩句話
+什麼是 e  m  e  m 就是 expectation  and  maximization 
+我一面做 expectation 一面做 maximization 這是兩個 step 
+這兩個 step 構成一個 iteration 
+然後我一個一個 iteration 不斷的跑
+讓它去慢慢趨近我要的答案喔
+這就是 iteration 的方法它是一個 iterative  procedure 
+你記得我們在這個講四點零講 h  m  m 的時候
+我們的 problem 三 basic  problem 三就是一個這樣的 problem 
+那我們當時也是用一大堆 iteration 讓它慢慢慢慢趨近這個慢慢趨近得到這個 a  b  pi 
+那個 iteration 其實就是 e  m 
+好那麼什麼是 e  m 呢
+那麼我們現在來說它 e  m 其實就是這兩步這兩步的基本精神就是
+第一步做 estimation 怎麼做 ESTIMATION 
+我 base  on  current  estimate  of  parameters 
+我們還是一樣哦就是哦擦掉了我要的是這個 theta 
+譬如說 theta 是譬如說我要的是一堆參數 a  b  pi 好了
+假設說我 theta 是我要的一堆 model 的參數
+然後我有一堆 observation  x  x  one  x  two  x  t 
+我 given 這一堆given 這一堆最外層的 observation 我要去估計最內層的那一些個 theta 
+但是呢我沒有辦法直接估計中間少了很多東西怎麼辦
+我第一步呢就是我用 current  estimate  of 這些 parameter 
+換句話說呢假設我有一個 iteration 在進行
+在第 k 個 iteration 的時候我有第 k 個 iteration 所得到的 theta 
+假設我有一個現在在第 k 個 iteration 我得到的 theta 的話
+然後呢再根據 given  observation 這個 x 
+那 given 這兩個東西之後我想辦法去求一個未知的這個嗯 possible  distribution  of  the  latent  data 
+這個 latent  data 我們姑且我們說它叫做 z 
+z 呢譬如說是一個 latent  data 就是我不知道的
+z 是一個 latent  data 就是我介於中間的
+那麼我不知道的那其實有了這個 latent  data 我才能夠算我現在沒有那個的
+那怎麼辦呢我就去做一個 possible  distribution  of  the  latent  data 
+那麼所謂的 possible  distribution 就是我想辦法做一個 z 的 distribution 
+所謂的 z 的 distribution 就是說這個 z 呢可以是這樣可以是這樣
+各有一個機率譬如說這是 z  one 這是 z 的 m  
+z 可以有某一種 distribution 那麼每一個各有多少值我給它一個 distribution 
+那這個 z 的 distribution 怎麼來的我先根據這個估計一個 z 的 distribution 那我們姑且說這個也是第 k 個第 k 個的
+ok 那這個於是呢這樣子之下呢我就可以我就可以算我要的這個
+我我要的這個 object 這個 object  function 
+舉例來講剛才的那個 maximum  likelihood 
+假設我要的是 maximum  likelihood 就是這個嗯 given  theta 
+那這個當然也是指我的第 k 個 iteration 的時候
+這是 k 嗯寫錯了這是 k 
+於是我就可以算這個
+我我們剛才講我 z 不知道嘛 
+z 不知道的話我想辦法求一個 z 的 distribution 
+然後呢當 z 等於這個的時候呢我可以算出來是多少當 z 等於 z  one 的時候我可以算這個 z 等於 z  two 的時候我可以算這個等於多少當 z 等於每一個可能的 z 我都都做出來之後我得到一個我的
+這個是我的這個我要 maximize 的東西我要它等於 MAXIMIZE 
+在我們現在以 maximum  likelihood 為例就是這個
+如果是 m  a  p 的話是倒過來然而都可以
+那我們現在姑且以我在這個例子是講 maximum  likelihood 的情形
+那麼因此呢這個就是我們講的第一步所謂的 expectation 喔
+也就是說你你要求一個 expectation 
+我不知道怎麼求呢我只好先假設這個 z 有一個 distribution 
+我不知道 z 但是我至少可以說我想辦法求出這個 distribution 來 z 等於這個有一個機率等於這個等於有一個機率等於這個等於每一個都有一個機率
+我如果求的出這個機率的話我可以用這個機率的 distribution 來算出一個 z 在這個情形之下的那個 object  function 那個 maximum  likelihood 那個東西有是一個什麼值我算的出來
+那麼這就是這句話所說的意思喔我相對於 possible  distribution 
+包括它的 value 跟 probability 就是這些 value 跟它們的 probability 這就是它的 distribution 
+那這個 distribution 是是是是這個 latent  data 的 distribution 是那個 z 的 distribution 其實我們不知道的我們估計一個東西出來怎麼估計法
+是根據 current  estimate  of  the  PARAMETER 
+就是根據 current  estimate 就是現在這個 iteration 的這個參數的值以及我現在所 observe 到的東西哦
+所以呢根據這個 current  estimate  of  desired  PARAMETER  conditioned  on  given  observation 
+根據這兩個我得到這個 distribution 有了這個 distribution 我可以算這個 object  function 
+這是這是第一步講的 expectation 
+當這個做完之後我現在想辦法把它 maximize 
+這就是第二步這個這個所謂的 maximization 就是就是你把它來 maximize 這個
+然後呢那那這個 depend  on 你是 m  l 還是 m  a  p 還是什麼都可以我們這邊講的是 m  l 的例子
+那我現在想辦法把它 maximize 
+怎麼 maximize 法那我在中間調所有可能的 theta 
+因為我現在我現在既然已經有了這個東西了
+我既然已經有了這個東西了我可以調所有的調所有的 theta 
+看哪一個 theta 讓這個東西 maximum 因為我要這個東西 maximum 嘛
+我看這裡面什麼東西是 maximum 
+那麼我去我去調所有的 theta 讓它 maximum 的時候那個 theta 就是我的下一個新的 k 加一
+OK 所以呢這是第二第二步講的就是我想辦法產生一個新的 set  of  ESTIMATE  of  desired  parameter 
+就是 theta 我我由 k 變成 k 加一了
+也就是說我現在有了這個東西我就可以去調 theta 
+那麼調到哪一個 theta 使得這個式子最大的那就是 k 加一
+於是我就可以把這個 k 加一放到這邊來
+就是下一個 step 
+那這樣子這就是一個 iteration 然後這樣子一直走一直走一直走
+這樣讓我的 theta 慢慢趨近我要的喔
+那這樣子的畫法其實這個圖就是 e  m 的基本精神就是這樣
+那麼我們如果分清楚一點來看的話呢那他們就是 e 跟 m 的這兩個 step 
+一般的說法裡面所說的一個是 e 一個是 m 
+那你可以看到我在我在這裡根據這個來算出這個來
+這就是所謂的 e  step 就是 e  step 
+然後呢我之後呢我想辦法把這個東西 maximize 
+這就是所謂的 m  step 
+那麼這兩步 e 跟 m 不斷的不斷的 iterate 那就是所謂的 e  m  algorithm 
+ok 這樣那我想這樣應該清楚喔就是等於是說我現在不知道的是 theta 
+我我 observe 到的是 x 我還缺一樣東西就是 z 
+如果不缺這個 z 根本不要 e  m 了喔
+所以我們剛才前一頁講的如果只是一個 gaussian 的話一個 gaussian 根本就不缺那個那就不要 e  m 了
+那會要 e  m 是因為缺了一個 z 
+缺了一個 z 怎麼辦我就去估計 z 一個 distribution 出來
+它在每一 z 的每一個值都可以有一個機率
+那麼在這個這個怎麼估計法我想辦法用現在的 iteration 裡面所假設的一個 theta 值
+然後跟我的 observation 想辦法去估一個新的想辦法去估一個 z 的 distribution 
+那在那一個 distribution 之下我可以求出我要 maximize 的那個東西
+那當然那個只是根據這個狀況之下的所以呢我現在去可以去調我的所有可能的 theta 值
+讓這個東西最大
+那樣所得到的就是新的 theta 值就做下一個
+那這就是所謂的 e  m 
+這樣講起來是非常抽象的那麼我們底下會會有比較具體的例子來看這件事喔
+所以呢你看第二步所謂的 m  step 呢就是再 generate  a  new  set  of  estimate 
+就是我要求一個新的 theta 得到一個新的這個 theta 的 k 加一就是 new  set  of  estimate  
+by  maximizing  object  function 那這就是 m  step 
+那這兩個 e 跟 m 一直走就是了
+那麼這樣的話呢我們就可以保證我每一次 iteration 我的 object  function 是在增加喔
+每一次增加所以最後它會 converge 這是 e  m 的這個基本精神就是那那邊的那個圖
+我們先來看一個例子這是一個比 h m m 還要簡單的一個簡化的 h m m 
+那你看這個圖大概就了解相當於 h m m 裡面兩個 state a 跟 state b 
+然後假設裡面 observation 只有兩種就是紅球跟綠球
+那如果是這樣子的話呢假設我現在我的我不知道的是什麼
+我不知道的是所有的參數
+就是我會用我現在 random 的抽一個球出來
+我可以從 state a 來抽也可從 state b 來抽
+所以我抽到 state a 的機率跟抽到 state b 的機率這兩個機率是未知的
+同同樣的呢在如果抽到 state a 裡面呢
+是紅球的機率跟綠球機率呢這也是未知的
+在 state b 裡面呢是紅的還是綠的也是未知的所以我總共有這六個未知的參數
+那你看就知道這個這個 model 是比標準的 h m m 要簡單
+那其實這兩個 p a p b 呢就是我們講的 pi 對不對
+然後呢在 given a 跟 b 之下紅球綠球的機率就是我們講的這個 b 但是呢沒有 a 
+我們在這裡 a 應該是哪個 state 要跳到哪個 state 的機率在這裡它沒有
+所以這是個比較簡化的沒有 state transition 我就是 randomly 挑一個 state 這樣我有六個參數要求
+但是我的 observation 只有三個我抓了三次球機得到的是紅綠綠
+那所以呢我的這個 observation sequence 就是紅綠綠
+但是到底是哪一個這個紅是 a 還 b 出來的這個綠是 a 還是 b 出來的我都不知道
+所以呢這個是 latent data 就是 q 
+我的 q 呢就是像這種東西是 a a b 還是什麼不知道
+是 a 裡面得到 r 還是 b 裡面得到 r 這個不知道喔那這就是我的 latent data q 
+好那假設我的 problem 是這樣的一個 problem 的話
+我如何用剛才的這一個這一個架構來做這件事喔怎麼用這個架構來做這件事
+那第一步呢那你看我們都是假設在某一個 iteration 已經有了才是嘛才能夠走嘛
+那一開始的話顯然 k 等於零 k 等於零的時候隨便
+想辦法你當然 initialization 是重要的啦你 initial value 要取的好啦喔
+那我們現在先姑且說我的 initial value 我就取某一個值我就定一個 k 等於零的時候
+於是這六個未知的東西我分別都給它一個零的值
+那我們舉例來講我這兩個加起來應該是一嘛一個給它零點四一個零點六嘛
+那這兩個加起來應該是一嘛
+那我就給它這個一個零點五一個零點五這個也是零點五零點五我先給它一個起始值
+有了起始值之後我我才可以開始算這一步 OK 
+那我們這邊底下寫的這一大段其實就是在講有了起始值之後怎麼算這個東西
+那我們姑且說我們要做的是 maximum likelihood 
+所謂的 maximum likelihood 在這裡就是什麼呢就是這個 o given lambda 
+
+我們剛才說你現在我每一次都在算這個東西嘛
+啊
+就是 你每一次在算的這個其實就是那邊的這個式子嗎
+就是在現在given 第k 個
+第k 個iteration 我所估計的theta值
+我得到的那個我要maximize 那個object function 
+那我希望下一個iteration 要變大
+喔
+所以我整個的條件就是這個
+我下一個要把它變得更大
+那為了要得到這一點
+那麼我們底下來看這堆數學就是在講這一點是怎麼做到
+那其實就是所謂的converge 
+因為你你每一次都變大每一次都變大它有一個上限 
+所以最後一定會收斂 
+那我們這邊用的符號呢 
+這個x 表示是是我observe 的data 
+z 是表示我的latent data 
+所以x 要跟z 合起來才是我的complete data 
+那問題就在於這個latent data 我看不到 
+喔 
+所以我的data 不所以我的data observe 到的是incomplete 
+所以呢我我我所observe 是一個incomplete data 就是一個沒有z 的 
+我我要跟z 合起來 
+才是complete 
+我就缺了這個z 
+因此呢我們可以寫底下這個式子 
+就是這個theta 是真實的我要求的那堆parameter 
+那麼我其實given 那堆parameter 我應該是有x 跟z 才對 
+可是呢我其實我只看到x 而已 
+那麼還缺什麼 其實是缺這一堆東西 
+ok 
+我看到的是只看到這個x 
+但是我其實需要的是這兩個 
+那我缺的是什麼呢 缺的是這一個 
+這個式子 其實很容易看 
+你知道我因為我右邊都有一個theta 你可以不要看 
+這個theta theta 都是given 的條件 
+如果這個不看的話呢 就是x 跟z 的joint probability 
+是這個z given x 乘上x 的機率嘛 
+對不對 
+這個condition 乘上x 就變成joint 其實就是這樣子 
+所以呢我就缺這堆東西 
+因此呢我現在所做的所有的這些data 
+這些個東西其實是這一項 
+缺了這一項 
+所以不是這一個 
+那我把這個拿出來看的話呢就是他除以他嘛 
+所以這個呢我能夠做的就是他他除以他 
+他除以他 就是以log 來寫 就是它減它 
+所以這個log 呢就是它減它 
+那我們現在都是用log 來做是因為 
+你知道log 反正是monotonic 所以我要maximize 這個東西跟maximize 這個log 是一樣的 
+可是用log 比較容易 因為兩個變成相減嘛 
+所以呢我要的是這個減這個的maximum 
+那這時候怎麼辦呢 
+就假設z 是可以得的這個呢就是z 的distribution 
+那這個玩意其實就是我們這邊講的這個z  
+就是這個z  
+假設z 的每一個值都有一個機率 
+我不知道z 但是我至少知道z 可以這麼有有這麼多個值 每個值都有一個機率 
+就是在given 這些條件之下的z 的distribution  
+那在我這邊寫就是寫成這個嘛  
+就是given 這個x 跟given 第k 個iteration的theta  
+given 這個x 跟第k 個iteration 的這個theta 之下的這個z 的distribution 
+喔
+其實就是我這邊我這邊寫得比較簡簡寫啦 這個是偷懶的 
+這樣比較好看  
+但其實就是這個東西嘛  
+好 
+所以那怎麼辦呢 我就用這個東西來做這邊的所有的probability  
+我這邊的這三個probability 怎麼算  
+我都用這個來做平均 
+所以我就你看我這邊的這個這裡面這三樣東西就是這上面這三樣東西  
+但是我呢通通都用這個來做 
+來做z  
+也就是用這個來用這個distribution 來求它的expectation  
+ok  
+所以呢這個就是這個 
+但是我用z 來做expectation  
+等等等等  
+這個就是這個這個就是這個 
+我都用它來做 
+那變這個跟這兩個相減  
+那兩個呢分別就是這兩個個積分  
+那你看沒什麼特別 我只是在做積分而已  
+所以這個就是這個  
+然後呢 
+我要求這個用這個z 來做expectation 我就是把這個z 的distribution 乘進來  
+然後對z 積分 
+對不對  
+同理呢我要做這個 
+做z 的expectation 也是一樣  
+就是把這個東西寫進來 
+然後拿這個z 的distribution 相乘進去  
+然後對z 積分  
+所以這裡沒什麼特別我只是把它這樣做而已  
+所以就是等於說是這個等於這兩個相減 這才是我我我現在在做是這個東西 這兩個相減嘛  
+那我現在這兩個相減呢 這兩個呢我分別都對z 來做expectation  
+那其實就是因為我要用這個z 來做這個expectation 嘛  
+那要做這個expectation 我就是做就是把這個distribution 乘進來  
+然後對z 積分就是這樣子  
+那這兩個已經夠複雜了 所以我就把它寫成兩個簡寫的 
+前面這個積分叫做q  
+後面這個積分叫做h  
+那它們都是這兩個的function  
+一個是真實的theta 未知的  
+一個是我現在假設的已知的  
+那它也是是一樣  
+喔它們兩個各是一個真實的跟一個已知的 
+這兩個的function  
+所以我就是q 減掉h 的兩個式子  
+ok  
+那麼這一堆數學 
+我底下的下一頁上面其實是一樣的  
+因為這個powerpoint 的困難就是你沒辦法把兩張疊在一起  
+所以上面的這一這三行就是剛才的底下這三行 我直接把它co 過來而已  
+因為我要接下去的關係  
+所以這三行就是上面的這三行 所以我們剛才就做到這裡  
+我要的這個 
+你你一大堆數學不要被這個數學這個這個迷住了  
+其實這堆東西就是在算我就是在算這個我就是在求這個東西我要maximize 這個東西嘛 
+那我現在這個東西呢照剛才所推的我已經寫成這兩個q 減h 了  
+我要寫成q 減h 了  
+那這個q 減h 其實就是我這邊要的這個這個我要maximize 這個東西  
+那我現在目的是什麼  
+我的目的就是我每做一個iteration 之後 
+這個theta 的k 變成k 加一的時候  
+這個要變大 
+這就是我的目的嘛 
+換句話說 
+我我的目標就是 
+就是就是這個東西 我現在我沒有辦法做真的這個  
+因為這個我不知道 
+我只能做這個假的 
+就是用z 來求的這個這是假的  
+那這個假的說穿了就是就是這個是假的嘛  
+就是這樣子 
+那這樣 那我至少我要的目標是我這個每一次做下一個iteration 這個要變 
+每次加了一之後它要變大 
+因為我要maximize 這個東西我每一次要讓它變大  
+要make sure 這個變大是什麼呢  
+那你可以想像 
+那這個我我現在的這個q 減h  
+其實就是把這個這個theta 放在這裡得到的 
+那麼因此呢我現在 
+我 
+我現在如果要k 加一的話  
+這個k 加一是什麼 就是把這個k 加一的這個值代到這裡面來 
+喔  
+你注意到就是說這裡的話 這是一個未知的東西 我我不知道這個是unknown 的 
+這個求不出來的 我永遠不知道它的答案是多少  
+我是用這個z 去去假設求的嘛 
+那但是這裡面還是depend on 這個東西嘛 
+那我現在是希望k 加一的時候要比k 大  
+所以呢所謂的k 加一是什麼  
+不就是把這個的k 加一把這個k 加一代到這裡面去  
+所以呢這個東西其實就是 
+q 的的這個theta 的 
+q 的這個theta 的k 加一theta 的k  
+減掉h 的theta 的k 加一theta 的k  
+對不對  
+我你看我現在要的左邊這一項要比較大的這一項 
+就是把這個theta 的k 加一代到這邊的theta 裡面來  
+那也就是代到這個theta 來 
+所以就是q 的theta 的k 加一跟theta 的k 減掉h 的theta k 加一theta 的k  
+那要大於等於右邊的這一項呢  
+就是這個q 的theta 的k theta 的k  
+減掉h 的theta 的k theta 的k  
+就這樣子嘛 
+對不對  
+我現在右邊這一項是把theta 的k  
+代到這個來對不對  
+就是代到這這兩個位置來  
+所以就是q 的theta 的k theta 的k  
+減掉h 的theta 的k theta k  
+所以呢其實這也沒什麼特別  
+我只是把剛才這個式子 
+我現在把我這個條件 
+對不對  
+我把這個條件 
+這裡面這個每一個個寫成這個式子而已  
+就是把這個theta 的k 加一代到這個theta 的位置來  
+就是這兩個 
+就是上面這個 
+然後把這個theta k 代到這個theta 的位置來  
+就是底下這兩個 
+那它要大於它  
+那我如果要它大於它的條件呢  
+那我這個式子重寫一下 
+就是這個個式子  
+那就是它減它 
+它減掉它  
+然後呢加上它減掉它 
+要對不對  
+它減掉它加上它減掉它要大於等於零  
+所以就所以底下的這個式子 
+其實就是這個式子我再調一調就變成這個式子  
+當我調成這個式子之後呢  
+我底下說的這個式子永遠這一部份永遠是正的  
+不用擔心 
+為什麼因為jenson inequality  
+什麼是jenson inequality 你記得就是講p log p 一定大於p log q  
+這個是我們之前說過的 
+對不對  
+就是你如果p log p 其實是在求求那個entropy 的式子  
+但是你如果這個p 跟q 的機率不一樣的話 變成p log q 的話呢 
+一定是比較小的 
+我們原來寫的時候是寫成負的話是比較大啦 
+真正求entropy 是這邊加一個負號 
+加一個負號的時候是它大於它啦 
+但是我們現在寫成這個的話 
+就是就是寫成這樣子 
+那你仔細看這兩個h 的話呢
+h 是什麼 
+h 就是p log p 嘛 
+對不對 
+這個是p  
+然後呢這是log p  
+那當這兩個這兩個一樣的時候 
+就是p log p  
+這兩個不一樣的時候就是p log q  
+因為這個地方這裡面一個是theta 的k  
+一個是真實的k  
+那我現在是把k 加一跟k 這兩個代到這裡面來 
+所以呢一個是兩個相同一個是兩個相不同 
+所以一個是p log p 一個是p log q  
+因此結果我們就知道它一定是正的 
+因此我的條件要我要這個是正的時候呢 
+這兩項相減它減它本來就是正的了 
+所以你要它正呢只要是這個是正就可以 
+因此呢我的條件就是這個是正的 
+ok  
+我的條件就是這個是正的 
+要這個是正的意思就是說 
+我這個q 這個q 就是這個function 就是這個東西呢 
+我每一次一定要 
+每每一個iteration 之後 
+我我這個東西要大於這個 
+那就是我的q 的這個這個東西呢我每一次 
+這個這個這個我嗯我的我的每一次其實就就是maximize 這個q 就好了 
+我們本來是說我maximize 這個 
+我本來是要maximize 這個嘛 
+這這個是這個原來的這個這個e m 我是在maximize 這個東西 
+但是但是其實這個東西呢 
+這個東西呢就是上面這個東西 
+我其實拆成q 跟h  
+而h 是沒有問題的是h 一定是是是正的 
+所以h 可以不要管了我其實只要管那個q 就好了 
+所以我每一次其實就是把這個q 就好了 
+所以呢你你看到我後來最後其實做的是這個q function  
+而不是 
+我可以把這個再簡化ok  
+我原來是在講這個東西要maximize  
+但是其實這個東西呢你是拆成就是就是這個式子 
+那我把它拆成q 跟h  
+而h 會會會是正的是沒有疑問的 
+因為jenson's inequality  
+所以呢我其實只要要make sure q 就好了 
+因此呢我就現在就變成說我其實是要算這個q  
+那這個q 就是所謂的在e m 裡面的所謂的auxiliary function 
+那在我們後面講了很多東西我們都說要算要用e m 來算 
+你去讀那些paper 的時候它都會說 
+它在找這個q function  
+那個q 就是這個q  
+就是這個q  
+那其實只要這個q 的的你每一次去那其實還是一樣 
+我我真正的q 是這個 
+是這個是第k 個iteration 的那個theta  
+然後這個是一個未知的 
+那我每一次呢我就去調這個未知的這個東西 
+去找看哪一個能夠讓它maximum  
+那通常的辦法是對它微分 
+讓它微分等於零 
+通常讓它微分等於零的時候呢那個theta theta  
+就是我的下一個theta  
+那也就是保證這個我下一個q 下一個k 會比這個k 變大
+所以我實際上在做的時候呢是estimate 這個q function  
+這個通常在paper 裡面稱auxiliary function  
+然後呢或者叫做q function  
+然後呢我就是求這個q 的這個值 
+然後呢我每那麼然後我就每每一次呢我其實就是在做這個 
+所以m step 呢可以由這邊的這個寫法 
+reduce 到這個q 的寫法 
+然後呢我就在q 上面來做 
+那這個就是我們一般所講的auxiliary function  
+就是指這件事 
+好那這是一堆數學 
+那麼底下我們就可以來看我們在第第四點零節講的basic problem 三 
+其實我們是用了這個的 
+你記得我們basic problem 三是幹嘛的 
+我們說 
+我已經有了一個某一個我已經有了某一個lambda  
+譬如說零到九 
+假設是這個聲音是八a b pi 
+這個是八的的model  
+我現在知道這個聲音是八的話 
+我把它放進來 
+我希望得到一個新的lambda prime 是a prime b prime pi prime  
+那得到這個新的之後呢 
+我再把這個重新放進去 
+再放進來再跑 
+那這個這個的iteration 就是我們當時講的forward backward  
+這個forward backward algorithm  
+那讓它一直跑 
+那麼這個過程其實就是用e m 在做的 
+那我們當時是沒有講e m 這個名詞 
+我們當時是說你怎麼做 
+你你q 放進去之後你可以算alpha 算beta  
+然後gama 什麼一大堆算出來之後 
+我們說a i j 有一個新的值 
+等於什麼除以什麼 
+這裡面每一個mean  
+mu i j  
+有一個新的值 
+等於什麼東西除以什麼 
+然後每一個covariance matrix 裡面 
+那你也可以算出出來它是什麼什麼什麼什麼等等等等 
+我們有有這堆東西 
+我們們在講那個basic problem 三的時候我們就說哦你代進去之後可以得到alpha beta 然後呢就這些東西就是這樣子 
+那麼我們解釋說這個裡面的物理意義你可以發現他們是有道理的 
+但是其實那樣不是那樣寫出來的 
+這個怎麼來的 
+這個就是用e m 推出來的 
+所以當時我們在四點零裡面算的那堆東西 
+是e m 推出來的 
+那就就是這樣推的我們這邊簡單解釋一下 
+我現在observation 是o  
+然後呢那我不知道這個東西啊 
+那所以我們你記得我們當時是講怎樣 
+我已經有一個initial 的model 在那裡 
+我才能夠做嘛 
+那initial 其實應該是可以從零開始 
+可是零很難做嘛 
+所以我們那時候說我前面initialization 要另有一套 
+我們用segmental k means  
+去先去想辦法做一個比較好的的initial 之後 
+然後放進來去求alpha beta 之後 
+可以得到這個 
+就得到下一個 
+然後呢再回來再做等等等等 
+那其實就是這樣做的 
+所以呢假設我現在observe 到一個譬如說這個是八的聲音 
+那麼我的latent data 這個state q 是不知道的啊 
+那怎麼辦呢 
+那麼我真正要做的東西其實是這一個 
+是given 這個lambda 之下 
+given 這個state 這個model 之下 
+我不但是要有這個observe 的 
+還要有沒有observe 到的q  
+一起的機率 
+這這樣子才好算 
+那這個東西呢你可以想成就是這樣子 
+那那它呢那那你這個式子很容易看啦 
+就是q 是看不到的 
+o 是看得到的 
+那這這兩個的joint probability 呢就是一個condition 再乘上那個condition  
+對不對 
+那lambda 反正都在右邊 
+你可以不看那個lambda  
+那這個就是這個等於這兩個相乘 
+那我怎麼做 
+我先做e step  
+這個這個這個e step 是什麼呢 
+就是這個q  
+就是我們剛才講的我要的這個這個q  
+裡面一個是真正不知道的 
+我永遠不知道的那個那個model 的真正的參數 
+一個是我現在第k 個iteration 的參數 
+那這個東西是什麼呢 
+那其實就是這個 
+那這個其實你如果仔細看的話 
+那就是其實就是就是其實就是這個嘛 
+在這個case 就是這個 
+那麼你看我是在 
+given 現在這個iteration 的model  
+就是這個 
+然後given 這個observation o 就是given 這兩個嘛 
+given 這兩個之後我其實是有一個q 的distribution 在這裡 
+所以given 這個之後呢 
+我用q 來做這個expectation  
+那麼因此呢我就對對這個每一個q 來做這個這個平均 
+也就是這個式子 
+你看這個式子就可能可能更清楚了 
+那這個就是 
+呃 
+given 這個現在第k 個iteration 的parameter 參數 
+就是這個 
+然後given 這個observation 就是這個 
+那given 這兩個情形之下我可以得到一個q 的機率 
+那就是這個 
+given 這個q 的機率之後 
+我現在那麼在這個q 的機率之下 
+在這個q 的sequence 之下呢 
+我現我真正的model 我會會看到的這個的機率 
+是我是這個東西 
+然後我對所有的q 加起來 
+那這個式子exactly 就是哪一個式子呢 
+就是你如果仔細看我們之前的這個例子裡面的 
+就是這個個式子 
+是exactly 一樣的 
+喔
+那只是我們現在這這power point 沒有辦法把兩張疊在一起所以你只好跳過來跳過去 
+那這個東西 
+你看就是 
+我我given 這個given 現在假設的這個假設的這個參數 
+然後跟observation  
+我有q 的distribution 
+然後在這個q 的distribution 之下 
+我來算我的這個maxima likelihood  
+那跟這邊講的這個是一樣的 
+就就是這個就是這個 
+那麼在這個情形之下呢 
+這就是我的e step  
+當我把這個e step 算出來之後 
+我的m step 呢就是要對它去找最好的lambda  
+那怎麼找呢 
+就是對其實就是對lambda 去微分 
+那麼我這時候對lambda 去微分的時候有一堆constraint  
+因為這裡這個lambda 裡面有很多東西包括pi 啦a i j 啦 
+這個lambda 裡面就是一大堆這種東西啊 
+這是我們在四點零講的 
+lambda 裡面一大堆這種東西 
+它們都有一堆constraint  
+譬如說它的機率加起來要等於一 
+啊 
+這些東西加起來都要等於等等把這堆constraint 都算進去之後 
+我要maximize 這個東西 
+用微分啊等等這個方法去做它 
+你得到了的就是下一個 
+那那一堆東西就是我們在四點零所得到的那些式子 
+ok  
+所以我們在四點零的時候我們就說喔這樣這樣所以呢我就用這個來做下一個iteration  
+那我們當時是對每一個裡面的式子為什麼長這樣 
+我們說他們都有物理意義可以解釋 
+但是呢這些東西是怎麼來的我們沒有說其實它不是完全憑空想的 
+它是用這個推的 
+啊
+那因此呢在在這裡面我在做maximize 的時候 
+就可以算出它的這些東西出來 
+那麼於是呢你有了這個之後呢 
+那你就可以得到我們那個時候所要的結果 
+然後那也是為什麼我們當時說你每跑一個iteration  
+這個機率會提高 
+那所謂每跑一個iteration 之後 
+每跑一個iteration 之後 
+你的這個機率會提高的原因其實就是 
+我們這邊所說的這個式子嘛 
+就是我們們這邊所說的嗯這個式子嘛 
+就是你跑一個iteration 之後 
+你的的新的model 看到那個機率一定會提高嘛 
+啊
+那這樣子呢我們這這樣就得到我們用e m 來推的那個basic problem 三 
+好 
+所以你現在如果在回去看我們四點零所說的這個h m m 的這個basic problem 三的話 
+你現在去看那個課本裡面講的一堆那裡的一堆數學式子你現在看就沒有問題了 
+那它就是在做這件事 
+它裡面就會跑出一個q function 出來 
+那個q 就是這個q  
+然後它就用那個q 去去maximize  
+之後呢它就就得到這堆式子 
+那就是這麼麼來的 
+那這堆式子的物理意義我們當時就已經講過了 
+那麼因此呢這個就是所謂的e m  
+那麼我們的e m 說到這裡 
+那你我們可以回想一下我們後面講的很多東西的e m 
+好 
+我們當時都跳掉舉例來講在十一點零那裡面 
+十一點零的的的speaker 那裡面我們說過很多東西 
+譬如說 
+這個m a p 的時候 
+你做m a p adaptation 的話 
+你這個東西要怎麼求 
+我們說最後答案是這個 
+怎麼求我們沒有說 
+我們說用了一堆e m theory 所謂的e m theory 就是用剛才那些方法 
+你要要maximize 這個東西裡面有一堆堆unknown 的variable  
+我就去做e m  
+這是m a p 這裡所用的 
+在m l l r 這裡 
+我同樣的我要做maximum likelihood  
+然後呢我怎麼辦 
+我要這個東西maximum  
+我調這些a i b i 使得這個機率最大 
+怎麼調 
+用e m  
+那這個詳細的也是 
+你現在再再看那些paper 那一大那一大堆數學其實就是e m  
+同樣呢 
+我們後來講的eigen voice 裡面 
+eigen voice 裡面你一個新的speaker 進來 
+我怎麼算 
+我就是要讓這些東西a i 加起來的這個東西要最大 
+調所有的a i 使得它最大的那個a i 就是我要的a i  
+這個怎麼求 
+用e m  
+你如果現在再去看那些paper 的話 
+一堆數學式子就是在做那個e m  
+等等等等 
+那包括這裡的 
+這裡的這個s a t 
+也是一樣這東西是用e m 求的 
+喔 
+那等等 
+喔 
+所以我想這個這些我們當時跳掉的部分你現在應該都容易想像它為什麼是這樣 
+那同理譬如說 
+我們講這個g m m  
+這個g m m 就是一堆gaussian  
+一堆gaussian 的時候 
+這個 
+我我我們說你可以想像想像成 
+這是一堆gaussian 這是一堆gaussian 這是一堆gaussian 
+我們在做segmental k means 的時候我們說ok 我就做v q 嘛 
+譬如說你先先做一個v q  
+然後呢拆成左右兩半兩個v q 兩兩個 
+然後再拆變成四個 
+然後分別就求它的的mean 跟covariance 得到四個 
+這是一個比較粗的做法 
+這樣子做出來的你如果直接用v q 來做的g m m  
+不是最好的g m m  
+因為它不見得保證你的那個你的那個那個這個東西這種機率是maximum 的 
+你如果真的要做一個好的g m m 的話也是一樣用e m 來做 
+等等 
+所以這些東西都是可以用e m 做的 
+那這個 
+所以呢我想這個 
+我們現在e m 講完你現在再回去看所有的我們提過的東西其實都容易得到答案 
+好我們現在要講下一個m c e  
+這裡面的下一個東西是m c e  
+m c e 也是另外一個非常重要的觀念 
+那麼 
+帶到後來來就是所謂的discriminative  
+discriminative training  
+的觀念是由它開始的 
+那麼 
+所謂m c e 的就是minimal classification error 的training  
+這個觀念的基本精神是說 
+我們到目前為止講的所有的方法的training 都是只是為了要maximize 這個機率 
+舉例來講我如果要train 零到九這十個音的model  
+就是零的model  
+一的model  
+二的model  
+等等 
+到九的model  
+那我的目的都是讓每一個model 裡面的這個likelihood function 最大 
+譬如說如果是一的話 
+我就是希望一的聲音放進一的裡面來是最大的 
+這個我們到目前為止所有的觀念都是這樣子做 
+那這樣是不是最好呢其實這個不見不盡然是最好 
+為什麼呢 
+因為呢它不見得讓因為我們的目的是error rate 要最低而不是這個機率最高 
+這個機率最高是一定表示這個error rate 是最低嗎不一定 
+那麼我們舉例來講的話呢 
+譬如說在零到九的這個case 而言 
+一個很大的問題是一跟七很像 
+所以呢我用一大堆一的聲音train 成一個一的model  
+我用一大堆七的聲音來train 出七的的model 
+雖然這些個一讓這這個model 最大 
+這些個七讓這個model 機率最大 
+可是一跟七本來就很像 
+那麼 
+你現你現在如果去算這些個所有的位置一個未知的聲音進來我去算它lambda k 的這個model 的話呢 
+這個值你可能如果這個是一的話 
+是 
+假設這個假設這個聲音是一的話一最大 
+那麼六在這裡用六算出來在這裡用用這個八算出來在這裡 
+可是七呢呢很接很接近 
+對不對因為一跟七很像 
+它們兩個很像會很接近啊 
+那今天如果說我的training data 跟testing data 不太一樣我換另外一個人講的話
+換另外
+譬如說本來是這個人講train 出來我換另外一個人講的話
+搞不不好它的七會比會比這個一大 
+因為這邊已經很像了這邊非常接近 
+也就是說 
+當我在用傳統的方法在train model 的時候 
+我常常只是要讓那個model 本身的機率最大 
+但是呢並不表示我的error rate 會最低 
+因為它並沒有考慮它們model 之間的相互關係 
+在這個case 而言呢這個有所謂的相互關係有所謂的competing class  
+這個一跟七就是competing class  
+非常近的 
+那即使我這堆training data 讓這個一在這裡讓七在這裡 
+它們有一些差別 
+那換了另外一個人來來講 
+或者在另外一個noise 的環境之下搞不好那個七就比算出來就就比一大 
+它很可能贏了它之後 
+我一就變成七了 
+那麼因此呢 
+我如何解決這個competing class 的問題 
+否則的話呢你很可能換了一個data 之後 
+喔 
+你你到了test data 之後呢 
+在你的test data 裡面搞不好你的competing class 就會得到比較高的分數 
+那麼因此呢 
+那麼就有人想說 
+既然這這樣的話我們應該要想的是除了要讓這個東西最大之外 
+我還要想辦法讓它們凡是competing 的model 我把它拉開 
+要想辦法讓它們會compete 的部分把它們拉的比較開一點讓它們不會compete  
+那拉開的辦法呢就是我用一個新的criteria  
+就是minimum error  
+那因為我真的目的是要error minimum 才是我的目的嘛 
+這個maximum likelihood 並不表示error 會minimum 嘛 
+所以我要用一個新的criteria  
+就是這這個minimum 的error 來做它 
+那這就是這一堆所謂m c e 的原始觀念的由來 
+這個在九零年代出來之後是一個非常重要的方法 
+那麼很多重要的問題都是由它來解決的 
+那麼在英文裡面有一個很有名的問題叫做e set 
+你知道什麼是e set  
+就是英文字母裡面的b c d e v t z 等等 
+那麼這些個就像像我們的一跟七一樣 
+是很像很像的 
+它們只有最前面一個子音不一樣後面都一樣 
+所以呢這個b c d e v t z 的時候 
+你你在講一個一個spelling 的時候是很容易辨錯的 
+那當然在中文裡裡面有更多這種set  
+譬如說八搭它啦嗯這些 
+嗯這種都是屬於一種非常confusing set  
+那所有的這些set 都會發生這個問題就是它們會非常像 
+那麼你即使train 的時候 
+用maximum likelihood 把它們train 得很像 
+但是呢你test 的時候環環境不一樣speaker 不一樣noise 的環境不一樣之後 
+很可能會互相confuse  
+那麼後來就是有了這一招之後 
+就可以把它們都拉開來 
+所以這一招是一個非常重要的 
+那在絕大多數情形之下它們都非常有效可以把正確率提高 
+那底下我們來講這一招是怎麼做的 
+那它的基本精神就是說我改變我的原來的criteria  
+原來是我原來是maximize 這個東西我現在要minimize 這個error  
+那麼理由就是說 
+我的我的這個test data 可能跟training data 不一樣 
+就算你的training data 可以讓這兩個分的開 
+不過也差了那一點點 
+test data 再不一樣的結果就會把它們弄錯 
+那它的這套方法的basic 的formulation 是靠這個所謂的classification principle  
+那這個沒什麼特別這個跟我們講的其實是一樣的東西它只是另外一個說法而已 
+譬如說我們這邊講的零到九 
+十個model  
+或者這個b c d e v t z  
+有譬如說有十個不同的音 
+那那那麼有m 個不同的的音 
+就表示有m 個不同的class  
+那我為每一個class train 一個model  
+我為每一個class train 一個model 所以lambda i 呢就是class i 的model  
+那每一個class i 就是一個譬如說零或者一或者二或者三 
+喔 
+那麼然後我所有這些model 的集合大lambda  
+就是所有的model 的集合 
+那我現在的observation 一個聲音進來譬如說六 
+那這個聲音進來的話呢 
+我就就可以去算那個聲音對每一個i 的model 的機率 
+那我看它誰最大 
+它就是誰嘛 
+所以呢我我如果把我我我現在進來一個聲音如果是六的話 
+我就去算那個六的聲音對每一個lambda i 就是每一個從零到九的每一個model 的這一個分數 
+那我把這個分數寫成g sub i 的這個observation  
+跟這整套model 因為我要在整套model 裡面都去算 
+那麼然後呢我看誰最大 
+看哪一個這個叫做g sub j 裡面看哪一個j 最大 
+最大的那個j 就是我的答案
+所以呢那這就是我的classification principle  
+所以這邊講的其實是跟我們之前所講的其實是完全一樣 
+那麼 
+嗯 
+唯一不同的是它把它稱做classification principle  
+那這個是是在pattern recognition 裡面它們用的語言 
+那意思是完全一樣的 
+那當然它這樣寫的一個好處是說這個g sub i 的function 不一定是這個 
+你還可以算別的譬如說你可以把這個prior 機率算進去變成m a p 的probable m 也可以哦等等 
+所以不一定是這一個 
+所以它就減就用一個符號來代表就是g sub i 的 
+我就given 一個observation  
+我就把它放到這一整堆的model 裡面去 
+那麼然後呢假設如果它是第i 個model 的話 
+就是g sub i  
+然後我對每一個j 都去算這個分數 
+看誰最大 
+如果那個最大的是i 的話 
+我的答案就是i  
+所以呢什麼時候發生錯誤呢 
+就是如果你你放到第i 個model 裡面去最大 
+但是其實它不是i  
+這個時候就發生error  
+因此呢這個所謂minimal error 的這個criteria 我就是要要數這個error  
+然後想辦法要把這個error minimize  
+那麼當我在minimize 這個error 的時候呢 
+就自然的就因為很多的error 會發生在這裡 
+凡是譬如說我們說這個一跟七很像 
+六跟九也很像 
+那麼那你這個時候呢 
+你很多個error 發生在這個時候所以你如果有夠多的training data 丟進來的話呢 
+那如果我要minimize 的是這個error 的話 
+那它就要調這些model 參數 
+想辦法把它們拉開把它們拉開 
+那這個就是這個m c e 基本的精神所在 
+那詳細的做法呢在下一頁這裡 
+嗯我們也許在這裡休息十分鐘好了
+那麼m c e 的基本精神我們剛才已經提到了
+就是說嗯我們原來的做法都朝向於讓這個maxima likelihood 最大
+假設我我是六的話就讓六的model 最大就好了 
+可是這個並不不表示六跟九很像的話六跟九不會confuse  
+那麼他們這這些聲音如果很像的話 
+雖然各自機率都最大但是他們可能很像 
+因此我換一個別的testing data  
+換了不同的人不同的的環境搞不好它就贏了它 
+所以呢這些competing class 可能會贏過真真正的答案結果就會發生error  
+因此呢怎麼辦呢 
+我們就用底下的辦法就是反過來我來數error  
+然後我要minimize 這個error  
+那麼這個做法呢就是我重新定義這個東西叫做d sub i 的 
+這個x 是我一堆training data 的observation  
+這個lambda 是我原來已經train 好的model  
+我們剛才說我的假設我零到九好了 
+我零到九我每一個model  
+每一個數字零或者一或者二都是一個class  
+都有一個model 就是lambda i  
+然後我的所有的lambda i 構成一大把的model 就是我的大lambda  
+所以這個大lambda 就是我已經原來已經train 好的那一堆model  
+那一堆大lambda 已經train 好的model 之後我現在一個新的一個observation  
+譬如說是七進來的時候呢 
+我就可以define 一個d sub i 的這個東西 
+那它是什麼呢它是長這樣的一個東西 
+其中第一項呢就是g sub i  
+其實就是把它放到它該有的model 裡面去 
+假設我這個聲音是七的話 
+假設我這個training data 這個training 的聲音observation training 的observation x 是七的話 
+我就把它放到七的model 裡面去 
+所得到的分數叫做g sub i  
+就是我們剛才前一頁的這個東西 
+這個g sub i 就是把它放到第i 個model 裡面去的那個分數嘛 
+那麼因此呢但就就是那個分數但是我把它變成負的 
+那後面這些呢是g sub j j 不等於i  
+其實放到其他不同的model 裡面去的分數 
+舉例來講 
+如果那個這個音是是一的話 
+假設說這個x 是一的話 
+那麼我把它放到一的model 裡面去得到這個分數 
+那放到七呢很接近 
+放到到六啊九啊八啊五啊那就很遠了 
+譬如說五在在這裡 
+ok 所以呢那這些個分數就是這些個g sub j 的 
+換句話說假設我這個聲音是一 
+這個聲音是屬於一是class 一的那個model  
+所以我放到一裡面去呢 
+suppose 這個個分數是最高的 
+就是這個 
+然後呢那其他的g sub j  
+j 不等於i 就是其他的這些音 
+就是比較低的 
+其中呢七跟它是competing 所以呢七很接近 
+其他呢跟它比較遠 
+那我把其他所有這些東西呢做一個這樣子的計算這一項 
+那這一項呢裡面有一個alpha 的值 
+這邊是alpha 次方 
+那我把其他所有這些東西呢把其他的全部加起來因為這邊m 是總共的class 的數目嘛 
+我們這邊m 是總共的model 的數目是m  
+所以呢m 減一就是其他所有的 
+所以呢那這個是什麼東西呢我們來看 
+如果alpha 等於一的話 
+我們先看alpha 等於一 
+就是這裡邊等於沒有alpha 這裡也沒有 
+那就把它全部的平均 
+那意思就是說我把這些個所有的從七開始到這這邊所有的其他的東西 
+平均起來得到某一個平均的值對不對 
+我如果是alpha 等於一的話這個沒有這個沒有嘛 
+這個就是把其他的其他的class 都算進來得到一個平均 
+有equal weight  
+那就是這個值 
+那這個時候會怎樣呢 
+那顯然這些如果這個辨識是正確的的話 
+一應該是最高分 
+其他都比較低 
+然後這些東西比較低的平均起來當然比它低啦 
+所以嗯這個比它這個正確的答案一定比這些錯誤的平均來的低來來的高 
+那然後呢我現在因為這個是負的 
+這個負的比較多 
+這邊加的比較少加起來是負的 
+所以呢這個值是負的 
+就表示說這個是一個正確的 
+這個辨識是正確的 
+因為你你你這些東西這些東西分數比較低 
+這個個分數比較高嘛 
+所以這個負的的比較多這個負的比較少對不對 
+所以這個負的比較多這個這個正的比較少 
+所以結果還是負的 
+所以負的話呢大概可以表示說這是一個正確的classification  
+如果是正的話呢就表示錯了 
+如果是正的話呢就表示錯了是因為 
+你正的話呢就表示這個比較小這個比較大 
+表示說這裡面有些東西超過它了 
+所以結果呢我辨識出來它的它的分數低 
+就發生錯誤 
+所以這是我用我用這個function 來來來算我的正確跟錯誤 
+那當然你說這樣子這個比不太合理 
+因為你把所有的這些東西平均起來拿這個平均值去跟它比 
+那本來就應該比它小嘛 
+是沒錯 
+所以呢你可以那另外一種做法呢另外一個極端就是當你alpha 趨近於無限大的時候 
+如果alpha 趨近於無限大會怎樣呢 
+你看如果我這些東西都都做個無限大次方的結果就只有最大的那個才能夠算 
+其他都其它都沒有了 
+所以只有most competing one consider  
+如果alpha 趨近於無限大你其實這邊是無限大次方這邊再無限大分之一 
+其實還是原來那一個啦
+但是呢就是除了最大的那一個以外其他都等於不要算了 
+所以呢如果alpha 是無限大的話呢這些都這些都沒有了
+那麼這個是這個是alpha 趨近於無限大的時候 
+那紅的這個是alpha 等於一的時候 
+alpha 趨近於無限大的話只有最大那個值才算 
+那麼於是呢那你就變成是正確的跟最competing 的那個在比較 
+那麼因此呢這個時候如果d 小於零的話呢表示說這個還是負的比較多 
+這個是負的比較少 
+所以這個還是比它大 
+所以還是正確的 
+所以呢這個d sub i 小於零表示是正確的 
+而只要它大於零就表示是錯誤的了 
+ok  
+所以呢這個alpha 其實只是一個可以調的值 
+看你要弄進來幾個 
+因為搞不好我這邊有好幾個competing class  
+我們講一跟七好像只有兩個competing  
+但是呢其實不一定啊你如果b c d e v t z 的話 
+一堆都在這裡啊 
+你就應該把這一堆通通都都拿來平均或者怎樣喔 
+所以呢你也可以加不同的weight 喔 
+所以呢你其實譬如說你的的alpha 不是無限大但是alpha 是十 
+或者二十 
+或者你選一個比一大很多的值的話 
+你就自動去weight 最靠近的對不對 
+你這個alpha 越大就是weight 越靠近的 
+alpha 越小就把越不靠近的的也都放進來的意思 
+所以呢你可以選擇那個alpha 來調看你要把competing class 裡面放進來幾個 
+那麼但是不管怎樣呢這個分數其實是告訴我 
+如果這個是一的話 
+一跟它的competing class 有多接近 
+那它它會被competing class 勝過結果辨識錯誤的的危險度有多少 
+就是這個d sub i  
+那有了這個d sub i 之後呢 
+我們當然希望minimize 這個d sub i  
+因為現在如果它是越負的話就表示它的這個正確是一個正確的嘛 
+所以這個個d sub i 凡是有一個正的就表示會錯嘛 
+我把很多training data 放進來 
+我把每一個一啊二啊三啊一七啊都放進來 
+那麼每一次如果越是容易被發生越是這個competing 的越厲害 
+差距越小 
+越有可能錯的時候呢 
+那這個分數就會越糟糕 
+所以我現在只要算d sub i 這個這個越小就越好越大就越有問題 
+所以我就是要minimize 這個東西 
+所以這個數值其實是代表我的一種error  
+那你注意到我現在不是真的算error rate  
+不是minimize 那個error rate  
+而是在算分數的差距 
+也就是說我是在算這個這個正確的那個那個class 的分數 
+跟competing 的分數差多少 
+我要這個差這個差的越大越好的意思 
+那差的越大的話就是這個東西負的越多 
+所以我要minimize 這個東西 
+那但是這個東西其實非常不homogeneous  
+因為你如果是不同的不同的這個七放進來d 放進一放進來 
+你譬如說一放進來t 放進來這個情形都不一樣 
+這中間可能差很多 
+那麼不太容易讓它們這個有一個比較統一的的minimize 的方法 
+所以呢就想一個辦法就是把它做一個normalization  
+那這個normalization 就是所謂的這個sigmoid function  
+那它的長相是這樣子 
+那這個圖畫的不太好我們畫的清楚一點的話呢應該是這樣子 
+它是一個底下是零上面是一 
+它在這個地方有一個很平滑的像像s 的形狀的一個function  
+那麼它這個switch 過來的這一點呢叫做theta  
+那這個斜率是影響斜率的是gama  
+那麼因此呢這個就是所謂的l of d 的這個function 
+就是這個function  
+長的應該是像這樣 
+也就是說呢這個在趨趨近於無限大的時候它一定是零 
+所以當你這個這邊我這個這個橫軸是d 
+縱軸是l 的d  
+那麼在d 趨近於負無限大的時候它一定是零 
+在趨近於正無限大的時候它一定是一 
+那中間從零switch 到一的這個地方呢 
+所以depends on 看你的theta 選什麼 
+那麼那麼theta 就是中間switch 的這一點就是所謂的theta  
+然後呢這個gama 決定我的斜率 
+換句話說你你你這個中間是是這樣的呢還是這樣的 
+你可以更陡嘛 
+你可以更陡的這樣子 
+或者你可以更斜的這樣子 
+都可以 
+那這個你要多陡多斜呢就是這個gama 來決定的 
+那這樣一個function 這樣function 的好處就是說你把所有的值都normalize 到零跟一之間了 
+你本來這個值我們剛才上面那個值的話呢 
+我是在算每一個model 譬如說b c d e v t z  
+這些每一個model 的分數都擠在一起有有有些d 進來的時候 
+它全部擠在一起 
+有的t 進來它分的比較開什麼的 
+那麼這個分數結果有大有小這個這個很亂啊 
+那你怎麼辦我把它全部normalize 在零跟一之間 
+所以每一個每一個testing data 進來training data 進來 
+每一個data 進來我的分數都是在零到一之間 
+那在零到一之間之後呢 
+我就比較好算 
+然後呢越小的話表示越越越是會正確嘛 
+因為越小的話就表示正確的答案比competing 的會是勝過competing 的 
+那小的越多就是勝的越多嘛對不對 
+所以呢越小就是越好的 
+但是我經過這個這個東西之後呢我把它全部normalize 在零跟一之間 
+每一個data 都給我一個零跟一之間的數字 
+那另外一個好處是經過這個function 之後 
+它是smooth 的function 所以微分比較好微 
+我要minimize 我現在要minimize 這個東西 
+這個東西越負越好 
+越負表示都是正確的對不對 
+你凡是有一個錯的它就會變就會變正嘛 
+所以我是越負所以我就要minimize 這個東西
+但minimize 的過程之中這個東西很難minimize  
+這個不好minimize  
+但是我變成這種東西之後這個好minimize  
+所以呢讓它smooth 之後 
+我來來來來minimize 它 
+於是呢我真正要minimize 的這個overall 的這個performance measure 就是這個東西 
+那那這個式子這樣寫有點怪怪的 
+其實一個簡單的寫法應該寫成嗯應該是寫成這個 
+就是嗯我看看對我就是把這個d sub i 放到這個l 的function 裡面去 
+就是這個嗯這個式子 
+應該是說我把這個d sub i 放到d sub i 是這個x 在放在這個lambda 裡面 
+的這個d sub i 就是這個東西 
+我放到這個l 的function 裡面去 
+得到一個smooth 的零跟一之間normalize 的值 
+然後呢我應該是summation over 所有的x 屬於c i 的 
+如果它是它是這個它是b 就放在b 的那個裡面 
+它是它是e 就放在e 的裡面 
+它是它是z 就放在z 的裡面等等 
+都分都分別放在它自己的那個class 裡面 
+然後我再把所有的class 加起來的這個東西 
+其實底下這個就就是這個東西 
+那現在這樣這個這個是paper 上面的寫法有點有點這個不清楚 
+其實是一樣的意思 
+你看它的它其實就是講你如果是在哪一個class 裡面才算 
+不在class 裡面就不算嘛喔 
+你在哪個class 裡面的那一個呢 
+你就把它放到這個裡面去算這個l i  
+那其實就是把那個d 算那個d i 之後 
+再放在這個l 的這個sigmoid function  
+這個這個你知道這個所謂的sigmoid 就是一個像s 形狀的 
+把它放進來
+然後全部加起來 
+那其實是就是這個意思 
+也就是說假設我們是要分辨這個b c d e v t z 的話 
+那麼你就把所有的training 的b 放在b 的那個model 裡面 
+得到的這個 
+但是呢你同時要把其他的competing 的都拿進來一起算 
+得到這個東西的那個b  
+然後去做一個sigmoid function  
+然後全部的通通都算了之後 
+b 通通放成b 的 
+d 通通放成d 的 
+z 都放在z 的等等 
+你全部通通都通通加起來 
+你所有的training data 全部加起來這個東西 
+我要它是minimum  
+當我要minimize 它的時候呢 
+我現在呢就是微分 
+讓它等於零呃 
+那因此呢就是我最我我最後就做這件事情要讓它等於minimum  
+那這個東西到時候是要微分不太容易喔 
+所以呢我就是要我我現在就是在剛才這個嘛 
+這個其實l 的x lambda 就是嗯就是底下的這個l 的x lambda  
+就是就是這個東西 
+也就是我我我那邊寫的那個式子是同樣的意思啦喔 
+就是這個意思 
+就是這個東西我要把它minimize 
+minimize 調什麼參數 
+調調所有model 的參數 
+這裡面的每一個b c d e 每一個都有它的model  
+譬如說譬如說這個v 有它的model  
+就是a b pi  
+這個是v 的那個model  
+那t 呢有t 的model  
+a b pi  
+有有t 的model  
+每一個都有每一個都有一大堆參數 
+那所有的參數一起調 
+所以這是一個不容易調的東西 
+因為我有我整個的model set 這整個大lambda 是所有的model set  
+這個大model 這個大lambda 是所有的model 的model set 所以很多很多參數 
+我要一起同時調所有的參數 
+讓我這個東西會minimum  
+這個minimum 的時候其實就表示說我讓它的competing 的分數拉開 
+competing 的分數越拉的開那個個分數那個那個就越低嘛 
+所以我就把它minimize  
+那這個的過程呢我們用底下這句話是最重要的一句話 
+就是說這樣的情形之下我每一個training 的observation  
+可以change 所有model 的參數 
+而不是change 它自己的 喔 
+我們之前的每一個model  
+每一個observation 進來 
+只change 它自己的參數 
+譬如說一個v 進來 
+我們只會去train 這個這個東西 
+調這個參數 
+它動不到別的 
+一個t 進來我只會調這個t 的參數 
+動不到別的 
+可是呢我現在的話呢 
+因為我現在是在minimize 這整個的東西 
+是在算所有東西之間的差距 
+所以呢當你一個v 進來的時候呢 
+它不是只調v  
+它同時會把其他跟它近的東西一起調 
+想辦法把它拉開 
+那當然你想這個問題是很複雜的 
+當你把這兩個拉開的時候可能另外那兩個會被弄緊啊 
+所以呢你就變成都有影響嘛 
+所以我是把整個的全部的加在一起之後一起minimize  
+所以呢我進來一個v 的時候不是只調v  
+而是全部都會凡是跟它competing 的都會被調到 
+那麼但是你把它們拉開的時候 
+不能別人弄緊了一定要都拉開嘛 
+你進來來一個t 的時候也不是只調t 自己 
+是每一個都會被調到喔 
+所以這個是跟我們之前講的的training 不一樣的地方就在這裡 
+那這種training 就是所謂的discriminative training  
+那這個觀念後來用到非常廣泛 
+一直到今天這個仍然是一個非常重要的大題目 
+你如果現在去找paper 的話 
+今年仍然有非常多的paper 在講這件事情 
+就是用什麼用這類的觀念但是有許多更新的方法 
+怎麼樣做這這件事情 
+讓所有的competing model 能夠拉開 
+然後讓它的正確率能夠提高 
+讓這些confusing 的或是competing 的不會製造error  
+那在那我們現在講的這個m c e 是這個discriminative training 裡面的始祖 
+就是當初最早的想法 
+是這樣做的 
+那現在這個很多很多了比這個進步很多了喔 
+那但是我想最原始的一個就是這個 
+那這個觀念應該是最簡單而清楚的 
+最容易瞭解的就是這樣子 
+所以呢我現在就是就是要minimize 這個東西 
+但這邊參數很多啊 
+我這邊可能有一大把model  
+每一個model 都有一大把參數 
+那麼我這個多東西全部要一起調怎麼辦 
+那麼這裡通常用的是這個 
+這是最普通的嗯方法 
+所謂的gradient descent algorithm 或是steepest descent algorithm  
+那你看這個式子你可能是看過的 
+在很多領域裡面都用這個個東西 
+那這個式子的意思其實是這個式子 
+也就是說假設對a sub 這個a 是某一個parameter  
+這裡面有一大把的parameter 有幾千幾萬個parameter  
+那那麼假設每一個parameter 叫做a 的話 
+那它都這樣子調 
+t 是指它第t 個iteration 
+我用很多個iteration 去調它 
+那第t 個iteration  
+變到t 加一是什麼呢 
+是根據它的微分 
+那這個的意思很簡單的講就是微分告訴我該怎麼改 
+假設說這是那一個參數a  
+而這是某一個某一個這個這個是我要的object function 
+這是我要minimize 這個function l 的lambda  
+那它這個l 的lambda 呢它是function of 一大把參數 
+我現在選裡面的一個a 而言的話 
+譬如說它是一一一萬個參數裡面的一個a 而言的話 
+那那那我怎麼知道呢這depend on 如果我現在的a 在這裡 
+第t 個a 在這裡 
+這個微分在這裡的話 
+這個微分告訴我說 
+其實我向這個方向移動的時候會更低一點 
+所以呢我下一步就會向這邊移動一點 
+因為這邊是有一個local optimum  
+那因此呢它就會告訴我應該向這邊移動 
+可是我今天如果我這個a 在這裡的話呢 
+第t 個iteration 如果在這裡的話呢 
+這個微分是這樣子而且很陡 
+它就告訴我說有一個minimum 在這裡 
+而且是你這個地方是很這個很陡的 
+所以你其實是可以走的很快我下一步就多走一點就走到這邊來了 
+那這邊是因為很平 
+所以呢不要走太多 
+因為你走太多可能走過頭可可可能會走到不同的狀況 
+因為也許這邊可能會上去了對不對 
+所以呢這邊如果很平的話你不要走太多 
+這邊如果很陡的話表示你可以再走多一點喔 
+那麼因此呢這個你就就用這個微分就是這個這個object function  
+對於這個參數的其中一個parameter 的偏微分來看 
+那它的正負告訴我是應該向這邊還是向這邊對不對 
+應該是小一點 
+下一步下一個iteration  
+應該是小一點還是大一點 
+它的正負告訴我是向這邊還是這邊 
+它的值呢告訴我應該走多一點還是走小一點 
+喔那麼因此呢用這個方式的話我每一個參數都用這個方式來調 
+所以呢這個個epsilon 呢是指這個adjustment 的step size  
+就是你每一步到底要走多少 
+那麼我主要的每一個下一個iteration 的a 呢跟這一個iteration 的a 呢 
+就是根據我的微分來決定應該要向哪邊移動 
+要動得多快還是多慢喔 
+用這個方式來做 
+那t 呢就是我iteration 的這個次數 
+那這個式子呢是指對一個參數而言 
+那我現在如果要把整個參數全全部寫在一起 
+那用vector 的寫法就是這個式子 
+那其實這裡這個一萬個a 加在一起就是lambda  
+就是指那一大把的parameter  
+它是在時間第t 個iteration 的時候 
+這是這一大把的參數呢加在一起就是這個大的lambda t 加一等等 
+那這一大堆對的每一個的偏微分呢 
+我們就寫成這個符號喔 
+這個你如果學那個嗯數學裡面就有這個符號 
+這就是對每一個參數都去做偏微分的意思 
+所以這個式子其實就是這個式子的意思 
+那你可以想像的情形是是這樣 
+我們也許沒辦法畫這麼多維我們如果畫兩維的話 
+也許稍微可以畫一下 
+譬如說我有一個碗的形狀 
+假設我有一個碗的形狀 
+那麼在一個這這個在一個這個二微的空間裡面 
+假設我的這個是這是我的 
+這個這個是我的這個l 的lambda  
+在這個這譬如說這個是a one 這個是a two  
+在這個碗的形狀裡面 
+那假設我現在是在某一點上面 
+在這裡的話 
+那麼這個時候呢 
+在在a one 而言我有一個這樣子的的一個一個斜率 
+得到一個這個斜率 
+對a two 而言我有一個這樣子的一個我也得到一個這樣子斜率
+等等喔
+那所以呢我a one 朝向a one 的那個那個方向走
+a two 朝向a two 的那個方向走
+因此我最後得到一個朝這個方向的
+其實就是走向碗底的喔
+因此你可以想像這是一個這個很多dimension 的一個這個一個這個function 的話呢
+它會朝向這個一個local 的optimum 去走
+那麼當然這裡有一個重要的問題就是說它只會走到local optimum 
+它不知道哪裡是global optimal 呃
+這個是這個only converge to local optimum 
+local minimum 
+跟我們前面講的e m 也是一樣的
+我剛剛才漏掉講e m 有同樣的問題
+e m 其實它是每一次向上走只走到一個local 的maximum 
+它不見得找到global 的
+這裡也是一樣你可以看得出來嘛
+喔它就會走到local 那裡
+所以你的起始點是非常重要的
+那這個這個initialization 如何選擇一個好的initialization 很重要
+那基本上來講在這個case 就是你原來那個model 要train 得好
+一開始的這些model 都已經train 得非常好的話
+那基本上應該是一個比較好的initial 的condition 
+這個時候你再向這個這個再在這個地方調的話基本上它可以調得比較好
+嗯就這樣的意思
+所以我得到的是local minimum 
+你就經過很多的iteration 
+不過這個程式是有技巧的
+就是說這個因為你現在有一大把參數成千上萬的參數一起調
+是很難調的
+那有本領的慢慢調調出來可以得到一個非常好的結果
+那包括譬如說這個每一步到底要走多遠
+這裡有一個epsilon 
+這是一個step size 的參數
+你也要小心的選
+你可以想像如果這個epsilon 太小的話
+我收斂太慢
+一次只走一點點我走不過來
+可是你如果epsilon 太大的話很容易一走走過頭
+對不對你這個一走走過頭結果就就就收斂不到那個那個minimum 去嘛喔
+所以這個怎麼去選擇也是一個問題
+然後你可能每一個參數可以選它自己的epsilon 等等
+所以有很複雜的方法來做它
+不過基本原理呢大部分用這個方式來做呢
+可以做到
+那它的基本精神就是我們剛才講的
+我每一個training data 呢它可以
+它是用來調所有的model 
+而不是調單獨它自己
+一個v 進來的時候不是只調v 
+它所有的會跟v confuse 的音全部都調了
+一起都拉開來
+等於是這樣的意思
+那這個觀念就是所謂的m c e 
+那m c e 可以拿來做很多事
+我們舉一個例子就是m c e 來做feature optimization 
+也就是說如果我我原來的如果我原來的這個m f c c 不夠好
+我可以做一個新的一組
+譬如說我原來的m f c c 我叫做x 
+就是這一堆三十九維的
+這x 
+我覺得這個不夠好
+我可以做一個y 是譬如說a 乘上x 
+對不對
+我用一個a 的matrix 乘上x 
+得到一個新的y 
+得到一個新的y 
+我可以用y 來當當我的feature 
+那這個a 裡面就有三十九乘三十九個參數
+你要求這個a 可不可以求呢可以
+那用m c e 來求
+那這個就是用用m c e 去找一個好的feature 
+那怎麼做呢你可以想像今天還是一樣
+我的原來的要minimize 的東西是這個嘛
+我現在呢這個x 變成f of x 
+所謂的f of x 就是我這邊的a x 
+我這個我把這個這個乘上這個a 
+叫做f of x 
+那於是呢我就把原來的所有的parameter 所有的這些feature 都變成f of x 
+當我這個feature 變成f of x 的時候我所有的model 都改了
+是以是以這個f 為基礎的model 
+那這時候變成成一堆完全一堆新的東西
+然後我也一樣可以去minimize 它
+去調所有的參數
+調什麼參數
+就是調這裡面的所有的參數
+因為這裡面的每一個這裡面的每一個參數都把我的這個m f c c 參數改變了
+然後也因此把所有的model 都改變了
+那我就可以調所有的東西
+之後可以調到一個比較好的嗯
+所以這裡裡我寫的就是說你可以用這個方法f 是一個transformation function 
+把你的原來的x 的feature 就是m f c c 調成y 
+那你也可以去那這個時候未知的參數就是這一把
+就就去調所有的這這一把參數
+那這裡的每一把都去做微分
+你也一樣可以得到嗯
+那當然因為這樣你改變了feature 所有的model 都改了
+那你你就可以去minimize 它你也可以得到一組比較好的feature 等等嗯
+那這一類都是m c e 的的基本精神
+就是等於是我就是把這一大把的所有的參數拿來把它轉化成為它們的competing 之間的距離
+喔我我這堆東西東西等於就是它們的competing 的model 之間的距離嘛
+然後我要minimize 
+會造成error 的的的問題我就把那個東西minimize 
+那這樣子的觀念就是要把所有的會competing 的東西拆開來
+盡量把它們拉開來
+這就是所謂的discriminative training 
+那這個m c e 的方法在九零年代是非常成功
+它apply 在這種比較小的vocabulary 
+像這個b c d e v t z 這個這種這種東西可以分得非常好
+正確率可以提高很多
+同樣我們拿來辨識中文的一跟七啊六跟九啊
+也可以大幅提高正確率
+這都很成功
+但是當我們的字彙大到幾萬個字的時候
+這個m c e 不太容易做了
+因為你可以想像它太複雜了
+那麼後來像在最近幾年非常熱門的是很多新的方法
+精神也是這樣
+但它是比這個還要複雜很多
+那也都目的都是一樣的就是要把凡是confusing 的地方
+把它拉開來
+但是你不能為了你不能把這兩個拉開之後把另外兩個又弄得很近了對不對
+假設說這兩個比較近這樣子
+你為了把這兩個拉開
+結果這一拉開它跟它太近了不行啊你要把每一個通通都拉開啊
+你要想辦法做到把每個都拉開
+那這個是非常非常重要的一個研究題目
+在今天仍然是一個非常精采的研究領域
+不過基本精神大概是這樣
+那這個是m c e 
+那麼m 跟這個m c e 相關我們講一件事
+就是我們在講十五的時候
+呃我有提我們那時候在講feature base 的十五點零的feature base 裡面有一個地方有用到m c e 的
+我們們那時候跳跳掉了
+你現在就知道了
+就是在feature base 的嗯這裡
+這裡我們在講feature base 的時候我們做temporal filtering 
+那麼我們那時候就說用l d a 可以做
+其實一樣的用m c e 也可以做
+那這個你可以想m c e 跟l d a 其實精神是很像嘛
+l d a 也是把它一個class 分得很開嘛
+分開嘛對不對
+l d a 的意思就是把每一個class 要拉開來
+那所以當你有了class 的information 你就可以把它拆開
+那同樣的m c e 也可以做的嗯
+所以我們這個地方如果用m c e 來推一樣可以推得出來
+ok 好
+那到這裡我們大概把九點零的兩個重要的東西就是e m 跟m c e 都講到了
+後面還有一個m m c e m m i e 我們等有時間再講
+再那麼麼下週我想我會講的應該是這個十三跟十四吧
+十三我看看十四是這個ya 這個spoken document understanding organization 
+然後是那十三應該是retrieval 對
+我想我們下週會講這個十三跟十四喔
+那這樣的話我們大概這個比較重要的一些個topic 大概都會cover 到
+在這個學期之內
+ok 好我們今天上到這
+我的目標標是要在
+這兩週把所有還沒有
+ok 所以目標是要在這兩週之內把把所有還沒有這上面還沒有說到都要說到

@@ -1,0 +1,156 @@
+那如果說是rasta 可以這樣想的話
+那麼再下來呢
+其實就有一堆這個temporal filtering
+其它的temporal filtering 他說我為什麼要用你這個filter 呢
+你這個filter 你這樣講其實有點不通
+這個好像很直覺地用很直覺地在那邊想的
+真的是那樣嘛沒有這個道理嘛
+所以我應該用別的方法來求這個filter
+什麼方法呢
+就是data driven
+我真的用一堆聲音去train train 那個filter
+那這個就是所謂的data driven
+就是我用data 我用一堆data 去求
+看這個filter 到底應該長怎樣
+那這就有很多種方法了
+我們這邊舉幾個例子
+這邊的這邊的是用p c a 的方法我們之前講過的p c a 
+也可以做其它的用l d a 等等所以我們底下會講l d a
+那也可以再用別的
+啊這是用l d a 的然後還可以用別的
+那我們先來說這個p c a 的
+那它的意思是說呢
+就是我們剛才講你這個rasta 你這個filter 其實是很這個憑空亂想的你胡思亂想想一個辦法說
+我在十個hertz 一個hertz 到十個hertz 之間這很沒道理啊
+我為什麼不讓data 告訴我
+我就用一堆training data 來train 這個filter
+讓data 告訴我它應該長怎樣
+那用data 告訴我有很多種方法
+第一種方法就是用p c a 
+那你記得我們之前講p c a 是什麼
+p c a 是說
+假設這是c one 這是c two 這兩個軸
+假設我的一堆data 散在這裡
+是這樣的話
+我在c one 的軸上看到它們的distribution 是這樣的一個distribution
+在c two 上看到一個distribution 是一個這樣的distribution
+但是這兩個distribution 都散得不夠開
+我想辦法找另外一個軸
+這個軸呢譬如說在這裡e one
+在這個軸上呢我就發現它散得最開
+這是一個散得最開的distribution
+那因為這樣子的話呢我的這個散得最開我就把所有東西都都拉開了
+我辨識比較方便
+效果就會比較好
+這是p c a 的精神
+那這個意思是說我的每一個點
+我找一個新的軸之後我每我的每一點都投影到這個軸上來
+它們就散得比較開了
+那怎麼投影呢就是我原來的這一點就是x 是在c one c two 上面
+我現在投影上來呢就變成x 跟我這個e one 做內積
+這兩個都是vector
+我在做內積
+內積的結果因為這個是一個unit vector
+那我一做內積的話呢
+我就把這些點投影上來
+我得到這個上面
+它散得就比較開
+我就辨識得比較容易做得好
+那他說我可以用相同的觀念來想這件事
+因為你現在如果是這一個這個就是我們c one 的那個的signal 嘛
+我c one 的那個signal
+我要通過一個 
+我這個c one 的signal 我要通過一個filter 
+這是c one 的m 
+我要通過一個filter
+那通過一個filter 是什麼這是一個convolution 的過程
+那convolution 你你你只要熟悉convolution 你就知道
+所謂convolution 就是把這些個分別乘上一個constant 加起來
+那待會對不對
+這些個值分別乘上con 它們加起來
+然後呢得到一個值
+然後再來把這些乘上con 加加
+嗯這樣講
+就是說你把譬如說這四個分別乘上一個constant 加起來
+你得到一個值
+待會我把這四個乘上constant 一個constant 加起來
+得到一個值
+待會我把這四個乘上一個constant 加起來
+得到一個值
+那那個就是convolution 也就是filtering
+所以你其實就是把它們的這個分別乘上一個值加起來
+分別乘上一個值加起來
+分別乘上一個值加起來然後這個不斷的不斷的移動
+這就是這句話在講的意思你的filtering 其實就是一個convolution
+也就是weighted sum of a sequence of a 一個coefficient with length l slide alone f frame index
+你
+那我畫到這裡就是這個意思
+你把這四點分別乘上某一些值加起來得到一個值
+然後你下面這四個點分別乘上一個值加起來變成一個值
+等等等等
+那這些東西分別乘上一個值加起來這件事情
+其實不就是一個內積嗎
+其實就是一個內積嘛
+就等於說是你這四個值跟一個e one 去做內積的意思得到一個值
+待會再跟這個做內積
+再跟這個做內積嘛
+既然如此
+我現在要它們我現在如果以p c a 的觀念來想的話
+就是我希望它們最後出來的通過這個filter 之後出來的值能夠散得最開
+那怎麼散得最開呢
+那散得最開的方法我就是用p c a 來求
+那因此呢這個意思是完全一樣的
+我現在就是把譬如說如果我是這四個來求來相乘相加得到一個值
+這四個相乘相加得到一個值
+這四個相乘相加得到一個值這樣子的convolution 的話
+那我就把這四個當成個四維的vector
+這個四維的vector
+那這堆四維的vector 就是這些的點嘛
+那因此我就是有這些個以以剛才這個四維的點為例
+這就是一個四維的點
+那麼待會那個呢也是一個四維的點這也是一個四維的點
+我就把這些四維的點通通通通拿在一起然後來做p c a 
+來找它的最好的那個軸
+那個軸就是它的最大eigen value 的那個eigen vector
+這是我們中間講過的p c a
+那麼因此呢我現在就把它們
+那這些四維的點通通投影到這上面來的話
+那其實就是在做這件事情
+那也就是我把這個東西最大的eigen value 那個eigen vector
+當成我的
+當成我的那個filter 的coefficient 就可以了
+所以我如果用這個方法來做的話呢
+我就我就是maximize the variance of the weighted sum
+對不對
+那麼因此呢我就可以把這個這個求filter 的這個這個問題
+求filter 的問題就變成一個p c a 的問題
+因為我的
+我我我求filter 的問題其實是在求到底它們應該各乘上多少coefficient 去相加
+我就等於是在求這個東西
+那這個東西其實就是這個東西
+所以呢我就把我只要把這些個每四個點每四個點每四個點我有一堆training data
+我用training 的語音的這每四個點每四個點通通通通這個這個data 做出來變成一大堆點之後
+求它的p c a
+我得到最好的那個軸
+那個軸上面的那個coefficient
+其實就是我的filter
+那這就是這邊講的意思
+那麼因此我就是在v a 在maximize 它的這個通過這個filter 之後的variance
+那
+它的那那個filter 是其實什麼那個filter 其實就是這個第一個eigen vector
+那如果這樣的話呢
+做出來結果得到的filter
+你如果把他圖畫出的話
+跟這個有一點像但是不大一樣啊
+基本上也是可以證實他這個原來的想法蠻好的因為他大概也得到的圖我這邊沒有畫出來啊
+那他得到的圖大概也是
+譬如說大概一個hertz 以上到十個hertz 之內
+是很像這個情形
+在十個hertz 以上也再把它濾掉
+這邊也是把他濾掉這蠻像但是filter 長得不太一樣
+但那個filter 是有道理的啊因為是data 告訴我的啊
+因為那個那個filter 是我根據p c a 的data 告訴我這樣子比較好
+所以我用那樣來做個filter
+那這樣效果會比較好那就是用p c a 所所推的temporal filtering
+好
+那如果這個這個觀念可以了解的話呢

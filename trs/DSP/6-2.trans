@@ -1,0 +1,339 @@
+好以上只是一個簡單的一些例子在說我們真正要說的是底下這個perplexity
+當我們在講language model 的時候
+所有的課本所有的文獻都講perplexity 
+那麼我們來解釋一下perplexity 是什麼
+怎麼樣用它來看language model
+當我聽到一段聲音的時候
+我先去判斷它的第一個字是什麼
+第一個字是w one
+但是w one 其實假設我有咦我已經跳掉了
+w one 其實是有這個很多個w one 其實是有很多個可能啊
+譬如說我有六萬個詞的話
+我有譬如說英文我們假設英文我們有六萬個可能的word 
+所以呢其實w one 有六萬個可能
+那麼你可以想像它可以是我總共有這麼多可能
+它可以是這個word 可以是那個word 我有六萬個可能
+同樣的呢w two 呢第二個字呢
+也有六萬個可能對不對
+所以呢其實我每一個word 都有六萬個可能w 三還是有六萬個可能
+那其實language model 在幹什麼它就是在告訴我說它們不是都是六萬個可能
+而是你如果知道了前面
+後面的可能性其實就集中了
+那舉例來講呢
+這個w one 的這六萬個可能呢
+很可能是我們剛才所說的
+這六萬個可能是我們剛才所說的嗯這樣子畫
+假設這邊總共是六萬個
+從x one 到x m
+我總共有六萬個
+這六萬個裡面有高有低嘛
+這就它們unigram 有高有低
+那麼有的word 機率比較高有的word 機率比較低
+這裡面就有六萬個可能
+當我如果知道了w one 之後我再看w two 的話呢
+它還是有六萬個可能
+可是這六萬個可能會怎樣
+它distribution 會不一樣
+它會集中在某些地方比較高
+另外的地方就很小了
+為什麼呢根據bigram 對不對
+根據bigram 如果知道前面是w one 的話
+那這個剛才w one 的地方這個因為完全沒有任何前面的字的information 
+所以我只好根據原來的distribution
+原來distribution 是怎樣就怎樣
+那這個看它是怎樣就怎樣
+所以呢是根據原來的distribution
+但是當我有了第一個word 有了第一個word 之後的第二個
+的第二個的時候呢
+它就這個distribution 跟這個不一樣
+它基本上應該集中在若干個word 上面
+其它的就很低了
+因為我有bigram 
+那等到第三個的時候呢那就更好了
+因為我有了前面兩個之後的我有trigram
+那就更清楚地說ok 它是這些高這些機率高
+別人的機率很低了
+那這又是另外一種distribution 對不對
+那麼因此呢那其實是說這個一開始的這個distribution 最散
+應該說這個的entropy 最大
+這個的entropy 最大
+然後當我有了這有了w one 之後再看w two
+因為有了bigram 
+所以呢我這個entropy 會小一點
+稍微集中在若干比較少的數目的
+稍微集中在若干比較少的數目的word 上面
+當我有了這兩個之後第三個我會更好一點等等
+那你如果這樣子看的話我們language model 的目的在做什麼事情
+language model 是在做是在做一種linguist constraint 
+to help in word selection 
+對不對
+就是說你你本來是完全沒有知識的時候我六萬個word 都要選
+那當我有了前面一個word 我下一個word 的話
+我就集中在少數譬如說一千個word 裡面去選就好了
+當我有了這兩個之後我在這邊選我搞不好就在嗯兩百個裡面去選就好了
+那就是我的有越來越多的constraint 在給我
+讓我來選字的時候比較容易選的
+language model 你可以看成是這樣的一件事情
+如果是這樣的一件事情的話呢
+那一個language model 它真正的功能是什麼呢
+就是倒底給我多強的constraint
+這個constraint 倒底多強
+那這個constraint 如果越強的話
+也就是讓我這邊要選的越少的話是越好嘛
+就是我們剛剛講如果這邊要選六萬個
+這邊只要選一千個了
+到這邊只要選兩百個了
+那這樣的話呢就表示說我的constraint 
+那如果這邊不是兩百個只要選五十個那不是更好對不對
+所以就是說你如果越到後面的話
+我如果這個constraint 越緊
+我其實是越有幫助越不會錯嘛
+那這個所謂的這個這個六萬個還是兩一千個還是五十個這個是什麼
+這個其實就是我們之前講的entropy 對不對
+entropy 就是在告訴我們這件事情
+就是它倒底是uniform 的這麼多呢還是集中在這裡
+那我們上上次說過你可以把這個看化成很多種嘛
+你是這個完全uniform 的完全不知道呢
+還是你會集中在某些地方
+還是更集中在某些地方
+別的就沒有了
+還是完全集中在一個
+那這個就是在算entropy 
+所以呢那麼你你其實entropy越小的話就表示我這個constraint 越強
+那我就是用這個entropy
+在我就是用這個entropy 在描述這個constraint
+那麼因此這個我們這邊底下所講的東西都是在講entropy 
+是這樣來的
+其實這些這些perplexity 這些東西都是跟entropy 有關
+那其實entropy 就是在描述這個linguist constraint
+那什麼意思呢
+應該這樣子講
+這六萬個word 裡面誰的機率高誰的機率低
+我有很複雜的distribution 
+而且每一個word 出來
+它的bigram 都不一樣
+你可以想像我現在如果前面換成另外一個字的話bigram 又不一樣了
+這又是另外一個
+對不對
+你這邊出來了兩個字之後
+後面又有另外一個trigram
+那這兩個字只要不一樣這個又不一樣所以這個實在太複雜了
+那我們怎麼辦
+我們就用剛才的這個entropy 
+我就算這個entropy 就說明它的constraint 
+ok
+那我算entropy 來說明constraint 意思是怎樣呢
+我們舉例來講
+假設這個那我的一個辦法是這樣
+譬如說即使是這樣它還是即使用entropy 去算這還是很複雜嘛
+那我怎麼樣把這個entropy 轉成比較簡單的觀念呢
+我就是把它用二的次方
+所以你看我這個式子其實就是算entropy
+p x i 乘以log
+這就是算entropy 嘛
+那每一個xi 就是我的一個word 
+這裡的每一個xi 這裡的每一個xi 就是我的一個word 
+這是出來第一個word 這是出來第二個word
+那麼這裡出來每一個word 的
+所謂出來每一個word 就是我們剛才講的這個這個例子裡面ok
+這是第一個word 
+假設我這個這個一個一個word 出來
+那麼每一個word 有一個機率
+那個機率就是xi 
+那這樣的話呢我這個我的這個entropy 就是log xi 乘上咦跳到下一頁去了
+就是這個那這就是我的entropy
+但是我怎麼辦呢我把那個entropy 再一個二的次方
+叫做perplexity
+這個二的次方是什麼意思呢
+是一個size of virtual vocabulary in which all words are equally probable
+什麼意思就是說
+如果我這邊算出來是某一個entropy 的值
+我把它二的幾次方之後變成另外的東西
+變成一個譬如說一千八百七十二點六七
+如果我二的把這個entropy 算出來之後
+我算出來之後我二的這個次方之後得到一千八百七十二點六七的意思是
+如果剛好真的有一千八百點六七個word 
+它們是equally probable 的話
+它的機率就是log m 
+log two 的這個一千八百七十二點六七呢
+我們叫做m ’好了
+那它就是log two 的m ’
+那你可以想像好比是存那這個的這個的constraint 跟這個的constraint 是一樣的
+因為它的entropy 是一樣ok
+我們講這個entropy 怎麼算
+就是log m
+如果我有m 個而這m 個是equally probable
+機率完全相同的時候的m 的話
+它的entropy 就是log m 嘛
+那當然我真的算的時候不見得不見得會剛好是
+你我算出來的entropy 
+我現在就是把它把它二的如果現在算出這個東西來
+然後給它二的這個次方不就是m 嘛對不對
+所以等於就是說假設我剛好是一千八百七十二ok 是一個整數那好那就是這麼多個
+但是實際上你算出來不見得是整數
+是一個這個任何一個real number 
+那也沒有關係你就想像成這個譬如說我算出來是一千八百七十二
+你可以想像好比是好比是相當於是
+因為你這個三萬個這麼複雜你很難想像它到底是什麼
+我們不如都把它轉成一個轉成一個virtual vocabulary
+那裡面所有的word 或所有的unit 都是equally probable 的
+那假設我這樣來轉的話
+那如果我算出來的那個我算出來的那個entropy 
+我用二的這個次方去算得到一千八百七十二點六七
+我就可以想像這是一個m ’假設我真的就是一千八百七十二點六七的話
+那它們的而它們是equally probable 的話
+這個entropy 跟這個entropy 是一樣的
+那如果是這樣的話呢
+那假設我的這個那假設這個是我的第一個字
+那到了第二個字的時候呢
+因為有了前面的這個我有了bigram 
+結果我算出來的東西呢
+這個entropy 就小了很多嘛對不對
+當我這個有了bigram 之後
+這個entropy 這個distribution 又更集中了嘛
+變成變成更集中了
+當我這邊變成更集中了也許我這邊算出來變成一個更小的
+譬如說呢
+我變成一個譬如說你可以想像成我現在的這個m ’呢
+只有兩百五十七點一二
+那也就是說假設存在一個virtual vocabulary 只有兩百五十七點一二的話呢
+那它的entropy 它們機率equally probable 的話
+它的entropy 就是這個的log 
+那
+那那等於是說我的這個bigram
+已經把我從原來一千八百多個的的這個constraint 縮小到只有兩百多個了
+那如果是這樣的話呢
+到了trigram 的時候呢這個可能更小了
+譬如說我其實entropy 更小因為它更集中了
+entropy 更小的時候呢我其實只有一個譬如說三十八點一四
+那這個是我的m ’
+那也就是說我的entropy 變成log 的這個三十八點一四了
+那你如果這樣看的話這個就這就是我更小的一個constraint ok
+那這個意思是說
+我們因為你對每一個不同的word 你的bigram trigram 都不一樣
+給你的這個三萬個word 的這個distribution
+你其實真的一直都在考慮這三萬word 的distribution 
+不過三萬word 的distribution 實在是每個distribution 都不一樣
+你給你每一個bigram trigram 都不一樣實在有夠複雜我們希望用一個簡單的數字來呈現它
+那個簡單數字就是我用另外一個distribution 
+它是uniform 的
+看它總數是多少
+那個總數越小就是constraint 越小
+那那個總數其實就是entropy 的二的entropy 次方ok 
+那這麼一來的話這個東西其實就是我們講的size of virtual vocabulary in which all words are equally probable
+那麼等於說在這個case 呢
+我們本來第一個word 相當於要考慮一千三百七十二個字
+它會equally probable 的那樣的選擇的
+它的困難度是那樣的程度
+到了bigram 這困難程度變成譬如說
+相當於在兩百五十七個裡面
+要選一個
+這兩百五十七個是equally probable 的
+到了trigram 的時候呢我剩下是這麼多個裡面要選一個
+等於是這樣的意思
+那這些個數字就是我們在講的linguist constraint 
+那我的language model 就是希望把這個把這個linguist constraint 一路把它縮小
+然後我們可以看到它縮到多小
+那這個東西叫做perplexity of the language
+那你如果有一個language source s 
+譬如說是英文
+或者譬如說是中文
+或者說是文言文
+或者說是白話文或者說是什麼你都可以這樣子來算
+你可以算它的這個東西
+那這個呢其實就是我們的每一個word 的出來的entropy 
+然後二的entropy 次方
+相當於一個virtual vocabulary
+那麼那底下我這個例子是跟剛才講的是一樣的例子啦
+就是說你假設你算出來的那個是十個bits information
+就相當於一千零二十四個
+每一個都有相同的機率
+那在那個情形之下呢
+你的這個perplexity 所謂的perplexity 就是一零二四
+perplexity 這個字你去查字典的話呢
+是混淆度
+也就是說你現在還無法選你的selection
+你的constraint 就是只有這樣子
+我有這麼大的混淆度
+其實這個混淆度就是entropy
+因為entropy 其實也就是混淆度的意思
+那用另外一個字來講就是所謂的branching factor
+所謂的branching factor 的意思是說就是你這邊你可以想像有多少個選擇
+你要說三萬個六萬個也沒錯但是你也可以說就是一千八百七十二個選擇
+對不對這你如果說這個word 有六萬個選擇的話是說
+這六萬個選擇機率有大有小
+所以呢倒底六萬個是都怎麼好選法你其實講不出來
+那其實它的因為有大有小的關係
+其實相當於共有一千八百個才要選的
+這一千八百個是一樣的
+那我就說它的branching factor 是一千八百
+這是所謂的branching factor 的意思
+那有了這個第一個word 之後我下一個word 的branching factor 就降低到兩百多了
+因為我有了bigram 
+我就知道其實相當於我要選的第二個字是相當於是只有兩百五十七個裡面選一個
+那這兩百五十七個是一樣的機率就是了
+你這樣來看我的branching factor 變成兩百五十七
+那麼等到有了這兩個字之後呢我的第三個word 呢我的branching factor 剩下三十八
+那就是說呢我現在的這個嗯只有三十八了等等
+那麼我們如果這樣看的話呢這個就是所謂的branching factor
+好有了這個之後呢
+我們剛才所講的是一個language source 本身的perplexity
+底下我們要講給我一個language model 
+我就可以算這個language model 的perplexity
+那這個language model perplexity 也就是這個language model 的的嗯它的給我的linguist constraint
+或者它給我的branching factor 
+那麼怎麼算呢
+那麼你現在可以這樣想
+其實一個language model 給我的就是每一個word 的機率
+given 前面的condition
+所以呢一個language model 就是給我這個下一個possible word w i 的機率
+given 它的condition c i 
+例如假設對某一個word sequence 是w n 的話
+這是我們某一個word sequence 
+我們講過後面這個應該沒問題你知道
+就是我現在第一個word 的unigram
+然後呢有了第一個word 之後第二個word 的bigram 
+以及第三個以後呢假設我這是用trigram 來算的話
+就是前兩個的第三個的trigram
+那這樣來看的話不管是哪一種unigram trigram bigram 這些gram 都一樣
+都是一個某一個condition 下的下一個word
+在這個case 的話因為它是unigram 
+所以那個condition 就是沒有condition 就是空集合
+就是c i 就是空集合
+那這個bigram 的話我的condition 就是前面一個word
+第一個word 之後下一個是bigram
+那後面的trigram 它的condition 就是前面兩個word
+所以不管是unigram trigram bigram 它們等等的這些n gram
+我都可以看成是一個condition c i 之後的下一個word w i
+那如果是這樣的話呢
+那其實用我們剛才這個圖來解釋的話呢
+那這個每一個不是一個機率
+就是一個distribution 就是一個這種東西
+一個這種東西distribution
+因為就是你現在給我這個condition 
+那這個word 有六萬種對不對
+給我這個condition 這個word 有六萬種
+給我這個condition 這個word 有六萬種
+那這個六萬種呢有一個它的distribution 
+那那個distribution 不好算我就都算它的perplexity 
+或者說算它的branching factor
+或者說就是把它考慮成為一個另外一個virtual vocabulary 它的size 是m ’
+我都把它看成這樣子
+那我怎麼做呢
+那given 一個language model 我必需要有一個test corpus
+那如果沒有一個test corpus 我是無法算這件事
+那麼我們這話怎麼講我們底下就解釋
+假設我有一個test corpus d
+它裡面有n 個sentence 
+所以呢這是一個測試的database
+那麼這個測試的database 裡面呢有總共有n 個sentence
+所以呢每一個sentence 是大w 的一到n 
+那大w i 呢就是裡面有一堆word
+就是小w 是它裡面的word
+它的長度是n i 個word
+所以呢它有n 個sentence
+其中第i 個sentence 就是大w i
+它的長度是n i 個word
+所以呢這是小w 就是它裡面n i 個word
+然後呢我總共的word 的數目是大n d
+總共word 的數目是大n d

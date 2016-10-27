@@ -1,0 +1,138 @@
+什麼叫parameter sharing 
+就是指說
+有些tri phone 實在沒辦法我們就讓一些個tri phone 雖然不太一樣我們把它拼成一個
+當成一個算了
+阿那我們底下的一頁的兩個例子就是這一纇的叫做所謂的parameter sharing
+那麼第一個例子就是
+像這樣
+假設這是一個tri phone
+這另設是另外一個tri phone 
+他們都是相同的東西
+但是呢就是最後面接的不一樣
+就譬如說他們我們說這兩個好了
+它兩個都是這個
+所以呢母音本身是一樣的
+前面那個子音也是一樣的
+只是最後這個是接這個這個是接這個
+所以因此他們是兩個不同的tri phone
+他們雖然是兩個不同的tri phone
+所以呢你看到它它畫三個state 的話呢
+最後一個state distribution 不太一樣
+就是因為最後一個state 是因為後面接不同的東西的關係所以最後state 會不一樣
+前面兩個state 是很像
+但是因為我找不到夠多的data 去train 這兩個不同的tri phone
+那我就乾脆把他們merge 成為一個
+把它合成一個算了
+那麼這一個呢它最後就它把它們混在一起
+就把相同的tri phone這個寫錯了喔這是p h o n e 阿
+把相同的tri phone 
+類似tri phone 把它當成一個
+然後呢就用共同的data 來train
+譬如說這個總共只唸到三次
+這只唸到兩次
+那至少有五次總比三次兩次好嘛
+阿那我就把他們兜在一起
+當成一個model
+恩
+那這是一種辦法
+這就是所謂的generalize tri phone 
+他們稱為generalize tri phone 就是指說有一堆tri phone
+我實在沒有辦法各自train 
+我就當它們很像
+合成一個算了
+那麼這樣的話呢我可以至少至少這樣的話呢這兩個可以獲得
+但他們就不夠accurate
+那另外一個情形是像這邊的這種
+那我有另外一個辦法就是
+這個至少前面這兩個state 很像
+我就把它們當成是同一個
+只有最後一個state 
+那不像就拆開來
+那這樣畫的意思其實是就是這樣的意思嘛
+知道就是
+那也是像這樣
+是同一個phone
+前面是接一樣
+只有最後後面接的東西不一樣
+使得它們最後一個state 不一樣
+既然這樣的話如果這個音只有三次這個音只有兩次
+那我至少前面這個就我就用五次一起train
+所以我這兩個state 呢至少是用相同的讓它們有
+所以這兩個我讓它們有相同的distribution 至少train 起來比較好一點
+那最後後一個就讓它們不一樣好了
+阿這這是另外一種方法
+這是所謂的shared distribution model
+那麼前面這個情形我們說是sharing and model level 
+就是這兩個model 一起share 
+那這邊呢就是指state level 
+就說在state level 讓它們一起share 
+那也就是說如果它們這個state 確實不太一樣的話
+就讓它們不merge 起來
+讓它們拆開來阿
+那這種都是所謂的sharing
+所謂的這個這裡所謂的sharing 就是我們剛才所說的意思
+我們剛才說呢
+parameter sharing 
+其實所謂的parameter sharing 就是它們有共同的
+有共同的parameter
+或者說有共同的mean 跟covariance
+共同的gaussian parameter 
+阿那所謂的共同parameter 其實也就是有共同的training data
+如果這個有三次這個有兩次我我就用五次一起train 嘛所以有共同的training data 阿
+那麼這樣的話呢
+這個tri phone 的最最大的好處是generalized ability
+你如果完整
+真的能夠做到的話你可以做的最好
+但是最大的問題就是不好train
+然後呢不容易拼的好
+因此呢我們就是就是要用這個parameter sharing 的方法
+那麼這樣sharing 之後呢是在train ability 跟accuracy 中間作一個trade off
+或者作一個balance 
+這個意思是說
+你如果是越讓它sharing 越多的話
+這種sharing 越多
+當然就越好train 哪
+可是train 出來就越不精確嘛
+這當然不精確嘛對不對
+這兩這兩個怎麼會當成那一個呢
+這當然不精確嘛
+所以你這種這種狀況這種sharing 發生的的越多你一定越不精確嘛
+所以accurate 一定比較差
+但是這樣之後這個比較trainable 
+對不對所以train ability 跟這個accurate 是互相矛盾的
+同理那邊也是一樣
+你的sharing 做的越多的話你越不accurate
+但是你越是trainable 阿
+那麼因此呢就是剛才講的
+那麼因此呢就是剛才講的就是你這個train ability 跟這個accuracy 之間是一種balance 
+或者是一種trade off
+也就是兩者是無法得兼的
+好那麼有了這樣的了解之後
+底下我們這個五點零整個在講的都是在講這件事
+就是如何來train 這個tri phone 阿
+那麼tri phone 是今天所有的語音系統的主流
+也就是最成功的model 
+一律都是用tri phone train
+但tri phone 都有共同的問題就是說事實上你是train 不好的
+因為一定有一大堆tri phone 是看不到的
+那是根本沒有data 或者data 太少
+是train 不出來的
+那麼因此呢你顯然是需要用一堆方法
+來做到這個accuracy 跟train ability 之間的balance
+這就底下我們要說的事
+那麼在我們之前的這個reference 這邊講到
+unseen tri phone 阿
+所謂的unseen tri phone 就是你永遠有一大堆tri phone 你的data database 根本就沒有
+你根本就看不到阿
+這所謂的unseen tri phone 
+那麼哦以這個以我們的經驗而而而立
+譬如說這個哦我們要train 一一套tri phone 的model 
+很可能會發現裡面有一半的tri phone 根本沒有data 
+也就是說你蒐蒐蒐集了幾十小時的聲音
+發現它只中間只呈現了一半的tri phone 
+另外一半它們根本就沒有出現
+那些根本沒有出現的tri phone 呢就是所謂的unseen tri phone 阿
+這所謂的unseen tri phone 那怎麼辦
+我們要有辦法來做它阿
+那就是底下我們五點零整個都在講這件事
+就是怎麼樣來做這樣子的tri phone

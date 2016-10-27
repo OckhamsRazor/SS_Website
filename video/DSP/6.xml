@@ -1,0 +1,117 @@
+<playlist version="1" xmlns="http://xspf.org/ns/0/i">
+<title>6</title>
+<tracklist>
+<track>
+<title>Some Fundamentals Of Information Theroy</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>787.4</duration>
+<annotation>slides/DSP/6-1.jpg</annotation>
+<location>video/DSP/6-1.mp4</location>
+</track>
+<track>
+<title>Perplexity</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>1253.92</duration>
+<annotation>slides/DSP/6-2.jpg</annotation>
+<location>video/DSP/6-2.mp4</location>
+</track>
+<track>
+<title>Perplexity</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>615.22</duration>
+<annotation>slides/DSP/6-3.jpg</annotation>
+<location>video/DSP/6-3.mp4</location>
+</track>
+<track>
+<title>Perplexity</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>504.365</duration>
+<annotation>slides/DSP/6-4.jpg</annotation>
+<location>video/DSP/6-4.mp4</location>
+</track>
+<track>
+<title>A Perplexity Analysis Example With Respect To Different Subject Domains</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>901.023</duration>
+<annotation>slides/DSP/6-5.jpg</annotation>
+<location>video/DSP/6-5.mp4</location>
+</track>
+<track>
+<title>Smoothing Of Language Models</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>796.89</duration>
+<annotation>slides/DSP/6-6.jpg</annotation>
+<location>video/DSP/6-6.mp4</location>
+</track>
+<track>
+<title>Smoothing Of Language Models</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>1713.507</duration>
+<annotation>slides/DSP/6-7.jpg</annotation>
+<location>video/DSP/6-7.mp4</location>
+</track>
+<track>
+<title>Smoothing Of Language Models</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>1988.027</duration>
+<annotation>slides/DSP/6-8.jpg</annotation>
+<location>video/DSP/6-8.mp4</location>
+</track>
+<track>
+<title>Class Based Language Modeling</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>592.98</duration>
+<annotation>slides/DSP/6-9.jpg</annotation>
+<location>video/DSP/6-9.mp4</location>
+</track>
+<track>
+<title>Class Based Language Modeling</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>966.883</duration>
+<annotation>slides/DSP/6-10.jpg</annotation>
+<location>video/DSP/6-10.mp4</location>
+</track>
+<track>
+<title>An Example Of Class Based Chinese Language Model</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>402.53</duration>
+<annotation>slides/DSP/6-11.jpg</annotation>
+<location>video/DSP/6-11.mp4</location>
+</track>
+<track>
+<title>An Example Of Class Based Chinese Language Model</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>606.597</duration>
+<annotation>slides/DSP/6-12.jpg</annotation>
+<location>video/DSP/6-12.mp4</location>
+</track>
+<track>
+<title>Structural Features Of Chinese Language</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>815.6</duration>
+<annotation>slides/DSP/6-13.jpg</annotation>
+<location>video/DSP/6-13.mp4</location>
+</track>
+<track>
+<title>Word Based And Character Based Chinese Language Models</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>746.48</duration>
+<annotation>slides/DSP/6-14.jpg</annotation>
+<location>video/DSP/6-14.mp4</location>
+</track>
+<track>
+<title>Segment Pattern Lexicon For Chinese</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>324.83</duration>
+<annotation>slides/DSP/6-15.jpg</annotation>
+<location>video/DSP/6-15.mp4</location>
+</track>
+<track>
+<title>Word/segment Pattern Segmentation Samples</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>86.96</duration>
+<annotation>slides/DSP/6-16.jpg</annotation>
+<location>video/DSP/6-16.mp4</location>
+</track>
+</tracklist>
+</playlist>

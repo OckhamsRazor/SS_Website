@@ -1,0 +1,445 @@
+那我們就不多說了就是了
+那再下來我們要講的就是這個pca 
+那pca 是一個數學的方法
+用在很多地方
+那麼包括pattern recognition machine learning 什麼東西都都都在用它
+那麼我們這裡用pca 的目的是要作底下的這個eigen voice 喔
+所以eigen voice 是另外一個在九八年到兩千年之間所出現的一個新的方法
+那它有它的有趣的地方
+所以這是我們底下要講的東西
+那要講那個之前就要先我們先要簡單地講一下什麼是pca 
+然後我們才可以開始往下講喔
+ok 好我們先在這裡休息十分鐘
+ok 好我們開始接下去講底下這一段
+我們要先說一下這個pca
+然後呢以pca 為基礎我們就講底下的eigen voice
+那麼pca 是一種數學工具
+那麼用在很多地方所以你也許在別的課學過也不一定
+那麼如果學過就當成是一個複習喔
+那麼pca 是幹嘛的呢
+它的基本想法是這樣
+假設說最簡單的想法假設我有兩兩個dimension x one 跟x two
+我有一堆data
+在這個空間上面分佈
+那我現在如果是用我傳我原來的x one x two 為來為軸的話
+它們的distribution 其實是比較緊的
+譬如說我在x one 上面我看到它是這樣的一個distribution
+它是一個這樣的distribution
+那我在x two 上看到的是這樣的distribution
+那事實上呢是不是只有這兩個軸可以用呢其實不然
+我們知道在兩度空間裡面你其實可以選擇的軸有無限多個
+舉例來講我如果選擇這個軸的話呢
+假設這是y one 的話
+那這個軸裡面呢我看到其實就會變成一個這樣子的distribution
+那這個散開就比這兩個x one x two 都散開得多
+那散開得多是什麼意思呢你可以想像因為我們是用分出來
+這個是ㄚ這個是ㄧ這個是ㄨ
+你如果它擠在一堆的話呢ㄚ跟ㄧ跟ㄨ就比較擠在一堆
+你如果把它用這個軸把它拉開來的話呢
+這個ㄚㄨㄧ可能就拆得比較遠ok
+那這個是pca 的基本的想法
+就是說你的data 原原來可能是用某一種物理量的軸
+來來分佈的一個空間
+在這個軸上面它的distribution 可能不太好
+它們可能是這個比比比較緊的
+可是你如果可以找到一個軸
+讓它的分佈散得最開的話
+散得最開之後你很可能因此你就能得到比較好的
+這個比較能夠把它拆得開來
+那這個是pca 的基本的想法
+就是假設我們這邊是講兩維的空間
+但是事實上是可能是要n 維啦喔
+所以我假設是一個n 維空間的random vector x 
+那x 就是這些個點就這些點
+它都是n 維的
+所以呢每一n 這樣寫的意思是說我的每一維都是一個real value 的random variable 
+那麼我有n 個real value 的random variable 
+構成一個n 維的random vector 
+它的dimension 是n 
+那相當於這邊的這個空間
+這邊畫的是二
+那然後呢我們在pca 裡面都是先假設它是zero mean 的
+不是zero mean 的話呢我就先把它減掉mean 把它變成zero mean 就是了
+它是zero mean 的
+然後呢我希望找到一組新的orthonormal basis vector
+e one e two 到e k 
+那譬如來講這個y one 就是我們剛才講的e one 啊
+就是我希望找到這組basis e one e two 
+我有一組新的e one e two
+那我希望在這個basis 上可以怎樣呢 
+可以做到第一個呢我這個e one 的transpose 這個t 是transpose x 是maximum
+什麼意思其實e one 你知道我現在的e one 是一個是一個都是一個這個column vector  
+這是所謂的e one 
+我都是用column vector 來代表
+所以e one 的transpose 呢就是這樣子的
+是一個row vector 
+這是e one 的transpose 
+然後呢乘上x 的話呢
+x 是是一個column 的
+這個是x 
+所以e one 的transpose 乘上x 其實是什麼就是他們的內積嘛
+對不對就是它跟它的內積
+所以呢其實就是e one 跟x 這兩個vector 的內積
+那如果它是內積的話那那其實因為這兩個vector 都是內積你就可以知道就是這個e one 跟的長度跟x 的長度跟它的cosine theta 相乘
+但是因為e one 的長度e one 我讓它是單位長的unit vector 
+這是e one 
+它是單位長的unit vector 
+所以呢讓它單位長是一
+於是這是什麼這就是它的投影嘛
+所以呢你如果說是我們來看如果這個是e one 的單位長的unit vector 
+而我的這是我的x 的話其實就是什麼
+就是它的投影嘛對不對
+我得到的這個這個值其實就是x 乘上cosine theta 就是它的投影
+所以呢這邊說了半天的意思
+這個e one 的transpose t 
+其實就是指所有的x 投影到這個e one 的軸上來的投影的值
+就是這個東西就是這個東西那就是就是它的投影的意思
+ok 所以呢我們現在說
+我現在就是要這個投影的這個variance 要最大
+這是我的最最大的principle 就是在這裡
+也就是說我現在要找出一個一個新的basis 來
+它的unit vector 是e one 
+然後我把所有的點通通都投影到這個上面來的時候
+在這裡的variance 要最大
+也就是能夠散得最開
+如果散得最開的話呢那我就最容易把它區別出來
+所以呢我就是把所以這個e one 的transpose 乘上x 呢我們說其實就是在作內積
+然後其實就是指x 投影到e one 上面去的投影的值
+那麼我要這個投影的是maximum 
+這是我的第一個目標
+也就是說x 有maximum variance 當投影到e one 上來
+那當你這個e one 決定之後我可以決定e two 
+e two 是怎樣我這邊是只能畫一維但事實上當然不只一維
+當我這個e one 決定是這樣之後呢
+垂直於e one 的呢可以有無限多個vector 
+對不對我第二個dimension 是我我重新定義一組這個這個這個basis 嘛
+所以第二個dimension 是要跟它垂直的
+可是given e one 之後垂直於它的是無限多個
+我要選擇哪一個呢我要選擇那一個是在投影上去是最大的那一個
+ok 所以呢從i 等於二開始
+譬如說i 等於二的話我就是要e two 要跟e one 垂直
+然後呢我現在e two 的i 跟x 要maximum 對不對
+所以呢也就是說當我e one 選定之後
+我在所有垂直e one 的裡面選擇第二個e two 
+使得它們的投影在上面是最大的
+那有了e two 之後呢我就可以選選擇e 三以此類推
+那麼我e 三要跟e one 跟e two 垂直
+那麼當然跟e one e two 垂直的e 三又有無限多個
+我要選的那一個是投影最大的
+以此類推所以這個是第二第二條式子的意思
+就是你你選擇的每一個e i 
+都要它跟前面的i 界e one 到e 的i 減一都要垂直的那個e i 
+而那個e i 呢要它的它投影上去要最大
+那麼因此呢就是說也就是說我的x 要有maximum variance 
+投影到每一個e i 上面去
+這樣我總共選擇k 個出來
+那這個就是我們要做的事情就是pca 的目的就是這樣子
+於是我就在這邊可以找到k 個basis 
+那麼等於是一個新的一個dimension 的空間
+所有的點都投影的那個空間上面去
+那它們每一個空間我都散得最開
+這是pca 的目的
+那這個詳細的我們就不說我們就說它的solution
+solution 是什麼呢
+你就是把所有的x 去求它的covariance matrix 
+那麼什麼是covariance matrix 呢這個應該很熟悉了
+因為我們的每一個gaussian 
+我們每一次從頭講的gaussian 就是那個就是covariance matrix 
+那麼by definition covariance matrix 就是底下這個東西
+expectation value of x x transpose
+就是x 跟x 的transpose 
+那是什麼呢
+我們說x 是一個column vector 
+x transpose 呢是一個row vector 
+那這兩個去做結果是怎樣呢
+這個column 跟個row 相乘呢
+就乘成一個matrix 
+所以呢你就得到一個所以你得到的就是一個一個matrix 
+這個matrix 裡面的每一個東西是什麼呢
+譬如說這是第i 個第j 個的話
+那這個是什麼
+這個就是x i 跟x j 
+那真正講起來它應該是這個是要扣掉它的mean 
+所以應該是x i 減掉x i 的mean 
+乘上x j 減掉x j 的mean 的這叫做covariance matrix 
+不過我們這邊是因為都已經先說它是zero mean 了
+我先說它是zero mean 所以可以不寫這個就是了
+因為它是zero mean 
+那基本上你應該是這樣子一個東西
+對不對
+那也就是說這裡的所謂的x i 就是指這邊第i 個
+x j 就是指這邊的第j 個嘛
+那其實就是就是這裡這個x 裡面的第i 個跟第j 個之間的covariance 
+那這樣就構成一個matrix 
+那這個matrix 就是我們這邊所謂的這個covariance matrix 
+所以呢你怎麼做這件事呢這個solution 就是說我現在去先把這一堆data 
+你先拿這堆data 每一個都是有有n 個dimension 
+n 個random variable 嘛
+那我就把這些東西把第i 個跟第j 個去算它的covariance ma 的covariance 值然後就構成一個matrix 
+那你zero mean 就就這個就不用管了
+那麼沒有zero mean 就把mean 減掉
+得到這個matrix 之後
+你只要去求這個matrix 的eigen vector 
+那這些個eigen vector 裡面呢每一個eigen vector 都對應到一個eigen value 
+那你就選擇那eigen value 最大的那k 個
+就是你要的這些個basis 
+那這話怎麼講呢
+你你回想一下你從從前學的線性代數裡面的eigen value 跟eigen vector 
+任何一個matrix a 
+我如果乘上一個vector u 的話
+任何一個matrix a 乘上一個vector u 的話基本上是把它變成另外一個vector v 
+ok 
+基本上乘上一個vector v 
+會變成另外一個vector u 
+但是呢如果說它沒有變成另外一個vector 
+還是自己的那個vector 
+只是scale by 一個parameter lambda
+這個時候這個就叫做eigen vector 
+對不對
+那這個時候的eigen vector 裡面的這個scale 的這個vector 呢
+這個scale 的這個vector 呢就是eigen value 
+所以這是eigen vector 的定義嘛
+就是我我每我matrix 可以找到它的eigen vector 
+使得相乘的時候呢其實只是一個scaling 
+而那個scale 呢就是我的eigen value 
+那你如果回想這件事情的話那這邊的是一樣的
+你就是去把那個covariance matrix 求出來之後
+就求這個covariance matrix 的eigen vector 
+那你如果回想你的數這個線性代數的話呢
+這邊如果是n by n 的話呢
+我可以找到n 個eigen vector
+這n 個eigen vector 我可以把它排起來
+可以把這個matrix 變成diagonal 
+也就是說有一個這樣子的關係
+這是我的第一個eigen vector 
+這是我的第二個eigen vector 
+等等等等
+我總共有n 個eigen vector 
+我n by n 的matrix 有n 個eigen vector 
+可以排成一個matrix 
+如果是這樣的話呢
+我中間這個matrix 就可以變成所有的eigen value lambda one lambda two 一直到lambda n 
+其它都是對角線以外都是零
+然後第三個matrix 呢是完全一樣
+只是把它transpose 過來
+所以第一個row 是我的第一個eigen vector 
+第二個row 是我的第二個eigen vector 
+等等等等
+最後一個呢是我的第n 個eigen vector 
+那這三個相乘就是我原來的那個covariance matrix 
+這個應該你在線性代數有學過這個東西
+這個式子其實只是這個式子的衍伸
+這個是我每一個eigen vector 都長這樣
+然後我有n 個eigen vector 
+這n 個把它排起來
+然後把它這個做一些matrix 的重整
+就可以變成那個式子
+那這個意思是說
+我我一個matrix 可以拆成三個matrix 相乘
+其中中間那個變成對角線的
+而對角線上的每一個element 就是我的eigen value 
+那每一個eigen value 是對應到一個eigen vector 
+也就是說每一個eigen vector 
+有一個它所對應的那個eigen value 
+是那個值
+所以呢value eigen value 跟eigen vector 是對應的
+因此呢這邊的第一個eigen value 
+是對應到這邊的第一個eigen vector 
+第二個eigen value 是對應到第二個eigen vector 等等
+那麼於是呢
+我們可以把一個matrix 這個co 這個covariance matrix
+拆成這三個相乘
+其中中間是這個對角線的
+那這個是我們如果對它做eigen value 跟eigen vector 的分析的話可以得到的
+那這時候呢它這邊說呢我們是
+怎麼辦呢我們通常的作法是把這個eigen value 照大小順序排列
+我這邊可以照照大小順序排列
+就是最大的那個eigen value 放在最上面
+第二大的排在第二個
+到後面越來越小等等
+那如果這個是最大的話呢
+那那它所對應的就是最大的那一個的eigen vector 
+這是第二大的eigen value 它所對應的就是第二大的那個eigen vector 等等
+當我把它排成這樣子之後呢
+我現在可以做一個很重要的簡化
+就是我不要全部了
+我只選擇前面的k 個就好了
+譬如說我只要選擇前面的k 個
+這邊我也只要選擇前面的k 個
+這邊我也只要選擇前面的k 個
+那麼這三個相乘仍然是一個n by n 的matrix 
+因為這個是n by k 
+嗯我這邊是用小k n by k 那這個呢是k by k 
+這個是k by n 
+所以乘出來呢仍然是一個n by n 的matrix 
+而那個n by n 的matrix 會跟這個非常像
+只差一點點
+那麼為什麼會非常像
+是因為我們現在已經把按照大小順序排列
+那這個是最最大的那個第二最大的
+那你剩下的可能是很小的
+那剩下可能是很小的所以呢你你你這邊很小的東西去乘進去加進去那個值很小很小
+所以大部分的它的covariance 裡面的大部分東西
+都用前面的k 個dimension 
+或者這邊的k 個eigen vector 
+跟這k 個eigen vector 幾乎就已經能夠呈現原來的了
+因此呢我只要選擇前面的k 個就可以了喔
+它是這樣意思
+那當然那個k 是多少我們沒有說
+但是我基本上呢就是我可以把原來的n by n n 度空間reduce 到只有k 度空間
+那這k 度空間其實就是這邊的第一個
+這個e one 就是這邊的第一個dimension 
+e two 就是第二個dimension 這樣我總共k 個
+得到一個k 度空間的話呢
+almost 就是原來的了
+因為剩下的這個效果影響都很小
+因為這些只是這些
+這些都是很小的值了
+所以呢那麼這些影響都不大了所以呢會得到一個非常接近原來的東西
+那這樣的結果就是我們這邊所說的
+我現在呢就是選擇k 個
+這個k 個就是這邊的夠大的eigen value 的k 個
+k 個夠大的eigen value 
+剩下都很小了的
+那這k 個也就是covariance matrix 裡面的k 個eigen vector 
+相當於那k 個最大的eigen value 
+於是呢我現在得到一個新的vector 
+我現在變成k 個dimension 
+就用這這個東西構成一個新的k 個dimension 
+那麼然後呢我的每一個x 
+就乘上這個a 的transpose 
+就對應到那個那個新的空間裡面去
+那這裡你看那這個東西其實就是我們上面剛才所講的這個
+e one 的transpose 乘上x 
+e two 的transpose 乘上
+我每一個都一樣
+就變成所謂a 的transpose
+a 是這個嘛
+a 是這堆k 個
+就是這一個這k 個這個就是所謂的a 
+那a 的transpose 就是這個嘛
+a 的a 的transpose 就是這個嘛
+所以呢a 的transpose 乘上x 的話呢
+其實就是每一個eigen vector 都乘上x 
+跟上面這個其實是完全一樣的
+阿啊我剛才擦掉了
+跟那個是完全一樣的
+所以呢那這個意思呢其實就是我現在把這個點
+全部這些點全部對應到一個新的一個sub space 
+只有k 個dimension 
+這個k 個dimension 
+是原來n 個dimension 的一個sub space 
+可是這些點投上去它在上面所呈現的
+的distribution 跟原來是差不多一樣的
+那麼這個意思呢我們不太容易畫出來
+不過如果我們用三度空間來畫的話
+我本來是三度空間的一堆點
+那我的sub space 就是兩度空間
+也就是說我在這上面找到某一個譬如說這一個這個平面
+這是一個兩度不太好畫我有有一個兩度空間的平面
+我看看怎麼畫喔
+這樣子好了喔
+就是說我在原來的這個三度空間的上面
+我找出一個兩度的平面
+那這個平面such that 我這些點通通投影到這上面來
+之後我得到這些個點
+那turns out 在這些點在這個兩度空間的sub space 這個sub space 上所呈現的
+跟我原來在三度空間呈現幾乎是一樣的
+而反而在這上面呈現反而是拆得最開的
+拉得最開的
+就好像剛才的這個軸
+我這個是兩度把它呈現在一一度上面是一樣的啦
+我這是兩度上面把它把它投影到一度上面這我把它拉得最開
+那同理呢我這邊畫的是三度把它投影到兩度來也是一樣的
+那我就是把它變成我我在等於是本來是這麼多個點但是呢我把它找到一個兩度空間的這個找到這個兩度空間的這個平
+之後呢我它投影投影在這上面之後呢
+其實反而是拆得最開
+雖然dimension 減少了
+但是反而是拆得最開
+我就在上面做這n 個做這k 個dimension 就好了
+喔就這個意思
+那這個就是什麼這個就是y 等於a 的transpose x 
+那我就等於是我把原來的x 上面的每一個點嘛
+對不對我x 上面的每一個點通通都分別乘上這個
+就投影到這個新的空間上面
+那就那邊那個case 
+我就把x 上面的每一個點通通投影到那個那個sub space 來
+於是這個k 個dimension 這個sub space 呢
+它的dimension 是比原來的n 小
+但是呢當你這個所有的點投影上去的時候呢
+其實這些投影的這些y 
+已經是跟原來的整個的distribution 是最接近的
+是非常接近的
+而我現在dimension 小很多
+而最大特點就是說我現在的每一個dimension 上面的variance 都是最大的
+所以呢就好像這個東西我投到這邊這個是最大的
+那同理呢我投到這邊的時候呢這上面每一個dimension 都是最大的
+它的它的每一個每一個dimension 上面呢這個投影都是拆得最開的
+那這個就是這個的這個pca 的意思
+那底下有講一下這個pca 怎麼prove 
+那我想這個比較不那麼有興趣你看一下
+那我們不不詳細地講
+那基本上呢它的意思就是其實不難prove 
+那我只要做這個嗯做個lagrange multiplier 然後去maximize 就是了
+舉例來講這個e one 怎麼求
+e one 就是要這個東西maximum 嘛
+就是要e one 的transpose 乘上x 
+的variance 要maximum 
+那這個variance 是什麼呢
+這個variance 就是它的平方求平均
+它的平方就變成e one 的transpose 
+乘上x 乘上x 的transpose 再乘上e one 
+然後求平均
+但是這邊的random variable 只有x 
+e one 不是
+所以呢我平均就到中間來了對不對
+所以呢我這個的variance 就是它的平方
+就是e one 的transpose x x transpose e one 
+然後我這個時候求平均就是平均中間這一塊
+而平均中間這一塊其實就是我的covariance matrix 
+這個就是我的covariance matrix 
+ok 就是這裡這個東西
+所以呢我就是要這個東西要等於maximum 
+那我substitute 什麼constrain 
+e one 是要單位長
+那我就maximize 這個東西substitute 這個constrain 
+怎麼做
+用lagrange multiplier 
+所以我的object function 呢就是
+嗯這裡有點寫錯了
+這個應該是這個不是variance 這個是expectation 喔
+也就是說
+這個東西應該是這個東西吧
+所以這個不是variance 這個是expectation 
+那我現在就是把這個我要maximize 的這個東西
+減掉這個lambda 就是我的lagrange multiplier 
+乘上這個constrain 
+我要maximize 這個東西我就對它微分
+對每一個e one 的component 去微分等於零
+那這樣子呢我就可以微分之後我就可以得到這個式子
+這個式子是什麼其實這個東西就是covariance matrix 
+那那個covariance matrix 乘上e one 等於lambda one e one 
+這個就是eigen vector 的式子嘛
+這個就是那個covariance matrix 
+乘上它的eigen vector 
+就等於原來的eigen vector scale by 一個eigen value 
+就這樣子就出來了喔
+所以這是第一個就可以這樣子做
+而且你可以發現那個eigen value 也就是我要的那個最大的那個那個variance 
+所以呢我這個第一個eigen vector 得到的就是第一個dimension 
+而這上面的那個variance 那個最大的我maximize 那個variance 
+就是這個第一個eigen value 
+那以此類推我現在第二個照做
+第二個照做我的constrain 只多了一個第二個還要跟第一個垂直
+照做我就可以得到第二個等等
+那麼因此呢我的第二大我的第二大的那個variance 就是這個lambda two 
+就是這個第二個eigen value 就是它第二大的
+然後它的相對的的vector 就是e two 等等
+那麼這樣一來呢我的這個這個pca 的原理大概就這樣
+這是一個非常簡單的解釋當然pca 本身含有也是有很多學問的
+那在一般的譬如說pattern recognition 
+或者說是嗯machine learning 啊什麼這些書上都可以找得到
+那我這邊有給你一個reference 
+如果有興趣的話光是pca 可以寫一本書的
+那這是大概是寫得最完整的一個關於pca 的一本書
+這我們圖書館是有的

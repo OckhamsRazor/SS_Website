@@ -1,0 +1,522 @@
+那所以呢我我們今天我就我改成今天我們先講十五點零
+那麼這個啊如果今天可以把十五點零講完的話我們下週回到九點零
+我想是這樣可能比較順序上可能會被對各位更準備期末報告可能更方便一點
+那十五點零的這些refer 我們這些講的是什麼東西我們待會解釋
+那這裡面的這個啊課本上有一小段在講就是這裡面
+這個課本裡面講的一點
+那大部分的內容其實也是一樣都是啊我選一些從大概九零年代中期到兩兩千年左右的一些個比較代表性的東西
+那麼經過這麼多年下來應該是大家公認是一些有這個有代表性的有具體的都公認相當不錯的技術
+我們拿它來說一下
+做為example 
+雖然從那個以後到最近
+還有很有非常豐富的paper 可以找得到
+那那些應該都是很好的報告題材
+所以我們今天先來講這個十五點零
+那我們先說一下十五點零在講的啊我們這邊講最主要的一個基本的事情
+就是所謂的mismatch 
+in 這個我我們的語音辯識到目前為止所有最成功的方法
+都是以統計為基礎
+那麼所謂統計為基礎其實就是我們這邊畫的這一塊
+這一小塊其實就是我們之前一直在說的東西
+那最前面這個就是當你的聲音進來的時候我先做這個我先做這個feature extraction 
+這就是我的front in七點零所說的
+最後求出來的一西一些m f c c 
+那麼之後呢那這些acoustic model 就是我們四點零五點零所說的那些個tri phone 跟hidden markov model 
+然後呢這邊就是我們六點零所說的language model 等等
+那麼我們可以回想一下就知道
+hidden markov model 是完全統計式的
+是一個完全以統計為基礎所建立的model 
+同樣的n gram language model 也完全是統計為主而建立的
+那這些統計的基本精神是假設說
+我用夠多的語音的data 
+然後呢它能夠幫我們描述所有的phone 所有的tri phone 
+它的統計特性怎樣
+我有夠多的文字的data 
+它可以幫我們很清楚的描述這些文字的這個n gram 是怎樣的
+然後我用這些為基礎製做我輸入的東西呢
+我希望我輸入的聲音它的m f c c 的distribution 
+的m f c c 的這些所有的統計特性
+是用這個來描述的所以可以用它來recognize 是什麼phone 
+它的文字之間的字詞句之間的關係是跟這個一樣的
+所以可以用它來描述等等
+那這個是統計方法的一個最基本的精神所在
+可是事實上是不是這樣呢
+我們必需了解不盡然是這樣
+那麼當我真正進來的聲音它的m f c c 的長相
+跟這邊所用的model 的train model 這些東西長得不太一樣的話呢
+那就是所謂的mismatch 
+同樣呢當我進來的句子它的字詞之間的關係跟你這邊的不太一樣的話呢
+那也就是所謂的mismatch 
+那是什麼情形呢
+我們只要想我們在十一點零所說的speaker 的的speaker 的adapt adaptation 時候
+我們說假設對speaker a 而言
+它的ㄚ是這一群的
+它的ㄨ是這一群的
+那speaker b 就不見得還是這樣
+它可能會更多一點
+當我有一群人的時候呢這個ㄚ可能就擴大到這樣子
+因為不同人聲音不太一樣而這個ㄨ可能就擴大到這樣子
+於是呢它們的這個distribution 會會overlap 
+那這個時候怎麼辦我們做adaptation 這就是我們十一點零所說的
+我現在看這個人的聲音是誰
+他講話講起他輸入的聲音發現他的ㄨ在這裡
+所以呢我就知道其實對這個人而言他的ㄨ在這裡
+我這些就不要了
+對這個人而言他的ㄚ在這裡我就在這裡
+那於是呢我這些東西都可以拿掉
+之後呢我就把它們又分開來了
+這就是speaker adaptation 在說的事情
+換句話說其實不同的人的統計特性都不一樣
+那麼不同的人他的他的這個他的這個啊這些m f c c distribution 本來就不同
+那這個這個adaptation 的例子其實就是在說
+我的我我train 的是用speaker independent 
+譬如說五百個男生五百個女生
+那train 出來的東的東的的tri phone 的model 是用這個這些train 的
+進來的人進來的聲音不見得是他呀
+那進來的聲音是另外一種
+因此我還要再想辦法調到進來的那個
+那我才能夠做得好
+當你沒有調這件事的時候你進來的聲音
+其實跟它是mismatch 
+那麼因此呢你會如果有mismatch 當然你到時候做出來就不會對
+以language model 而言也是一樣的
+那麼我們之前說過
+各位的習題也做過
+就是譬如說體育新聞跟財經新聞
+它們的詞彙跟句型
+它們詞跟詞之間的關係都是不一樣的
+因此呢如果說是我用相同的我我即時我這邊想辦法讓所有可能的文字都拿來train 
+train 出各一個各種各種topic 都相關的的n gram 
+但是呢我今天這個講的人講的的是哪一個topic 
+他如果講的是某一件特別的事情的話搞不好你這個個n gram 就是不對的
+那這個就是language model 的的mismatch 等等
+那麼因此呢當我們在說這些個統計
+以統計為基礎的時候
+我們千萬不要以為統計那麼好
+那麼統計是必須我們必須知道
+盡信統計不如無統計
+那麼統計本身是有很大的問題的
+那一個一個很大的問題就是mismatch 
+那我現在在這一頁所說的是所有可能的mismatch 
+那我們先說最最基本的一個情形就是我的聲音不盡然是最乾淨的聲音
+我的聲音可能被各種東西破壞
+那麼我們舉例來講假設你是用你的手機
+打電話給遠端的一個server 來操作什麼事情的話
+你在你真正講的聲音是這個x n 
+不是那個x n 
+你講的x n 在這裡
+但是呢在你打電話的時候
+這個你你說話的同時
+進入你的那個手機的麥克風的還有很多的雜訊
+那麼這些雜訊一起進來我們姑且稱為n one 
+那麼之後呢這個聲音經過了傳送
+經過了你的電話的傳送到了接受端
+這個傳送中間會有各種各樣的破壞
+最簡單的就是你電話本身一定會有channel 的distortion 
+那這個你馬上想得到
+我們知道在你打手機的電話的時候你聽到你的朋友打的的聲音
+那個聲音可以清楚到你知道他在說什麼話
+你也可以判斷他是什麼人
+但是你知道那個聲音跟他在你對面跟你講話是不一樣的
+那他跟在你對面講話是不同的
+這個部分其實就是經過了一些變化經過了一些distortion 
+那麼in addition 當然還有很多其它譬如說麥克風本身是一個distortion 
+因為你知道任何一個聲音通過麥克風的時候
+麥克風本身是有他的frequency response 的
+那麼在某一些frequency 
+它得到不同的gain 跟不同的face 等等
+所以它整個的訊號對麥克風而言其實也是會造成任何一個麥克風都會對聲音造成失真的
+這是所謂的麥克風distortion 
+那所謂的acoustic reception 是說
+你事實上你對著對著手機講話的時候
+你並並並沒有把你的手機的這個喇叭對準嘴巴而是在旁邊的
+所以你的聲音其實是從正面出去而你收到的是側面進來的聲音
+那也會造成一些影響等等
+那所有的這些呢我們姑且都用一個convolution 的效應來描述它
+那總之這個意思等於是說
+我這邊不但是有noise 加進來而且還被破壞
+那這個破壞我們通常把他用一個convolution 來描述
+那麼也就是說呢我如果我進來的是x n 真正的聲音是x n 
+我現在加上了一個noise 
+那麼這個地方其實應該是我寫成成n one 的t 
+也沒錯啦這是time 這是continue time 
+不過我們們如果寫成discrete time 都是n 啦
+取sample 的話n one 的n 
+之後呢我convolve with h n 
+我把這個跟h n 的convolution 
+拿來model 這個中間的這一堆
+不管是因為電話傳送造成的問題
+或者是麥克風的distortion 
+或者是其它的問題等等
+那麼我們簡單的用數學來說的話呢
+是一個這樣的convolution 關係
+同樣的呢你電話在傳送中間不只是一個convolution 而已
+你還會有別的noise 加進來
+那不論是這個wireless 傳送的中間或者是怎樣
+又經過了一些amplifier 把它放大的時候都等等
+都可能增加noise 
+所以又有n two 的n 
+我又加進來
+那這個是在這邊
+所以我最後的y n 其實是這個
+是這些東西
+那跟我原來的這個這個才是y n 
+所以呢到了遠端
+你的所收到的聲音這個y n 
+其實跟這個x n 已經有很大的差異
+至少包括這個加上n one 
+然後convolve with h two h 然後再加上n two 
+那這裡面的n one 跟n two 呢我們叫做additive noise 
+就是它直接加上來的
+這是additive noise 直接加上來的
+那麼這個h n 這個呢我們稱之為convolutional noise 
+因為它其實是一個convolution 的process 
+那有一個有一個這樣子的東西
+那麼因此呢這個當然跟原來的x n 是不一樣的
+那麼因此呢我今天如果我的recognizer
+我這邊所用的那些tri phone 的這些h m m 
+我都是用這樣的x n 來train 的
+就算這個x n 就是跟這個training data 是一樣的
+它的distribution 完全一樣
+那我x n 也經過這些變化
+也變了樣子
+所以呢我的y n 跟h x n 已經不太一樣了
+當然因此跟這個training 也就不一樣了
+那更何況你這個x n 不見得就真的就它的它的distribution 
+它的統計特性
+不見得會跟它一樣
+那麼一個很單很簡單的解釋
+就是說我的每一個h m m 每一個h m m 
+它的每一個state 不是都有一個distribution 嗎
+我們說是這堆gaussian 所構成的
+那麼這堆東西是用譬如說是用這些x n 來train 的
+但是經但是我真的所收到的聲音是有這些東西
+那麼這些n one n two 跟h 呢
+老早已經把它破壞了
+所以我真正的它長的不是這樣
+所你用這個來做辨識是有問題的等等
+那這個是一個mismatch 的例子
+那這個mismatch 呢就是我們這邊所謂的mismatch in acoustic environment 
+那也就是說我的整個的acoustic environment 
+是是有mismatch 在這裡
+那主要就是additive noise 跟convolution noise 
+那麼不斷地隨時在整個process 中間不斷有additive noise 來破壞它
+也不斷有convolution noise 來破壞它等等
+那所有的這些我們如何克服這些問題呢
+那就是我們所謂的environmental robustness 
+我們希望我們用什麼方法
+讓我整個的這個process 這個辨識的這個這個process 
+能夠對於這個這些environmental 的或者說是acoustic environment
+的變化有更為robust 的能力
+這是所謂的environment robustness 
+那事實上除了這個之外還有很多其它的mismatch 
+我們順便都在這邊說一下
+其它的各種各樣的mismatch 
+那麼都是屬於training 跟recognition condition 之間的mismatch 
+所謂的training condition 就是說
+我們的hidden markov model 以及我們的n gram 是由哪些東西train 的
+但是呢我真正的recognize 的時候呢是這些東西進來
+它跟這個不見得match 
+那我們說底下的這個mismatch 我們之前已經講過了
+這個就是speaker 的不同你這邊用一千個人去train 
+可是現在的speaker 不是現在這邊一千個人的一個
+而是是其它的任何一個
+它搞不好跟這一千個人都不像
+那麼因此呢你必須要做speaker adaptation 
+所以呢我們在十一點零所說的
+這是我們十一點零所說的speaker adaptation 
+其實是speaker 特性的一種adaptation 
+啊speaker 特性的mismatch 的的的的問題
+那除了speaker 不同之外呢
+那還有一堆就是這個其它的acoustic condition 
+還有很多其它的acoustic condition 也不match 
+譬如說我們說speaking mode 
+所謂的speaking mode 這個我們中間提過
+就是從read speech 一直走到spontaneous speech 
+這個你說的mode 不一樣就是不一樣的
+那麼所謂的read speech 是說
+給你一份稿
+我完全照著那個稿很清晰的朗讀
+叫做read speech 
+譬如說今天早上有一點雨我從家裡出發
+一個字一個字唸的很清楚的
+這個叫做read speech 
+那麼但是事實上呢我們通常說話很少情形是真的有一張稿讓你這樣子唸的
+那麼比這個比較講得隨便一點的是所謂的prepared speech 
+prepared 是說你有準備
+但是呢並沒有完全照著稿唸
+那一個很代表性的例子就是廣播新聞裡面主播的播新聞
+主播播報新聞的時候是有稿的
+但他不是照著稿念他是照著稿說
+稿上說有什麼新聞之後呢
+那麼主播是照著那個稿說的
+那他是有準備但是呢他並不是照著搞唸的
+這個時候就不大一樣他他就會講成今天早上怎樣怎樣等等
+那就會很多音就會連起來
+就會比較比較流利
+比較這個不會說是今天早上啊
+他就會今天早上怎樣怎樣
+那這個就是比較prepared 的
+那再來的話如果是conversational 
+就是如果兩個人在對談
+或者打電話
+或者spontaneous 就是我們隨時都隨隨便自發性地在說的話的話呢
+那就有更多的狀況
+跟我們清晰朗讀聲音是不一樣的
+那這種的越越往這邊走的越複雜
+這裡面最大的最大的這個不同
+那應該有兩個
+一個是pronunciation variation 
+也就是說我的聲音會因為講得很流利而改變
+那不論在從prepare 開始
+到這個越越過去的話這種情形越嚴重
+一個最簡單的例子我們剛才講的今天早上
+這個今天早上我們會變成間早上
+我會變成今天早上啊
+譬如如說是今天早上
+你可能會變成這這樣子
+那這些就是說你你本來的的一個一個音
+本來的某一些個音都會變調今天就變成間啊等等
+那這些東西的話就是所謂的pronunciation variation 
+你的每一個音都可能會會這個因為說得流利而滑掉了
+那另外一個最最重要的現象就是disfluency 
+也就是不流暢的現象
+那disfluency 是說我們如果是如果是用唸的或者是prepare 的
+你大概都可以講得很流利
+可是你如果是平常在講話的話顯然中間隨時都會斷掉
+欸我說這個啊啊
+不是不是應該是那樣啊等等
+你不斷地會有這種這種這個你你一個一個句子說說到一半我會換成另外個句子或者怎樣
+或者我要重來一下
+啊我說這邊欸不是這樣我我我要重新說一次這個是這樣啊等等
+這一類的disfluency 
+是一個非常在自然的如果你拿平常的conversation 的錄音帶來聽的話
+這種出現地非常多
+那這些呢都造成因為我們train 的時候沒有train 這種東西啊
+那這個都都是我的mismatch 
+這是對於speaking mode 的mismatch 
+那我train 的時候沒有train 這些東西但是我講進來的時候會有這些東西
+會有這些東西
+那再者呢就是speaking rate 
+就是講得快慢的問題
+那嗯你你可以猜得到
+因為我們的這個這個state 跳來跳去的這個這個process 
+我們在這裡用我的model 在這邊描述
+但是呢如果說是我train 的時候講了一個速度
+真的進來的聲音速度不一樣的話會會不match 啊
+那麼這個時候這是這是speaking rate 的的mismatch 
+那麼這個時候啊不論是這邊是正常的速度所train 的
+你講得比他慢或者講得比他快的話
+都會有mismatch 
+然後呢這是口音跟方言
+那你知道他如果是這個上海口音
+或者台灣口音
+雖然講的都是國語
+它很多音就是會差
+那這個呢就是口語方言的mismatch 
+還有emotional 的effect 
+那假設你有一點不高興
+或者有一點生氣
+或者有一點什麼的話你的聲音也會變等等
+那這些都是屬於各種各樣的acoustic condition 的mismatch 
+那除了acoustic condition 的mismatch 之外呢
+那還有什麼mismatch 
+詞典的mismatch 
+也就是說這個lexicon 也不見得準啊
+那那這個這個詞典的問題呢
+第一個就是o o v 對不對
+我們說過在任何語言都有一堆o o v 
+有的多有的少
+以中文而言o o v 是非常多的
+因為我們不斷的創造新詞
+這些新的詞都出現在日常生活之中
+但是不見得在詞典裡面
+因此呢你不斷的產生很多新的詞
+你的詞典需要不斷地調
+然後呢我們剛才講的pronunciation variation 
+這常常是一個辦法
+就是在這裡調我的詞典
+譬如說我們就可以讓今天這個詞
+有兩個音
+我們可以在我們本來在詞典裡面是說
+ok 今天
+他的發音是ㄐ 一 ㄣㄊ 一 ㄢ 
+但是我可以說他還有第二個發音就是間
+那我如果把這個發音叫做間的話呢
+於是我這個今天就會有兩個發音
+我就在詞典裡面做兩個pronunciation 
+那這是一種處理這個pronunciation variation 的方法
+那麼我們通常可以把這些可最常發生的pronunciation variation 
+放到詞典裡面去
+但是這樣一來也會發生別的問題
+就是當你碰到一個間的時候
+你怎麼知道他是講中間的間
+還是講今天呢
+它要你要靠一些方法來判斷
+譬如說n gram 
+如果前面是一個中的話那應該是中間
+如果後面接早上的話呢
+那應該是今天啊等等
+那因此所那這些呢就是所就是我們講就是說
+你可以做你的lexicon 可以做adaptation 
+那depends on 現在什麼狀況
+我我詞典做某些變化
+這個是這個是pronunciation variation 放在這個lexicon 裡面的情形
+那當然還有language model 的adaptation 
+我們剛才也已經提到了
+就是你的test domain 不一樣
+它如果今天是在講某一個科學問題
+譬如說醫學知識
+跟他今天是在講這個譬如說這個美國的大選
+或者現在是在講這個某一種什麼東西
+當你講的東西不一樣的時候它這邊都不一樣我的n gram 應該都不一樣
+你最好是用不同的n gram 來做它
+這就是language model adaptation 
+所以這一些都是可能的mismatch 的狀況
+那麼我們需要有各種方法來處理它
+那這個就是我們這邊所說的各種的mismatch 
+那麼在統計式的技術裡面
+mismatch 是我們必須要想辦法解決的問題
+那這些都是非常重要的研究課題
+你如果去查查reference 查paper 的話
+你用這些keyword 進去找都可以找到很多相關的paper 
+那麼我們之前在十一點零講的是屬於speaker adaptation 是這一塊
+我們在十二點零講的是language model adapt adaptation 的一小塊
+那麼用嗯那個l s a 來做那是裡面的一種方法
+那其實這裡面每樣的東西都可以找到很多東西
+那我們現在的這個這一段啊
+我們今天在講的是十五點零的這個嗯robustness for acoustic environment 
+是指這裡面的這一塊
+也就是acoustic environment 
+也就是這邊有additive noise 
+這邊有convolutional noise 
+當我有這些東西的時候所造成的
+additive 跟convolutional noise 所造成的environmental 的的mismatch 的時候
+那我怎樣讓我的系統我的這個recognition 
+可以比較robust with respect to 這些的變化啊
+所以呢我們這邊講的這個十五點零所說的
+robustness 是指這一塊
+那這一塊的嗯是今天的語音研究裡面相當大的一塊
+那麼相當多的團隊的研究都集中在這裡
+那麼因為這是一個很重要的問題
+因為你隨時真的碰到的就是你在路上打打你的手機電話就是會有雜訊進來
+就是會有這些東西
+所以你這些東西必須要克服
+所以這個是非常重要的問題而有非常多的研究在進行
+嗯那也是一個很好的報告題材
+所以我們今天提早到這邊先來說這樣子
+讓你這個可以可以多思考一個這個可以做報告的topic 
+那底下我們講的就是這一塊啊
+就是這個在additive noise 
+跟這個convolutional noise 的破壞之下
+這邊的進來的聲音跟原來的training data 有很大的mismatch 的時候
+那麼有些什麼方法來做
+那麼基本上呢我們剛才提到
+我這邊所講的這些
+你從reference 裡就知道我們講的還是比較早的
+就是已經過了五六年以上大概
+或者是八九年
+那麼已經算是嗯經過了這麼長時間的考驗
+大家都公認他是道理的而且嗯有一定效果的
+但是他們顯然不是最好的
+因為又經過了這麼多年在最近幾年又有很多新的技術出來
+那麼有很多新的東西都是可以做報告的題目
+但是我們在課堂上講我們以這種比較經典式的
+算是比較經典式的然後比較公認都不錯的方法我們以它為例子來說
+那就這些而言呢我們大概可以用底下這些圖來解釋他是怎麼回事
+那麼我們把用這條線這個虛線以上的是training 的時候
+以下的是真的recognition 的時候
+我training 的時候我用一堆聲音
+抽它的m f c c 的feature 
+train 我的hidden markov model 
+train 我的tri phone 等等
+然後就得到我的一堆tri phone 的model 
+所以這一塊其實就是上面的這一塊
+就是這一塊
+所以呢我就是把那基本上這一堆很可能是我的乾淨的聲音啊
+我的clean 的乾淨的聲音
+沒有經過這些noise 的破壞的乾淨的聲音
+我抽它的feature 然後train 它的model 
+得到的tri phone 就長這樣
+這就是我的acoustic model 
+那問題是我真正要要做recognition 的時候我進來的y n 跟它不一樣的
+y n 是這種y n 
+是經過了additive noise 跟convolution noise 破壞以後的y n 
+那這個y n 呢跟它本來就不一樣的
+所以我抽出來的m f c c 當然是不一樣的
+那麼如果你直接用這個model 去去去辨識的話呢
+顯然會錯很多
+啊那麼因此怎麼辦呢
+你如果直接把那個model 拿來去做辨識一定錯很多
+因此我們有幾種可能的辦法
+第一種是調model 
+雖然你原來的原始的聲音
+乾乾淨淨的聲音train 出來train 出來的這堆tri phone 是這樣的
+那麼我想辦法去調它
+given 現在的聲音長得不一樣了
+我如果有辦法根據現在的狀況
+我馬上調我的model 
+把我的model 調成像現在的狀況來辦識
+那這樣的話呢我就把我的lambda i 呢調成lambda i 的prime 
+讓他的特徵比較像這個
+那這個意思也等於是說
+我本來的本來的這個我們說我本來的model 是這樣的
+那因為我現在進來的聲音不太一樣了
+我發現其實我應該調過來一點
+我得到一個這樣子的model 
+這樣子我把我的model 整個調了一下
+這一類的方法我們稱為model based approach 
+它是調model 的
+也就是我直接動這個model 上面的mean 或者covariance matrix 的等等東西
+去直直接動它
+我根據我現在的noise 等等東西我直接動它
+這是model based approach 
+那第二類的話呢
+我不動這個model 
+因為動這個model 不好動我動feature 
+那我可能想辦法讓我這個這個feature 
+跟原來那個feature 比較像
+看我有什麼辦法讓我進來的東東西求的feature 能夠跟這個比較像
+而不要跟他差太多
+那還有一種情形是說我這個求feature 的方法能不能改變
+我不是完全用m f c c 而是在用別的方法
+使得我這個feature 求出來的feature 呢
+這兩個比較像不要差那麼多
+那這類方法呢我們稱為feature based approach 
+就是動這些東西的
+那還有一種根本就是動這裡
+那也就是說我希望我這個聲音最好能夠像它
+我用什麼方法讓它的特性就像它
+如果這樣的話我後面就不要動了
+那這就是這這種我們就稱之為speech enhancement 
+那麼所謂enhancement 就是把想辦法把它這裡面的這些個破壞
+不論是additive 還是convolutional 這些東西儘可能把它拿掉
+讓這個東西呢跟它很接近
+那這就是所謂的speech enhancement 
+那麼因此呢我可以在這裡做可以在這裡做也可以在這裡做
+那這各有很多種方法
+那當然你也可以猜得到他們之前其實也有可能可以加成
+我可以一面那裡model 也動一動
+這邊feature 我也動一動
+這邊我也動一動可不可以有的時候也可以
+當然有的時候也許它們你這邊已經動掉了之後這邊再動一次的話會會破壞
+也不一定
+那基本上呢它們是有可能可以加成的
+好那底下呢我們講的就是分別以這三大類來說
+然後我們講的只限於這一種
+就是acoustic environment 
+就是這些的x n 變成y n 
+中間經過additive 跟這個convolution 的時候的破壞
+所產產生的問題
+然後呢我們分別以我們先說model based 的例子
+然後再說feature based 例子
+然後再說enhancement 的例子
+那就是我們底下的這些譬如說這邊講的就是我們先從model 的的的例子來說
+這是model based 的第一個example 然後呢這是第二個example 
+之後我們再來講的就是feature based 
+這些是feature based 的例子
+然後再來我們講enhancement 的例子等等
+所以這些就是嗯應該講是有五年或者十年左右的歷史的
+比較最具有代表性的方法來說明這些東西
+那他們的reference 分別我我講到哪裡會說
+是哪哪一個reference 

@@ -1,0 +1,40 @@
+<playlist version="1" xmlns="http://xspf.org/ns/0/i">
+<title>10</title>
+<tracklist>
+<track>
+<title>Likelihood Ration Test And Utterance Verification</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>2034.157</duration>
+<annotation>slides/DSP/10-1.jpg</annotation>
+<location>video/DSP/10-1.mp4</location>
+</track>
+<track>
+<title>Generalized Confidence Score For Utterance Verification</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>735.2</duration>
+<annotation>slides/DSP/10-2.jpg</annotation>
+<location>video/DSP/10-2.mp4</location>
+</track>
+<track>
+<title>Generalized Confidence Score In Continuous Speech Recognition</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>257.98</duration>
+<annotation>slides/DSP/10-3.jpg</annotation>
+<location>video/DSP/10-3.mp4</location>
+</track>
+<track>
+<title>Keyword Spotting</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>615.65</duration>
+<annotation>slides/DSP/10-4.jpg</annotation>
+<location>video/DSP/10-4.mp4</location>
+</track>
+<track>
+<title>Keyword Phrase Spotting Detection</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>449.22</duration>
+<annotation>slides/DSP/10-5.jpg</annotation>
+<location>video/DSP/10-5.mp4</location>
+</track>
+</tracklist>
+</playlist>

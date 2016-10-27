@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timestamp>
+  <time>
+    <begin>137.843</begin>
+    <end>139.848</end>
+    <sentence>36</sentence>
+  </time>
+  <time>
+    <begin>144.066</begin>
+    <end>147.11</end>
+    <sentence>38</sentence>
+  </time>
+  <time>
+    <begin>201.364</begin>
+    <end>207.221</end>
+    <sentence>55</sentence>
+    <sentence>56</sentence>
+  </time>
+  <time>
+    <begin>316.698</begin>
+    <end>324.159</end>
+    <sentence>88</sentence>
+    <sentence>89</sentence>
+  </time>
+  <time>
+    <begin>349.078</begin>
+    <end>361.082</end>
+    <sentence>98</sentence>
+    <sentence>99</sentence>
+    <sentence>100</sentence>
+    <sentence>101</sentence>
+  </time>
+  <time>
+    <begin>526.606</begin>
+    <end>528.022</end>
+    <sentence>152</sentence>
+  </time>
+  <time>
+    <begin>589.358</begin>
+    <end>595.224</end>
+    <sentence>171</sentence>
+    <sentence>172</sentence>
+  </time>
+</timestamp>

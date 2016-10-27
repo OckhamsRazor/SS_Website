@@ -1,0 +1,135 @@
+那麼但是我們剛講這些我們舉的都是比較早的
+那在最近
+五年或者嗯五六年之內
+啊那還有非常非常多的
+那很多都比這些好
+但是我們不在這裡講是因為他們還沒有經過足夠的時間的考驗
+到底哪一種真的可以被公認是好的
+我們也許還要一段時間才知道
+所以呢我們先不講那些
+不過那些也都是很好的報告題材
+你如果你如果去找reference 就會看到
+好那我們先從第一個就是model based 來講
+這個model based 就是我們剛才講的這個情形
+就是我直接調我的model 
+直接調我的model 想辦法讓它比較接近這個聲音的特性
+那這是怎麼回事呢
+我們舉第一個例子就是所謂的parallel model combination 
+p m c 
+那這是一個非常成功的而且普遍使用在很多地方效果都不錯的方法
+那它的基本的精神是怎樣呢
+我們可以舉個例子來說
+如果我的speaker 在講話的時候
+講的這段話
+從這裡開始
+那其實它中間當然是會斷開的
+我們知道我們的我們的speech 中間永遠有非常多的這個silence 
+因為我們人要換氣嘛
+我我不可能一口氣一直講下去我一定會斷開來
+然後呢再接下去講
+再斷開來
+然後再接下去講
+我中間一定會不斷地有斷開來的地方
+那麼因此呢我的noise 就在這裡
+我一開機還沒開始說話的時候呢這邊有noise 
+我如果抓得到這些這些noise 的話
+我可以用這個noise train 一個noise 的model 
+noise 也可以train 成一個像hidden markov model 一樣的東西
+不管你是一個state 還是兩個state 幾個state 
+我就有一個noise model 在這裡
+所以呢你你可以在我這個這個一開機我還沒開始講話
+前面譬如說有零點一秒的時間是一個有零點一秒的時間是我沒有講話但是有noise 
+我就可以把這抽來train 一個model 
+然後呢我這邊真的真的聲音我原來有一大堆model 
+譬如說這是ㄚ的model 
+這個是ㄧ的model 
+這是ㄨ的model 
+對不對我有一整套的這是我原來的用clean speech 所train 的
+沒有雜訊的clean speech 所所train 的model 
+於是我想辦法把這兩個結合起來
+我把這兩個把把這個加上來
+想辦法得到這一個這兩個結合的
+於是呢那如果我有辦法能把這個跟這個model 結合起來的話
+那我應該是等於是能夠辨識這種雜訊加上這個聲音的時候的
+我等於是現場直接來來動
+那麼等到這段話講完的時候我這邊開始有有有一堆silence 的時候
+我現在又可以抽另外一堆雜訊
+我把這個雜訊呢跟這個可能不一樣了
+我把這堆雜訊再來重train 一個model 
+那這個model 就調過一次是根據這個調了
+調完之後我再把它再加過來
+因此呢我現在train 我要辨識這邊的聲音的時候呢
+我就用這個這段聲音所train 的model 
+跟它的結合之後
+來辨識這邊的
+待會這邊又有一段silence 
+我又可以抓一堆model 抓一堆noise 來我又可以再train 一個noise model 
+那我再這樣調等等
+這個是所謂的parallel model combination 的意思
+就是我不斷讓它們平行地在做這個combination 的動作
+我不斷隨時抓real time 抓最新的noise 
+然後train 最新的noise model 
+來反應當時的noise 長怎樣
+把當時的noise 特性去加到這裡面加到這裡面來
+讓它一起於是我這邊就是有等於是ㄚ加上noise 的ㄚ
+這是ㄧ加上noise 的ㄧ
+這是ㄨ加上noise 的ㄨ
+那如果是這樣的話呢我用這個model 來當我用這些東西得到呢我就辨識這堆聲音
+我這邊得到的就辨識這邊的聲音等等
+那如果這樣的話呢我就可以嗯得到一個比較好的結果
+這就是所謂的p m c
+那這樣的精神基本上嗯你可以想到的是說
+我主要的目的是在處理additive noise 
+它並沒有真的處理到這個沒有處理到這一塊
+它處理到就是就是這個additive noise 
+等於是說我我現在想辦法把這個東西train 一個model 
+跟原來這個model 去結合等等
+所以它處理的是additive noise 
+然後呢那它的基本的想法應該是說
+最理想的recognition 是如果你的model 都是train with matched noisy speech 
+也就是說最理想的狀況是我如果知道我的noise 是這樣
+我就把這些noise 加到ㄚㄧㄨ裡面去
+然後用他們來train 在這種noise 情形之下的ㄚㄧㄨ的model
+這個時候的model 是所謂的這個train with matched noisy speech
+如果你如果真的有跟當時的noise 完全相同的noise 
+加到ㄚㄧㄨ的聲音裡面去
+然後用它們來train 的model 來辨識在這種noise 下之下的ㄚㄧㄨ顯然是最好的
+所以呢這些最好的recognition 呢是用這個完全match 的完全全一樣的noise 加上去
+clean speech 那些speech 所train 的model 
+只是說這個是impossible 
+因為你的noise 千變萬化
+對不對你不可能如果有一萬種noise condition 
+你不可能去train 一萬套model 
+所以這個其實你是做不到的
+因此呢怎麼辦呢
+就是我generate 一個real time 隨時generate 一個noise model from the noise 
+collect in the recognition environment 
+during silence period 
+就是whenever 有一個silence period 的時候
+我就我隨時在做這個detection 
+那我whenever 知道有一個silence period
+我就把這個noise 抓來
+train 當時的noise model
+然後呢我得到這個noise model 之候呢
+去跟原來的clean speech model 去做結合啊
+去做結合之後產生在這個noise 狀況之下的model
+於是我就可以得到在這個noise 狀況之下的有noise 的ㄚ
+有noise 的ㄧ
+有noise 的ㄨ的model
+然後用它來做recognition 等等
+所以說它基本的想法是這樣的
+但是這樣做有一個最重要的難題
+就是我們的recognition 是都是m f c c 嘛
+也就是所謂的cepstral domain
+是m f c c
+但是noise additive 不是不是在m f c c 上面是在哪裡
+是在linear spectrum domain
+或者是說time domain
+也就是說你如果看這個的話
+你就知道我的我是在time domain 相加
+這個這個x n 對不對
+就是這個x n 加上n 這是在time domain 相加
+在time domain 相加的時候在m f c c 上面呢
+它是一組怎麼樣的關係呢
+是一個個非常複雜的關係
+那我們得要handle 這個關係

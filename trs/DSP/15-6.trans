@@ -1,0 +1,224 @@
+那麼再來呢我們來看feature based
+那麼什麼是feature based 呢我們稍為回憶一下
+所謂feature based 是說我不動那個model 我來動feature
+我希望讓我真實的環境裡面的有被破壞的訊號的feature
+跟原來的clean speech feature 最好很像
+啊我的目的就是讓它們的feature 像
+所謂feature based 那怎麼做這件事呢
+那麼這裡面feature based 最基本最常用的這個就是所謂所謂的cepstral mean subtraction 這個c m s
+那這個方法是啊今天普遍用的最多的幾乎所有的語音系統都用這個
+它的效果有相當好的效果嗯就是c m s 
+那它的意思講起來非常簡單
+它原來的原來發明這個方法的時候是為了解決convolutional noise 的
+什麼是convolutional noise 呢你記得我們講的是說你這個東西呢被經過一些個convolutional 的破壞不只是加上去的noise 而是經過convolution
+經過convolution 之後破壞之後我如何能夠讓這個feature 得到feature 還是可以跟它很像呢
+那這個主要的想法來自我們講m f c c 的時候我們在七點零就說過了
+就是說在time domain 做convolution 其實在m f c c 的domain 呢就是相加啊
+那這點我們從前就說過了因為你是你你是這個做了f f t 的關係
+做了f f t 之後你你如果本來是convolution
+我的x 跟h 有一個convolution 的關係
+經過了f f 經過了f f t 到到frequency domain 是加是變成加法
+所以呢就變成它的它的它們這兩個的transform 的加法啊不是是乘法
+這經過fourier transform 之後是變成乘法
+然後呢我這個時候再取一個log 的話呢就變成加法
+對不對基本上是這樣子的關係
+也就是說我在求m f c c 的過程之中我有我有一個這個fourier transform 的過程還有一個取log 的過程
+那transform 的fourier transform 呢把這個convolution 把這個convolution 變成相乘
+那取個log 呢把相乘變成相加
+所以其實m f c c 裡面
+如果我我原來是兩個相做convolution 的話呢
+我到了m f c c 是變成相加的
+既然是相加的話呢那你其實只要減掉就行了嘛
+如果你有辦法知道那個h 是什麼的話
+如果我有辦法知道h 是什麼的話呢我就y 減h 不就是x 嘛
+那麼那你有沒有辦法知道h 是什麼呢
+你可以假設大多數的convolutional noise 改變是比較慢的
+什麼叫作改變比較慢呢
+你如果想這張圖我們說主要的convolutional noise 主要來自譬如說電話
+如果是我電話的這個變化的話呢
+你可以想像我打手機的時候在零點一秒之內我移動不會太多
+或者在零點一秒之內整個的transmission 環境不會改變網路環境不會改變太大
+所以你可以在零零點一秒之內我算假設它是一個固定的等等
+啊那當然換了零點一秒之後呢下一個零點一秒可能改
+但是沒有關係啊我就是每隔零點一秒我算一次嘛
+所以我如果你如果假設說我的這個h 是因為是我打的手機而我人在走動所以我我不斷地在變化的話
+那我可以假設零點一秒之內我的這個值變化不大
+而我每一個零點一秒估計一次新的h 值這樣我就可以減啦
+啊那所以基本想法就是這樣子
+所以當時原來的這個想法是來自這樣子的觀念
+就是我的convolution noise 在time domain 在m f c c 的時候呢變成相加
+所以我只要有辦法估計那個加的那個h 把它減掉就夠了
+那我可以假設這個h 變化比較慢
+譬如說零點一秒才才變一次我就零點一秒估計一次嘛
+那這樣的話我就可以減掉我基本上可以得到比較好的
+那那問題是這個h 怎麼求呢
+在當時一個最簡單的想法就是說我先假設我的x 是zero mean 
+如果假設我的x 是zero mean 的話那我那個y 我就做個mean 不就是h
+所以呢我就減掉那個mean 把它變成zero mean 就好了嘛
+那這個觀念就是所謂的cepstral mean subtraction 你就是把的cepstral 的mean 減掉
+講起來非常簡單的觀念你說欸為什麼是zero mean 沒有錯這個假設是有問題的
+啊說老實話當時他的想法是這樣來的他說假設它是zero mean 所以呢你這個h 呢這個h 呢就是我y 的mean 嘛
+對不對如果x 是zero mean 的話我這個y 上面取個mean 不就是h 嘛
+那麼因此呢我就減掉y 的mean 就好了嘛
+所以當時他是這樣想的
+那麼那也因為這樣子的話呢我其實就是把我的這個x 變成zero mean 就好了
+那麼這個mean 怎麼麼求呢
+over 一個utterance 或者是類似的我們剛才講譬如說我零點一秒求一次嘛
+那後來其實真正做的時候
+我們有很種多作法
+一種是說每一個utterance 你你講一句話有一個逗點
+等於是有一個停頓嘛對不對
+那你這一段裡面就求一個mean 通通減掉
+這段裡面再重新求一個mean
+這兩個mean 會不一樣你再減掉
+這就是所謂的by utterance
+嗯就是over 一個utterance 來做
+那其實還有很多別的辦法像我們後來其實不見得要這樣做
+而是怎麼做你就是你如果要要做這個frame 的時候我就是前面算多少frame 後面算多少frame
+你在這一段裡面求一個mean
+拿來減做中間這的相減
+待會呢待會到這兒來的時候呢
+我就在這個前後算一個mean
+對不對我永遠在前後算一個mean
+然後呢來算中間的那一個
+那其實也不一定要前後各取一段我也可以完全取前面
+譬如說我現在要算這個的時候
+我就拿前面的這一段
+求一個mean 來減它
+然後算這個的時候我在前面算這一段
+算一個mean 來減它等等都可以啊
+所以你其實用哪一段來算mean 其實都可以做
+然後效果都不錯啊
+所以呢那當然有最好的啦
+最好的你可以猜到應該是這樣子
+就是說我這個這個我永遠在前面後面都取一段
+隨著時間變動啊
+那像這類的方法我就因為我就是把mean 減掉嘛
+那就是所謂的cepstral mean subtraction
+那當時的想法原來是為了convolutional noise
+可是後來人家發現這個其實如果不是convolutional noise
+而是additive noise 一樣有效
+如果說我的根本沒有這個
+我根本沒有這個convolution 過程
+只是加沒有noise 的話
+我只是加noise 欸結果也很有效
+這有點奇怪為什麼呢
+後來了解其實這很簡單
+就是我把它們都變成zero mean 了
+所以它們統計就會接近
+換句話說你可以想我們講的
+這邊的問題就是它們不match 嘛
+這裡面的data 的統計特性
+跟這邊的data 統計特性不一樣不match
+既然不match 的話我有一個辦法
+就是我把它通通通通減掉mean
+變成zero mean 
+把它也通通減掉mean 都變成成zero mean 的話那這兩個就比較像了嘛
+就是這樣子啊
+也就是說我本來這堆的統計特性跟這一堆的統計特性都不一樣
+那我至少把它們的mean 都變成零
+當他們的mean 都變成零的時候就比較像了
+所以你把它們的mean 變成一樣之後它就像
+所以結果turns out 你即使不是convolutional 的
+你是additive noise 一樣有效
+所以呢這個這個東西會turns out 是一個很容易做
+只要減一個mean 而已就把它變成zero mean
+然後我training 也就先做了zero mean再去train 啊
+那這樣的話呢都有很好的效果
+那當然你如果從這個觀點來看的話呢
+它是直接immune to convolutional noise
+也就是說你如果跟任何東西去做convolution
+得到的答案是不變的
+對不對你想想就了解這點
+也就是說你現在我的x n
+如果跟任何東西去convolve
+我做了做了c m s 之後
+答案都是一樣的
+因為你convolve 的那個東西都是加了一個加了一個東西
+那你不管它原來是不是zero mean 啊
+我都把它變成一個zero mean 的東西嘛
+所以我我最最後的做法其實就是c m s 就是把它變成zero mean
+對不對即使它原來不是mean 也不是zero mean 也沒有關係
+即使它這個假設不正確
+其實這個假設真的不正確
+因為沒有理由它是zero mean
+但是我就反正把它都把它變成zero mean 了之後
+我的train model 也是用zero mean 去train 的
+所以我就通通把它變成zero mean 了
+那麼這個時候呢
+那麼不管你在跟什麼東西做convolution
+得到的都是那個zero mean 的東西
+所以就等於是完全把所有的convolutional noise 都解決掉了
+那麼因此我們今天在講的時候
+通常絕大多數的語音系統
+都做了這一步
+都做了這一步之後呢
+其實這個convolutional noise 就不是問題了
+幾乎都已經除掉了
+因為你那那一步就等於把這個拿掉了
+所以這個convolutional noise 就不是大問題就都減掉了啊我只要做了這一步
+所以c m s 是個非常有效的方法
+那當然你也知道它不改變delta 跟delta delta
+也就是說我總共有十三
+三十九維嘛我這個只做十三維啊
+對不對我那個vector 是三十九維的
+前面十三維m f c c
+這邊是一次微分這是兩次微分
+那你變把它變成zero mean 
+做做這個減法
+不改變它的一次微分跟兩次微分
+所以這二十六個沒有動
+但是這十三個我都把它變成zero mean 
+啊答案是這樣子
+那這個效果就就是不錯的啊
+那這是最簡單而且效果很好的方法所謂的c m s
+那後來有人在想了進一步
+他說當然你把它變成zero mean 不是很有道理啦
+那我們其實可以做得更好
+做更好的方法就是底下這個
+所謂的signal bias removal
+那這個bias removal 意思是說我這個h 我應該仔細算一下
+不要只是假設它是zero mean
+我怎麼仔細假設呢
+我就是用maximum likelihood 的criteria 來求它
+我given 一個model
+然後given 某一個h 的值的話
+我可以算在這個條件之下
+我會看到這些個observation 的機率
+然後我想辦法調這個h
+來maximize 這個機率可以做嗯
+那這個詳細我就邊不講了我會給你一個reference
+那其它的觀念都很像啦它只是說我現在這個我不要用mean
+這個zero mean 的假設太簡單了
+我應該做更精確一點
+怎麼做我就是用這個maximum likelihood 的方法
+這個就是likelihood function 嘛
+就是given 這個model given 這個model
+然後given 假設我設了某一個h 的話
+那麼在這個情形之下
+我我要看到這個observation 的機率要最大
+然後我去調這個h
+哪一個h 讓這個機率最大我就用那個h
+那這個的h 做出來的這個h 拿來減的話會更好
+你就不要用zero mean 來減用這個來減
+會得到更好
+那這個怎麼求這個怎麼求的
+用e m 啊
+所以我們這個這個講完我們就要來講e m
+所以e m 是到處都在用
+我用e m 的話呢我可以得到這個東西
+那麼因此呢我就可以這個經過幾個iteration
+得到這個值
+那這個效果會比這這個c m s 又好一點
+這是所謂的signal bias removal
+那你看顧名思義就知道
+所謂的bias 就是這個這個h 嘛
+那我把它拿掉嘛
+啊其實就是一樣的意思
+那這個的reference 在我上面的再下一篇
+就是第四篇就是signal bias removal 
+啊有maximum likelihood
+你如果詳細去看你就會知道它是怎麼做的
+那這是一個很簡單的例子在說
+我怎麼做它的feature based
+這是feature based 的例子

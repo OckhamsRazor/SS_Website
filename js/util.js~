@@ -1,0 +1,24 @@
+var win = null;
+function popProp(obj)
+{
+	for(ent in obj)
+	{
+		if(obj[ent] == null || obj[ent] == 'undefined' || obj[ent] == '') continue;
+		alert(ent+'::'+obj[ent]);
+	}
+}
+function listProp(obj)
+{
+	var tmp = document.createElement('div');
+	for(ent in obj)
+	{
+		var p = document.createElement('p');
+		p.innerHTML =  ent + '::' + obj[ent] +'<BR>';
+		tmp.appendChild(p);
+	}
+	var p = document.createElement('p');
+	p.innerHTML =  '>-----------------------------------------------------------------------------------<<BR><BR><BR>';
+	tmp.appendChild(p);
+	document.getElementsByTagName('body')[0].appendChild(tmp);
+//	document.getElementById('writeroot').appendChild(tmp);
+}

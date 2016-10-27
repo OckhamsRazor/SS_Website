@@ -1,0 +1,145 @@
+變成為變成為這個這個把wireless 包到我們系統裡面了
+所以呢wireless 問題都跑進來
+那基本上有什麼問題呢
+就是wireless bandwidth 非常有限
+所以它的它能夠送的bit rate 非常有限
+然後它可能也是隨時變化的
+它有很多error 
+然後呢它的這個甚至於還是birth error 
+所以一堆error 在一起
+那都造成recognition 的問題
+那為了克服這個問題怎麼做法呢
+基本上開始想的問題有這三種
+就是所謂client only client server 跟server only 
+所謂client only 是說呢我就把everything 都放在sever ㄜclient 這端
+我把從feature feature extraction 到recognition 
+全部都放在我的手機上面或者放在我的p d a 裡面
+那是有人這樣子做的
+那他那個p d a 裡面就可以辨識所有東西啊等等等等
+然後呢我辨識完之後才變成辨識結果變成這個零跟一送出去
+那這樣的好處最明顯的好處就是我的speech recognition 會變成independent of wireless 
+因為wireless 的後面的是
+我recognition 在這裡面完成了所以呢我可以完全自己掌握
+不受wireless 的影響
+我的recognition 完全不受wireless 影響這是它的好處
+可是當然有個明顯的壞處
+就是說我的limitation by computation requirements for handheld device 
+你這個手機或者p d a 它的memory 它的計算量都是有限的
+因此你必需要把你的recognition 去配合那個
+通常它要把language model 切的很小
+它要把辭典收小
+它要把什麼東西search space 變小才可以做等等喔
+比較麻煩
+這是它明顯的一個麻煩
+所以呢我雖然全部都在client 上做
+好處是很明顯的
+但是呢它有它的麻煩
+那比較多的人想的是這個就client server model 
+就是我們剛才說的我把它切成二半
+我feature extraction 在這裡做
+這個m f c c 抽出來之後
+我就把這些m f c c 呢想辦法做compression 
+變成一堆零跟一
+就塞到那個package 裡面去
+是透過wireless 
+到了終端那邊就是server 呢
+才來我的feature 把feature recovery 回來那裡之後我來那裡做recognition 
+application 都在那裡做
+那這樣子的話呢我就一半在client 
+一小半就是feature extraction 在client 
+大部分的recognition 在server 
+明顯的好處是我把它的computation requirement 切成兩半
+那這部份小適合放在client 
+這部份大適合放在server 
+而且呢我省了很多bandwidth 
+因為我把feature 抽出來之後m f c c 我可以做compression 剩下很好的bits 來傳送
+所以我省了很多bandwidth 或者bit rate 的空間
+但是它有一個最大的問題就是跟已有的手機的電話不相容
+也就是說你今天的手機電話
+沒有裡面沒有幫你充m f c c 阿
+那那它們是抽另完一堆的feature 
+那你知道我們的這個我們打電話的時候我們也是一樣從聲音裡面抽一堆feature 然後拿去傳送
+但是我們那種feature 是所謂這個perceptual efficient 
+我們打電話的時候所抽的feature 是為了聽的方便
+所以呢你是抽那些feature 之後我可以recover 成為一些聲音
+那些聲音其實已經跟原意差很多了
+但是我聽起來還很像
+所以呢所以呢這個這個喔我們平常的打電話所用的是這種feature 
+那m f c c 不是的
+m f c c 是for recognition purpose 
+就是說做recognition 的時候很適合
+可是呢它並不是並不是perceptual 的efficient 
+所以你如果是這個你今天的手機裡面打電話的時候
+手機它也把聲音抽feature 
+它抽的是另外一堆feature 
+那堆feature 呢它們解回來的聲音跟原音不像但是聽起來像
+那麼那那因此呢跟我們要的m f c c 是不一樣的
+所以呢你要這樣做的話呢除非你可以想像我的手機得要有二個二個抽二種feature 
+難道說我打電話的時候用這種
+然後我如果是上網去幹嘛用語音輸入又是另外一種嗎
+啊那這是一個很大的問題
+所以呢基本上就是說跟跟現有的手機的電話並不相容
+你除非你現有的手機通話你得要有二套
+上網用語音上網去辨識的時候是另外一套
+打電話是這一套什麼什麼的很麻煩
+那這裡面有一個最大的問題就是說呢
+m f c c 是並不能夠recover 成為原來的語音的
+m f c c 只是為了辨識好
+所以呢m f c c 有沒有辦法恢復成為原來的聲音聽起來像的呢
+基本上是不容易做
+那麼到了最近幾年人家很努力所以有人做出比較像的
+那你也不是完全用m f c c 來做
+而是另外先求pitch 
+你如果pitch 也求出來也一起送過去的話呢
+m f c c 再加上pitch 是有辦法recover 到跟原音比較像的
+於是有人說那這樣子的話那我們就把這個手機現在在用的那套不要了
+啊我們就都用m f c c 
+那麼於是呢這個都用m f c c 的話呢
+那打電話的人也用m f c c 然後他到那端他用pitch 來recover 成原來的聲音
+還是可以聽
+但問題是人家手機公司不願意這樣做啊
+人家手機每年每年年產量已經幾億台幾億支
+那人家裡面的晶片人家不是做這個
+人家不用m f c c 啊喔
+所以就是基本上有這個問題就是不相容
+那為了要相容呢就有人想另外一招就是server only 
+那我就用現成的手機
+這就是現成的手機就好了
+那就用他們這種perceptually efficient 的的feature 抽出來
+就用他們的手機的網路傳
+只是到了接收端呢我再把它解回來
+這個時候你打打手機電話的人就這樣子去聽啊
+聽起來就跟原音很像
+可是我們如果拿那個解回來的聲音再來抽feature 
+再做recognition 的話呢
+這個問題就是我的正確率變得很差
+那原因就是我們剛才講過
+我們打手機的電話的時候它抽的feature 是另外一堆feature 
+那堆feature 可以解回原來的聲音
+你在接收端是可以解回原來的聲音
+你用耳朵聽起來是很像的
+可是只是耳朵聽起來像而已它其實跟原音差很多了
+所以你拿那個去求m f c c 的話
+做recognition 正確率差很多
+那你不然怎麼辦呢那我就另外一個辦法我想辦法從這種feature 裡我能不能抽出m f c c 出來
+這是有人在想的問題
+就這邊講我要找出recognition efficient 的feature 
+從perceptually efficient feature 裡面找出來
+也就是說你你現在傳的是這些feature 
+那你這些feature 裡面能不能對應到m f c c 
+能不能找出這個對應關係
+如果可以的話
+我就直接從這個找出m f c c 出來然後recognition 
+那麼問題是到目前為止這個並沒有非常好的答案就是了
+那這樣不管怎樣它的好處就是跟手機電話完全相容嘛
+所以任何人買它的手機就可以用嘛
+那只是我接我的server 要做一些手腳嘛
+那問題是這個怎麼能夠做的好
+所以這是所謂server only 我都在server 做
+那這個就是一般人用手機
+一般人用的手機網路就好了
+那所以呢這有這三種做法
+那今天來講大部分的努力是大部分的研究是這種最多
+這種也有一些啊
+這二種大概都有就是了
+那不過這種多一點

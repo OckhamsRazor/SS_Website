@@ -1,0 +1,54 @@
+<playlist version="1" xmlns="http://xspf.org/ns/0/i">
+<title>16</title>
+<tracklist>
+<track>
+<title>Spoken Dialogue Systems</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>209.365</duration>
+<annotation>slides/DSP/16-1.jpg</annotation>
+<location>video/DSP/16-1.mp4</location>
+</track>
+<track>
+<title>Key Process In A Spoken Dialogue</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>646.608</duration>
+<annotation>slides/DSP/16-2.jpg</annotation>
+<location>video/DSP/16-2.mp4</location>
+</track>
+<track>
+<title>Dialogue Structure</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>568.722</duration>
+<annotation>slides/DSP/16-3.jpg</annotation>
+<location>video/DSP/16-3.mp4</location>
+</track>
+<track>
+<title>Language Understanding For Limited Domain</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>304.69</duration>
+<annotation>slides/DSP/16-4.jpg</annotation>
+<location>video/DSP/16-4.mp4</location>
+</track>
+<track>
+<title>Robust Parsing For Speech Understanding</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>377.87</duration>
+<annotation>slides/DSP/16-5.jpg</annotation>
+<location>video/DSP/16-5.mp4</location>
+</track>
+<track>
+<title>Discourse Analysis And Dialogue Management</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>484.92</duration>
+<annotation>slides/DSP/16-6.jpg</annotation>
+<location>video/DSP/16-6.mp4</location>
+</track>
+<track>
+<title>Client Server Architecture</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>233.23</duration>
+<annotation>slides/DSP/16-7.jpg</annotation>
+<location>video/DSP/16-7.mp4</location>
+</track>
+</tracklist>
+</playlist>

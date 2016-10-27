@@ -1,0 +1,26 @@
+<playlist version="1" xmlns="http://xspf.org/ns/0/i">
+<title>17</title>
+<tracklist>
+<track>
+<title>Distributed Speech Recognition (DSR) And Wireless Environmen</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>241.965</duration>
+<annotation>slides/DSP/17-1.jpg</annotation>
+<location>video/DSP/17-1.mp4</location>
+</track>
+<track>
+<title>Possible Models For Distributed Speech Recognition (DSR) Under Wireless Environment</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>529.737</duration>
+<annotation>slides/DSP/17-2.jpg</annotation>
+<location>video/DSP/17-2.mp4</location>
+</track>
+<track>
+<title>Client Server Model</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>370.533</duration>
+<annotation>slides/DSP/17-3.jpg</annotation>
+<location>video/DSP/17-3.mp4</location>
+</track>
+</tracklist>
+</playlist>

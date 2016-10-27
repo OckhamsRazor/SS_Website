@@ -1,0 +1,233 @@
+好
+有了這個之後再底下我們要說的是一個實際的問題就是我們真正在做language model 的時候其實不是這麼簡單來算n gram
+n gram 我們這個老早就講過了
+那個n gram 講起來很簡單
+就是算這種東西嘛對不對
+就是算這種東西嘛
+這bigram 就這樣算嘛
+講起來非常簡單如果真的那個簡單就沒什麼學問了
+事實上的n gram 不是那麼容易算的
+為什麼
+因為有data sparseness 的問題
+什麼是data sparseness 的問題就是有很多event 就是不會發生
+也就是unseen event 
+又來了
+那麼因為我們這邊所有的從h m m 到language model 到n gram 
+都是用統計的觀點來做的事情
+那統計永遠是盡信統計不如無統計
+那麼統計你不能那麼相信它因為統計永遠有一堆unseen event 
+在你的統計資料裡面沒有看到的東西不表示它不會發生
+只是它沒有
+那就像我們之前講的tri phone 我有一堆unseen tri phone
+我得把它train 出來
+看不到也得train 出來
+一樣那這裡我的n gram 也有一堆unseen 的n gram 我要怎麼處理
+同樣的問題
+那麼這個例子我們前面已經說過了就是
+假設有一句話叫做jason immediately stand up
+這是多麼普通的一句話
+但是很可能你算它的n gram 機率就是零
+為什麼呢
+你有很多jason
+你的training data 裡面很多jason 它後面就是不接immediately
+你有很多immediately 它前面就是不接jason 
+所以呢
+這個jason 後面接immediately 的機率就是零
+只要這個bigram 是零的話它就是零了
+那你這個句子永遠不會辨識正確
+一定就錯掉了
+可是沒有道理啊這麼普通的句子怎麼可能是零呢
+顯然就是一個unseen event
+沒有出現在database 裡面但是我們必須讓它有值
+不能讓它沒有值
+所以怎麼辦
+trying to assign some non zero 的probability to all events
+即使它們沒有出現
+所有的event 你都要給它一個值
+恩
+即使沒有出現都要給它一個值
+那是怎樣
+就我們剛才的說法來講
+我們用每一個event 有一個機率這樣來看的話
+會有一堆是沒有的
+會有一堆沒有怎麼辦所有沒有的你都要給它一個值
+或者有大有小或者怎樣你都要給它一個值
+當你給它一些值之後顯然要把別的值弄小一點
+因為加起來才是一啊對不對
+所以你那些大的要變小一點
+然後呢讓這些沒有的都讓它有一點點
+或者有大有小都要讓它有
+那這個過程叫做smoothing
+恩
+那就是所謂的language model smoothing 
+那你看就知道這個意思是smoothing 就是把高的弄低一點
+然後塞到這些低的地方去嘛
+所以是一個smoothing 的過程
+這是我們所謂的language model smoothing 
+那怎麼做這件事情呢
+一個最簡單的想法是所謂add one smoothing
+這是最簡單的想法不過這個方法很不好
+你做出來效果很差就是了
+講起來是很直覺
+就是我把所有的event 次數都加一
+我所有的次數都加一就是once more occurs once more than actual does 
+我所有次數都加一所以所有零次都給成一
+一都變成二二都變成三三都變成四
+全部都加一的話這樣都有了
+那麼舉例來講
+要train 這個bigram 的時候這個bigram 我們說過本來就是這樣子嘛
+對不對
+就是我這兩個詞連在一起的count 除以前面那個全部的count 
+這就是我的bigram
+那我全部都加一的結果呢就是
+那你可以看得出來我的分母所謂的所有的這個前面那個word 的count 就是它後面接的任何的一個word 的count 嘛
+那我這樣通通都加一的結果呢就是分子的這個count 加了一
+分母就加了我的詞的總數
+因為後面接的每一個都有一次都要加一嘛
+恩
+所以就加就變這樣
+這就是所謂的add one smoothing 
+它有一定的效果它讓我沒有零的了
+全部都有是沒有錯
+但是這樣做出來的效果並不好
+所以後來沒有人真的用這個方法
+不過這個通常是這個最容易最直覺想像的所以呢我們就說一下
+因此呢我的bigram 就變成分子加一
+然後分母呢就是加一個total number of 不同的word
+這樣我就把所有的後面會接的通通都算進去都加了一就是了
+那比較有效的smoothing 通常是底下這兩個觀念的衍伸
+真正的做法不見得是這樣但是呢大概用到這兩個觀念
+一個是所謂的back off
+一個是所謂的interpolation 
+那麼什麼是back off 呢
+這個back off 的這個觀念很簡單
+這個式子寫成這樣是有夠頭大
+其實很簡單我們不要看這個式子的話
+用簡單的符號來寫的話呢
+應該是可以寫成這樣的意思
+p n 的bar 是等於嗯p n 如果p n 大於零
+如果a 的p n 減一如果p n 等於零
+喔
+其實只是這樣的意思
+那我這裡所謂p n 就是n gram 的那個機率
+像你仔細看這個東西搞了半天其實它就是一個n gram 嘛
+就是given 前given 從這個這個w i 的機率
+given i 減一i 減二一直到i 減n 加一這不就是n gram 嗎
+所以就是我這邊寫的p n 就是n gram 的意思
+那我要求的n gram 呢如果那個n gram 存在的話大於零就是那個count
+這個是從i 減n 加一一直到i 的那個word sequence 兜在一起的那個count 
+如果真的是大於零的話這個就是就是這個n gram 是存在的嘛
+那我就用就用原來這個n gram
+如果它不存在呢如果count 是零的話沒有的話怎麼辦呢
+我就用n 減一gram
+所謂的lower order 就是n 減一gram 
+所以你看這個變成n 減一gram 所以是從從這個word i 的機率given 從i 減n 加二到i 減一
+也就是n 減一gram
+我就把n 減一gram 拿來然後呢乘上一個某一個factor a
+這個的意思是什麼呢
+是只要是n 減一gram 大的話n gram 應該也會大
+n 減一gram 小的話n 也會小
+為什麼呢我們舉底下一個例子這個例子是課本上的一個例子
+你知道這個thou 跟you 是同義字
+這個是古字這個是現代字
+你如果去念莎士比亞的作品什麼羅密歐茱麗葉他們講的話的you 都是thou 
+喔
+所以thou 就是you 
+但是呢這個是古字這個是現在字所以現在來看的話呢
+這個機率是很大
+這個機率是很小
+如果這個機率比這個機率大很多的話
+那你在任何一個字後面看到它的機率也是一樣的嘛
+譬如說
+你see 後面看到它跟see 後面看到它
+顯然也是這個大這個小嘛
+就是這個意思ok 
+你如果這一個字機率比它大的話
+那麼它在那麼它在別的後面看它也是機率比較大嘛
+那因此呢
+我們剛才的這個是unigram
+比較大的unigram 
+它如果後面要接什麼的話它的前面有什麼東西的話呢它的bigram 也是比較大的嘛
+那bigram 比較大trigram 也是比較大的嘛
+trigram 比較大的話four gram 也是比較大的話
+所以呢只要n gram n 減一gram 比較大n gram 大概也是比較大
+n 減一gram 比較小n gram 大概也是比較小
+那反過來這個n 越小這個gram 越容易算得出來越會存在
+對不對
+因為n 越小的話你只是在算一個越小的單位的機率越會出現越容易算到
+n 越大越算不到嘛
+所以呢如果一個那麼大的一個count 不存在的話
+我就退一步算n 減一gram 的機率
+然後呢基本上你可以假設
+這個n gram 跟n 減一gram 應該是有一個比例關係
+當然問題是這個a 怎麼求你得有辦法求這個a 就是了
+恩
+你如果有辦法求這個a 的話呢
+你就可以用n 減一gram 來估計n gram
+那這個a 我們這邊寫就是說它是一個function of 這些東西
+那depends on 你這些東西是什麼要怎麼算這個a
+喔
+那我們後面還會說到一些怎麼算這a 的情形不過基本上就是這樣
+所以呢就變成說是所以我這邊畫一個bar
+就是你真正經過這個smoothing 之後
+經過這個smoothing 之後的這個n gram 就是畫一個bar 的
+那沒有經過smoothing 直接照我們原來公式去算的就是沒有畫bar 的
+所以呢你的smoothing 的功能只是在如果那個count 不存在的時候
+就用n 減一gram 來做
+然後乘上一個factor
+那個factor 你要算就是了
+那這個方法叫做back off
+也就是退一步
+退到一個n 減一gram 去算
+退到lower order
+就是這樣的意思
+那跟這個很像的就是interpolation 意思其實是很像的
+那這個式子也是這樣看起來很複雜
+其實你如果用這樣來寫比較簡單的話呢
+就是寫成寫成這樣
+就是我的n gram 是什麼呢
+就是b 乘上
+嗯
+就是b 乘上n gram 加上一減b 乘上n 減一gram
+我看對不對
+yeah 沒有錯
+也就是說呢怎麼講呢就是即使即使你的n gram 有non zero counts
+即使你有non zero counts 你也不要太相信那個n gram 
+你不如用n 減一gram 去跟它interpolate 一下
+阿
+也就是說我們剛才講你n 減一gram 永遠比n gram可靠
+為什麼你的數的數目比較多嘛
+你你
+你n 減一gram 出現出現的機率一定比n gram 要來的大
+所以數的數目比較多之後一定比較reliable
+所以你永遠去跟n 減一gram 去做一個平均做一個interpolate
+這樣得到的n gram 會比直接算這個的n gram 要來的可靠一點
+恩
+那問題是這個b 是多少
+那b again 是一個function of 這堆東西
+就你要想辦法估計這個b 之後
+拿n 減一gram 來跟它來跟它做一次這個interpolation
+那也是一樣我這邊加了bar 的表示是我smooth 之後的
+我是用smooth 之後的n 減一gram
+跟我新得到的n gram 去做一個interpolation 
+得到我smooth 之後的n gram 
+等等
+恩
+那這樣子呢即使我有count 是non zero 我也這樣做
+這樣會比較好
+這是所謂的interpolation
+這是基本觀念是這樣
+那詳細的做法那就有底下的這些做法了
+恩
+那麼你如果去看前面給你那些reference 課本裡面
+它都會說好幾種重要的smoothing 的方法
+因為事實上language model 都需要做smoothing 就是因為我們剛才講的這個問題
+就這些unseen event
+那這堆問題事實上都蠻多的
+那麼你永遠都要做這些事情
+那
+嗯
+有好幾種方法
+那麼我們沒有辦法說哪種比較好
+因為可能在不同的狀況
+有的時候這個比較好有的時候那個比較好

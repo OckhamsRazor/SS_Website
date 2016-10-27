@@ -1,0 +1,177 @@
+ OK 
+我們接下來講這個做 initialization 
+那麼這是其實這 initialization 很多種方法那麼這邊講的是最簡單的一種也是最常用的一種
+那這就是所謂的 segmental k  means  algorithm 
+那什麼叫 segmental k  means 就是這麼做
+那基本上是怎麼樣就是你你總要有一個 initial  estimate 
+所有的 model 怎麼辦呢
+最常用的辦法就是
+分成這個 equal  lance 
+怎麼講呢我們舉例來講如果我要 train 一個
+某一個音譬如說
+六
+假設我要 train 四個 state 
+假設我要 train 四個 state 的話
+那怎麼辦呢我有
+好幾個六這是一個六這是一個六這是一個六這是一個六這是一個六
+有長有短
+那麼於是我都一樣的都把它等分成為四段
+這個也等分為四段
+這個也等分為四段
+因此呢我的最早的 initial 呢是
+讓它們的
+等分的東西去 train 一個 model 
+譬如說它所有的這前四分之一
+所有的前四分之一
+拿來做這個 model 
+所有的最後四分之一嗯做那個 state 
+所有的最後的四分之一
+做這個 state 等等
+這樣子哦那你
+這樣子之後那你這邊就有一堆
+對不對這裡面是一堆 vector 
+這裡面是一堆 vector 基本上它們大概都是屬於這個六的聲音的
+前面的四分之一然後我就假設拿來 train 這個 model 
+ train 這個 state 
+那這些呢都是最後的拿來 train 這個 state 
+那這個時候你這個 state 是什麼呢
+我需要一堆 Gaussian 嘛
+我舉例來講我如果需要十六個 Gaussian 
+的話那怎麼辦
+我就是把這裡的一堆 vector 一堆 vector 拿來做 vq 
+做十六個
+做這個 l 等於十六的 vq 嘛
+於是呢我就
+那麼於是我就會得到
+這一堆有一個這一堆有一個
+這樣總共十六個
+那我就當它們是 Gaussian 
+其實這每一個你當然沒有理有這是 Gaussian 了
+它就是一堆 vq 
+就把它們做成一堆東西然後有一個代表值有一堆有一個代表值我就那個
+把那堆東西的 mean 跟 variance 
+就當成是 Gaussian 的 mean 跟 variance 
+這個其實寫在底下這個
+我們一直都這樣子做哦
+包括後面的是這樣子做一開始也是這樣
+所以呢你就是說呢你
+那這樣你才可以得到得到第一堆這些這些 model 裡面的 perimeter 
+那麼因此呢你就可以說是這個
+你總得要有一個比較好的 initial 嘛那怎麼來呢
+你就是把你的聲音
+先用等分為假設它們都 equal  lance 
+然後你的前的四分之一做第一個 state 
+最後四分之一做最後的 state 等等
+那你這裡面一堆 vector 一堆 vector 嘛你就把它拿來做 vq 
+那麼這樣子的話呢你可以得到
+得到這些東西的這個
+然後這堆呢我就求它的 mean 跟 covariance 等等
+那就是那其實這個步驟跟前面是一樣的就是把這個
+所有的這些 observation  vector 呢
+那變成一個
+用 vq 的方法
+變成 m 個 cluster 
+我這邊變成 m 其實就是剛才的 l 啦一樣的
+你把它變成個
+ l 個 cluster 不過現在因為我們前面講 Gaussian 的時候我們都說有幾個 Gaussian 有 m 個嘛
+就是 m 個 Gaussian 
+ m 個 Gaussian  distribution  
+那麼你就把它變成這個 l 就等於 m 就是了嘛
+然後呢於是呢你就可以把那一每一個 cluster 
+第 n 個 cluster 到 state  j 就得到它的 mean 
+然後呢每一個 cluster 裡面的
+它的求 covariance 就是你要的 covariance 
+你就把這些 data 去算它的 mean 去算它的 covariance 
+就可以了
+然後那你這個這個怎麼算這個是那個 weight 
+ Gaussian 的 weight 怎麼算就數有幾個 vector 嘛
+就是 number  of  vector 去除以全部的 vector 
+那在這個 case 就是四分之一嘛
+哦不是就是說你現在如果掉在這裡面了
+這裡面我假設有一百五十六個 vector 
+總共有七百五十個 vector 
+那這個就是它的 weight 
+它就這樣算嘛就是算 vector 的數目除以全部 vector 的數目就是它的 weight 
+那其它的我這邊沒有詳細講那其它通常都用假設譬如說 A I J 怎麼辦
+ A I J 我們通常都是假設假設一個值
+那通常就是這個你只讓它這邊有一個這邊有一個
+你別的都讓它是零最多再讓它多一個這個
+其它都讓它是零然後你就設一個簡單的數字就讓它開始跑
+所以這是一開始的時候我先假設一個 initial 的 estimate 
+ of 所有的 parameter 用這個方法
+那這樣的話我就有一個一開始的 model 
+有了 model 之後呢
+你 step  one 是幹什麼呢
+跑 viterbi 
+重新切一次
+雖然說這裡有四個 state 
+沒有理由每一個 state 各是四分之一
+所以呢剛才只是因為你必須要有個開始
+沒有開始沒辦法做所以
+我開始先用四分之一做
+四分之一做完我有了這個起始 model 以後
+我就不能再去相信它是四分之一等分的於是怎麼辦
+我現在就可以這些東西每一個都去跑
+我們上週講的上次講那個 viterbi 
+ viterbi 會幫我把重新切一次對不對
+所以 viterbi 的結果可能會說
+這邊的第一個 state 
+ viterbi 是根據現在有的這些 state 裡面的這些參數
+去切它會說這個可能這個是在這裡這個是在這裡這個是在這裡
+那麼這個是在這裡這個是在這裡這個是在這裡
+譬如說這樣子
+它會重新切一次
+重新切好之後你這邊就得到第二次的
+這個來 train 它
+同理呢這個也是得到一個第二次的
+這個來 train 它
+因此呢當你這樣 viterbi 切出來之後呢
+我再重算一次
+重新我現在用紅色這堆 vector 
+重新跑一次 vq 
+然後呢重新找它每一個
+那每一個 vq 之後每一個就是一個 Gaussian 
+算它的 mean 跟 covariance 
+之後我又得到一組新的出來了
+那我這個做完之後我就可以算一次這個機率因為我還是以這個機率為準
+我就算這個機率看這個分數
+看是不是提高了
+有提高就回過頭來繼續做
+有提高就回過頭來繼續做
+我又回去呢
+再切一次
+用再跑一次 viterbi 再切一次
+然後呢再重新做一次
+這個 vq 然後再算一次 Gaussian 這樣子
+那麼等到這個機率收斂為止
+我的粗調就到此為止
+沒有辦法再細調了
+那這個時候我就把這個做出來的東西放到剛才的那個
+ forward  backward 的 algorithm 的那個起始值去
+開始用那個 forward  backward 來跑那個是跑得比較細
+那個比較細之後可以得到一個微調然後可以得到比較好的結果
+這個基本上就是
+所謂的 segmental k  means 也是我們最常用的簡單的辦法就是這麼做的
+那這個我後面有兩張圖是在講這件事
+這個比較容易看就是我們講的這件事
+就是說現在假設你已經有了第一個
+一開始這個等分 train 出來已經有的話
+你下一步怎麼辦就是跑 viterbi 
+你的這一堆這一堆就是 viterbi 這一樣橫軸就是時間軸就是一個一個的 vector 
+縱軸就是 state 跑 viterbi 就跑出一條
+最可能的路徑
+這條路徑也告訴我說這一堆 vector 到這邊為止
+歸 state  one 這一堆呢歸 state  two 這一堆呢歸 state 三
+於是我 state  one 的這個裡面的 Gaussian 怎麼 train 呢
+就拿這些來 train 因此呢就是把這些東西拿來做
+其實這個應該是做這個
+嗯 LBG 啦 LBG 是一堆 k  means 所以寫 k  means 也沒有錯啦
+就是做 LBG 啦所以呢你先做一個 global 的 mean 就是做 l 等於一的
+ mean 在這裡然後把它拆成兩個小的就是我們剛才下課前講的把它拆成兩個小的
+於是這兩個小的可以分別做成兩個
+然後呢做好之後呢這個再拆成兩個小的這個拆成兩個小的就變成四個
+如果你現在四個 Gaussian 夠了的話就你就拿這四個來做 Gaussian 
+於是呢它就有它的 mean 
+跟 covariance 跟它的 weight 都可以求出來
+那這樣的話我就得到它第一個 state 的四個 Gaussian 
+等等那這樣這就是我們剛才講的這個情形

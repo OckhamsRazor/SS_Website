@@ -1,0 +1,194 @@
+<playlist version="1" xmlns="http://xspf.org/ns/0/i">
+<title>1</title>
+<tracklist>
+<track>
+<title>Speech Signal Processing</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>474.047</duration>
+<annotation>slides/DSP/1-1.jpg</annotation>
+<location>video/DSP/1-1.mp4</location>
+</track>
+<track>
+<title>Speech Signal Processing - Processing Of Double-Level Information</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>249.52</duration>
+<annotation>slides/DSP/1-2.jpg</annotation>
+<location>video/DSP/1-2.mp4</location>
+</track>
+<track>
+<title>The Content Of Future Networks For A Multi-media Era</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>211.967</duration>
+<annotation>slides/DSP/1-3.jpg</annotation>
+<location>video/DSP/1-3.mp4</location>
+</track>
+<track>
+<title>Wireless Communications Technologies Are Creating A Whole Variety Of User Terminals</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>224.38</duration>
+<annotation>slides/DSP/1-4.jpg</annotation>
+<location>video/DSP/1-4.mp4</location>
+</track>
+<track>
+<title>Evolution Of Speech Processing Technologies Towards A Future Network Era</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>169.43</duration>
+<annotation>slides/DSP/1-5.jpg</annotation>
+<location>video/DSP/1-5.mp4</location>
+</track>
+<track>
+<title>Network Content Analysis And Access In An Era Of Wireless Multi-media</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>249.73</duration>
+<annotation>slides/DSP/1-6.jpg</annotation>
+<location>video/DSP/1-6.mp4</location>
+</track>
+<track>
+<title>Voice-based Information Retrieval</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>85.53</duration>
+<annotation>slides/DSP/1-7.jpg</annotation>
+<location>video/DSP/1-7.mp4</location>
+</track>
+<track>
+<title>Spoken Dialogue</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>303.43</duration>
+<annotation>slides/DSP/1-8.jpg</annotation>
+<location>video/DSP/1-8.mp4</location>
+</track>
+<track>
+<title>Convergence Of PSTN And Internet</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>231.15</duration>
+<annotation>slides/DSP/1-9.jpg</annotation>
+<location>video/DSP/1-9.mp4</location>
+</track>
+<track>
+<title>Wireless Access Of Global Information</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>154.9</duration>
+<annotation>slides/DSP/1-10.jpg</annotation>
+<location>video/DSP/1-10.mp4</location>
+</track>
+<track>
+<title>Future World Of Communications And Computing</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>184.58</duration>
+<annotation>slides/DSP/1-11.jpg</annotation>
+<location>video/DSP/1-11.mp4</location>
+</track>
+<track>
+<title>Outline</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>115.41</duration>
+<annotation>slides/DSP/1-12.jpg</annotation>
+<location>video/DSP/1-12.mp4</location>
+</track>
+<track>
+<title>Outline</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>2279.117</duration>
+<annotation>slides/DSP/1-13.jpg</annotation>
+<location>video/DSP/1-13.mp4</location>
+</track>
+<track>
+<title>Introduction - Brief Summary Of Core Technologies And Current Status</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>6.89</duration>
+<annotation>slides/DSP/1-14.jpg</annotation>
+<location>video/DSP/1-14.mp4</location>
+</track>
+<track>
+<title>Speech Recognition As A Pattern Recognition Problem</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>295.01</duration>
+<annotation>slides/DSP/1-15.jpg</annotation>
+<location>video/DSP/1-15.mp4</location>
+</track>
+<track>
+<title>Basic Approach For Large Vocabulary Speech Recognition</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>452.11</duration>
+<annotation>slides/DSP/1-16.jpg</annotation>
+<location>video/DSP/1-16.mp4</location>
+</track>
+<track>
+<title>Speech Recognition Technologies, Applications And Problems</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>294.5</duration>
+<annotation>slides/DSP/1-17.jpg</annotation>
+<location>video/DSP/1-17.mp4</location>
+</track>
+<track>
+<title>Text-to-speech Synthesis</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>279.38</duration>
+<annotation>slides/DSP/1-18.jpg</annotation>
+<location>video/DSP/1-18.mp4</location>
+</track>
+<track>
+<title>Speech Understanding</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>263.71</duration>
+<annotation>slides/DSP/1-19.jpg</annotation>
+<location>video/DSP/1-19.mp4</location>
+</track>
+<track>
+<title>Speaker Verification</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>124.57</duration>
+<annotation>slides/DSP/1-20.jpg</annotation>
+<location>video/DSP/1-20.mp4</location>
+</track>
+<track>
+<title>Speech-based Information Retrieval</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>33.77</duration>
+<annotation>slides/DSP/1-21.jpg</annotation>
+<location>video/DSP/1-21.mp4</location>
+</track>
+<track>
+<title>Spoken Dialogue Systems</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>344.265</duration>
+<annotation>slides/DSP/1-22.jpg</annotation>
+<location>video/DSP/1-22.mp4</location>
+</track>
+<track>
+<title>Spoken Document Understanding And Organization</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>49.727</duration>
+<annotation>slides/DSP/1-23.jpg</annotation>
+<location>video/DSP/1-23.mp4</location>
+</track>
+<track>
+<title>Multi-lingual Functionalities</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>750.03</duration>
+<annotation>slides/DSP/1-24.jpg</annotation>
+<location>video/DSP/1-24.mp4</location>
+</track>
+<track>
+<title>Distributed Speech Recognition (DSR) And Wireless Environment</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>166.36</duration>
+<annotation>slides/DSP/1-25.jpg</annotation>
+<location>video/DSP/1-25.mp4</location>
+</track>
+<track>
+<title>Distributed Speech Recognition (DSR) And Wireless Environment</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>184.52</duration>
+<annotation>slides/DSP/1-26.jpg</annotation>
+<location>video/DSP/1-26.mp4</location>
+</track>
+<track>
+<title>Distributed Speech Recognition (DSR) And Wireless Environment</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>220.61</duration>
+<annotation>slides/DSP/1-27.jpg</annotation>
+<location>video/DSP/1-27.mp4</location>
+</track>
+</tracklist>
+</playlist>

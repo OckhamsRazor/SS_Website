@@ -1,0 +1,213 @@
+好那以上上是簡單的介紹
+那底下我們就要說的我們要做語音怎麼辦
+用語音的話呢我現在變成是說這邊的document 裡面可能是語音那
+那這個query 也可可能是語音
+那麼於是呢原來原來的這套套學問是用文字做的
+裡面如果是語音怎麼辦呢你馬上想到最直接的就是我都把它它做recognition 之後都變成文字
+就可以帶進進來這一套
+那如果用這個方法的話話呢
+那就是所謂用word 來做indexing indexing element 
+我就是都做一次recognition 
+那基本上就是我把所有的document 如果是語音的
+所有的query 如果是語音的我我都去做speech recognition 
+一但做完speech recognition 之後呢
+我就都變成文字了嘛
+那就用文字的方法來做它
+那當然這個時候你顯然要用large vocabulary 的recognition 
+去做它
+所以這是一個個large vocabulary based 的方法
+那這個顯然是可以的但是不會很好
+最明顯的原因你馬馬上知道就是error propagation 
+我等等於是把兩個系統串連起來
+那第一個系統的error 就到了第二個系統去
+那換句話說
+你這個語音去做recognition 的的時候
+你已經得到一堆堆錯字
+那些錯字也就做了indexing 
+所以你得到到的這些d 裡面就有錯字嘛
+那同理你的query 裡面做recognition 也會有錯然
+然後你再進來也有一堆錯
+所以錯的去找錯的所以就找到一堆錯的
+所以以呢這個error 就等於是在兩個系統統你語音辨識的系統跟這個系統兩個串聯在一起的結果
+那就是error 一路propagate propagate 下去
+那第二個明顯的問題就是oov 
+因為很多的的keyword 真正要要找的keyword 
+並不在在辭典裡面都是oov 
+你譬如說我我今天要找的是這個個奧斯卡的得獎影片斷臂山
+這個keyword keyword 這個斷臂山顯然是oov 
+你說我要找趙建銘的事件
+趙建銘顯然是oov 
+你那個鐵定都是找不到的
+因此你你這些真正的keyword 你都找不到到的話你找到都是一些不重要的字所以其實是不太容易
+那再者呢special term 很多
+如果是在在特別的領域
+譬如說你要找的是這個醫學有關的新的的文件
+或這你要找computer 有關的文件
+或者是要找這個痾這這個股票有關的文件
+凡是一個special area 的話還還有一堆special term 
+可能不都不在你的recognition 的那個痾vocabulary 裡面
+可能都是oov 你都辨識不出來
+那麼但但是這裡這個問題常常是針對某某些領域的
+那你又又不可能為每一個領域都去做你的辭典
+所以這是用word 來做indexing element 
+這種東西我們是所所謂的indexing element 也就是你將來的你後面的這些個這些個indexing 的動作
+是要要以他們為element 為單位來做的
+那麼你用word 來做是有這些缺點
+但是呢word 顯然是一個重要的方法
+法因為有這些問題所以就就有人想說那我應該用subword unit 
+那這就是所謂的subword based 
+所謂subword unit 的意思就是說我現再用的是比一個word 還要要小的單位
+什麼是比一個word 還要小的單位
+位像phone syllable 或者類似的
+那麼這有什麼好處呢
+這個時候我就不再被vocabulary 所限制
+而是我只要音對就可以了
+那麼舉例來講如果這個user 說我要找bill gates 
+他說我要找bill gates 的話這可能是一個oov 
+你辭典裡面沒有這個字你就抓不到這個字了當然就沒有了
+但是如果果你是以音為單位的話以phone 為單位的話呢
+是這幾個字
+所所以呢我只要抓到這個phone 跟這個譬如說這個phone 跟這個個phone 連在一起跟這個phone 連在一起
+那在那一邊文件裡面的那一句話它也有這幾個phone 連在一起
+那那我至少呢這個會抓的到
+我只要這些音這些phone 對的話
+話我這些phone 連在一起我抓到這三個phone 的一個phone sequence 那
+那一邊我如果user 說的話裡面有這三個phone 構成的這個phone sequence 
+sequence 在這個文文件裡面你做recognition 我也抓到這三個phone 的phone sequence 你就可以對應出來
+那雖然我的辭典裡面沒有這個字
+所以我真的辨識不出這個字來
+但是我這個還還是可以比對的到的
+那在我們中文而言同樣的情形譬如說我要找呂呂秀蓮我
+我只要抓到譬如說syllable 為單位的話我有這個秀這個個蓮
+雖然說我的辭典裡面沒有這個字所以我不會辨識出這個來可
+可是我如果query 裡面有秀秀有蓮我已經抓到秀蓮了
+那麼在這個文件裡面他也有這個個講到秀蓮怎樣怎樣的話
+我其實就可以這個就對對應到他了
+我即使沒有辭典沒有這個字我沒有抓到他沒有關係
+那這個就是用subword unit 來做的基本的想法
+那麼因此呢我可能是用phone 
+或者phone 的sequence 
+sequence 或者一系列的兩三個四五個phone 為單位
+同樣我也可以用syllable 
+那syllable 其實就是是一個phone sequence 就是一個兩個phone 或三個phone 的phone sequence 啊
+這些些東西來做
+那最明顯的一個好處就是他不不再limited by vocabulary 嘛
+就是我們剛
+剛才講的
+我辭典典沒有抓到的時候我音抓到就可以啦
+那當然你如果這邊如果是文字的話
+文字我可以查字典
+我知道它的音哪對不
+不對所以我只要知道這個音我知道這這個音
+我知道音是可以抓的到啦
+但是當然因為你音抓到你可能因此會跑出更多的ambiguity 出來
+這是會發生生的
+你你這邊說是呂秀蓮
+蓮但是這篇文章可能有張秀蓮還是王秀蓮怎樣的話
+或者什麼什麼什麼修什麼臉臉什麼的耶
+耶結果你可能也就抓出來來了
+所以呢會跑出一些ambiguity 
+是自然會發生的
+但是呢它也有好處
+就是說我通常這個個phone 的數目比較少
+你用用word 的話可能你的你要幾萬萬個word 才夠
+這裡可能phone 只有幾幾十個
+你syllable 只只有一一兩千個對不對
+那這時候呢其實我數目還比較少
+我可以handle 一些個oov 痾這這是他最大的好處
+那基本上就是是我用一個segment of 一個或幾個subword units 
+那麼幾個phone 或幾個syllable 來做
+這是所謂的subword based 
+那當然你也也可以想像到這兩個其實是互補的
+所以何不可以把它兜兜起來
+我也用這個也用這個嘛
+那用這個的時候候可以當我的word 能夠辨識出來的時候
+候那他們他有它的好處
+如果他不是oov 的話
+它的意義明確比較不會ambiguity 
+但是這裡的話呢就是你如果oov 的話呢呢我就可以用這個所以這兩個是是可以整合的嘛
+那再來呢keyword based 
+keyword based 其實是最古老的方法
+你知道在還沒有google 的年代在還沒有網網路搜尋的年代
+所有的文件就是給我一堆keyword 那
+那麼每一個人寫一篇文章寫完的時候上面都會設幾個keyword 
+然後就用這個keyword 去找那
+那當然問題就來了就是誰來設這個keyword 
+在古古代沒有網路搜尋的的年代
+那就是user 去設嘛
+所有寫文章的人寫完的時候就規定你要說好
+你的keyword 是什麼
+那就用那一個那
+那當那當然今天時代不同了已經沒有人要求你做做一個網頁還要說你的keyword 是什麼
+所以呢你的key 而網路上的東西隨時在千變萬化
+所以你的你的keyword 最好是自動產生嘛
+那你這時候就要要有一堆好的演算法
+那麼為每一張網頁自動產生它的keyword 
+才能夠做這件事
+otherwise 你的你的你的這個keyword base 就不容易做
+那那也因為這樣因為為網路東西是dynamic 的
+所以你的keyword 就不太是fixed 
+而是是變成是要會動的
+是dynamic 的
+那麼因此此呢它有它的難度
+那這這是keyword based 
+那真正的好的辦法呢常常其實這三個一起用嘛
+我也用用words 我也用subword subword units 我也用keyword 
+凡是有的都可以把它合起來
+就是fusion 就就是把它的整合
+就是hybrid 方法
+那這些東西是我們講的我們所用的indexing 的element 
+那我我真的做的時候呢
+我可以用一個element 來做也
+也可以用combination of more than one 
+那combination of more than one 就是是我們剛才講的
+譬如說我用三個phone 
+每三個個phone 構成一個phone sequence 可以呀
+譬如說這是bill 這是一個三個個phone 
+然後elk 這是一個三這是一個三個phone 的sequence 
+那麼然後呢這是一個三個phone 的sequence 我可以用這樣三個phone 的sequence 來做等等
+那這就是這個combination of more than than one element 
+這也可以做
+然後呢那這一些就是我們所就是一般稱之為indexing feature 你真正用的feature 
+也就是我們到時候把它表示成成這邊的feature vector 的時候
+是用這樣的東西就是所謂的indexing feature 
+來做這些事
+那麼呢這個時候呢
+這個痾當然你也可很多時候是pre define 
+就譬如說每一個word 
+在這這裡我每一個word 就是一個feature 
+那你也可以是三個phone phone sequence 
+連續的三個phone sequence 是一個feature 
+這個都可以預先define 好
+那當然還有一種呢是自動產生生data driven 
+也就是說當你有夠夠多data 的時候
+這麼多的文件
+這麼多的
+那我可以用data driven 的方式去抽
+什麼是最有效的feature 
+可以用抽的等等
+那所所有的這裡的每一個feature 
+他們通常在他們的領域裡面有一一個專有名詞詞叫做term 
+所謂indexing term 
+那就是一個這樣的東西西每一個這樣的feature 呢叫做一個indexing term 
+然後後有了這一堆indexing term term 之後我基本上就是譬如說比對這一堆東西比
+比對你如果你這邊有提到gates 
+這三個phone 連起來的gate 
+那如果你有這三個phone 的話你這邊如果也有三個phone 
+我就找找找到你
+那那這些你就再看他們之間間到底相似程度有多少
+那麼給他一個多少的分數等等
+那主要就就在做這樣的事情
+那因此呢所有事情都是以這些indexing 的term 或者是是feature 為基礎來做的
+那真正做的時候呢有很多多種不同的model 
+那我們這邊列的是大概是最常用的一些model 
+痾還有沒有列的
+不過基本上呢最基礎最常見的最簡單而有效的就就是vector space model 
+這待會底下我們就會講
+那除此之外
+這個latent sementic 就是我們在十二點零所說的那一個l s a 
+那麼這是一個非常有有效的方法在這裡
+那麼其實l s a 當初是為了這個發展出來的
+那同樣的的也可以有很多其他的統計的模型我們後面也會說到
+譬如說用h m m 來做也可以等等
+你也可以再整合用不只一個model 來做hybrid combination combination 這都可以好

@@ -1,0 +1,242 @@
+那我們底下舉兩個例子這兩個例子應該是相當具有代表性的啊
+那我不準備說詳細
+都有一個reference 給你看
+那麼我們大概說一下
+那麼詳細的話我們你看這個reference 
+那這兩個可以算是這個九零年代初期八零年代末期相當具有代表性的兩個經典作品
+你現在看起來這個reference 很早啦
+這個是十四年前的
+這個是再早十十七年前的所以這個都很很古老的
+不過這些都是經典作品
+那麼我們今天其實那些在用的那種clustering class based 相當好用
+所以今天還有很多的很多的系統真的就是用這種class based language model 
+那他們所用的class 常常還是用這種方法在train 在train 出來的
+或者這種方法衍申出來的更精緻的方法就是了
+所以這些仍然是經典的是非常好用的經典哦
+所以是很值得參考的所以我們還是把它列在這裡
+那第一個例子是說
+你就是把所有的word 一開始把所有的word 都當成一個 cluster
+然後呢你每一次去找誰跟誰最像
+把它黏起來
+也就是說假設我有六萬個word 
+一開始每一個word 都自己是一個cluster 
+所以呢我有六萬個cluster 
+然後呢我每一個iteration 的時候我去找誰跟誰最像
+它們應該可以黏起來變成一個class 
+那麼譬如說呢也許發現它跟它很像
+可以黏成一個cluster 
+那什麼叫做像呢
+那基本原則就是minimize over all perplexity 
+我原來用這個方式train 出來的language model perplexity 是多少
+我現在如果把它們兩個黏成一個class 
+連成一個class 的話
+我可以重新再做這樣子的language model 它的perplexity 是多少
+那我們說過language model 我們是希望perplexity 要降要小嘛
+所以看誰跟誰黏起來讓我的overall perplexity 降的最多的
+那你如果這個iteration 發現是它跟它黏起來的話ok 
+我就把它跟它黏起來變成一個class 
+於是我現在的class 數目少一個了
+那再下一次我可能發現是它跟它連起來
+那麼它跟它連起來的時候呢我的perplexity 降的最多那我就把它跟它連起來
+那再下一次我可能發現其實是這個時候呢再把它連起來
+是降得最多的
+以此類推你這樣的你可以想像這個是一個計算量非常大的一個一個程式
+但是它是有效的啊
+也就是說因為你你假設你有六六萬個詞
+你兩兩去看它跟它黏起來是會變成多少
+它跟它黏起來這個光是兩兩都算一次你就算就算不少嘛
+那當然這裡面是有一些技巧的
+你怎麼樣讓這個需要計算量降到最低這是是有學問的
+如果有興趣就看這篇paper 啊
+這個是後來所有的講到用這個class based language model 的時候幾乎都是site 這一篇
+這是最重要的一篇reference 
+那你要用一些方法來讓這個計算量不至於太大
+但即使那樣這仍然是一個很大的程式
+我要用一個很大的training data 
+然後還要另外一個data 來算perplexity 
+然後呢我就是讓它不斷的跑
+那計算量非常大然後最後我可以得到一個相當不錯的一一組class 
+你這個這個iteration 到什麼時候停止呢你有一個條件嘛
+就是如果你的這個perplexity 降不下去了
+你的perplexity 降不下去了你就停在那裡
+你這個時候你就得到你的一組
+那這是第一個example 所用的方法
+第二個example 呢完全不一樣了
+它是用我們上次說過的cart 
+也就是decision tree 
+你記得我們說過我把一個一大堆東西放在這裡之後呢
+想辦法用一個question 把它分成兩個
+這個原則是甚麼降低perplexity
+然後呢再把它拆出來用一個question 再把它拆出來
+這個decision tree 我們在五點零所說的
+它用這個東西來做
+所以這是所謂的tree based 
+那你現在要分的是什麼東西分的東西不一樣了我現在要分的東西是history
+那你想每一個你可以看譬如說我現在講一一個word sequence 從w one 到w n
+那它等於是每一個given 前面從w one 到i 減一之後
+看到第i 個word 的機率i 一路乘下來的對不對
+就是我從w one 開始看到w i 減一之後
+那麼你看前面i 減一個
+然後呢會看到第i 個的機率
+然後我i 從一到n 
+這個就是這個的機率
+那這裡面的一到i 減一就是所謂的history 
+就是w i 的history 
+就是h i 
+就是一到i 減一
+你如果這樣來看的話我現在就可以把我的我有一個training data 
+我把這個training 這個語料庫裡面的所有的
+所有的各種各樣的history 統統拿來
+然後呢我嗯基本上應該是這樣講的我為每一個word 
+每一個word 都有一大堆它的history 放在這裡
+然後去去把它拆出來等等
+那麼我怎麼拆這個history 也是用一堆question 
+不過這個question 是什麼
+是這些history 的question 
+舉例來講這個history 的question 會是什麼呢
+不像我們之前所講的是我們之前在第五章講的說它左邊是子音還是母音
+右邊是母音還是子音發右邊那個母音的時候嘴嘴巴是怎麼的甚麼甚麼那個那個的時候是為了要分做tri gram 
+所以看左邊是什麼右邊是什麼
+左邊是母音嘴巴怎樣什麼什麼的
+那現在呢那因為我現在是在算language model 
+是在是根據這個history 來的
+所以我的question 變成我的history 裡面的question 
+譬如說history 裡面這個history 裡面有沒有哪一個字
+裡面有沒有動詞
+有沒有名詞
+有沒有的
+有沒有什麼什麼字take 
+你你可以你你可以想到所有的這一類的question 
+就都是指我的history 裡面有沒有什麼字有沒有哪一種詞類
+然後它有沒有什麼什麼東西哦等等
+那用這個方式有一大堆的question set 
+那一樣我也可以用它來我一樣算entropy 
+那根據entropy 降低來確定說我應該用哪一個question set 把它拆開來
+於是最後我的變成一大的堆的history 
+那麼變成很像的一堆history 
+那每一history 很像那些東西呢變成一個class 等等
+那這個方法的基本的精神你可以想像跟我們之前講的那個一樣
+就是包括了文法跟統計兩種knowledge 
+所也就是一個是這個grammar 這個grammatical driven 
+用文法的因為你現在講它的history 裡有沒有那一個動詞
+有沒有那一個名詞這個是在講文法嘛
+你一方面是講文法一方面是在算算這個entropy 是在講這個data driven 
+所以你其實是這個文法跟data driven 這兩種通通都都算了
+而且呢同時它包括了local 跟long distance relationship 
+這話的意思是說我們一般的n gram 都只有local 的relationship 
+什麼意思
+這個n gram 永遠只算到前譬如說前面的n 減一個
+跟後面的這一個
+我n gram 算不到更遠的
+所以n gram 永遠只是一個local relationship 
+而沒有long distance relationship 
+可是在真正的句子裡面long distance relationship 是永遠存在
+而且重要的
+我們舉一個例子來講
+在不論中文跟英文任何一種語言都一樣
+我們在講話的時候的語言顯然不是只靠local relation 
+而是有long distance 
+譬如說我們最簡最簡單的一個例子
+洗了一個很舒服的澡
+這個洗跟澡這是很有趣的
+因為澡本身不是一個東西
+你說吃了一個很吃了一個味道很很味道很甜的蘋果的話
+那你你也是一樣吃跟蘋果
+中間夾了很多很多東西
+那你其實是應該是吃跟蘋果之間的有這個bigram 的關係
+那麼你那個味道很好什麼東西
+你你你這些東西呢插在中間
+把吃跟蘋果中間會拉得很遠
+那洗澡就更複雜了因為澡不是一個東西
+那麼是一個詞是洗跟澡連起來的一個詞但是這個詞根本就切開了
+那它們的關係是被拉到這麼遠
+那你可以想像我們真正在講話的時候我們的很多很多句子裡面
+真正你的bigram 應該train 的出來的bigram 關係可能是很遠的
+在英文而言譬如說the boy walking on the street 
+decides to 幹嘛幹嘛幹嘛
+那同樣的是the boy decides 
+那中間這些東西呢其實是跟decides 會在the street 後面嗎
+好像沒什麼道理
+它其實是在這後面的
+這種就是所謂的long distance relationship 
+那你不管那一種語言我們在講話的時候都會有一大堆這種的long distance relationship 
+這種東西都是n gram 不會做的
+n gram 做不出來的
+那麼因此呢你其實是這是一種方法來做它因為如果你放在history 裡面的話
+history 其實裡面就包括了long distance 都在history 裡面了
+所以呢這是它的好處
+那這個詳細的這個去看這個reference 
+我們這邊不多講
+那我把這個reference 列在中間的這種情形是指說這個reference 是給你參考
+然後做為這個其實是可以做期末報告題目的你如果有興趣的話
+這種東西可以拿來做期末報告哦
+那跟我寫在前面一個chapter 前面的那些reference 是不一樣
+的如果我寫在chapter 的那裡的reference 的話
+這種reference 的意思是說是你回去真的要唸的
+啊期中考會考的
+就是說你當天準備期中考的時候這種東西是要看的
+但是呢你如果是寫在這中間的這種
+是說考試不會考的
+但是是很好的references 
+你如果考慮期末報告的話這種東西是可以做的
+是這樣的意思
+ok 好那所以這兩個我們不多說我們大概說到這裡
+那以上大概我們把language model 裡面一些最重要的問題
+從它的perplexity 到smoothing 這些東西class 我們大概都說到了
+那啊底下我們要稍為講一些中文的一些狀況
+那我們在這休息十分
+ok
+我們底下稍微講一點中文的狀況
+那第一個呢就是class based language model 中文也一樣可以做這種事
+我們中文也一樣可以把很多個詞兜在一起變成一個class 
+那可以怎麼兜法呢其實你的data driven 方法是不見得是剛才的那兩種
+其實你馬上可以想出很多種來
+剛才那兩個是最具代表性的就是了
+最簡單的方法你可以想怎麼做
+假設我有我有n 個詞
+我有n 個word 
+我可以建一個matrix 
+這邊也是n 個word 
+以bigram 的精神來講的話呢
+你可以數這個word 後面會接什麼word 
+譬如說後面接這個word 後面出現五十一次
+接那個word 十二次接這邊都其他都是零次
+這個二十六次等等等等等等
+那麼這個word 呢又又他的一一堆
+那這個word 呢在這邊出現了有二十六次在這邊有出現十一次
+這邊有出現十一次
+等等等等
+那你會發現這個word 跟這個word 是不是很像
+它們後面都會接這個word 
+都會接這個word 
+都會接這個word 
+那它跟它就很像了
+等等
+所以呢你只要做一個這樣子譬如說n 個word 跟n 個word 之間的table 
+這其實就是它們的bigram 這其實不是bigram 
+那你如果這樣來看的話呢
+這其實這等於是它們的它們的feature vector 
+這個word 後面會接這些東西這是它的feature vector 
+這是它後面的feature vector 
+你如果這樣看成這樣的話呢這就是這些vector 你就可以做vq 嘛
+我就可以去用vq 的演算法去做clustering 
+可以分成幾群那幾群大概後面接起來就很像
+他們就可以等於是根據bigram 精神就可以把它們分群了
+同理呢這樣子也可以啊
+這表示這個word 前面會接什麼word 
+對不對
+這個word 前面會接什麼word 
+如果它們像的話它們就會像嘛我就可以用這個來做
+哦等等
+那像這類從前我們都做過
+這類都是可行的方法
+你都會有效的把一些很像的詞兜在一起
+啊
+這這些都是簡單的做法
+那當然這樣子的這一類的data driven 的data driven 的方法
+它有它的弱最大的一個問題就是低頻詞很難做
+因為你這個都是要靠頻率高的嘛
+sil
+如果是它本身真的是一個低頻的詞
+很少見的罕用詞的話
+low frequency word 不太容易做

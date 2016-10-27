@@ -1,0 +1,115 @@
+那這樣是不是真的可以解決我們的問題呢不盡然
+你如果用剛才講的sentence parsing 
+來分析user 所講的話的話
+用這樣子的東西來分析user 要講的話其實是不太容易
+常常有很多困難的地方
+第一個就是人講的話不一定合乎文法
+我們寫文章的時候可能每一句都合乎文法
+但嘴巴講的時候不見得
+不合乎文法的話呢你那文法可能不work 
+第二個你有很多辨識的錯誤
+你的辨視錯誤都是你的文法不通
+那都會都可能讓你解不解不了
+再來呢很大一個原因是人講的話常常充滿了很多的unnecessary detail 
+也就是一堆irrelevant words 
+我們舉例來講假設說你要去哪裡to boston 
+其實只要講這二個字to boston 就很清楚了
+可是這個user 可能說i am going to boston i need to be in boston tomorrow 
+這一堆話都是廢話
+就是所謂的unnecessary detail 
+那這些什麼i am going to 啊這些什麼i need to 什麼都是irrelevant word 
+都是不相關的word 
+那有的時候user 會在裡面講一堆good mourning 什麼什麼這是greeting 
+這種都是沒用的
+那然後呢通常對個given act 呢會有無限多的linguistic form 
+譬如說你想這句話其實只是在講to boston 
+但這樣的話可以千變萬化可以講很多很多種
+那你怎麼去handle 它這麼多種
+那還有呢就是很多時候你user 其實是一面講話一面想的
+他在跟系統對話所以一面講一面想
+譬如說他說嗯just a minute 
+i wish to i wish to go to boston 
+那這裡面就有很多東西譬如說just a minute 這是幹嘛的這其實就是所謂的hesitation 
+喔等於等於說你沒有在講東西嘛
+i wish to i wish to 這什麼這就是repetition 
+這種都是沒有意義的
+還有呢repair 是說呢ok
+ㄜ我明天呃不是明天我後天去
+你中間做了一個repair 的動作那等等
+那這些東西都都會讓你這整個東西變得很複雜
+那這些東西就是我們講的spontaneous speech problem 
+就是說你在一個人在很自發性的跟系統講話的話
+我們其實人會講很多很很難處理的東西像
+嗯咳嗽聲喔等等這些都是很麻煩的
+這些東西都很難處理
+那如何對付這些問題呢
+一般講起來一個比較簡單的辦法是這樣子
+雖然它的效果也是有限的但是它可以解決一部分的問題
+就是robust parsing 
+什麼叫robust parsing 呢
+就是它把這剛才這個grammar 再切得更小更小
+我們剛才講得這個太大了
+這個這個要分析整個句子然後裡面很複雜
+你搞不好你這邊這邊都不能夠分析
+那怎麼辦
+把它切成很小很小
+你把它變成一個particular item in a very limit domain 喔
+變成一個很小的domain 裡面一個特別的東西
+你用很小的grammar 
+舉例來講譬如說我要講這個買飛機票
+它的目的地呢欸就是一個介係詞後面接一個city name 
+那這個介係詞可以是to 可以是for 
+city name 就是boston 
+就是所有的city name 
+那你就把剛才那個問題reduce 到這個問題
+然後呢所有的東西都當成是filler 
+就這一個小的task 而言
+它只管一件事情就是目的地
+那於是它只有一個文法就是這樣子
+那這個這個介係詞不過就只有這三種
+然後呢所有的city name 都在那裡
+那你就是要去這個其實就是做key word spotting 
+我就去spot 說有沒有這幾個字
+有沒有一個city name 
+如果它們接在一起那就是這個
+那如果是這樣的話呢我就是這樣子之後我變成一個非常小的grammar 
+然後其它東西都當成是filler 
+那就專門專門處理這一塊
+那如果是這樣的話呢我可能有很多不同的小grammar 
+同時操作
+你譬如說在講目的地的有一個很小的grammar 
+在講出發地的也有一個很小的grammar 
+在講時間也有一個啊等等等等
+因為很多很多小的grammar 
+那你現在user 這句話在講哪一個你不知道
+就可以同時啟動
+你很多小的grammar 同時啟動
+然後呢depend on 它你發現它在哪裡
+這個keyword spotting 抓到哪一個等等
+所以keyword spotting 在這裡是很有用的
+那這個觀念其實有另外一種說法也很像就是concept n gram 
+以剛才這個例子而言其實就是像to 啊for 啊這些個介係詞就是一個代表direction 的一個concept 
+然後這些city name 呢就是一堆代表地點的另外一個concept 
+於是呢在這個這個concept 之後會加另外一個concept 
+這是一個concept 的bi gram 喔
+所以你可以用concept 的觀念來來解釋的話呢
+你也可以把它們看成是cluster based n gram 嘛
+這就是這堆word 變成一個word class 
+這堆city name 的word 變成一個word class
+那這樣變成word class 的一個n gram 也可以喔
+所以這個觀念是很像的depend on 你怎麼去想這件事情
+那當然你要做understanding 的時候呢你也可以分成兩個stage 來做
+那麼一面做先做完recognition 
+變成一堆字
+或者keyword spot 變成一堆字之後
+後面再做semantic parsing 或者robust parsing 
+但是也有的人就把它合在一起
+就一步到位
+就是把這二件事情合在一起
+一次做完也可以
+所以你看我這個圖裡面畫的時候
+我就畫成一塊recognition and understanding 
+那有的人會把它變成一塊recognition 後面快一塊understanding 
+但有的人就兩個他就一步完成的
+所以你可以是拆拆開成兩塊
+也可以是一塊

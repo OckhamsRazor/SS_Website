@@ -1,0 +1,68 @@
+<playlist version="1" xmlns="http://xspf.org/ns/0/i">
+<title>8</title>
+<tracklist>
+<track>
+<title>DTW And Dp</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>1696.144</duration>
+<annotation>slides/DSP/8-1.jpg</annotation>
+<location>video/DSP/8-1.mp4</location>
+</track>
+<track>
+<title>Continuous Speech Recognition Example: Digit String Recognition - One Stage Search</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>480.82</duration>
+<annotation>slides/DSP/8-2.jpg</annotation>
+<location>video/DSP/8-2.mp4</location>
+</track>
+<track>
+<title>Continuous Speech Recognition Example: Digit String Recognition - Level Building</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>146.59</duration>
+<annotation>slides/DSP/8-3.jpg</annotation>
+<location>video/DSP/8-3.mp4</location>
+</track>
+<track>
+<title>Time-Synchronous Viterbi Search For LVCSR</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>1523.05</duration>
+<annotation>slides/DSP/8-4.jpg</annotation>
+<location>video/DSP/8-4.mp4</location>
+</track>
+<track>
+<title>Time-Synchronous Viterbi Search For LVCSR</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>1608.44</duration>
+<annotation>slides/DSP/8-5.jpg</annotation>
+<location>video/DSP/8-5.mp4</location>
+</track>
+<track>
+<title>Time-Synchronous Viterbi Search For LVCSR</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>929.35</duration>
+<annotation>slides/DSP/8-6.jpg</annotation>
+<location>video/DSP/8-6.mp4</location>
+</track>
+<track>
+<title>Some Search Algorithm Fundametals</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>455.423</duration>
+<annotation>slides/DSP/8-7.jpg</annotation>
+<location>video/DSP/8-7.mp4</location>
+</track>
+<track>
+<title>Heuristic Seach: Another Example</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>100.529</duration>
+<annotation>slides/DSP/8-8.jpg</annotation>
+<location>video/DSP/8-8.mp4</location>
+</track>
+<track>
+<title>A* Search And Speech Recognition</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>1528.457</duration>
+<annotation>slides/DSP/8-9.jpg</annotation>
+<location>video/DSP/8-9.mp4</location>
+</track>
+</tracklist>
+</playlist>

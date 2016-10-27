@@ -1,0 +1,227 @@
+那麼再下來的話呢我們來講一下其他的
+剛才基本上是用這個喔講的是vector space model 
+但是當然我可以不用VECTOR space 
+那可以用別的
+那第一個呢我用h m m 
+那麼用h m m 的話呢喔其實我們中文也一樣
+也可以用syllable 來做這個h m m 
+那這個是怎樣呢
+基本上就是我現在把user 的query 
+看成一個SEQUENCE of input observation 
+然後呢我每一篇文章看成是一個h m m 
+那你記得我們原來h m m 是幹麻的
+譬如說我每一個我要辨識零到到九
+我零有一個h m m 
+一有一個h m m 
+到九有一個h m m 
+然後呢這個聲音進來的是八
+那這個聲音我把它放到每一個h m m 裡面去看他的分數
+喔結果如果這個聲音是八的話呢
+那個八的那個字的那個h m m 分數就會高
+這個是我們原來h m m 的作法
+這個h m m 是非常有用的東西我們可以拿來做很多別的事
+譬如說在這裡
+那我現在變成不是這樣子了
+我現在是每一篇文章是一個h m m 
+每一個文件譬如說這個文件是一個h m m 
+這個文件是一個h m m 
+這個文件每一篇文件都是一個h m m 
+那user 的query 是一個observation 
+好所以呢user query Q 
+那裡面是一堆term T one T two 到T N 
+那這個是observation 
+那我現在要把這個observation 放進每一個h m m 裡面去看他的分數
+跟那個完全一樣
+那你這個user 的query 看成一堆term 
+那就是這邊的意思嘛
+你可以用譬如說word 
+你可以用word 
+你可以用用phone 
+用phone sequence 
+這些東西就可以當成你可以所以在query 裡面找他的words 
+或找他的phone sequence 什麼什麼的這些當成他的term 
+然後呢那你用這個query 就變成一串term 
+那麼這串term 這一串的term 你把它放到這些h m m 裡面去
+看他的分數
+那這裡面有一點不同的地方
+就是那在這裡做的時候
+到目前為止他們用這個方法來做用h m m 來做這個retrieval 的話呢
+大概每個h m m 都只有一個state 啊
+應該說還沒有人想出來兩個state 怎麼做
+所以都是一個state 
+所以呢在這上面的時候呢每一個有好多個state 
+那這邊呢每一個都
+只有一個state 
+那這一個state 的時候呢這個放進去算他的機率怎麼算
+我們在這裡的時候是怎麼算的呢
+這個這個state 裡面機率呢我們把它變成一堆Gaussian 對不對
+變成OK 這有一個Gaussian 這有一個Gaussian 
+我把它想像成是一堆Gaussian 的組合
+那麼於是呢我用一堆Gaussian 來model 
+於是呢譬如說呢這個state 我就把它看成是這樣的一個一堆Gaussian 
+於是呢我這個observation 可以放到這個裡面去看
+算他的分數
+那我現在這個怎麼辦呢
+這裡面是是這個喔phone 或者是word 
+或者是什麼那種syllable 這種東西的話呢
+我怎麼辦呢
+我這邊沒有辦法當成什麼Gaussian 
+但是我這可以什麼呢用N gram 
+所以呢我這個變成是用N gram 
+用N gram 來做成這個機率
+所以這個方法這個這個妳基本上來看
+他的整個的觀念跟上面是完全一樣的
+只是呢其實我們剛好全部都反過來
+你原來的這些個h m m 裡面的這每一個feature 都是acoustic signal 
+我現在的每一個feature 都是linguistic 的unit 
+都word 還是term 還是phone 
+都是DISCRETE 
+不像這邊是continue 的signal 的
+原來這些feature 是acoustic signal 
+這邊都變成linguistic term 
+那原來這裡面用的我的N gram 
+在這裡跑跑到這個機率裡面來了
+所以我的N gram 原來在這裡面的時候是來算那些個term 之間的關係的
+我現在的N gram 變成h m m 裡面的東西了好
+所以這個是倒過來
+但是事實上所有的觀念都一樣
+因此呢我現在可以用這篇文章我可以算這篇文章的N gram 
+於是這個於是這些term 進入這個N gram 就可以算他的N gram 機率
+uni gram 就是這一個一個的機率
+bi gram 就是兩兩相連的機率等等
+我就可以算這些這個N gram 就當成這些東西阿等等
+那基本觀念就是這樣
+那就是這邊所說的就是說我把query Q 看成是一個一個sequence of of observation 
+也就是一堆term
+然後呢每一個document D 呢看成是一個h m m 
+只是我現在H h m m 都只有一個state 
+那麼沒有人還沒有人想出來兩個以上state 會怎樣就是了
+然後呢那這個h m m 裡面那一個state 裡面我沒辦法做那什麼Gaussian 什麼沒有這這種Gaussian 那怎麼辦呢
+就是N gram 
+所以呢就
+就是由N gram 來兜兜成的
+在這裡面所舉的例子就是用uni gram 跟bi gram 喔
+這個是用用這篇文章的用這篇文章的文的文字可以train 出他的uni gram 跟他他的bi gram 
+這個就是他的uni gram 跟他的bi gram 
+我就是用這篇文章train 的
+那就是這個uni gram 跟這個bi gram 
+但是通常因為這一篇文章
+文字量實在是很少
+你train 出來的uni gram 跟bi gram 可能不夠好所以呢
+你再加一個這個是用一個比較大用一個大的corpus 
+train 的比較標準的uni gram 
+跟bi gram 加在一起喔
+所以呢我再加一個用這個用一個大個corpus 所train 的一個uni gram 跟一個bi gram 
+那就是後面這是given C 的這個就是這個大的corpus 所train 的uni gram 跟bi gram 
+等等你也可以有有有這個tri gram 什麼也可以
+那其實你看uni gram 是什麼uni gram 也就相當於會不會出現某個term 的意思嘛
+所以uni uni gram 
+gram 其實也就是在算這邊的每一個term 他出現的count 嘛
+是一樣的
+那bi gram 就等於是算他的sequence 
+對不對兩個term 連在一起出現的這個count 
+其實是一樣的東西
+那如果是這樣的話呢我們以這個為例的話
+我們這邊就是用了用了用了兩個uni gram 
+這個是這個文件自己的
+這個是用一個corpus train 的
+兩個bi gram 
+這個是文件自己的
+然後呢這是corpus train 的
+那我就變成這四個機率相加
+各有一個weight 
+M one M two 這是他的weight 
+這四個機率相加這四個四個N gram 
+就好比這邊有四個Gaussian 是一樣的意思
+我現在是變成是用N gram 來做就是了
+那如果這樣的話我的retrieval 我也可以用M A P 
+那這個意思這個就是M A P 的意思
+就是說我given 一個OBSERVATION 
+我的Q 
+Q 就是user 的輸入嘛
+就跟user 的輸入聲音是一樣的
+我user given given一個user Q 
+那我就可以去算說某一篇文章是relevant 
+這個意思R 就是relevant 的意思就是相關的
+那麼那麼他的機率是多少
+然後呢我對所有的每一篇文章都去算
+那如果這樣的話呢我看哪一個最大
+最大就是我的答案
+這個就是MAP 嘛
+所以呢我就可以用這個方式given 這個Q 咳
+given 這個Q 
+那我就可以算每一篇文章的相的的可能的機率
+那當然我不一定要只選只選最最大那一個
+就這裡而言 我們可以選最大的一百篇
+或者最大的五十篇等等
+那這個就是這個就是我們平常講的這個retrieval 的方法
+可以這樣子來作
+那當你變成這個的時候呢一樣的就是MAP 的這個這個機機率我不會算
+我把它倒過來
+所以呢我把它倒過來變成
+如果是講這篇文章的話那麼會看到這個Q 的機率
+如果是這篇文章的話
+我有這個N gram 在這裡
+given 這個N gram 
+我會看到這個Q 的機率是多少
+所以我就是算這個Q 用這個N gram 來算機率
+就跟把它放到這裡面來算機率是一樣的
+所以呢我只要倒過來之後我就可以算
+given 這個N gram 
+那麼這個Q 的機率
+那應該還要乘上這個機率
+喔這個只是我們這個MAP 裡面你知道MAP 我們每次把它倒過來
+然後其實應該還要除上一個機率不過那個機率不算
+反正是一樣的所以可以不算
+但是現在是這個機率也無法算
+這個機率因為不知道是什麼
+所以我們也不算就算這一個
+如果算這個的話呢
+那這個就變成MAXIMUM likelihood 
+因為這是一個likelihood function 
+把這個倒過來了
+這個是MAP 
+這個變成MAXIMUM likelihood 
+當你變成這樣之後呢
+那其實就是那這個其實就就是把那個Q 放到這個個D 裡面去
+把這個Q 放到這個D 裡面去放到這個N gram 你算這個N gram 的意思
+當你算他的N gram 那就是底下這個式子
+底下這個式子沒什麼特別
+就是在算uni gram 跟bi gram 
+也就是說我現在如果我現在如果是這個痾T one T two T 三T 四
+的時候到T N 
+這是我的user query 
+變成一串term 的時候
+那我第一步呢第一個要算他們這這個T one 的uni gram 
+那就是這一個這T one 的uni gram 
+他在這篇文章裡面自己的uni gram 
+以及在一個比較大的corpus 所train 的那一個uni gram 
+然後從二以後呢我前面這兩個是uni gram 這兩個是bi gram 
+二開始始呢我也算他的uni gram 
+我也算他的喔他的bi gram 
+也就是前面這個來的
+所以呢二的時候我有他的uni gram 
+有他的bi gram 
+那那就是當N 等於二的時候
+這兩個就是uni gram 然後這兩個就是bi gram 喔
+那這是我的document 這是這篇文章自己的
+這個是我整個的corpus 的bi gram 
+然後三的時候呢那當然三也有他的uni gram 
+也有他的bi gram 喔等等
+那你可以再加tri gram 等等再一直加到N 就是了
+那你這些個這四個N gram 
+你有他的weight 
+那這個weight 可是可以train 出來的
+你用EM 也可以train 你用M C E 也可以train 喔
+那當然要train 你要有一個標準答案
+就是說這些是query 這些是找到哪些文章
+那有個標準答案你就可以train 這些東西
+那這些都都可以train 出來
+那這就是用h m m 來做
+那我們之前講的用syllable 一樣可以做這件事
+我們都做過用syllable 來一樣建這個這個model 
+那這時候就是我每一個這裡的每一個term 變成一個單一的syllable 
+雙音兩個syllable 三個syllable 就
+就在這裡
+或者跳音都在這裡弄
+那這樣的話呢我也可以做用syllable 來做這個這個h m m 的retrieval 

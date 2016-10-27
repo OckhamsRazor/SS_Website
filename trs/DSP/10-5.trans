@@ -1,0 +1,128 @@
+之後呢還可以再進一步呢就是把它變成key phrase 的spotting 
+或者key key phrase 的detection 
+那換句話說呢
+你有的時候其實我真正要抓的不是一個key word 
+而是一個key phrase 
+這個key phrase 是指幾個key word 連起來
+或者是key word 的前後連著function words 
+舉例來講你如果買飛機票你說from taipei to hong kong 
+那這個時後taipei 跟hong kong 是我的key word 
+那個from 跟to 呢就是我的function word 
+那我可以把function word 跟這些key word 連起來
+這就是個key phrase 
+那你可以猜得到為什麼要這樣做的原因是因為我的key word 可能有很多
+譬如說我的其實這個from 後面接一個city name 
+後面接一個to 再接一個city name 就是這樣一個key phrase 
+那所以你你譬如說我的city name 這個航空公司它也許全世界有三百個city 它都會到
+我就把這三百city name 放在那裡
+那whenever 前面接了個from 後面接了個to 我都可以連成一個一個key phrase 
+那這樣的話呢我就可以有很多的key phrase 
+就是由這些key word 所構成的等等
+同理我可以譬如說on sunday 
+這是一個function word 後面接一個key word 等等
+這就變成一個key phrase 
+那這主要的point 是說呢你一個單獨的key word 
+不如把它串成一個key phrase 比較可靠
+為什麼單獨的key word 比較會被local noise 
+或者其它confusing sounds 來trigger 
+舉例來講你說hong kong 
+有一個key word 是hong kong 但是今天剛好你那門一打開有人說kong 這麼一聲
+那麼那個kong 的noise 搞不好就被認為是hong kong 
+因為你那個key word 那個裡面key word hong kong 是一個重要的key word 
+它很容易可以被trigger 到喔
+那麼因此呢你你你與其把每一個key word 當成key word 
+不如把它們串成key phrase 
+這樣比較長
+然後就比較比較穩定一點
+那你可以就把整個phrase 就當成一個unit 來做
+那其它的都跟剛才一樣
+那於是你可以把這些key word 呢拼成像這邊這樣
+在這個例子是是一個network 
+那麼每一個arc 呢代表一個group of 可能的key word 
+譬如說six thirty pm 
+這是講時間
+那既然是six thirty 當然你可以是seven thirty 
+可以eight thirty 
+同樣你可以是six forty 
+或者six fifty 都可以嘛
+所以這個是代表一堆key word 
+這是代表一堆key word 
+那他們都可以連起來
+就構成千千萬萬個不同的key phrase 
+我也後面也可以是後面接monday evening 
+既然是monday 當然也可以是tuesday 可以是e 可以wednesday 
+可以是even evening 當然就可以是morning 或者afternoon 等等
+你都可以嘛
+所以呢你把它連來連去的話就可以構成非常多的
+那這個例子是在講時間
+那這邊可以連這邊可以連那可以這個連連來連去就構成各種狀況
+所以呢每一個arc 代表一個group of 可能的key word 
+然後呢這個那哪一個key word 可以跟哪一個key word 連
+你可以有它的grammar 可以有文法
+這個文法可以是用人define 
+也可以是用統計
+所謂用統計就譬如說像n gram 這種東西啦
+你可以用個語料去算它的n gram 就知道什麼後面會接什麼
+那如果沒有夠多語料就用人去人去set 也可以manually 
+就像six thirty 這種東西其實我們人可以set 說
+或者說from taipei to hong kong 這個人可以來set 
+taipei 這個city name 前面加什麼東西等等
+那這個好處就是說你得到這個key phrase 的話
+通常它比較清楚代表某一種semantic concept semantic concept 
+譬如說代表某一種觀念
+你在做understanding 或者dialogue 的時候就很清楚這代表一個時間
+那這代表某一天等等等等
+那底下這邊它是在說你可以用一些自動的方法去判斷
+哪一個key word 後面會接哪一個key word 
+你可以譬如說把這個某一些代表某一種意義的key word 連成兜在一起
+變成一個concept group 
+譬如說city name 
+那你所有的city name 在一起變成一個group 
+那你可以說誰可以接誰
+誰後面可以接誰
+你可以用一些統計的方法去算它們的黏性
+那它跟它會不會黏在一起
+你可以用數數統計的counts 來算
+那它跟它黏在一起的次數多不多等等
+那這個是講forward backward bi gram 
+假設你有某一個某一個key word 
+譬如說是c 零
+它後面會不會接一個c 呢
+你可以算這個c c 零後面接c 的
+那這個就是bi gram 
+反過來呢你有一個c 的時候它前面有沒有c 零呢
+你也可以統計這個
+那就是反過來的background 反過來的bi gram 
+就是backward bi gram 喔
+所以這個是反過來就是你後面如果有一個c 的話
+後面有一個c 前面會不會有c 零呢
+這也可以統計
+那我們平常講的bi gram 是反過來
+是前面有一個c 零後面有沒有c 
+所以這兩個都可以算你可以把forward 跟backward bi gram 去算一個幾何平均啊等等
+都可以用這個方法來來統計他們黏不黏
+他會不會跟它黏啊等等這類的方法
+好這部分我們說到這裡
+那麼我前面的reference 的話
+啊第一篇就是我們剛才講的generalize confidence score 
+也就是喔這邊的這一套
+我有frame level phone level word level 然後multi level 然後拿來做search 喔
+這一塊其實就是我這邊的reference one 在講的
+那reference two 是比較早的相當早
+那其實是當年的key word spotting 的早年
+剛出來的時候頭幾篇裡面的相當重要的原始paper 
+那它講的方法當然是今天來看是已經比較out of date 
+但是呢大概把重要的觀念都提到了
+所以這仍然是一個非常好的reference 
+這是早年最早的幾篇這個key word spotting 的paper 
+那麼最後這篇就是我們講的key phrase detection 
+就是我剛才講的這堆
+這堆key phrase 喔
+怎麼樣把它key word 黏起來變成key phrase 的
+就是剛才的這個最後這篇
+就是這一篇
+那這兩篇是比較我這邊並沒有提到
+但是大概你可以看得到都是在講怎樣在做verification 
+然後怎麼樣算confidence measure 等等喔
+這些都是相關的reference 
+好關於十點零我們就說到這裡了

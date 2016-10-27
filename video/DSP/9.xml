@@ -1,0 +1,68 @@
+<playlist version="1" xmlns="http://xspf.org/ns/0/i">
+<title>9</title>
+<tracklist>
+<track>
+<title>EM (Expection And Maximization) Algorithm</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>718.79</duration>
+<annotation>slides/DSP/9-1.jpg</annotation>
+<location>video/DSP/9-1.mp4</location>
+</track>
+<track>
+<title>EM (Expection And Maximization) Algorithm</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>996.99</duration>
+<annotation>slides/DSP/9-2.jpg</annotation>
+<location>video/DSP/9-2.mp4</location>
+</track>
+<track>
+<title>EM Algorithm: An Example</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>200.11</duration>
+<annotation>slides/DSP/9-3.jpg</annotation>
+<location>video/DSP/9-3.mp4</location>
+</track>
+<track>
+<title>EM Algorithm</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>364.018</duration>
+<annotation>slides/DSP/9-4.jpg</annotation>
+<location>video/DSP/9-4.mp4</location>
+</track>
+<track>
+<title>EM Algorithm</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>607.715</duration>
+<annotation>slides/DSP/9-5.jpg</annotation>
+<location>video/DSP/9-5.mp4</location>
+</track>
+<track>
+<title>Example: Use EM Algorithm In Solving Problem 3 Of HMM</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>781.048</duration>
+<annotation>slides/DSP/9-6.jpg</annotation>
+<location>video/DSP/9-6.mp4</location>
+</track>
+<track>
+<title>MCE Training</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>391.99</duration>
+<annotation>slides/DSP/9-7.jpg</annotation>
+<location>video/DSP/9-7.mp4</location>
+</track>
+<track>
+<title>MCE Training</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>1337.331</duration>
+<annotation>slides/DSP/9-8.jpg</annotation>
+<location>video/DSP/9-8.mp4</location>
+</track>
+<track>
+<title>MCE Training</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>1174.769</duration>
+<annotation>slides/DSP/9-9.jpg</annotation>
+<location>video/DSP/9-9.mp4</location>
+</track>
+</tracklist>
+</playlist>

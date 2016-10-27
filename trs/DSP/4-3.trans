@@ -1,0 +1,89 @@
+那我們現在講的不是這樣現在講的是怎樣呢就是我現在講的是
+每一個 state 我不是有確定的 output 而是它的 output 只是一個 distribution 
+它是千千萬萬的
+那麼因此我當我看到這一堆 distribution 的時候我不知道它到底我看到一個 output 它可以是在這裡也可以是在這裡只是機率不一樣而已
+因此我不知道它到底是在哪一個 state 裡面
+等於說我這個 state 這個 state 的 sequence 是躲在後面的看不到的是 hidden 
+因此呢那就是我們所謂的 Hidden  Markov  Model 就是底下講的這一個
+當我前面加了這個字加了 hidden 這個字之後有何不同
+那就是說我的 observation 呢變成是一個機率
+那這個機率呢那麼因此呢是 depend  on 一個 state 的
+那麼在哪一個 state 會有不同的機率在哪一個 state 會有怎不同的機率
+因此呢我就不再是一個剛才那麼簡單的 case 
+那麼因此呢什麼東西是 hidden 
+就是 state 是 state  sequence 是 hidden 
+當我 observe 到一堆 output 的時候我只能猜這一堆 output 
+我們上週說譬如說是這個這個 x  one  O  one  O  two  O  one  O  two  O 三的時候
+我只能猜說這個在這裡的話有一個機率在這裡也有一個機率
+不過呢在這個機率比較大所以呢我就認為它是它
+那這個呢到底是在哪裡都有可能只是機率有大有小而已
+但是我永遠不能確定到底它是在哪一個 state 裡面
+所以這個 state  sequence 是 hidden 
+那麼因此呢也就是這邊講的喔我根據這個 observation  sequence 
+就是這些 O  one  O  two 的話根據這 observation  sequence 這些 O  one  O  two 的話呢我
+ never  know 到底我的 state 是哪一個
+我其實是永遠不知道我都是用猜的
+因此呢這就是我們上週說過是個 double 是個雙重的 stochastic  process 
+我有兩個兩層的 random 
+第一層是這個 state 會跳來跳去這個也是 random 的有一個機率
+然後我並不能確定它在哪裡
+第二層是 given 每一個 state 它是哪一種也是不確定的
+所以是雙層的 stochastic  process 
+這個我們大概簡單的複習一下因為這個我們上週都已經講過了
+因此呢它跟剛才有何不同就是多了一個 B 嘛
+我現在會有一個 B 也就是這一堆 prob 這一堆 distribution 
+ given 每一個 state 它的 distribution 會長怎樣呢那就是我們講的 B 嘛
+就是上週說的那個 B 
+那那個 B 長怎樣呢
+那麼一般你去看那個課本的話通常它們會說這個 B 有長兩個樣子
+就是我們這邊講的就是我現在因為有了這個 random 的 given 那個 state 我還我只有一個 distribution 嘛
+那麼每一個 state  distribution 我們叫做 B  j 的這個 O  t 嘛
+譬如說這個是 B  one 的話呢 j 等於一就是這個 state 它會有這樣 distribution 
+ B  two j 等於二的話呢在這樣 state 它會有這樣的 distribution 等等
+那這是所謂的這個 B  j 
+那麼這些東西就構成我們講的 B 
+這一堆的就是我們講的 B 所有的 j 
+那就多了這個 B 
+它是所有的這個 probability  function 
+那麼每一個 describe 它的對某一個 state 而言它是怎樣的機率
+就是多了這個 B
+那麼這個 B 長怎樣呢
+我們上週說我們 B 就是把它看成什麼呢看成一堆 Gaussian 
+所以呢這邊可以你可以看成這是一個 Gaussian 這是一個把它看成 model 成為一堆 Gaussian 兜起來的等等看了一堆 Gaussian 
+那就是我們這邊所說的底下這個
+那這個其實沒什麼特別跟我們只是跟我們上週符號有一點不一樣而已
+那其實是一樣的那這個就是 gaussian 嘛
+我們上週所講的那個 multi  variate 就是有 n 個 vec  n 個 variable 兜在一起的那個大 gaussian 
+那這個就是那個 vector 減掉 mean 然後呢 transpose 相乘
+跟它的 inverse 這就是 co  variance  matrix  inverse 等等
+所以這個就是我們上週所說的那個那這是一個大 gaussian 就是 B  j  k 的
+這個就是我在 state  j 
+ j 是那個 state  j 就是這個 state 的的 index 
+ k 呢就是第 k 個 gaussian 
+所以呢 B  j  k 就是第 k 個 gaussian 
+然後呢我的這個有一個 weight 加起來等等
+這應該是小 b 啊寫大 B 寫的應該是這個小 b 
+那所以這就是我們上週所說的這個的東西
+那這邊是寫的比較嚴謹一點
+它說呢你可以想像成我的每一個 observation 
+這個每一個 observation 相當於是我們這邊的 O  O  t 啦這種東西啦
+這個每一個 observation 你可以看成是 d 的 dimension 的 vector 
+每一個 component 是一個 real  number 
+對不對寫這樣的意思就是說我這裡的每一個呢是一個是一個 vector 
+總共有幾個呢總共有 d 個
+ d 就是它的 DIMENSION 的數目
+總共有 d 個
+然後每一個呢可以是一個任何的 real  number 是一個 arbitrary  real  number 
+所以呢這個寫法就這樣的意思
+表示它是一個 d  DIMENSION 的的這個 real  number 所構成的 vector 
+那麼因此它的機率呢就長成這樣等等
+那這個就是指我在第 j 個 state 的時候
+那它的 OBSERVATION 的長相就是一個這樣的 gaussian 
+這是這所以這一塊就是我們這邊所說的喔喔上週所說的一堆 gaussian 這樣的 distribution 
+那麼其實我們今天用的都是這一個
+那你如果去看課本的話它還會講上面那一個
+那這個是在九零年代的初期或者到八零年代的末期的時候人家用的是這一個
+在當時的 computer 還很還很破
+在那個年代這麼多的 gaussian 很難算
+因此當時呢都用這個方法
+所以這個是大概在九零年代的初期以及八零年代用的方法

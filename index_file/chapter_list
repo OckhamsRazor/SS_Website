@@ -1,0 +1,36 @@
+1
+language model,index,acoustic model,syllable,bigram,trigram,corpus,information retrieval,speaker independent,pattern recognition,speaker dependent,keyword spotting,spontaneous speech,text to speech,d s r,prosody,conversational speech,public switch telephone network,p s t n,distribute speech recognition
+2
+language model,hmm,n gram,gaussian,markov model,hidden markov model,m f c c,frame,index,acoustic model,syllable,covariance matrix,maximum likelihood,likelihood function,fourier transform,m a p,frequency domain,silence,filter bank,discrete fourier transform,pre emphasis,a posterior,bayes theorem,pitch,f f t,gaussian mixture,word graph,four gram,maximum a posterior,decoding,hamming window,hamming,end point detection,z transform,lattice,fast fourier transform,inverse discrete fourier transform,mel frequency cepstral coefficient
+3
+language model,hmm,n gram,m f c c,adaptation,acoustic model,information retrieval,speaker adaptation,robustness,keyword spotting,spontaneous speech,text to speech,decoding,distortion,read speech
+4
+hmm,gaussian,markov model,hidden markov model,e m,index,viterbi,covariance matrix,v q,delta,convolution,utterance,k means,clustering,backward algorithm,forward backward algorithm,forward algorithm,vector quantization,code book,segmental k means,decoding,markov chain,baum welch,nearest neighbor
+5
+language model,hmm,phone,gaussian,markov model,hidden markov model,triphone,entropy,syllable,delta,silence,pattern recognition,accuracy,k means,backward algorithm,machine learning,context dependency,forward backward algorithm,information theory,phoneme,gaussian mixture,jensen's inequality,h t k,segmental k means,k l distance,co articulation,cart,cross entropy,classification and regression trees,hmm toolkit,decision tree,kull back leibler
+6
+language model,hmm,phone,n gram,gaussian,triphone,syllable,entropy,viterbi,bigram,topic,lexicon,v q,trigram,corpus,o o v,smoothing,perplexity,clustering,unigram,information theory,back off,jensen's inequality,four gram,branching factor,k l distance,h t k,cart,cross entropy,hmm toolkit,decision tree,good turing,katz,part of speech,five gram,out of vocabulary,add one smoothing
+7
+language model,hmm,phone,gaussian,markov model,hidden markov model,m f c c,frame,index,acoustic model,viterbi,adaptation,covariance matrix,fourier transform,delta,frequency domain,convolution,spectrum,silence,accuracy,unvoiced,discrete fourier transform,pre emphasis,filter bank,d f t,pitch,vocal tract,robustness,gaussian mixture,linear regression,f f t,critical bank,inverse d f t,mel filter bank,formant,power spectrum,hamming window,hamming,end point detection,discrete cosine transform,main lobe,quefrency,fast fourier transform,inverse discrete fourier transform,mel frequency cepstral coefficient,side lobe,cepstrum,high pass filter,voiced,push to talk
+8
+language model,hmm,phone,n gram,markov model,hidden markov model,triphone,frame,index,acoustic model,adaptation,viterbi,lexicon,delta,m a p,speaker independent,utterance,speaker adaptation,accuracy,speaker dependent,a posterior,beam search,bayes theorem,forward algorithm,speaker independent model,a star,word graph,continuous speech,heuristic,re scoring,n best,beam width,admissible,isolate work recognition,best first search
+9
+hmm,gaussian,e m,m f c c,adaptation,entropy,covariance matrix,topic,maximum likelihood,v q,likelihood function,eigen voice,m a p,m c e,pattern recognition,m l l r,k means,backward algorithm,forward backward algorithm,l d a,bayes theorem,a posterior,jensen's inequality,segmental k means,g m m,maximum a posterior,discriminative training,gradient descent,minimum classification error
+10
+phone,n gram,markov model,hidden markov model,frame,viterbi,syllable,lexicon,likelihood function,m a p,utterance,a posterior,bayes theorem,beam search,function word,a star,precision,cohort set,likelihood ratio,background model,viterbi beam search
+11
+language model,hmm,phone,n gram,gaussian,markov model,hidden markov model,e m,m f c c,triphone,index,acoustic model,adaptation,covariance matrix,maximum likelihood,likelihood function,eigen vector,corpus,eigen voice,eigen value,speaker independent,m c e,pattern recognition,m l l r,speaker adaptation,smoothing,perplexity,accuracy,clustering,speaker dependent,bayes theorem,machine learning,a posterior,gaussian mixture,linear regression,speaker independent model,g m m,maximum a posterior,maximum likelihood linear regression,likelihood ratio,s r i l m,gaussian mixture model,eigen space
+12
+language model,hmm,n gram,markov model,hidden markov model,e m,index,adaptation,acoustic model,entropy,topic,v q,likelihood function,eigen vector,query,corpus,eigen voice,information retrieval,eigen value,speaker adaptation,l s a,latent semantic,clustering,p c a,machine learning,robustness,function word,semantics,latent semantic analysis,fold in,a c m,prosody,similarity,singular value decomposition,s v d,sig i r,p l s i,probabilistic latent semantic analysis
+13
+language model,hmm,phone,n gram,gaussian,e m,index,entropy,syllable,topic,maximum likelihood,likelihood function,lexicon,query,corpus,o o v,information retrieval,m a p,m c e,utterance,l s a,latent semantic,keyword spotting,i d f,function word,t f i d f,vector space model,t f,fold in,a c m,d s r,subword unit,singular value decomposition,sig i r,precision,lattice,relevance feedback,special interest group,latent semantic indexing,recall,p l s a,special interest group on information retrieval,a c m sig i r,term frequency,query expansion
+14
+hmm,phone,n gram,gaussian,markov model,hidden markov model,viterbi,bigram,topic,v q,trigram,o o v,k means,i d f,function word,t f i d f,t f
+15
+language model,hmm,phone,n gram,gaussian,markov model,hidden markov model,e m,m f c c,triphone,frame,index,acoustic model,adaptation,covariance matrix,topic,maximum likelihood,lexicon,likelihood function,eigen voice,eigen vector,fourier transform,o o v,delta,frequency domain,eigen value,convolution,speaker independent,m c e,utterance,spectrum,speaker adaptation,l s a,pattern recognition,silence,clean speech,filter bank,p c a,machine learning,vocal tract,l d a,robustness,f f t,spontaneous speech,additive noise,temporal filter,h t k,cepstral domain,power spectrum,distortion,rasta,read speech,z transform,discrete cosine transform,modulation frequency,disfluency,taylor series,delta delta,linear discriminative analysis,inverse cosine tansform
+16
+language model,n gram,frame,acoustic model,accuracy,keyword spotting,spontaneous speech,semantics,action,dialogue state,dialogue management,discourse analysis,act,word error rate,discourse semantics,context free grammar,c f g
+17
+language model,m f c c,acoustic model,v q,pitch,vector quantization
+18
+language model,m f c c,topic,information retrieval,pattern recognition,information theory,robustness,keyword spotting,text to speech

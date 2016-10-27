@@ -1,0 +1,50 @@
+那這裡面最大的問題應該是說你如何
+當現在整個網路在我的系統裡面哪網路有一堆網路的問題要能夠解決
+那舉例來講這是我們很簡單的說
+如果是無線網路裡面的話呢
+有 link  level  transport  level 跟 application  level
+我現在如果做語音在上面做語音的話是在這裡做
+是屬於 application  level 上面的一些的 core  technology
+可是呢我這邊有 link  level 有 LINK  LEVEL 的問題
+那麼 TRANSPORT  level 有 TRANSPORT  level 的問題
+舉例來講譬如說 link  level 有什麼問題
+他會這是傳輸這個我想你在通訊的課程裡會有我這邊並不去說他
+你在傳送中間會有各種各樣的問題把你訊號破壞
+阿他們稱之為 FADING
+有各種各樣的 noise
+那麼他有不同的特徵
+然後會把我的訊號破壞
+然後我的訊號的 level 可以變化很大一會兒很強一會兒弱
+嗯你打手機電話你很清楚這一點
+然後呢我的雜訊可高可低
+還有呢我的 band  width
+喔對還有這個因素就造成我的 error  rate 很高
+會有很多 error 你知道我們今天你的手機電話大概
+你的手機電話大概這個
+錯誤率大概是
+幾百分之一嘛幾百個 bit 會錯一個
+那麼還會發生所謂的 BURSTING  error 就是所謂的一錯錯一堆
+一堆都錯在一起嗯這些問題
+那同樣的呢你還有 band  width 問題你手機電話的時候 band  width 非常有限
+那你學通訊就知道 band  width 有限就使得我的 bit  rate 有限
+我 band  width 也可能是 dynamic 隨時變化
+我的 bit  rate 也隨時變化
+這些就是 link  level 的問題
+那到了 transport  level 的話呢
+那麼我們平常你如果是用 internet 寫 email 的話呢
+所用的所謂的 T  C  P  I  P 的話呢
+是發生 error 沒有關係
+因為我永遠可以要求他
+我只要發現有 error 我就要求 re  transmission
+重送一次
+問題就是有一點 delay 但是我寫 email 呀什麼的有一點 delay 是沒有關係
+我們通常通常透過網路送個什麼檔案給別人 delay 個幾秒鐘都沒有關係的
+可是你如果現在是打手機的電話操作什麼東西的話你可能需要的是 real  time
+那你如果要需要 real  time 沒有 delay 的話呢你可能就需要用 U  D  P
+那你學網路就知道呢 U  D  P 的話呢他是可以沒有 delay
+但是呢你如果發生錯誤怎麼辦
+我就是把那個 packet 丟掉了
+所以呢我的 packet 會有丟掉一堆 lost 會會有一堆 packet  lost
+然後呢然後我的這個 packet 呢會 out  of  sequence
+我收到然後 packet  SEQUENCE 跟原來 sequence 是不對的等等
+那這些問題都是我們在這個 link  level 跟 transport  level 產生的問題

@@ -1,0 +1,207 @@
+那這個基本架構是這樣
+就是你可以想像dialogue 的核心看成是這個式子
+這個式子裡面s n 是什麼所謂的discourse semantics 
+也就是dialogue state 
+那這是什麼意思呢
+基本上來講喔這也是不同的課本不同的文章裡面他們用的名詞不一樣
+他們有的人叫做discourse semantics 
+有的人叫dialogue state 
+意思是差不多的
+也就是你的dialogue 進行到哪裡了
+到目前為止獲得些什麼
+舉例來講
+如果說是一個買飛機票的dialogue 系統的話
+你馬上要知道
+這系統要知道的是你要的這個出發的地點是哪裡
+目的地是哪裡
+然後你要的是哪一定航空公司
+你要的是這個呃幾月幾號出發
+你要的是經濟艙還是商務艙等等
+這些個就是user 要specify 他的user 的目的的
+這些東西呢我們就稱為譬如說define 某一種state 
+所謂dialogue state 就是ok 
+出發地知道了沒有知道了
+那麼目的地知道了沒有知道了
+航空公司知道了沒有知道了
+那麼這個哪一天出發知道了沒有還不知道
+然後要經濟艙還是商務艙知道了沒有還不知道
+ok 哪些知道了哪些不知道
+然後它怎麼樣子去那麼還不知道的東西去問user 啊等等
+那這些就是說到目前為止
+user 的目的
+user 要做的事情
+你系統知道到什麼程度
+這是所謂的dialogue state 
+那通常那也是你dialogue 最核心的semantics 
+就是說你要知道他的哪一句話是指他的目的地
+哪一句話是指他的出發點
+哪一地方哪一句話是指他的行班等等喔
+那你要知道他的那就是所謂的semantics 
+所以你一路走過來前後文累積起來
+我的semantics 知道到什麼程度
+這叫做discourse semantics 
+那是在什麼時候呢是在第n 個term 的時候
+所以是有sub n 
+所謂的term 你知道只是一個這個譬如說下棋的時候
+這一步我下下一步你下
+或者打牌的時候這次我出再下次你出
+這就是所謂的term 
+所以在我們來講所謂的dialogue term 
+就是指這個user 說說一段話的
+那就是一個term 
+機器在做一件什麼事情那是一個term 
+user 在說一段話機器再說一段話這各是一個term 
+所以呢s n 就是指在第n 個term 的時候
+我的dialogue state 到哪裡
+或者說我所了解的 user 的semantics 到哪裡
+那那這個x n 呢
+這個s 是指speech input 
+在第n 個dialogue term 的時候
+那進來的聲音是x n 
+那因此呢
+你在時在時間等於n 的時候就是第n 個term 的時候
+進來的聲音是x n 的時候呢
+你要根據n 減一的時候我知道多少東西
+那麼於是我來判斷我下一步action 要怎麼走
+a n 是指系統的action 
+系統action 包括系統去做事
+譬如說他要訂飛機票
+他去查哪一天有什麼航班
+他要去這個或者他要講什麼話來問user 等等都算
+就是系統的action 就是a n 喔
+那麼包括你的手機的或者是網路的action 等等在內
+在第n 個term 的時候ok 
+所以呢基本上這個意思等於是說
+那麼在時間在第n 個term 的時候進來一個聲音是x n 
+那那個時候我要根據到n 減一為止的時候的所有的semantics 跟state 的知識
+累積到這裡為止
+我來判斷那麼我下一步應該做什麼action 
+那你可以把這個想像成是一個given 這個的一個機率的估計
+然後呢我要找哪一個action 是機率最大的
+那suppose 那就是最好的action 
+所以我的goal 就是要我希望這個系統的每一次都take right action after each dialogue term 
+每一次這term 的時候呢系統該動作都做一個對的action 
+然後最後可以complete task 喔
+successfully finally 
+那上面這個式子怎麼辦呢
+那麼他們說ok 我可以拆成這三個機率相乘
+這樣拆是沒問題啦喔
+問題只是說這每個機率之後怎麼train 這是一個很大的問題就是了
+那你拆成哪三個呢
+那第一個呢就是說這個given 我在第n 個term 
+我given n 減一的state knowledge 
+然後第n 個聲音進來的時候呢
+我判斷的也許不是這個而是什麼
+先要判斷這個這個f n 
+f n 是什麼呢是semantic interpretation of the 這個input speech x n 
+我不只是要做speech recognition 
+而且我要知道它的意思是什麼
+譬如說如果你系統在跟他講買飛機票
+他說我要去紐約
+如果這樣的話呢
+你不光是說我要去紐約這幾個做recognition 而已
+你要知道它的意思是指他的目的地
+是到一個city 去
+那個city 的名字叫做紐約
+那這個就是所謂的semantic interpretation 
+你要了解它的意思是指目的地
+然後那個紐約是個city name 
+喔你要知道這些東西
+所以這是一個那你要做就是speech recognition and understanding 
+那得到這個東西
+那這個其實寫在底下喔
+就是說這個機率其實就是就是這個我要convert x n 
+to some semantic interpretation f n 
+given 我前面到目前為止n 減一為止我的這個dialogue state 
+那這個要做的事情其實就是speech recognition understanding 
+也就是我們前面這張圖裡面畫的這一塊
+那這塊就是要把這x n 
+變成某一種f n 
+就是它的semantics 這個semantics concept 
+然後呢有了這個之後呢
+我要根據現在我得到這個semantic interpretation f n 
+跟之前的s n 減一
+去得到下一個s n 
+我新的dialogue state 是什麼
+譬如說他說我我我的目的地我要到紐約去
+那於是呢剛才的n 減一那裡
+我可能知道出發的地點我知道了時間
+知道了user 的名字
+但是我不知道他去哪裡
+那這回他說他去紐約了你知道了
+因此呢我就把這個加入我系統所累積的知識
+也就是系統所累積的關於user 的目的
+於是我就得到一個新的dialogue state 
+在這個新的dialogue state 裡面呢
+我的目的地那個空格填進去了是紐約
+那就由x n 減一變成s n 了
+所以這就是所謂的discourse analysis 
+那也就是說呢你就是把把n 減一的時候的state 
+或者說semantics 
+或者說是你累積的knowledgement 
+convert 到x n 
+然後呢於是你就有一個新的dialogue state 
+given 所有的past 可能的f n 
+那麼於是呢那這塊是什麼呢
+就是所謂的discourse analysis 
+也就是我們圖上的這一塊
+你是要根據過去所累積的
+過去每一句話每一個term 裡面user 說的累積起來
+他已經說過他的姓名
+他已經說過他要搭哪一家公司
+他已經說過他出發的地點
+他還沒有說目的地
+這回你說目的地了
+於是我就可以把剛才所累積的東西再加進去
+我又多了一塊又填進去了等等
+所以這個是discourse analysis 
+就是這個
+那這個時候呢你可能f n 不只一個
+也就是說你的understanding 可能不是唯一的答案
+你可能有好幾個
+舉例來講假設是買火車票
+他說我要買火車票我要去台中
+但是呢台中跟台東是很像的
+所以呢你在這裡可能不能判斷他到底是台中還是台東
+可能台中台東各有百分之五十的機率
+如果這樣的話我這兩個都要考慮
+都要放進來喔等等
+那麼因此呢你就會有不只一個f n 在這裡
+因為f n 是不能判不能確定一定對的
+所以你可能要把好幾個f n 通通可能通通算在這通通加起來
+喔所以呢這邊會有一個summation 
+之後呢那後面這這個機率呢就是
+我現在已經知道我到這裡了
+user 意思到這裡了
+那user 想要做到這裡了
+於是呢我現在下一步應該做什麼事
+那這個呢就是dialogue manager 要做的事情
+也就是也就是說那這塊呢就是我們剛才的這張投影片這塊
+也就是說我現在已經知道累積了這麼多知識了
+user 又進來這個畫了我都知道了
+那這回下一步要做什麼事
+它要決定下一步
+所以這個就是dialogue manager 要做的事情
+那它呢就是select the most suitable action 
+你要決定下面做什麼事
+喔given 這些東西
+那於是呢你在失在這個所有的a n 跟s n 裡面
+它如果是某一某一個s n 
+它應該是某一種action 裡面我去找
+看看哪一個a n 最好的那一個a n 就是這個
+那這樣的這一個呢就把這個機率拆成這三塊
+那這三塊其實就是這邊寫的這三行
+那這三個呢就是這個機率就是我們這邊講的這個speech understanding recognition understanding 
+然後這邊講這塊就是我們這邊講的這個喔dialogue discourse analysis 
+然後呢這邊的這個呢
+就是dialogue management 
+就是這個
+所以呢這三塊就是分別由剛才這三個機率來代表嘛
+那當然這邊還有一塊我們沒有講
+那就是要做你要決定user 這個系統要對user 說什麼話
+那可能要造個句子出來
+然後做語音合成
+那這塊我們現在姑且不說
+所以我們講的就是這三塊
+就是剛才的這三個機率或者這三行講的東西
+好那到這裡為止這一堆是比較完整的這個學理上的說法

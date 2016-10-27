@@ -1,0 +1,53 @@
+它不需要是這樣子 one  d 的而是可以這樣子的任何一個 state 可以跳到任何一個 state 去
+也就是說我們沒有讓它可以跳回去但其實 in  general 是可以跳的
+在那樣的情形下我們看到的 Markov  Model 它是說是一個 triplet 
+包括哪三樣東西呢
+第一個就是所有 n 個 state 每一個 state 構成所謂的大 S 
+然後呢 state 之間可以有 transition 我們叫做大 A 
+那 in  general 的話呢這個 transition 應該是 given  on 它的 history 
+我在 t 減一的時候是哪一個 state  t 減二的時候是哪一個 state 我 given 前面的這一堆 state 那麼我下一個會到哪一個 state 機率是多少
+所以 in  general 的話這個 Markov  Model 是說 given 前面這些 state 的 history 下一個機率下一個是哪一個 state 的機率是多少是這一個
+但是呢這個太複雜了所以我們通常把它簡化變成只 depend  on 一個
+這就是我們在上週所說的 A  I  J 
+我只看 t 減一個時候是在 i 那麼 t 的時候是 j 的機率就是 A  I  J 我變成只只 depend  on 一個了
+那這種情形我們叫做 first  order  Markov  Chain 
+所謂 first  order 就是我只 depend  on 一個雖然 in  general 我也可以 second  order  third  order 等等都可以
+然後再來我開始是哪一個 state 就是在哪裡這是 initial  state  probabilities 
+那麼在傳統的 Markov  Chain 就是這樣跟我們上週所說的 H  M  M 還有一個最大的差別是什麼呢
+在這裡在這裡的話呢就是說每一個 state 的 output 都是確定的每一個 state 的 output 是確定的
+也就是說如果它在 state  one 它就是什麼 output state  two 就是什麼 output 所以呢你其實很容易解
+那我們上週所說的不一樣我們上週所說的是說在它在某一個 state 的時候它出來的東西不確定只有一個 distribution 對不對
+所以即使在這個 state 我不知道它長怎樣我只知道它會是有這樣的 distribution 
+那跟這個 state 是不同的如果是這個 state 的話呢它有另外一個 distribution 
+那麼這個情形之下呢我看到的 output 在這裡
+但是我並不知道它是那個 output 是在哪個 state 那那個才是 H  M  M 真正不同的地方
+所以我們這邊講的還是很簡單的是說呢對某一個 state 而言那它其實是是有一個固定的 deterministic  output 
+所以呢其實是不難做的
+我們舉個例子來講這個簡單的 case 那就是假設這很容易就是假設只有三個 state 
+那這三個 state 我讓它可以這個有很簡單 output 
+所有 state  A 那個 S  one 的 state 的 output 都是 A 
+ S  two 的 output 都是 B 
+ S  three 的 output 都是 C 
+這個跟剛才不一這個跟我們這邊講的不一樣
+我們這邊講的是這個 output 的話呢有很多很多千千萬萬只有一個 distribution 
+對不對它呢有很多種只是有一個 distribution 而已
+但是這邊的話是說我都是確定的所以這是比較傳統的 Markov  Model 
+它的 output 就是 A 它的 output 就是 B 它的 output 就是 C 
+然後呢它們有它們的 state  transition  probabilities 在這裡就是這個 matrix 
+ initial  probability 在這裡
+那這個這樣其實很容易啦
+我們舉例來講你如果有一個 ob  sequence 是你 observe 到一個 sequence 是 C  A  B  B  C  A  B  C 
+那你馬上就知道因為如果第一個是 C 的話 C 是來自哪裡呢就是 S 三嘛
+第二個是 A  A 來自哪裡呢就是 S  one 嘛
+ B 呢就是 S  two 嘛等等
+你馬上得它的 state  sequence 就就是這個嘛
+既然是這個 state  sequence 是這個的話譬如說你要解我們剛剛我們上週說過你要解這個問題就很容易解啊
+你要你要看到這個東西的機率是多少
+很容易解啊那就是什麼你看
+這個第一個第一個是 C 嘛是 S 三嘛
+所以表示說我的 initial 要從三開始
+所以我先從這個這個從這個 initial 是從三開始的這個機率就是這個零點一嘛就在這裡
+然後再來呢就是從三跳到一嘛一跳到二嘛
+所以我就從三跳到一嘛一跳到二嘛這就是一個一個的 state  transition  prob 把它走過去
+那每一個都在這裡都有嘛就把它乘起來就好
+所以這是一個非常容易做的情形這個就是傳統的 Markov  Model 

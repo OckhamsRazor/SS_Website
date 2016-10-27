@@ -1,0 +1,159 @@
+<playlist version="1" xmlns="http://xspf.org/ns/0/i">
+<title>4</title>
+<tracklist>
+<track>
+<title>Markov Model</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>129.74</duration>
+<annotation>slides/DSP/4-1.jpg</annotation>
+<location>video/DSP/4-1.mp4</location>
+</track>
+<track>
+<title>Markov Model</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>280.21</duration>
+<annotation>slides/DSP/4-2.jpg</annotation>
+<location>video/DSP/4-2.mp4</location>
+</track>
+<track>
+<title>Hidden Markov Model</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>419.76</duration>
+<annotation>slides/DSP/4-3.jpg</annotation>
+<location>video/DSP/4-3.mp4</location>
+</track>
+<track>
+<title>Hidden Markov Model</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>226.86</duration>
+<annotation>slides/DSP/4-4.jpg</annotation>
+<location>video/DSP/4-4.mp4</location>
+</track>
+<track>
+<title>Hidden Markov Model</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>387.89</duration>
+<annotation>slides/DSP/4-5.jpg</annotation>
+<location>video/DSP/4-5.mp4</location>
+</track>
+<track>
+<title>Basic Problem 1 For HMM</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>678.7</duration>
+<annotation>slides/DSP/4-6.jpg</annotation>
+<location>video/DSP/4-6.mp4</location>
+</track>
+<track>
+<title>Basic Problem 1 For HMM</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>1081.11</duration>
+<annotation>slides/DSP/4-7.jpg</annotation>
+<location>video/DSP/4-7.mp4</location>
+</track>
+<track>
+<title>Basic Problem 2 For HMM</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>2086.12</duration>
+<annotation>slides/DSP/4-8.jpg</annotation>
+<location>video/DSP/4-8.mp4</location>
+</track>
+<track>
+<title>Basic Problem 2 For HMM</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>476.17</duration>
+<annotation>slides/DSP/4-9.jpg</annotation>
+<location>video/DSP/4-9.mp4</location>
+</track>
+<track>
+<title>Basic Problem 2 For HMM</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>499.139</duration>
+<annotation>slides/DSP/4-10.jpg</annotation>
+<location>video/DSP/4-10.mp4</location>
+</track>
+<track>
+<title>Basic Problem 2 For HMM</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>1388.263</duration>
+<annotation>slides/DSP/4-11.jpg</annotation>
+<location>video/DSP/4-11.mp4</location>
+</track>
+<track>
+<title>Basic Problem 3 For HMM</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>1377.003</duration>
+<annotation>slides/DSP/4-12.jpg</annotation>
+<location>video/DSP/4-12.mp4</location>
+</track>
+<track>
+<title>Basic Problem 3 For HMM</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>618.22</duration>
+<annotation>slides/DSP/4-13.jpg</annotation>
+<location>video/DSP/4-13.mp4</location>
+</track>
+<track>
+<title>Basic Problem 3 For HMM</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>560.02</duration>
+<annotation>slides/DSP/4-14.jpg</annotation>
+<location>video/DSP/4-14.mp4</location>
+</track>
+<track>
+<title>Basic Problem 3 For HMM</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>997.44</duration>
+<annotation>slides/DSP/4-15.jpg</annotation>
+<location>video/DSP/4-15.mp4</location>
+</track>
+<track>
+<title>Vector Quantization (VQ)</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>993.37</duration>
+<annotation>slides/DSP/4-16.jpg</annotation>
+<location>video/DSP/4-16.mp4</location>
+</track>
+<track>
+<title>Vector Quantization (VQ)</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>744.531</duration>
+<annotation>slides/DSP/4-17.jpg</annotation>
+<location>video/DSP/4-17.mp4</location>
+</track>
+<track>
+<title>Vector Quantization (VQ)</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>527.95</duration>
+<annotation>slides/DSP/4-18.jpg</annotation>
+<location>video/DSP/4-18.mp4</location>
+</track>
+<track>
+<title>Vector Quantization (VQ)</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>412.12</duration>
+<annotation>slides/DSP/4-19.jpg</annotation>
+<location>video/DSP/4-19.mp4</location>
+</track>
+<track>
+<title>Vector Quantization (VQ)</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>581.74</duration>
+<annotation>slides/DSP/4-20.jpg</annotation>
+<location>video/DSP/4-20.mp4</location>
+</track>
+<track>
+<title>Initialization In HMM Training</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>628.376</duration>
+<annotation>slides/DSP/4-21.jpg</annotation>
+<location>video/DSP/4-21.mp4</location>
+</track>
+<track>
+<title>Initialization In HMM Training</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>104.204</duration>
+<annotation>slides/DSP/4-22.jpg</annotation>
+<location>video/DSP/4-22.mp4</location>
+</track>
+</tracklist>
+</playlist>

@@ -1,0 +1,196 @@
+那這個式子其實是你從前學機率的時候都學過的 Gaussian  distribution
+那麼最上面的式子是一維的 Gaussian 那是你所熟悉的
+底下呢變成 n 維 n 維的 Gaussian
+你唸過的不過也許你忘了我們很快的複習一下
+一維的 Gaussian 是你所熟悉的假設我這個是 x 他的 distribution 是一個這樣子的話
+那麼這個是他的 mean 叫做小 m
+那麼這邊他有一個他的 variance  sigma 是他的肥度看他有多肥
+因此呢我的一維的 GAUSSIAN 寫起來就是這個樣子
+那這個寫法呢這個大 X 表示說是我那個 random  VARIABLE  X 的符號
+大 X 那個 random  variable 的符號就是這個 X
+小 x 是他的這個真正的值
+而這個值呢可以從負無限大到正無限大
+不過他有一個他的他的 distribution 的 mean 是小 m
+所以我得到一個這樣的關係我想這個式子是你所熟悉的
+這是一個人的 variable 的時候
+當我有一把 random  variable 的時候像那樣我們那邊有三十九個嘛喔我有這麼多
+當我有一打一把 random  variable 的時候他們之間的關係我是可以寫成這樣一個這樣子的 vector
+就變成一個 random  vector  random  variable 所構成的 vector 大 X
+這個大 X
+那麼我們真的寫起來應該是這個樣子 X  one  X  two 到 X 的 n
+我這邊如果是有大我如果有小 n 個 random  variable 的話呢我總共有
+我總共有小 n 個 random  variable 把他寫起來寫成一個 random  vector 所構成 random  variable 所構成的 vector
+那麼這就是我們這邊所寫的 x
+我這邊的小 t 是代表他的 transpose
+那麼我的符號這裡有一點 confuse
+因為剛才前一頁的 transpose 是大 T
+抱歉有一點不清楚
+我這邊是用大 T 代表 transpose
+下一頁變成小 t 了你你你清楚就好啊這個就這個 transpose
+當我寫成這樣之後我也可以寫成這整個 vector 的 distribution
+那麼就像我寫成上面那一個一樣那我寫成底下這一個
+因此呢我這個變成是我把這個一個 random  variable 的 x 寫成是整個 random  vector 大 X 就是這個東西的 distribution 就變成這樣
+這個式子看起來有點複雜不過其實他長得跟上面那個是完全一樣只是這是 SCALAR  form 這是 vector  form
+所以呢這裡每一個每一個 x 就變成他的值
+那這裡面的每一個都可以有一個值
+所以這個值呢變成這個 random  variable 值是這個 x  one
+相當於這個 random  variable 的值這個一樣的意思嘛齁
+那麼因此呢這個這個 x  one 的值是 x  one
+這個 x  two 的值是 x  two
+這個的值是 x  n 這些小的 x 是代表他的值
+那麼因此呢我這個呢叫做小 x 他也是一個 vector
+然後呢那就是我這邊寫的小 x 的 vector 的意思
+然後呢那他的每一個 random  variable 他也有他的 mean
+那這個 mean 呢就是 mean 的 x  one  mean 的 x  two 這一堆就是他的 mean
+那寫起來呢就是我的這個 mean 的 x  one 這是這是指這個的 mean
+對這個而言他有一個這個 mean 嘛對不對
+對 x  two 也有一個這個東西他就是就是也是他的 mean 就是 mean 的 x  two
+等等等等一直到 mean 的 x  n
+那他構成了一個就是我們這邊所寫的這個 mean 的 vector
+那這個也就是我這邊寫的這個式子我們真正講起來應該是這樣
+那麼因此你會看到這上面的這個 x 減 m 的平方的這個地方本來是 x 減 m 的平方在這裡嘛
+我現在就變成 x 的 vector 減這兩個 vector 相減就是就是他減他嘛他減他嘛
+那也就是他減他他減他那就是每一個對每一個 random  variable 而言就是在算這個 x 減 m 是一樣的嘛
+只不過我現在是怎麼樣呢是
+你可以先如果我們先不看中間這個的話那這個只是他他跟他他的 transpose 是不是再乘上他因此呢他減他跟他相減的 transpose 變成一個橫的 vector
+然後呢另外一個呢是縱的 vector
+那這兩個相乘是什麼呢這兩個 vector 相乘就是 square 相加嘛
+他跟他平方就是平方相加嘛對不對
+所以呢這個就是所有的 mean 所有的這一項
+對每一個 variable 而言相乘相加就是這個東西
+那然後這裡要除以 sigma 平方怎麼辦
+我現在不是 sigma 平方了我的 sigma 會變成一大堆 sigma  i  j 就是所謂的 covariance  matrix
+換句話說呢我還有一個 matrix
+這個 matrix 裡面的任何一個 element 叫做 sigma  i  j
+是第 i 個跟第 j 個
+那他是什麼呢他是這個
+第 i 個第 i 個 random  variable 減掉他的 mean
+以及第 j 個 random  variable 減掉他的 mean 的平均 expected  value
+那你可以看到當 i 等於 j 的時候就是在對角線上的這些的話
+就是我們原來的每一個那裡的 variance 對不對
+我本來如果是一個的話如果是一個 random  variable 的話
+他的這個 variance 是什麼就是這個 sigma 平方這個 variance 就是他跟他自己嘛
+就是就是這兩個就是就是 x 減掉他的 mean 的平方的 expectation 嘛
+對不對所以呢當 i 等於 j 的時候也就是這個 matrix 的對角線上其實就是分別每一個他自己自己的的那個 variance
+或是那個 gaussian 的肥度
+但是我現在除了在對角線以外我的任何一個位置都有
+那那個是什麼呢是第 i 個第 j 個之間的關係
+所以呢我就會有的 i 個跟第 j 個之間的關係那構成一個大的 matrix
+那這個 matrix 呢我們叫做這個 sigma 的話
+那麼於是呢我在原來在 skeleton 這裡是除以就除這個 square 除以這個 variance 平方就好了
+我現在沒這麼複沒這麼簡單我現在是變成怎樣要乘上他的 inverse
+所以這個除以就變成他的 inverse 就變成一個這樣的式子
+所以你如果仔細看的話哦還有那這個是甚麼呢我們這邊是除以他的 square  root 嘛
+這個 variance 平方再開 square  root 這個東西在這裡呢變成這個這是什麼這是那個 covariance 的 determinant
+ok 就是這個 matrix 的 determinant 就是這個東西在這裡
+那除了這個之外呢其實他是長的很像的你如果仔細看的話這裡的每一項分別對應到這邊的每一個 vector
+只不過這邊是 scalar 這邊變成 vector 了
+然後呢這邊變成 matrix 了
+那原來這邊的 scalar 呢變成 determinant
+然後這邊本來是 two  pi 的 square  root 現在變成他有 n 個了就這樣不同而已
+那麼這些你如果覺得不熟悉的話那麼會建議你回去翻翻開你讀機率的時候的課本他一定會仔細的講這一段的
+那麼我們也許舉一個例子來說會比較容易說
+當我只有一個 DIMENSION 的時候這個是 x 我們剛才說這個是一個 gaussian
+這是我的 mean 這是我的肥度就是我的 variance
+這是你所熟悉的
+如果說這樣一個 n  dimension 一看起來有一點太複雜你不太容易想像他是什麼的話
+那麼最簡單的辦法通常如果太多了不容易想像我們最簡單的方法就是把他簡化變成只有兩個
+如果 n 等於二的話只有兩個會怎樣那你可以想像他是這樣這是 x  one 這是 x  two
+那麼在 x  one 的時候他有這樣的一個 distribution 假設他的 mean 在這裡
+x  one 的話我們把他的 mean 畫在原點比較容易畫當然 mean 不一定要是原點
+那麼這是 x  one 那麼然後呢這裡是 x  two 是另外一個 gaussian
+ok 那麼於是呢這個是 x  two
+那麼這個是 x  one
+這樣你大概可以想樣他是這是這是是 two  D 的對不對
+那麼在這個時候呢我我如果這樣的話看起來他們兩個肥度是一樣的
+也就是說在 x  one 而言我在這上面看到的是他的 x  one 的肥度 sigma  one  one
+那我也在這裡可以看到另外一個
+是他跟他的呃是他跟他的
+這個是 sigma  two  two 是指白色的那個的那個的肥度是 sigma  two  two  ok
+那麼我們姑且現在看起來他們兩個是一樣的
+你可以想像我的那個 sigma 是什麼呢
+是 sigma  sigma  one  one 跟 sigma  two  two 是一樣的這兩個值相同我們不讓他不同我們讓他一樣
+那麼如果是這樣的話
+喔這個應該是有平方的
+這樣子的話那然後呢我讓他的這個 ma 那這個時候的這個 matrix 很簡單這個 matrix 只有二乘二
+這只有兩個嘛只有二乘二然後呢我讓他對角線以外這個都是零
+這表示什麼意思呢表示他們這個相鄰的這個 i 跟 j 一跟二呢是 independent 他們 independent 所以呢這兩個是零這個時候就是長得像這樣
+那就變成一個這樣的東西那這個我想這你比較容易想像這個就變成這樣子
+等於說是兩個 gaussian 在 x 跟 x 各是高各是同樣長得完全一樣連肥度都完全一樣的兩個 gaussian
+那麼就變成一個這樣的 distribution
+那這樣的 distribution 也許我們簡單畫起來把它畫成這樣可不可以也可以
+這是 x  one 這是 x  two 的時候呢他就是一個這個我畫等高線又是球形的對不對
+呃你可以想像是一個這樣子的
+那麼中間比較高外面比較
+ok 那如果我畫這樣的話等於是說從上面來看那他就是一個這樣的東西
+這是這個情形
+好那我現在如果改變一下我讓他的這個變成是這兩個值不一樣了
+譬如是 one  one 是比較小的 two  two 是比較大的會怎樣
+那你知道呀我的意思就是說我的 one  one 的這個呢這個會變得很瘦
+但是呢那個 two 的那個呢會變得比較肥對不對如果這個小這個大的話
+那那個時候會是怎樣的意思呢
+那個時候在這裡比較難畫在這裡就很清楚了那這裡的時候就變成這個是 x  one 這個是 x  two
+我 x  one 變得很瘦 x  two 變得很肥的話就變成一個橢圓形
+變成這樣子了
+或者說呢就是我的這個 distribution 是長的
+對不對那麼這個時候呢還就是這個是這邊比較瘦這邊比較寬
+但基本上他們仍然是 independent 變成這樣子
+好如果這樣子講你可以瞭解的話我現在再下一步我讓這兩個不是零
+我現在第在第三個狀況呢我現在讓這兩個除了一一跟二二
+這個小這個大之外我現在讓這個一二跟這個二一不是零
+那是什麼意思當一二跟二一不是零的時候表示說他們之間是有 CORRELATION 的
+他們之間的關係是存在的他不是 independent 了
+那那個時候是什麼意思呢
+那個時候如果我們要再畫其實就把這個圖把他歪過來那麼你就會變成一個像這樣的圖
+這是 x  one 這是 x  two 他變成一個變成一個這樣子的了
+這是什麼意思呢這個就是說我 x  one 跟 x  two 是有 CORRELATION 嘛
+那麼我變成一個這樣子的橢圓
+這個時候的意思是說譬如說我如果 x  one 的值在這裡的話我的 distribution 是這樣子的
+可是我如果 x  one 在這裡的話我的 distribution 是在這裡的是不一樣的
+我的 x  two 的 distribution 是 depend  on  x  one 的值會不同的
+呃這是什麼意思呢
+在這裡的話不會在這裡的話我在這個地方得到的也是這個 distribution 在這個地方得到的也是這個 distribution
+是一樣的那麼你這邊看起來不太一樣只是因為我的要乘上這邊的關係
+那這個是一樣的那我們打個比喻來講你就容易瞭解是什麼意思了
+假設說這是這些 x 都是這個學生考試的成績列在教育教務處的成績股裡面的話
+如果 x  one 是體育的成績 x  two 是微積分的成績這兩個基本上是沒有關係的
+如果他體育成績很高很會打球不表示他的微積分會特別好或者特別不好
+所以呢結果不管體育成績是八十分還是體育成績是七十七十分還是還是體育成績是九十分
+他的微積分的成績永遠是一個這樣 distribution
+但是呢如果說我的 x  one 是物理的成績 x  two 是微積分的成績的話
+這兩個就有 CORRELATION 了
+你如果把物理都考九十分的人都拿出來作個 distribution 的話
+他的微積分的成績大概也是比較高的就是這個 distribution
+反過來呢如果物理只有考二十分的人你都拿出來作個 distribution 的話呢
+他的微積分的成績也是個 distribution 不過呢他在這裡
+ok 那這兩個就是有 CORRELATION  ok
+那麼因此呢你如果看這個物理的成績跟微積分的成績他們是有 CORRELATION 的所以呢他們的 gaussian 呢就是一個 y 的 gaussian
+那因為這個高低跟這個高低是有關係的
+那麼你如果是體育成績跟微積分成績呢就是沒有關係的所以他們就是就是一個正的
+那麼這個關係他們之間的關係呢就表現在這裡那麼這個
+就是他們的所謂的 CORRELATION
+就這兩個之間的東西就是那個東西他們各自的關係啊
+你如果喔沒有這麼清楚的話回去再去翻你的機率課本這就是他的 CORRELATION  coefficient
+那他是在算他的這些東西
+那當這兩個東西等於零的時候就表示他們沒有關係就好像體育跟微積分沒有關係一樣
+於是呢這個時候他就變成長的像這樣子那這變成一個正的
+好那如果這兩個 dimension 的狀況這樣子我們舉這些例子你大概瞭解這兩個 dimension 狀況是這個意思的話
+我們再延伸為 n 個 dimension 是一樣的意思
+那我們剛才說我們現在不是只有兩個 dimension
+我們有幾個 dimension 我們剛才講我在這裡其實我的 o 是有很多 dimension
+我們剛才講這個大 D 其實是三十九我有三十九維
+三十九維不是那麼容易可以畫的那麼我們無法畫
+不過呢你可以想像我們講的是一個三十九維的狀況所以呢我就變成是
+三十九維我沒辦法畫我們只能畫出一個三維的來
+但是但是呢假設這是三十九維的話呢我就是等於我有一堆 gaussian
+這一堆 gaussian 的 distribution 加起來描述某一個 state 裡面的長相
+那你可以想像譬如說這好比這是一個 gaussian 這是一個 gaussian 這是一個 gaussian
+這一個個的 GAUSSIAN 就像我剛才畫在這邊的
+如果一維的時候
+我如果一維的話我說任何一個長相我沒關係我都可以把它畫成一堆 Gaussian 對不對
+這是一個一個一個我把他看成是一堆就是了
+一維我可以看成這樣
+那 n 維怎麼辦呢也是一樣哪 n 維就看成一堆 gaussian 相加
+不過每一個 gaussian 我我們剛才說呢你可以想像他是一個橢圓形的東西一個 n  dimension 裡面的一個橢圓
+那麼他可以是歪來歪去的嘛因為他們之間可能互相有關所以他可能是歪來歪去一個橢圓
+那如果這樣的話我的每一個個在 n 維空間裡面每一個 gaussian 是一個橢圓

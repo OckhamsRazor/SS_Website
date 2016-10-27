@@ -1,0 +1,850 @@
+那麼底下呢
+我們要進入最後還沒有講的兩樣東西
+就是呃這個dialogue 跟這個wireless 
+喔那我們要在剩下的兩兩堂課裡把它講完
+ok 我們先在這裡停十分鐘
+休息十分鐘
+應該是十六十七吧可能
+ya ok 我們底下會講十六點零spoken dialogue
+ok 好我們來講這個十六點零spoken dialogue 
+那dialogue 是另外一塊也就是說
+嗯它需要有喔有這個speech 的understanding recognition 
+然後這個dialogue 的manager 然後要能夠跟user 對話等等
+那這整個的東西是蠻複雜的
+那麼在呃一直到現在其實並沒有一個統一的統一的理論架構
+說是怎麼樣來model 怎麼樣來分析這一塊
+這個喔在dia 在dialogue 裡面倒底怎麼樣子能夠做最完整的分析的學理的模型
+或者說是這個喔其實一直都沒有
+那因此呢各家有它各家的做法跟說法
+那麼都不太一樣
+那麼並沒有哪一個是大家所公認的
+那我底下所講的主要是根據這本書
+就是這本課本所說的第十七章
+為大部分的內容的來源
+那有一小部分來自這裡
+那這些基本上可以講是比較公認、大家比較可以接受都可以接受那一塊
+那不過也因為是要大家都接受所以呢它裡面理論沒有沒有太多
+比較是實務經驗比較多
+就是真正在做這些東西的時候要考慮哪些事情喔
+比較比較多的是實際的經驗
+那它的理論架構主要就是這一頁所說的
+這一套機率模型
+這一套機率模型是多數人都覺得蠻好的
+問題只是這套模型並不表示真的可以做
+也就是說這裡面很多機率到底怎麼算的
+怎麼train 出來的其實不見得有統一的說法
+那麼每一個每一家可能說得不太一樣喔
+不過這套基本上架構是這一套是大家所共同了解的
+所以底下我們講就是這一套
+那基本上這張圖是我們之前就已經說過的
+也就是說你user 要跟系統對話
+那麼這個系統顯然要先recognized 
+然後understand 你的speech 
+然後呢這個系統跟這個本身要有一個manager 來manage 這個dialogue 
+那麼當user 說了什麼你應該怎麼反應
+user 怎麼樣做user 講了什麼你應該怎麼做等等喔
+它有一堆這個操作的部分等等
+那底下我們就來說這些東西
+那這個基本架構是這樣
+就是你可以想像dialogue 的核心看成是這個式子
+這個式子裡面s n 是什麼所謂的discourse semantics 
+也就是dialogue state 
+那這是什麼意思呢
+基本上來講喔這也是不同的課本不同的文章裡面他們用的名詞不一樣
+他們有的人叫做discourse semantics 
+有的人叫dialogue state 
+意思是差不多的
+也就是你的dialogue 進行到哪裡了
+到目前為止獲得些什麼
+舉例來講
+如果說是一個買飛機票的dialogue 系統的話
+你馬上要知道
+這系統要知道的是你要的這個出發的地點是哪裡
+目的地是哪裡
+然後你要的是哪一定航空公司
+你要的是這個呃幾月幾號出發
+你要的是經濟艙還是商務艙等等
+這些個就是user 要specify 他的user 的目的的
+這些東西呢我們就稱為譬如說define 某一種state 
+所謂dialogue state 就是ok 
+出發地知道了沒有知道了
+那麼目的地知道了沒有知道了
+航空公司知道了沒有知道了
+那麼這個哪一天出發知道了沒有還不知道
+然後要經濟艙還是商務艙知道了沒有還不知道
+ok 哪些知道了哪些不知道
+然後它怎麼樣子去那麼還不知道的東西去問user 啊等等
+那這些就是說到目前為止
+user 的目的
+user 要做的事情
+你系統知道到什麼程度
+這是所謂的dialogue state 
+那通常那也是你dialogue 最核心的semantics 
+就是說你要知道他的哪一句話是指他的目的地
+哪一句話是指他的出發點
+哪一地方哪一句話是指他的行班等等喔
+那你要知道他的那就是所謂的semantics 
+所以你一路走過來前後文累積起來
+我的semantics 知道到什麼程度
+這叫做discourse semantics 
+那是在什麼時候呢是在第n 個term 的時候
+所以是有sub n 
+所謂的term 你知道只是一個這個譬如說下棋的時候
+這一步我下下一步你下
+或者打牌的時候這次我出再下次你出
+這就是所謂的term 
+所以在我們來講所謂的dialogue term 
+就是指這個user 說說一段話的
+那就是一個term 
+機器在做一件什麼事情那是一個term 
+user 在說一段話機器再說一段話這各是一個term 
+所以呢s n 就是指在第n 個term 的時候
+我的dialogue state 到哪裡
+或者說我所了解的 user 的semantics 到哪裡
+那那這個x n 呢
+這個s 是指speech input 
+在第n 個dialogue term 的時候
+那進來的聲音是x n 
+那因此呢
+你在時在時間等於n 的時候就是第n 個term 的時候
+進來的聲音是x n 的時候呢
+你要根據n 減一的時候我知道多少東西
+那麼於是我來判斷我下一步action 要怎麼走
+a n 是指系統的action 
+系統action 包括系統去做事
+譬如說他要訂飛機票
+他去查哪一天有什麼航班
+他要去這個或者他要講什麼話來問user 等等都算
+就是系統的action 就是a n 喔
+那麼包括你的手機的或者是網路的action 等等在內
+在第n 個term 的時候ok 
+所以呢基本上這個意思等於是說
+那麼在時間在第n 個term 的時候進來一個聲音是x n 
+那那個時候我要根據到n 減一為止的時候的所有的semantics 跟state 的知識
+累積到這裡為止
+我來判斷那麼我下一步應該做什麼action 
+那你可以把這個想像成是一個given 這個的一個機率的估計
+然後呢我要找哪一個action 是機率最大的
+那suppose 那就是最好的action 
+所以我的goal 就是要我希望這個系統的每一次都take right action after each dialogue term 
+每一次這term 的時候呢系統該動作都做一個對的action 
+然後最後可以complete task 喔
+successfully finally 
+那上面這個式子怎麼辦呢
+那麼他們說ok 我可以拆成這三個機率相乘
+這樣拆是沒問題啦喔
+問題只是說這每個機率之後怎麼train 這是一個很大的問題就是了
+那你拆成哪三個呢
+那第一個呢就是說這個given 我在第n 個term 
+我given n 減一的state knowledge 
+然後第n 個聲音進來的時候呢
+我判斷的也許不是這個而是什麼
+先要判斷這個這個f n 
+f n 是什麼呢是semantic interpretation of the 這個input speech x n 
+我不只是要做speech recognition 
+而且我要知道它的意思是什麼
+譬如說如果你系統在跟他講買飛機票
+他說我要去紐約
+如果這樣的話呢
+你不光是說我要去紐約這幾個做recognition 而已
+你要知道它的意思是指他的目的地
+是到一個city 去
+那個city 的名字叫做紐約
+那這個就是所謂的semantic interpretation 
+你要了解它的意思是指目的地
+然後那個紐約是個city name 
+喔你要知道這些東西
+所以這是一個那你要做就是speech recognition and understanding 
+那得到這個東西
+那這個其實寫在底下喔
+就是說這個機率其實就是就是這個我要convert x n 
+to some semantic interpretation f n 
+given 我前面到目前為止n 減一為止我的這個dialogue state 
+那這個要做的事情其實就是speech recognition understanding 
+也就是我們前面這張圖裡面畫的這一塊
+那這塊就是要把這x n 
+變成某一種f n 
+就是它的semantics 這個semantics concept 
+然後呢有了這個之後呢
+我要根據現在我得到這個semantic interpretation f n 
+跟之前的s n 減一
+去得到下一個s n 
+我新的dialogue state 是什麼
+譬如說他說我我我的目的地我要到紐約去
+那於是呢剛才的n 減一那裡
+我可能知道出發的地點我知道了時間
+知道了user 的名字
+但是我不知道他去哪裡
+那這回他說他去紐約了你知道了
+因此呢我就把這個加入我系統所累積的知識
+也就是系統所累積的關於user 的目的
+於是我就得到一個新的dialogue state 
+在這個新的dialogue state 裡面呢
+我的目的地那個空格填進去了是紐約
+那就由x n 減一變成s n 了
+所以這就是所謂的discourse analysis 
+那也就是說呢你就是把把n 減一的時候的state 
+或者說semantics 
+或者說是你累積的knowledgement 
+convert 到x n 
+然後呢於是你就有一個新的dialogue state 
+given 所有的past 可能的f n 
+那麼於是呢那這塊是什麼呢
+就是所謂的discourse analysis 
+也就是我們圖上的這一塊
+你是要根據過去所累積的
+過去每一句話每一個term 裡面user 說的累積起來
+他已經說過他的姓名
+他已經說過他要搭哪一家公司
+他已經說過他出發的地點
+他還沒有說目的地
+這回你說目的地了
+於是我就可以把剛才所累積的東西再加進去
+我又多了一塊又填進去了等等
+所以這個是discourse analysis 
+就是這個
+那這個時候呢你可能f n 不只一個
+也就是說你的understanding 可能不是唯一的答案
+你可能有好幾個
+舉例來講假設是買火車票
+他說我要買火車票我要去台中
+但是呢台中跟台東是很像的
+所以呢你在這裡可能不能判斷他到底是台中還是台東
+可能台中台東各有百分之五十的機率
+如果這樣的話我這兩個都要考慮
+都要放進來喔等等
+那麼因此呢你就會有不只一個f n 在這裡
+因為f n 是不能判不能確定一定對的
+所以你可能要把好幾個f n 通通可能通通算在這通通加起來
+喔所以呢這邊會有一個summation 
+之後呢那後面這這個機率呢就是
+我現在已經知道我到這裡了
+user 意思到這裡了
+那user 想要做到這裡了
+於是呢我現在下一步應該做什麼事
+那這個呢就是dialogue manager 要做的事情
+也就是也就是說那這塊呢就是我們剛才的這張投影片這塊
+也就是說我現在已經知道累積了這麼多知識了
+user 又進來這個畫了我都知道了
+那這回下一步要做什麼事
+它要決定下一步
+所以這個就是dialogue manager 要做的事情
+那它呢就是select the most suitable action 
+你要決定下面做什麼事
+喔given 這些東西
+那於是呢你在失在這個所有的a n 跟s n 裡面
+它如果是某一某一個s n 
+它應該是某一種action 裡面我去找
+看看哪一個a n 最好的那一個a n 就是這個
+那這樣的這一個呢就把這個機率拆成這三塊
+那這三塊其實就是這邊寫的這三行
+那這三個呢就是這個機率就是我們這邊講的這個speech understanding recognition understanding 
+然後這邊講這塊就是我們這邊講的這個喔dialogue discourse analysis 
+然後呢這邊的這個呢
+就是dialogue management 
+就是這個
+所以呢這三塊就是分別由剛才這三個機率來代表嘛
+那當然這邊還有一塊我們沒有講
+那就是要做你要決定user 這個系統要對user 說什麼話
+那可能要造個句子出來
+然後做語音合成
+那這塊我們現在姑且不說
+所以我們講的就是這三塊
+就是剛才的這三個機率或者這三行講的東西
+好那到這裡為止這一堆是比較完整的這個學理上的說法
+那底下的多半都是一些比較經驗式的
+譬如人家真的在做是怎麼做的
+那麼第一個呢就是你怎麼把那個dialogue define 它的structure 
+你define 它的structure 之後比較容易去分析它
+那這個structure define 呢就有很多種
+有人用term 有人用這個initiative response pair 
+有的人用act 
+有的用sub dialogue 喔
+那我們姑且說一下譬如說什麼是term 
+我們剛才已經講過了
+就是某一個人不管是user 還是系統
+它講了一段話
+一個uninterrupted 的stream of speech 
+他講那段話
+那麼從一個一個人或者那個user 來的
+那就是一個term 
+於是就會有用term 為單位
+來把一個這個dialogue 的結構分析出來
+那這個時候我們就會有speaking term 跟back channel term 
+有的term 是convey 明顯的訊息
+有些沒有
+它只是一個acknowledgement 
+譬如說ok yes 
+yes 
+你如果光是這樣的話這只是一種back channel 
+並沒有提供太多
+這也是一個term 
+但有的時候term 是有豐富的意思的
+這所謂的term 
+那另外一種說法呢就是說我把它不是用term 來分
+是用initiative 跟response 來分
+那不管是user 還是系統
+會initiative 某一樣東西
+然後user 去然後另外一方去回答
+那這是initiative 跟res response 
+那這兩個跟term 不太一樣
+譬如說一個term 可以同時包括兩個
+那譬如說這個系統說你要的是星期五嗎
+user 說是的星期五我要去美國
+他可能除了是的星期五
+這個是一個response 
+但是他如果說要去美國
+那這個時候已經是下一個initiative 
+那麼因此呢這個這個你如果把它分成initiative 跟response 不是完全就是一個term 
+不一樣
+那這裡面我們很早就說過你有分成system initiative 由系統來主導像填一個表一樣
+但這個時候就是很僵硬的
+那你可以user initiative 完全用user 來主導
+不過這個是非常難的
+我們今天比較希望做到中間這種就是mix initiative 
+也就是兩者都有一點
+通常是盡可能由系統來主導
+系統來主導的話是我比較容易來處理的
+譬如說系統問說你要到哪裡去
+我說去紐約
+你要從哪裡出發從台北
+系統一路問那user 一路回答像填一張表一樣
+這個是最容易的
+但是這樣會很僵硬
+所以呢如果user 沒有照系統問的問去回答的話呢
+只要user 講的是在那個範圍之內
+最好系統也能夠處理
+那這樣的話呢就是mix initiative 
+那最多的人分析dialogue 是用所謂acts 來分析
+那麼這個speech acts 或者dialogue acts 
+這個是喔非常多的文章裡面它們的做法
+就是用acts 來分析
+什麼是acts 
+acts 就是user 的spea 這個speaker 的goal 或者intention 
+他倒底要幹嘛的
+我們把它define 成一個act 
+那基本上來講它是regardless of the detailed linguistic form 
+也就是說你可一個act 裡面可以有很多linguistic form 
+我們用底下例子來看比較清楚
+啊譬如說這個有有很多系統一開一開始就是說may i help you 
+或者說喔查號台你好
+或者說這個您早這是什麼什麼什麼喔
+那這些呢其實都是相同的意思
+就是conversation opening 
+那不是真的在講這個話而只是opening 的意思
+那這個就是一個act 
+那這個呢就是它的linguistic form 
+那有的時候呢像系統說there are three flies from taipei 
+那這個其實這個是一種offer 
+那這個offer 是一種acts 
+這個系統在offer 給user 說有什麼有什麼有什麼
+那裡面linguistic form 很多有各種各樣
+你可以說是有一種是assert 
+這是一種act 
+那reassert 是另外一種
+no i say tuesday 
+那這是reassert 
+那也可以是information request 
+啊譬如說when does it depart 等等
+那這邊的這裡的這些東西
+括號裡面的就是所謂的linguistic form 
+然後這外面這個就是所謂的act 
+所以呢通常很多人把他的dialogue 系統define 成為一堆acts 
+譬如說你如果要去買飛機票
+他可能總共define 二十五種acts 
+那就是說在user 在跟系統對話過程中間
+所有的說的話不外乎分成這二十五類
+那每一類呢就是一個act 
+然後你再去看那一類裡面他的是什麼
+那你每一類可以每一個act 可以自己有自己的model 
+因為在那個act 之下
+它要說的是它會說是那些
+所以你acoustic model language model 都可以在每一個act 不一樣
+那你如果是ok 查天氣
+可能有查天氣的你可以define 成有十六種act 等等等等這樣子
+那剛才那另外一種說法它可以把acts 分成forward looking 跟backward looking 
+剛才講的這些都是forward looking 也就是向前發展
+向前發展的act 
+還可以向後來這backward looking 的
+就是向後的譬如說confirmation yes 
+或者是ok but 
+我又加一點別的東西
+那接受一部分
+或者reject 
+或者說呢不清楚重說一次喔等等等等
+這些東西屬於back backward 
+也就是說它並沒有向前發展新的東西
+而是主要是在confirm 或者是回應原來的東西的
+那基本上來講你可以想像一個act 可以對應到千千萬萬個不同的linguistic form 
+因為你要講某一件事情
+你後面可能有很多種講法啊
+所以呢你的linguistic form 可以有非常多
+但是反過來也有的時候有好多種不同的這個呃同一個linguistic form 可能有不同的act 
+譬如說ok 
+至少有二種
+一種是confirmation 的ok
+一種呢是request ok 喔
+如果你是講ok 的話好像應該是在問對方
+要求對方confirmation 
+ok 那就表示是confirmation 
+所以你也很可能一個linguistic form 這是一個linguistic form 對應到二個不同的act 
+那這裡面的act 有的是task independent 
+不管什麼的dialogue 都可以用的
+有的是task dependent 
+depend on 那個dialogue 幹什麼的
+舉例來講
+這個conversation opening 
+這個是independent 
+任何一個task 都可以由這個開頭
+你說yes 
+這個大概也是任何一個或者說what did you say
+這大概可以任何一個application 都可以用的
+那就是task independent 
+反過來呢你說ok 
+你說there are three flies from taipei 這顯然是買飛機票的
+如果是其它的聲音就是不同的了
+所以這像這個情形的話呢這種買飛機票的就是專門針對買飛機票的裡面的一個act 
+所以這個就是task dependent 
+那當然這樣你當你盡可能分得那麼細的act 之後
+有的act 是task independent 有的是dependent 
+於是呢你那些independent 就可以拿來在所有task 都拿來用
+然後呢你只是在不同的task 做不同的task dependent 的東西等等
+那這樣的話你可以就比較容易
+那麼於是呢我的我要分析我要model 我要train model 等等
+我都可以design 我都可以根據每一個act 來做
+那他們很多的時候譬如說我買飛機票我define 二十五個act 
+於是所有的話只要在這二十五個act 之內
+我depend on 在那裡我就用哪一個act model 去分析它等等
+那還有一種人呢他是把它叫做分成sub dialogue 
+就是譬如說買飛機票的話呢
+一個是要問目的地的
+一個是要問出發地出發時間的
+等等等等
+你把它分成一個一個的小的task 
+那每一個呢就有一個小的sub dialogue 來處理
+於是就變成一堆sub dialogue 
+這樣也可以
+這個跟act 不太一樣喔
+這是一個完整的小dialogue 
+然後每一個完整的小dialogue 他們連起來就構成一個大的dialogue 
+喔等等這是這樣的情形
+所以你有各種不同的做法
+那這是講我們怎麼看這個dialogue 的structure 
+那怎麼看這個language understanding 呢這有很多種做法
+所謂understanding 你要抓到它的意思
+那這裡面呢我們舉其中一個最常用的最簡單的做法
+就是所謂semantic class 
+它就是有一個entity 然後有一堆attribute 或者叫做slots 
+舉一個最簡單的例子譬如說買飛機票
+那你就是系統要了解user 要的到底是哪一個flight 
+那user 要的東西呢我們叫做一個就是所謂一個entity 
+就是這個flight 
+那這個entity 裡面呢就有一堆這個所謂的attribute 
+譬如說呢如果就flight 而言
+哪一家航空公司聯合航空
+出發地點是舊金山
+目的地是boston 
+時間是哪幾月幾號等等等等
+這每一個呢就是所謂一個attribute 或者一個slot 
+那這這理得東西呢就是所謂filler 
+所以你的所謂的slot and filler 就是每一個slot 有一個filler 填進去
+那如果這樣來看的話這就是我們所謂簡單的一個semantic frame 
+那你就變成說是在這個dialogue 過程中就是要把這些東西一路填過去
+如果user 說了這個
+你就知道這個是填在這裡
+user 說了那個就填在這裡等等
+那然後哪些還沒說你就要去問user 哪些你要的是什麼
+那這樣的話呢就是一個比較容易一個非常簡單的方式來做到這樣的事情
+那如果是這樣子把它一個一個的attribute 或者一個一個的slot 填進去的話呢
+填進去之後也就假設你understand 這個是這個
+所以它講的這個呢是指一個date 
+它講這個是指填那個表但這個這是一種簡單的understanding 的方法
+那一個比較完整的方法呢應該是做這個所謂sentence parsing 
+或著context free grammar 
+那這個在一般的language understanding 裡面他們很很常用的
+那這個我們舉一個很簡單的例子來說大概是什麼意思
+他他要有一個所謂的grammar 
+就是一個文法
+那這種文法是稱之為context free grammar 
+c f g 也就是我並沒有特別規定
+它的context 要是什麼的
+那這些grammar 有很多種型態
+最基本的型態像這樣
+它就是所謂的一個rewrite rule 
+譬如說一個sentence 
+你可以把它rewrite 成為一個名詞片語noun phrase 後面接一個動詞片語
+那什麼是動詞片語呢
+動詞片語它說呢是可以是一群v cluster 一群動詞
+後面接介系詞片語
+這個p p 是介係介係詞片語
+那什麼是v cluster 呢
+就是一群動詞的結合呢他說v cluster 可以是一個would like to 
+然後呢後面接一個動詞
+那這個動詞是什麼呢可以是譬如說是可以是go 可以是fly 等等
+那介係詞片語是什麼呢是一個介係詞後面接一個名詞片語
+那那個介係詞呢可以是to 
+那那個名詞片語呢可以是個名詞
+那個名詞可以是boston 等等等等
+那這樣你最後就可以得到說假設user 說這句話
+i would like to fly to boston 
+而這句話已經被recognize 出來的話
+那麼你可以根據這如果這句話被正確recognize 出來你可以根據這堆rule 
+可以把它分析出來哦它是這樣的一個結構
+那你這個結構知道的時候
+你其實就已經知道它的意思了
+它的意思應該是說這是它的動詞
+他的這個是它的介係詞片語用來形容它的動詞
+所以呢它的fly 是to boston 的
+那這個是這個user 要做的事等等等等喔
+所以呢當你這個這個整個句子結構分析出來的時候你大概就得到一個好的understanding 
+那這個通常是這樣的c f g 呢
+是可以跟n gram 結合的
+我們知道n gram 只講local relationship 
+n gram 只是說這個word 後面接不接這個word 
+或者這兩個word 後面接不接這個word 
+它只管這個local relationship 
+而沒有管整個句子的structure 
+而這個c f g 呢是管整個句子structure 
+所以它跟n gram 基本上是互補的
+所以可以整合
+那n gram 管local relationship 
+而沒有管semantics 
+那當然你也可以反過來在這裡面加機率
+那這裡面加機率有很多很多種方法
+你可以把這些rule 給它機率
+也可以把這裡面放機率進去等等喔
+那麼各有不同的做法
+那基本上呢這個都是常用的情形
+那這樣是不是真的可以解決我們的問題呢不盡然
+你如果用剛才講的sentence parsing 
+來分析user 所講的話的話
+用這樣子的東西來分析user 要講的話其實是不太容易
+常常有很多困難的地方
+第一個就是人講的話不一定合乎文法
+我們寫文章的時候可能每一句都合乎文法
+但嘴巴講的時候不見得
+不合乎文法的話呢你那文法可能不work 
+第二個你有很多辨識的錯誤
+你的辨視錯誤都是你的文法不通
+那都會都可能讓你解不解不了
+再來呢很大一個原因是人講的話常常充滿了很多的unnecessary detail 
+也就是一堆irrelevant words 
+我們舉例來講假設說你要去哪裡to boston 
+其實只要講這二個字to boston 就很清楚了
+可是這個user 可能說i am going to boston i need to be in boston tomorrow 
+這一堆話都是廢話
+就是所謂的unnecessary detail 
+那這些什麼i am going to 啊這些什麼i need to 什麼都是irrelevant word 
+都是不相關的word 
+那有的時候user 會在裡面講一堆good mourning 什麼什麼這是greeting 
+這種都是沒用的
+那然後呢通常對個given act 呢會有無限多的linguistic form 
+譬如說你想這句話其實只是在講to boston 
+但這樣的話可以千變萬化可以講很多很多種
+那你怎麼去handle 它這麼多種
+那還有呢就是很多時候你user 其實是一面講話一面想的
+他在跟系統對話所以一面講一面想
+譬如說他說嗯just a minute 
+i wish to i wish to go to boston 
+那這裡面就有很多東西譬如說just a minute 這是幹嘛的這其實就是所謂的hesitation 
+喔等於等於說你沒有在講東西嘛
+i wish to i wish to 這什麼這就是repetition 
+這種都是沒有意義的
+還有呢repair 是說呢ok
+ㄜ我明天呃不是明天我後天去
+你中間做了一個repair 的動作那等等
+那這些東西都都會讓你這整個東西變得很複雜
+那這些東西就是我們講的spontaneous speech problem 
+就是說你在一個人在很自發性的跟系統講話的話
+我們其實人會講很多很很難處理的東西像
+嗯咳嗽聲喔等等這些都是很麻煩的
+這些東西都很難處理
+那如何對付這些問題呢
+一般講起來一個比較簡單的辦法是這樣子
+雖然它的效果也是有限的但是它可以解決一部分的問題
+就是robust parsing 
+什麼叫robust parsing 呢
+就是它把這剛才這個grammar 再切得更小更小
+我們剛才講得這個太大了
+這個這個要分析整個句子然後裡面很複雜
+你搞不好你這邊這邊都不能夠分析
+那怎麼辦
+把它切成很小很小
+你把它變成一個particular item in a very limit domain 喔
+變成一個很小的domain 裡面一個特別的東西
+你用很小的grammar 
+舉例來講譬如說我要講這個買飛機票
+它的目的地呢欸就是一個介係詞後面接一個city name 
+那這個介係詞可以是to 可以是for 
+city name 就是boston 
+就是所有的city name 
+那你就把剛才那個問題reduce 到這個問題
+然後呢所有的東西都當成是filler 
+就這一個小的task 而言
+它只管一件事情就是目的地
+那於是它只有一個文法就是這樣子
+那這個這個介係詞不過就只有這三種
+然後呢所有的city name 都在那裡
+那你就是要去這個其實就是做key word spotting 
+我就去spot 說有沒有這幾個字
+有沒有一個city name 
+如果它們接在一起那就是這個
+那如果是這樣的話呢我就是這樣子之後我變成一個非常小的grammar 
+然後其它東西都當成是filler 
+那就專門專門處理這一塊
+那如果是這樣的話呢我可能有很多不同的小grammar 
+同時操作
+你譬如說在講目的地的有一個很小的grammar 
+在講出發地的也有一個很小的grammar 
+在講時間也有一個啊等等等等
+因為很多很多小的grammar 
+那你現在user 這句話在講哪一個你不知道
+就可以同時啟動
+你很多小的grammar 同時啟動
+然後呢depend on 它你發現它在哪裡
+這個keyword spotting 抓到哪一個等等
+所以keyword spotting 在這裡是很有用的
+那這個觀念其實有另外一種說法也很像就是concept n gram 
+以剛才這個例子而言其實就是像to 啊for 啊這些個介係詞就是一個代表direction 的一個concept 
+然後這些city name 呢就是一堆代表地點的另外一個concept 
+於是呢在這個這個concept 之後會加另外一個concept 
+這是一個concept 的bi gram 喔
+所以你可以用concept 的觀念來來解釋的話呢
+你也可以把它們看成是cluster based n gram 嘛
+這就是這堆word 變成一個word class 
+這堆city name 的word 變成一個word class
+那這樣變成word class 的一個n gram 也可以喔
+所以這個觀念是很像的depend on 你怎麼去想這件事情
+那當然你要做understanding 的時候呢你也可以分成兩個stage 來做
+那麼一面做先做完recognition 
+變成一堆字
+或者keyword spot 變成一堆字之後
+後面再做semantic parsing 或者robust parsing 
+但是也有的人就把它合在一起
+就一步到位
+就是把這二件事情合在一起
+一次做完也可以
+所以你看我這個圖裡面畫的時候
+我就畫成一塊recognition and understanding 
+那有的人會把它變成一塊recognition 後面快一塊understanding 
+但有的人就兩個他就一步完成的
+所以你可以是拆拆開成兩塊
+也可以是一塊
+那再來呢這個是講這個這個discourse analysis 
+就是講我們剛才大部分都還在講這一塊
+那我們現在來講一下這個
+這個要注意些什麼地方呢
+你可以想像的是說
+你可以把user 的user 在說tomorrow 
+所謂tomorrow 是什麼
+是幾月幾號
+因為你如果買飛機票那飛機票database 不會說tomorrow 怎樣
+它會說幾月幾號有哪些航班幾月幾號有哪些航班
+所以這類的就是屬於相對的expression 
+它說next week 所謂next week 是指幾幾號到幾號喔
+你要把他們講的每樣東西你要把他convert 到正確的
+譬如說he he 是指誰
+那你都可能在前後文之中你在前後對話中間你會知道這些東西
+你要把他們對應過去
+自動inference 
+也就是說呢你要知道哪些information 還沒有講
+然後沒有講的是指什麼
+舉例來講譬如說這個如果user 問你how many flights in the morning 
+欸什麼叫how many flights in the morning 
+那顯然他前面已經說過了我要從台北去紐約
+如果是這樣的話顯然是指從台北到紐約的how many flights in the morning 
+那它講到底是指哪一天
+前面一定大一定講過哪一天
+所以呢也就是說你在現在在講某句話的時候你要跟前面很多話堆兜起來嘛
+那也是我們之前講的這個地方
+你要把之前的所有知道的東西跟現在的一路兜起來
+得到一個新的
+所以你把這個這個user 講的話一路兜起來
+那也就是我們這邊所畫的d discourse 
+你就是不斷的把之前講過的話累積起來
+大概知道在講什麼
+那然後呢你就可以判斷說ok 
+他現在講的意思是什麼
+所以當user 說how many flights in the in the morning 
+顯然是指我們剛才已經說過的從哪裡到哪裡哪一天都講在裡面
+然後呢你要做inconsistency 跟ambiguity detection 
+你可能中間有不對的
+譬如說他說這個ㄜ我要到台中
+待會兒他說欸台東有什麼地方有什麼旅館
+那台中跟台東不對的呢
+你就表示說你中間有一個辨識錯誤
+你要中間有inconsistency 
+那麼你要去重新去confirm 到底是台中還是台東
+那然後呢你當然你就最常用的方法就是我們剛剛講的就是用所謂dialogue state 
+或者semantic slots 
+那所謂semantic slots 就是剛才講的這個case 嘛
+就是你這樣你用一堆slot 
+它們你都一個個填進去
+那每填好一件事情就是一個state 
+那麼因此呢你就等於是一個用一個這個呃states 的方法
+來來隨時紀錄我現在隨時紀錄現在user 要的是什麼
+一路填進來
+那至於dialogue management 呢我們再講一下
+dialogue management 是指這一塊啊
+這一塊
+那也就是這一塊
+假設你知道state 是什什麼的話
+那麼你下個action 是什麼
+那這個時候呢有很多種情形
+基本上來講它的任務就是要如何control dialogue flow 
+你讓這個dialogue 能夠順利的進行
+然後想辦法跟user 互動
+然後呢看看下一步應該做什麼事
+譬如說你發現還有哪些哪些東西沒有填進來
+你要去問user 還有哪些沒有填的要問它
+哪個東西需要confirm 不太對了
+你要去跟他confirm 
+然後呢你這個如果有inconsistency 
+你要跟它clarify 喔
+哪些是還空的slot 你要把它填起來等等
+這樣一步一步朝向整個task 完成
+那這中間你可能還要做的就是想辦法optimize accuracy 跟efficiency 
+所謂optimize accuracy 譬如說你是不是應該要去confirm 一下
+提高accuracy 
+但是一再confirm 的話會很煩
+我也許為了efficiency 我不要confirm 那麼多次
+為了user friendly 
+讓user 比較喜歡一點
+你可能也不要那麼囉嗦喔等等
+如何optimize 這個東西
+這都是在management 要做的東西
+那這有很多種做法
+那譬如說以這個例子的話呢它有一個所謂的dialogue grammar 
+那你可以看成一件一件事情它說什麼東西做完該做什麼什麼做完該做什麼
+然後呢你有一個像類似finite state machines 的方法來操作它
+譬如說這是一個sub dialogue 
+先是一個opening 
+open 之後呢下步是個sub dialogue 
+去問你的目的地要到哪裡去
+問完問完問完之後去確認一下
+那塊填好沒有
+沒有填好啊欸那就再從來
+填好了之後呢再下去
+那這時候我下個可能是要問說從哪裡出發
+再看填好沒有
+沒有填好再重來等等
+那你可以從這邊open 就直接往這邊走也可以你可以寫一個grammar 
+讓它在不同的sub dialogue 裡面跳過來跳過去喔
+那麼你也許這還沒有講完
+欸但是他的那句話顯示我已經到這來了
+那也也許讓他可以這樣
+也許不讓他可以這樣喔等等
+所以你可以在中間可以操作讓他怎麼進行
+那另外一種做法所謂plan based 
+這個plan based 的意思是人工智慧裡面的一個專有名詞啊
+那我們這裡不細說
+基本上就是用plan 的方法來規劃怎麼樣進行這個dialogue 
+那基本上這裡面很難的就是如果是mix initiative 
+我們剛剛講如果user 他自己說一些話
+你要能夠處理的話
+他不完全answer 你的
+他自己說一些話你要能夠處理這個時候就比較難
+那這個時候呢一個系統通常我們怎麼measure 它的performance 
+dialogue 的performance measure一向是一個本身是一個研究課題
+因為不知道怎麼measure 它
+那麼最基本的做法你有兩類
+internal 的跟overall 的
+internal 你可以量它的word error rate 
+但通常error rate 不太準
+我們要的可能是slot accuracy 
+所謂slot accuracy 就是說你的understanding 對不對
+以剛才這個例子為例的話
+這邊總共有五個slot 
+那麼對了幾個
+中間倒底word error 如何沒有關係
+你說他說我要到san francisco 去
+他講了什麼話word word error rate 多少沒有關係
+重要的是這個san francisco 有沒有對
+所以呢如果這個對就是對嘛
+這就是所謂的slot accuracy 
+所以呢你如果比較可靠的算法
+是算這個slot accuracy 
+那但是還有更重要的就是overall 的performance 
+譬如說success rate 
+就是說你這個一百個人打電話進來
+你倒底它的飛飛機票買成而且買對的有幾次
+有多少人掛了電話就是很生氣的電話掛了就走了
+那有多少次等等
+這就是所謂的success rate 
+那這個是我的accuracy 的measure 
+但是呢你如果為了要success 很可能讓它一再的confirm 
+於是呢變成term 很多
+這也不好
+所以你要算average number of terms 
+所有的success 的task 裡面它用幾個term 完成的
+那當然越少的term 越好
+所以呢這就有efficient 這是屬於efficiency 等等
+那這些都是比較常用的performance 
+底下這個圖是講一下他們通常用的architecture 
+這裡兩個例子這個是所謂的galaxy 
+galaxy 是m i t 所提出來的那一套
+那這個也有個中文名字叫做銀河
+因為他們的那個galaxy 有中文版就是銀河
+那基本上這個galaxy 
+那這個是a t n t 的這個版本
+galaxy 基本上你可以看到它就是用一堆server 
+那它把server 分成兩類
+一類叫做human language technology server 
+這個是domain independent 
+這個做recognition 
+這個做understanding 
+喔這個是nature language understanding 這個是task with speech 合成的
+這些東西呢是independence of task domain 
+那另外呢有一堆是domain server 
+是針對domain 的
+譬如說買飛機票的這是一個domain 
+問餐館的這是一個domain 
+問氣象這是一個domain 等等等等
+那麼於是呢你對每一個domain server 
+針對某一個task 
+提供所有東西給它讓它去做這個
+舉例來講你如果買飛機票的話
+你要把city name 你要把航空公司的名稱給它放在它的辭典裡面
+於是你就用這個做辨識的時候呢
+就就會辨識你要的這些東西
+那同樣的呢
+那麼如果這個時候系統要跟user 說什麼樣的航班什麼
+那些東西我給了這個t t s 
+他就可以講航班等等
+那這樣明顯的一個好處就是說你把它分成domain dependent 跟domain independent server 
+那如果是這樣的話呢
+那麼我現在增加新的domain 
+可能這邊都可以用相同的東西
+只是針對那個domain 我有新的辭典
+我有新的language model 喔等等
+那於是在那個domain 裡面我就用那套這樣子
+那這個是它的基本的這個精神
+那當然user 在這端
+透過網路它不管是用電話p d a 什麼什麼都可以
+等等那這樣做的話我可以有比較高的portability 去different task 
+所謂portability 就是我做好一個買飛機票的dialogue 之後
+我能不能把它很快把它轉成問天氣的
+我能不能很快把它很快轉成問一個city 裡面的tour 等等
+那這個轉把一個task 做好之後轉到另一個task 去的
+這是所謂的portability 
+那越難轉就是越不portable 
+ㄜ那麼你把它拆開來之後是比較容易portable 
+那這個也是今天的dialogue 仍然存在的問題就是
+絕大多數的dialogue 系統都不是那麼portable 
+你它如果是在city 裡面問問路的話
+你要把它變成問天氣是很難的
+所以呢你要要port 到另一個去
+結果你每次都要重做一個那是很累的
+所以這仍然是今天一個很重要的問題如何解決
+右邊這個圖是a t n t 的其實它你仔細看它的精神是很像的
+他們只是每一個單位都喜歡有一個自己的就是了
+像他這邊的這一堆像a s r 的server t t s server 就是這個嘛
+一樣的嘛
+就是每一個他有一個server 
+然後呢他的server 這邊有一個所謂server provider 的這個interface 
+然後這邊有user 他user 在上面就是這邊這邊了
+user 在上面
+於是就有user 的a p i 
+於是中間把它兜起來等等等等
+所以這個跟這個其實觀念是很像的
+好關於這個dialogue 我們說到這裡

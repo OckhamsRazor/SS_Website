@@ -1,0 +1,61 @@
+<playlist version="1" xmlns="http://xspf.org/ns/0/i">
+<title>11</title>
+<tracklist>
+<track>
+<title>Speaker Dependent/Independent/Adaptation</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>239.254</duration>
+<annotation>slides/DSP/11-1.jpg</annotation>
+<location>video/DSP/11-1.mp4</location>
+</track>
+<track>
+<title>MAP (Maximum A Posteriori) Adaptation</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>1345.811</duration>
+<annotation>slides/DSP/11-2.jpg</annotation>
+<location>video/DSP/11-2.mp4</location>
+</track>
+<track>
+<title>Maximum Likelihood Linear Regression (MLLR)</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>1628.69</duration>
+<annotation>slides/DSP/11-3.jpg</annotation>
+<location>video/DSP/11-3.mp4</location>
+</track>
+<track>
+<title>Principal Component Analysis (PCA)</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>1678.157</duration>
+<annotation>slides/DSP/11-4.jpg</annotation>
+<location>video/DSP/11-4.mp4</location>
+</track>
+<track>
+<title>Eigenvoice</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>686.46</duration>
+<annotation>slides/DSP/11-5.jpg</annotation>
+<location>video/DSP/11-5.mp4</location>
+</track>
+<track>
+<title>Eigenvoice</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>1113.51</duration>
+<annotation>slides/DSP/11-6.jpg</annotation>
+<location>video/DSP/11-6.mp4</location>
+</track>
+<track>
+<title>Sat And Cat</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>1465.03</duration>
+<annotation>slides/DSP/11-7.jpg</annotation>
+<location>video/DSP/11-7.mp4</location>
+</track>
+<track>
+<title>Speaker Recognition/Verificatoin</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>752.754</duration>
+<annotation>slides/DSP/11-8.jpg</annotation>
+<location>video/DSP/11-8.mp4</location>
+</track>
+</tracklist>
+</playlist>

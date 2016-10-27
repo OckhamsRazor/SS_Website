@@ -1,0 +1,2464 @@
+那所以呢我我們今天我就我改成今天我們先講十五點零
+那麼這個啊如果今天可以把十五點零講完的話我們下週回到九點零
+我想是這樣可能比較順序上可能會被對各位更準備期末報告可能更方便一點
+那十五點零的這些refer 我們這些講的是什麼東西我們待會解釋
+那這裡面的這個啊課本上有一小段在講就是這裡面
+這個課本裡面講的一點
+那大部分的內容其實也是一樣都是啊我選一些從大概九零年代中期到兩兩千年左右的一些個比較代表性的東西
+那麼經過這麼多年下來應該是大家公認是一些有這個有代表性的有具體的都公認相當不錯的技術
+我們拿它來說一下
+做為example 
+雖然從那個以後到最近
+還有很有非常豐富的paper 可以找得到
+那那些應該都是很好的報告題材
+所以我們今天先來講這個十五點零
+那我們先說一下十五點零在講的啊我們這邊講最主要的一個基本的事情
+就是所謂的mismatch 
+in 這個我我們的語音辯識到目前為止所有最成功的方法
+都是以統計為基礎
+那麼所謂統計為基礎其實就是我們這邊畫的這一塊
+這一小塊其實就是我們之前一直在說的東西
+那最前面這個就是當你的聲音進來的時候我先做這個我先做這個feature extraction 
+這就是我的front in七點零所說的
+最後求出來的一西一些m f c c 
+那麼之後呢那這些acoustic model 就是我們四點零五點零所說的那些個tri phone 跟hidden markov model 
+然後呢這邊就是我們六點零所說的language model 等等
+那麼我們可以回想一下就知道
+hidden markov model 是完全統計式的
+是一個完全以統計為基礎所建立的model 
+同樣的n gram language model 也完全是統計為主而建立的
+那這些統計的基本精神是假設說
+我用夠多的語音的data 
+然後呢它能夠幫我們描述所有的phone 所有的tri phone 
+它的統計特性怎樣
+我有夠多的文字的data 
+它可以幫我們很清楚的描述這些文字的這個n gram 是怎樣的
+然後我用這些為基礎製做我輸入的東西呢
+我希望我輸入的聲音它的m f c c 的distribution 
+的m f c c 的這些所有的統計特性
+是用這個來描述的所以可以用它來recognize 是什麼phone 
+它的文字之間的字詞句之間的關係是跟這個一樣的
+所以可以用它來描述等等
+那這個是統計方法的一個最基本的精神所在
+可是事實上是不是這樣呢
+我們必需了解不盡然是這樣
+那麼當我真正進來的聲音它的m f c c 的長相
+跟這邊所用的model 的train model 這些東西長得不太一樣的話呢
+那就是所謂的mismatch 
+同樣呢當我進來的句子它的字詞之間的關係跟你這邊的不太一樣的話呢
+那也就是所謂的mismatch 
+那是什麼情形呢
+我們只要想我們在十一點零所說的speaker 的的speaker 的adapt adaptation 時候
+我們說假設對speaker a 而言
+它的ㄚ是這一群的
+它的ㄨ是這一群的
+那speaker b 就不見得還是這樣
+它可能會更多一點
+當我有一群人的時候呢這個ㄚ可能就擴大到這樣子
+因為不同人聲音不太一樣而這個ㄨ可能就擴大到這樣子
+於是呢它們的這個distribution 會會overlap 
+那這個時候怎麼辦我們做adaptation 這就是我們十一點零所說的
+我現在看這個人的聲音是誰
+他講話講起他輸入的聲音發現他的ㄨ在這裡
+所以呢我就知道其實對這個人而言他的ㄨ在這裡
+我這些就不要了
+對這個人而言他的ㄚ在這裡我就在這裡
+那於是呢我這些東西都可以拿掉
+之後呢我就把它們又分開來了
+這就是speaker adaptation 在說的事情
+換句話說其實不同的人的統計特性都不一樣
+那麼不同的人他的他的這個他的這個啊這些m f c c distribution 本來就不同
+那這個這個adaptation 的例子其實就是在說
+我的我我train 的是用speaker independent 
+譬如說五百個男生五百個女生
+那train 出來的東的東的的tri phone 的model 是用這個這些train 的
+進來的人進來的聲音不見得是他呀
+那進來的聲音是另外一種
+因此我還要再想辦法調到進來的那個
+那我才能夠做得好
+當你沒有調這件事的時候你進來的聲音
+其實跟它是mismatch 
+那麼因此呢你會如果有mismatch 當然你到時候做出來就不會對
+以language model 而言也是一樣的
+那麼我們之前說過
+各位的習題也做過
+就是譬如說體育新聞跟財經新聞
+它們的詞彙跟句型
+它們詞跟詞之間的關係都是不一樣的
+因此呢如果說是我用相同的我我即時我這邊想辦法讓所有可能的文字都拿來train 
+train 出各一個各種各種topic 都相關的的n gram 
+但是呢我今天這個講的人講的的是哪一個topic 
+他如果講的是某一件特別的事情的話搞不好你這個個n gram 就是不對的
+那這個就是language model 的的mismatch 等等
+那麼因此呢當我們在說這些個統計
+以統計為基礎的時候
+我們千萬不要以為統計那麼好
+那麼統計是必須我們必須知道
+盡信統計不如無統計
+那麼統計本身是有很大的問題的
+那一個一個很大的問題就是mismatch 
+那我現在在這一頁所說的是所有可能的mismatch 
+那我們先說最最基本的一個情形就是我的聲音不盡然是最乾淨的聲音
+我的聲音可能被各種東西破壞
+那麼我們舉例來講假設你是用你的手機
+打電話給遠端的一個server 來操作什麼事情的話
+你在你真正講的聲音是這個x n 
+不是那個x n 
+你講的x n 在這裡
+但是呢在你打電話的時候
+這個你你說話的同時
+進入你的那個手機的麥克風的還有很多的雜訊
+那麼這些雜訊一起進來我們姑且稱為n one 
+那麼之後呢這個聲音經過了傳送
+經過了你的電話的傳送到了接受端
+這個傳送中間會有各種各樣的破壞
+最簡單的就是你電話本身一定會有channel 的distortion 
+那這個你馬上想得到
+我們知道在你打手機的電話的時候你聽到你的朋友打的的聲音
+那個聲音可以清楚到你知道他在說什麼話
+你也可以判斷他是什麼人
+但是你知道那個聲音跟他在你對面跟你講話是不一樣的
+那他跟在你對面講話是不同的
+這個部分其實就是經過了一些變化經過了一些distortion 
+那麼in addition 當然還有很多其它譬如說麥克風本身是一個distortion 
+因為你知道任何一個聲音通過麥克風的時候
+麥克風本身是有他的frequency response 的
+那麼在某一些frequency 
+它得到不同的gain 跟不同的face 等等
+所以它整個的訊號對麥克風而言其實也是會造成任何一個麥克風都會對聲音造成失真的
+這是所謂的麥克風distortion 
+那所謂的acoustic reception 是說
+你事實上你對著對著手機講話的時候
+你並並並沒有把你的手機的這個喇叭對準嘴巴而是在旁邊的
+所以你的聲音其實是從正面出去而你收到的是側面進來的聲音
+那也會造成一些影響等等
+那所有的這些呢我們姑且都用一個convolution 的效應來描述它
+那總之這個意思等於是說
+我這邊不但是有noise 加進來而且還被破壞
+那這個破壞我們通常把他用一個convolution 來描述
+那麼也就是說呢我如果我進來的是x n 真正的聲音是x n 
+我現在加上了一個noise 
+那麼這個地方其實應該是我寫成成n one 的t 
+也沒錯啦這是time 這是continue time 
+不過我們們如果寫成discrete time 都是n 啦
+取sample 的話n one 的n 
+之後呢我convolve with h n 
+我把這個跟h n 的convolution 
+拿來model 這個中間的這一堆
+不管是因為電話傳送造成的問題
+或者是麥克風的distortion 
+或者是其它的問題等等
+那麼我們簡單的用數學來說的話呢
+是一個這樣的convolution 關係
+同樣的呢你電話在傳送中間不只是一個convolution 而已
+你還會有別的noise 加進來
+那不論是這個wireless 傳送的中間或者是怎樣
+又經過了一些amplifier 把它放大的時候都等等
+都可能增加noise 
+所以又有n two 的n 
+我又加進來
+那這個是在這邊
+所以我最後的y n 其實是這個
+是這些東西
+那跟我原來的這個這個才是y n 
+所以呢到了遠端
+你的所收到的聲音這個y n 
+其實跟這個x n 已經有很大的差異
+至少包括這個加上n one 
+然後convolve with h two h 然後再加上n two 
+那這裡面的n one 跟n two 呢我們叫做additive noise 
+就是它直接加上來的
+這是additive noise 直接加上來的
+那麼這個h n 這個呢我們稱之為convolutional noise 
+因為它其實是一個convolution 的process 
+那有一個有一個這樣子的東西
+那麼因此呢這個當然跟原來的x n 是不一樣的
+那麼因此呢我今天如果我的recognizer
+我這邊所用的那些tri phone 的這些h m m 
+我都是用這樣的x n 來train 的
+就算這個x n 就是跟這個training data 是一樣的
+它的distribution 完全一樣
+那我x n 也經過這些變化
+也變了樣子
+所以呢我的y n 跟h x n 已經不太一樣了
+當然因此跟這個training 也就不一樣了
+那更何況你這個x n 不見得就真的就它的它的distribution 
+它的統計特性
+不見得會跟它一樣
+那麼一個很單很簡單的解釋
+就是說我的每一個h m m 每一個h m m 
+它的每一個state 不是都有一個distribution 嗎
+我們說是這堆gaussian 所構成的
+那麼這堆東西是用譬如說是用這些x n 來train 的
+但是經但是我真的所收到的聲音是有這些東西
+那麼這些n one n two 跟h 呢
+老早已經把它破壞了
+所以我真正的它長的不是這樣
+所你用這個來做辨識是有問題的等等
+那這個是一個mismatch 的例子
+那這個mismatch 呢就是我們這邊所謂的mismatch in acoustic environment 
+那也就是說我的整個的acoustic environment 
+是是有mismatch 在這裡
+那主要就是additive noise 跟convolution noise 
+那麼不斷地隨時在整個process 中間不斷有additive noise 來破壞它
+也不斷有convolution noise 來破壞它等等
+那所有的這些我們如何克服這些問題呢
+那就是我們所謂的environmental robustness 
+我們希望我們用什麼方法
+讓我整個的這個process 這個辨識的這個這個process 
+能夠對於這個這些environmental 的或者說是acoustic environment
+的變化有更為robust 的能力
+這是所謂的environment robustness 
+那事實上除了這個之外還有很多其它的mismatch 
+我們順便都在這邊說一下
+其它的各種各樣的mismatch 
+那麼都是屬於training 跟recognition condition 之間的mismatch 
+所謂的training condition 就是說
+我們的hidden markov model 以及我們的n gram 是由哪些東西train 的
+但是呢我真正的recognize 的時候呢是這些東西進來
+它跟這個不見得match 
+那我們說底下的這個mismatch 我們之前已經講過了
+這個就是speaker 的不同你這邊用一千個人去train 
+可是現在的speaker 不是現在這邊一千個人的一個
+而是是其它的任何一個
+它搞不好跟這一千個人都不像
+那麼因此呢你必須要做speaker adaptation 
+所以呢我們在十一點零所說的
+這是我們十一點零所說的speaker adaptation 
+其實是speaker 特性的一種adaptation 
+啊speaker 特性的mismatch 的的的的問題
+那除了speaker 不同之外呢
+那還有一堆就是這個其它的acoustic condition 
+還有很多其它的acoustic condition 也不match 
+譬如說我們說speaking mode 
+所謂的speaking mode 這個我們中間提過
+就是從read speech 一直走到spontaneous speech 
+這個你說的mode 不一樣就是不一樣的
+那麼所謂的read speech 是說
+給你一份稿
+我完全照著那個稿很清晰的朗讀
+叫做read speech 
+譬如說今天早上有一點雨我從家裡出發
+一個字一個字唸的很清楚的
+這個叫做read speech 
+那麼但是事實上呢我們通常說話很少情形是真的有一張稿讓你這樣子唸的
+那麼比這個比較講得隨便一點的是所謂的prepared speech 
+prepared 是說你有準備
+但是呢並沒有完全照著稿唸
+那一個很代表性的例子就是廣播新聞裡面主播的播新聞
+主播播報新聞的時候是有稿的
+但他不是照著稿念他是照著稿說
+稿上說有什麼新聞之後呢
+那麼主播是照著那個稿說的
+那他是有準備但是呢他並不是照著搞唸的
+這個時候就不大一樣他他就會講成今天早上怎樣怎樣等等
+那就會很多音就會連起來
+就會比較比較流利
+比較這個不會說是今天早上啊
+他就會今天早上怎樣怎樣
+那這個就是比較prepared 的
+那再來的話如果是conversational 
+就是如果兩個人在對談
+或者打電話
+或者spontaneous 就是我們隨時都隨隨便自發性地在說的話的話呢
+那就有更多的狀況
+跟我們清晰朗讀聲音是不一樣的
+那這種的越越往這邊走的越複雜
+這裡面最大的最大的這個不同
+那應該有兩個
+一個是pronunciation variation 
+也就是說我的聲音會因為講得很流利而改變
+那不論在從prepare 開始
+到這個越越過去的話這種情形越嚴重
+一個最簡單的例子我們剛才講的今天早上
+這個今天早上我們會變成間早上
+我會變成今天早上啊
+譬如如說是今天早上
+你可能會變成這這樣子
+那這些就是說你你本來的的一個一個音
+本來的某一些個音都會變調今天就變成間啊等等
+那這些東西的話就是所謂的pronunciation variation 
+你的每一個音都可能會會這個因為說得流利而滑掉了
+那另外一個最最重要的現象就是disfluency 
+也就是不流暢的現象
+那disfluency 是說我們如果是如果是用唸的或者是prepare 的
+你大概都可以講得很流利
+可是你如果是平常在講話的話顯然中間隨時都會斷掉
+欸我說這個啊啊
+不是不是應該是那樣啊等等
+你不斷地會有這種這種這個你你一個一個句子說說到一半我會換成另外個句子或者怎樣
+或者我要重來一下
+啊我說這邊欸不是這樣我我我要重新說一次這個是這樣啊等等
+這一類的disfluency 
+是一個非常在自然的如果你拿平常的conversation 的錄音帶來聽的話
+這種出現地非常多
+那這些呢都造成因為我們train 的時候沒有train 這種東西啊
+那這個都都是我的mismatch 
+這是對於speaking mode 的mismatch 
+那我train 的時候沒有train 這些東西但是我講進來的時候會有這些東西
+會有這些東西
+那再者呢就是speaking rate 
+就是講得快慢的問題
+那嗯你你可以猜得到
+因為我們的這個這個state 跳來跳去的這個這個process 
+我們在這裡用我的model 在這邊描述
+但是呢如果說是我train 的時候講了一個速度
+真的進來的聲音速度不一樣的話會會不match 啊
+那麼這個時候這是這是speaking rate 的的mismatch 
+那麼這個時候啊不論是這邊是正常的速度所train 的
+你講得比他慢或者講得比他快的話
+都會有mismatch 
+然後呢這是口音跟方言
+那你知道他如果是這個上海口音
+或者台灣口音
+雖然講的都是國語
+它很多音就是會差
+那這個呢就是口語方言的mismatch 
+還有emotional 的effect 
+那假設你有一點不高興
+或者有一點生氣
+或者有一點什麼的話你的聲音也會變等等
+那這些都是屬於各種各樣的acoustic condition 的mismatch 
+那除了acoustic condition 的mismatch 之外呢
+那還有什麼mismatch 
+詞典的mismatch 
+也就是說這個lexicon 也不見得準啊
+那那這個這個詞典的問題呢
+第一個就是o o v 對不對
+我們說過在任何語言都有一堆o o v 
+有的多有的少
+以中文而言o o v 是非常多的
+因為我們不斷的創造新詞
+這些新的詞都出現在日常生活之中
+但是不見得在詞典裡面
+因此呢你不斷的產生很多新的詞
+你的詞典需要不斷地調
+然後呢我們剛才講的pronunciation variation 
+這常常是一個辦法
+就是在這裡調我的詞典
+譬如說我們就可以讓今天這個詞
+有兩個音
+我們可以在我們本來在詞典裡面是說
+ok 今天
+他的發音是ㄐ 一 ㄣㄊ 一 ㄢ 
+但是我可以說他還有第二個發音就是間
+那我如果把這個發音叫做間的話呢
+於是我這個今天就會有兩個發音
+我就在詞典裡面做兩個pronunciation 
+那這是一種處理這個pronunciation variation 的方法
+那麼我們通常可以把這些可最常發生的pronunciation variation 
+放到詞典裡面去
+但是這樣一來也會發生別的問題
+就是當你碰到一個間的時候
+你怎麼知道他是講中間的間
+還是講今天呢
+它要你要靠一些方法來判斷
+譬如說n gram 
+如果前面是一個中的話那應該是中間
+如果後面接早上的話呢
+那應該是今天啊等等
+那因此所那這些呢就是所就是我們講就是說
+你可以做你的lexicon 可以做adaptation 
+那depends on 現在什麼狀況
+我我詞典做某些變化
+這個是這個是pronunciation variation 放在這個lexicon 裡面的情形
+那當然還有language model 的adaptation 
+我們剛才也已經提到了
+就是你的test domain 不一樣
+它如果今天是在講某一個科學問題
+譬如說醫學知識
+跟他今天是在講這個譬如說這個美國的大選
+或者現在是在講這個某一種什麼東西
+當你講的東西不一樣的時候它這邊都不一樣我的n gram 應該都不一樣
+你最好是用不同的n gram 來做它
+這就是language model adaptation 
+所以這一些都是可能的mismatch 的狀況
+那麼我們需要有各種方法來處理它
+那這個就是我們這邊所說的各種的mismatch 
+那麼在統計式的技術裡面
+mismatch 是我們必須要想辦法解決的問題
+那這些都是非常重要的研究課題
+你如果去查查reference 查paper 的話
+你用這些keyword 進去找都可以找到很多相關的paper 
+那麼我們之前在十一點零講的是屬於speaker adaptation 是這一塊
+我們在十二點零講的是language model adapt adaptation 的一小塊
+那麼用嗯那個l s a 來做那是裡面的一種方法
+那其實這裡面每樣的東西都可以找到很多東西
+那我們現在的這個這一段啊
+我們今天在講的是十五點零的這個嗯robustness for acoustic environment 
+是指這裡面的這一塊
+也就是acoustic environment 
+也就是這邊有additive noise 
+這邊有convolutional noise 
+當我有這些東西的時候所造成的
+additive 跟convolutional noise 所造成的environmental 的的mismatch 的時候
+那我怎樣讓我的系統我的這個recognition 
+可以比較robust with respect to 這些的變化啊
+所以呢我們這邊講的這個十五點零所說的
+robustness 是指這一塊
+那這一塊的嗯是今天的語音研究裡面相當大的一塊
+那麼相當多的團隊的研究都集中在這裡
+那麼因為這是一個很重要的問題
+因為你隨時真的碰到的就是你在路上打打你的手機電話就是會有雜訊進來
+就是會有這些東西
+所以你這些東西必須要克服
+所以這個是非常重要的問題而有非常多的研究在進行
+嗯那也是一個很好的報告題材
+所以我們今天提早到這邊先來說這樣子
+讓你這個可以可以多思考一個這個可以做報告的topic 
+那底下我們講的就是這一塊啊
+就是這個在additive noise 
+跟這個convolutional noise 的破壞之下
+這邊的進來的聲音跟原來的training data 有很大的mismatch 的時候
+那麼有些什麼方法來做
+那麼基本上呢我們剛才提到
+我這邊所講的這些
+你從reference 裡就知道我們講的還是比較早的
+就是已經過了五六年以上大概
+或者是八九年
+那麼已經算是嗯經過了這麼長時間的考驗
+大家都公認他是道理的而且嗯有一定效果的
+但是他們顯然不是最好的
+因為又經過了這麼多年在最近幾年又有很多新的技術出來
+那麼有很多新的東西都是可以做報告的題目
+但是我們在課堂上講我們以這種比較經典式的
+算是比較經典式的然後比較公認都不錯的方法我們以它為例子來說
+那就這些而言呢我們大概可以用底下這些圖來解釋他是怎麼回事
+那麼我們把用這條線這個虛線以上的是training 的時候
+以下的是真的recognition 的時候
+我training 的時候我用一堆聲音
+抽它的m f c c 的feature 
+train 我的hidden markov model 
+train 我的tri phone 等等
+然後就得到我的一堆tri phone 的model 
+所以這一塊其實就是上面的這一塊
+就是這一塊
+所以呢我就是把那基本上這一堆很可能是我的乾淨的聲音啊
+我的clean 的乾淨的聲音
+沒有經過這些noise 的破壞的乾淨的聲音
+我抽它的feature 然後train 它的model 
+得到的tri phone 就長這樣
+這就是我的acoustic model 
+那問題是我真正要要做recognition 的時候我進來的y n 跟它不一樣的
+y n 是這種y n 
+是經過了additive noise 跟convolution noise 破壞以後的y n 
+那這個y n 呢跟它本來就不一樣的
+所以我抽出來的m f c c 當然是不一樣的
+那麼如果你直接用這個model 去去去辨識的話呢
+顯然會錯很多
+啊那麼因此怎麼辦呢
+你如果直接把那個model 拿來去做辨識一定錯很多
+因此我們有幾種可能的辦法
+第一種是調model 
+雖然你原來的原始的聲音
+乾乾淨淨的聲音train 出來train 出來的這堆tri phone 是這樣的
+那麼我想辦法去調它
+given 現在的聲音長得不一樣了
+我如果有辦法根據現在的狀況
+我馬上調我的model 
+把我的model 調成像現在的狀況來辦識
+那這樣的話呢我就把我的lambda i 呢調成lambda i 的prime 
+讓他的特徵比較像這個
+那這個意思也等於是說
+我本來的本來的這個我們說我本來的model 是這樣的
+那因為我現在進來的聲音不太一樣了
+我發現其實我應該調過來一點
+我得到一個這樣子的model 
+這樣子我把我的model 整個調了一下
+這一類的方法我們稱為model based approach 
+它是調model 的
+也就是我直接動這個model 上面的mean 或者covariance matrix 的等等東西
+去直直接動它
+我根據我現在的noise 等等東西我直接動它
+這是model based approach 
+那第二類的話呢
+我不動這個model 
+因為動這個model 不好動我動feature 
+那我可能想辦法讓我這個這個feature 
+跟原來那個feature 比較像
+看我有什麼辦法讓我進來的東東西求的feature 能夠跟這個比較像
+而不要跟他差太多
+那還有一種情形是說我這個求feature 的方法能不能改變
+我不是完全用m f c c 而是在用別的方法
+使得我這個feature 求出來的feature 呢
+這兩個比較像不要差那麼多
+那這類方法呢我們稱為feature based approach 
+就是動這些東西的
+那還有一種根本就是動這裡
+那也就是說我希望我這個聲音最好能夠像它
+我用什麼方法讓它的特性就像它
+如果這樣的話我後面就不要動了
+那這就是這這種我們就稱之為speech enhancement 
+那麼所謂enhancement 就是把想辦法把它這裡面的這些個破壞
+不論是additive 還是convolutional 這些東西儘可能把它拿掉
+讓這個東西呢跟它很接近
+那這就是所謂的speech enhancement 
+那麼因此呢我可以在這裡做可以在這裡做也可以在這裡做
+那這各有很多種方法
+那當然你也可以猜得到他們之前其實也有可能可以加成
+我可以一面那裡model 也動一動
+這邊feature 我也動一動
+這邊我也動一動可不可以有的時候也可以
+當然有的時候也許它們你這邊已經動掉了之後這邊再動一次的話會會破壞
+也不一定
+那基本上呢它們是有可能可以加成的
+好那底下呢我們講的就是分別以這三大類來說
+然後我們講的只限於這一種
+就是acoustic environment 
+就是這些的x n 變成y n 
+中間經過additive 跟這個convolution 的時候的破壞
+所產產生的問題
+然後呢我們分別以我們先說model based 的例子
+然後再說feature based 例子
+然後再說enhancement 的例子
+那就是我們底下的這些譬如說這邊講的就是我們先從model 的的的例子來說
+這是model based 的第一個example 然後呢這是第二個example 
+之後我們再來講的就是feature based 
+這些是feature based 的例子
+然後再來我們講enhancement 的例子等等
+所以這些就是嗯應該講是有五年或者十年左右的歷史的
+比較最具有代表性的方法來說明這些東西
+那他們的reference 分別我我講到哪裡會說
+是哪哪一個reference 
+那麼但是我們剛講這些我們舉的都是比較早的
+那在最近
+五年或者嗯五六年之內
+啊那還有非常非常多的
+那很多都比這些好
+但是我們不在這裡講是因為他們還沒有經過足夠的時間的考驗
+到底哪一種真的可以被公認是好的
+我們也許還要一段時間才知道
+所以呢我們先不講那些
+不過那些也都是很好的報告題材
+你如果你如果去找reference 就會看到
+好那我們先從第一個就是model based 來講
+這個model based 就是我們剛才講的這個情形
+就是我直接調我的model 
+直接調我的model 想辦法讓它比較接近這個聲音的特性
+那這是怎麼回事呢
+我們舉第一個例子就是所謂的parallel model combination 
+p m c 
+那這是一個非常成功的而且普遍使用在很多地方效果都不錯的方法
+那它的基本的精神是怎樣呢
+我們可以舉個例子來說
+如果我的speaker 在講話的時候
+講的這段話
+從這裡開始
+那其實它中間當然是會斷開的
+我們知道我們的我們的speech 中間永遠有非常多的這個silence 
+因為我們人要換氣嘛
+我我不可能一口氣一直講下去我一定會斷開來
+然後呢再接下去講
+再斷開來
+然後再接下去講
+我中間一定會不斷地有斷開來的地方
+那麼因此呢我的noise 就在這裡
+我一開機還沒開始說話的時候呢這邊有noise 
+我如果抓得到這些這些noise 的話
+我可以用這個noise train 一個noise 的model 
+noise 也可以train 成一個像hidden markov model 一樣的東西
+不管你是一個state 還是兩個state 幾個state 
+我就有一個noise model 在這裡
+所以呢你你可以在我這個這個一開機我還沒開始講話
+前面譬如說有零點一秒的時間是一個有零點一秒的時間是我沒有講話但是有noise 
+我就可以把這抽來train 一個model 
+然後呢我這邊真的真的聲音我原來有一大堆model 
+譬如說這是ㄚ的model 
+這個是ㄧ的model 
+這是ㄨ的model 
+對不對我有一整套的這是我原來的用clean speech 所train 的
+沒有雜訊的clean speech 所所train 的model 
+於是我想辦法把這兩個結合起來
+我把這兩個把把這個加上來
+想辦法得到這一個這兩個結合的
+於是呢那如果我有辦法能把這個跟這個model 結合起來的話
+那我應該是等於是能夠辨識這種雜訊加上這個聲音的時候的
+我等於是現場直接來來動
+那麼等到這段話講完的時候我這邊開始有有有一堆silence 的時候
+我現在又可以抽另外一堆雜訊
+我把這個雜訊呢跟這個可能不一樣了
+我把這堆雜訊再來重train 一個model 
+那這個model 就調過一次是根據這個調了
+調完之後我再把它再加過來
+因此呢我現在train 我要辨識這邊的聲音的時候呢
+我就用這個這段聲音所train 的model 
+跟它的結合之後
+來辨識這邊的
+待會這邊又有一段silence 
+我又可以抓一堆model 抓一堆noise 來我又可以再train 一個noise model 
+那我再這樣調等等
+這個是所謂的parallel model combination 的意思
+就是我不斷讓它們平行地在做這個combination 的動作
+我不斷隨時抓real time 抓最新的noise 
+然後train 最新的noise model 
+來反應當時的noise 長怎樣
+把當時的noise 特性去加到這裡面加到這裡面來
+讓它一起於是我這邊就是有等於是ㄚ加上noise 的ㄚ
+這是ㄧ加上noise 的ㄧ
+這是ㄨ加上noise 的ㄨ
+那如果是這樣的話呢我用這個model 來當我用這些東西得到呢我就辨識這堆聲音
+我這邊得到的就辨識這邊的聲音等等
+那如果這樣的話呢我就可以嗯得到一個比較好的結果
+這就是所謂的p m c
+那這樣的精神基本上嗯你可以想到的是說
+我主要的目的是在處理additive noise 
+它並沒有真的處理到這個沒有處理到這一塊
+它處理到就是就是這個additive noise 
+等於是說我我現在想辦法把這個東西train 一個model 
+跟原來這個model 去結合等等
+所以它處理的是additive noise 
+然後呢那它的基本的想法應該是說
+最理想的recognition 是如果你的model 都是train with matched noisy speech 
+也就是說最理想的狀況是我如果知道我的noise 是這樣
+我就把這些noise 加到ㄚㄧㄨ裡面去
+然後用他們來train 在這種noise 情形之下的ㄚㄧㄨ的model
+這個時候的model 是所謂的這個train with matched noisy speech
+如果你如果真的有跟當時的noise 完全相同的noise 
+加到ㄚㄧㄨ的聲音裡面去
+然後用它們來train 的model 來辨識在這種noise 下之下的ㄚㄧㄨ顯然是最好的
+所以呢這些最好的recognition 呢是用這個完全match 的完全全一樣的noise 加上去
+clean speech 那些speech 所train 的model 
+只是說這個是impossible 
+因為你的noise 千變萬化
+對不對你不可能如果有一萬種noise condition 
+你不可能去train 一萬套model 
+所以這個其實你是做不到的
+因此呢怎麼辦呢
+就是我generate 一個real time 隨時generate 一個noise model from the noise 
+collect in the recognition environment 
+during silence period 
+就是whenever 有一個silence period 的時候
+我就我隨時在做這個detection 
+那我whenever 知道有一個silence period
+我就把這個noise 抓來
+train 當時的noise model
+然後呢我得到這個noise model 之候呢
+去跟原來的clean speech model 去做結合啊
+去做結合之後產生在這個noise 狀況之下的model
+於是我就可以得到在這個noise 狀況之下的有noise 的ㄚ
+有noise 的ㄧ
+有noise 的ㄨ的model
+然後用它來做recognition 等等
+所以說它基本的想法是這樣的
+但是這樣做有一個最重要的難題
+就是我們的recognition 是都是m f c c 嘛
+也就是所謂的cepstral domain
+是m f c c
+但是noise additive 不是不是在m f c c 上面是在哪裡
+是在linear spectrum domain
+或者是說time domain
+也就是說你如果看這個的話
+你就知道我的我是在time domain 相加
+這個這個x n 對不對
+就是這個x n 加上n 這是在time domain 相加
+在time domain 相加的時候在m f c c 上面呢
+它是一組怎麼樣的關係呢
+是一個個非常複雜的關係
+那我們得要handle 這個關係
+那麼這個關係是什麼關係也許我們底下這個圖看得比較清楚
+啊像這張圖
+那麼這張圖所說的是真正的的m f c c 之間的關係
+那你記得m f c c 是怎樣的
+我們是這個經過一個f f t 
+得到的是一個spectrum
+然後我在這上面用filter bank
+一個個三角形的filter bank
+得到一個值對不對
+每一個三角形的filter bank 得到一個值
+每一個三角形的filter bank 得到一個值
+我再把這個值拿去做這個啊取它的energy
+取它的這個這個power
+這個絕對值的平方
+然後再取log
+當我這個都做完了之後呢我再做一次discrete cosine transform
+這樣之後才得到m f c c
+ok 這中間有這麼多個程序的
+那我不只是frequency domain 而已
+我還絕對值平方我還做log
+我還做d c t
+才是這些東西
+那我現在要辨識的是這些東西啊
+我現在辨識的譬如說這個model 是什麼model
+我們說他譬如說這個state 是長怎樣的
+這個state 是長這樣的
+它裡裡面有有這些個gaussian
+那它有這個mean
+它有這個covariance 等等
+這些是什麼都是都是in m f c c domain
+對不對這都是三十九維的m f c c 在那裡面的東西
+那麼這個noise 跟這個東西在time domain 是相加的
+可是在這裡面到底是什麼關係呢
+那就是我們這裡所說的這張圖所畫的
+就說呢你你第一個你可以想像
+我在time domain
+我在這邊的時候是time domain 是x n
+這是我的speech
+noise 是n 的n
+這兩個是相加的
+time domain 是相加的
+經過f f t 之後呢
+在frequent domain 還是相加的
+還是相加的可是呢我取絕對值平方之後呢
+其實已經不完全是相加了對不對
+你這邊可以想像成為我的是是這個這這兩個是相加的
+我取了f f f t 之後這邊還是相加的
+然後呢我取了絕對值平方之後呢
+其實已經不完全是相加
+不過我們仍然可以假設
+非常接近相加
+那就是所謂的linear power spectrum domain
+所謂的linear power spectrum domain 就是指這一個
+就是說我做了絕對值平方以後
+它是相當於power spectrum 的的的power 的spectrum
+那在這個時候呢我們仍然可以假設
+雖然這已經是不完全正確了但是還是可以假設
+這是所謂的linear power 的spectrum domain
+它們還是相加的所以我這邊的符號裡面
+s 是我的clean speech n 是我的noise
+我仍然可以假設它們是相加的
+可是再來我幹嘛呢
+再來我就取log
+一取log 鐵定不是相加了
+那取log 之後呢就變成另外一種關係
+那我這邊的的這個符號呢
+這個這個x 跟n 代表的是clean speech 跟noise
+那這個x 呢是真正的noisy 的speech
+然後呢那這個是指它在剛才講的linear power spectrum domain
+就是取了絕對值平方以後的這個東西
+我們假設它是相加的話
+我取了log 之後呢
+就是做了這個log 之後
+那做了這個log 之後呢
+你至那我們現在的符號就是我右上右上角加一個l
+代表這個是取了log 之後的
+所以這個x 的l 就是這個x 取log
+這個東西取log 就是這個
+那個這個x 取log 就是x 的l
+這個n 取log 之後呢就是n 的l
+這就是這邊的這三個式子ok
+所以呢我右上角加了這個l 呢就在這個domain
+那這個domain 我們稱為log spectrum domain
+取log 的叫做log spectrum domain
+那在這裡的話呢我就右上角都都加了l
+所以呢我的這個x 取了log 得到這個右上角的l
+x 取了log 之後得到了這個x 的l
+n 取了log 得到了這個東西
+那如果是這樣的話
+那它們這三個東西的關係在這個domain 是怎樣的呢
+那你會發現它們的關係是這樣
+也就是說你需要把這個clean speech 的在這個domain 的這個clean speech 跟noise 呢
+分別先取exponential 才會回到這個domain 來
+如果我把它們分別取exponent 分別取exponential 回來的話
+這裡是相加的
+所以它們分別取exponential 之後變成x 跟n
+於是呢我就可以相加
+這個加就是在這邊加
+加完之後我再取log 回來
+就是這個對不對
+所以在這邊的時候這兩個只是這樣相加得到它的話我們假設它們是相加的了
+在這邊不是相加
+是要分別取exponential 回到這邊之後相加
+然後再取log 回來
+這個是在log spectrum domain
+就是我取了這個時候
+它們的關係是這個關係
+那如果是這樣的話呢我現在還要再做一次discrete cosine transform 才會變成我的m f c c
+還有一個這個勒
+那這個更複雜這個其實是我們這邊很偷懶的就是寫一個c
+這個c 的意思就是這個discrete discrete cosine transform 的意思
+那這個是一個複雜的process 不過我們簡偷懶一下就這樣子寫
+於是呢這樣得到的是cepstral domain
+也就是m f c c domain
+也就是這個m f c c 上面的東西
+那我就在右上角寫一個c
+那這個關係呢
+那我們說這個就是這個log spectrum domain 上的的x
+做一個cosine transform 得到c
+這也是偷懶的寫法啦本來不是這麼這麼簡單
+但你可以想像是一個cosine transform 的一個function of 這個啊
+這樣子你把他想成是一個function
+那我們是我這邊是簡寫就是寫成一個這個c 就是了
+所以呢你把他經過cosine transform 得到這這這個東西
+經過cosine transform 得到這個東西
+同樣的這個x l
+經過cosine transform 的話得到這個這個x c 就是這個
+那這個noise 的linear 的log spectrum domain 的noise 呢
+也是一樣經過cosine transform 得到這個東西
+那麼因此就是這個式子
+它這個log spectrum domain
+要經過這個cosine transform 得到這個這個cepstral domain 的東西
+那如果這邊關係是這樣的話呢
+那它們之間的關係是什麼呢
+是這個式子
+那就更複雜啦
+那就是你要先把這裡的signal 跟noise
+分別先做inverse cosine transform
+才可以對不對它們要先經過inverse cosine transform
+得到這邊的這個那就是這兩個式子
+所以呢我這兩個先經過inverse cosine transform 得到這邊的這個東西
+然後呢在在這個地方之後我再分別取它們的exponential
+回到這邊來
+所以它們都經過inverse cosine transform
+再經過exponential
+才一路回回到這來
+到這來才可以相加
+加完之後呢我再取log 回來到這裡
+再做一次cosine tansform才會到這裡對不對
+所以呢我在這邊的時候呢是要這樣子做的
+那麼那麼因此你可以想像到
+我們在講這個幹嘛是在講這件事
+我現在做recognition 的時候這些model
+這些model 裡面的東西都是m f c c
+都是在這裡的
+那你這邊抽到的noise 我也可以做m f c c
+也在這裡的
+那你怎麼怎麼做怎麼做這兩個相加呢
+你必須在這裡做
+這裡不能做所以一定要轉回去轉到這邊來
+在這裡做相加再轉回來啊
+那這整個過程就是我們在這邊講的這個
+noise model 跟你clean speech model 怎麼加呢我一定要回到那個domain 去加
+那這個一個更清楚的圖呢就是底下這張圖講的
+那這張圖所說的事情呢
+那啊其實我現在畫成橫的了
+不過意思跟剛才是一樣的
+這個linear spectrum domain
+哦我這邊是分成三段
+右邊這個linear spectrum domain 就是剛才的上面這裡
+然後中間的log spectrum domain
+就是剛才的中間這裡
+然後呢左邊的cepstral domain 呢
+就是就是剛在的這裡
+那麼因此呢我們剛才講說你要你要把它一路這樣轉回來轉到這邊來相加再transform 回來
+那在我們這邊這張圖的話就一路這樣過去
+在這邊相加再一路transform 回來
+那這個情形其實講的跟剛才是一樣的
+不過這邊稍微再再detail 一點
+那你就知道這個關係其實不是那麼簡單
+那舉例來講呢
+我們剛才這是一個簡單的示意圖
+我們說喔ok 你如果這邊在log spectrum domain
+做一個cosine transform 變成cepstral domain
+或者這邊做一個inverse cosine transform 變成這個domain
+這個所謂cosine 跟inverse cosine tansform 真正的做的時候
+是這個式子
+那麼你真正要做的是它的每一個mean 跟covariance 
+也就是說我的譬如說ㄚ的model
+裡面的每ㄚ的model 每一個state
+每一個state 裡面的每一個mean
+它有它的mean 跟它的covariance
+那這個mean 跟這個covariance 怎麼轉
+那這個mean 呢就是在我右上角寫一個c 表示是在這個cepstral domain
+就是m f c c 的就是這些個clean speech 的hidden markov model
+這些clean speech 的hidden markov model 上面那些m f c c 的以m f c c 為單位的mean 跟variance
+你要怎麼轉到log spectrum domain 來
+其實是做一個這樣子的東西
+那這裡的c 是我們把cosine transform
+寫成一個matrix 相乘
+然後呢那其實是一個inverse 的那個matrix
+你這樣呢可以把這個mean 轉到這個mean 來
+那covariance 轉得更複雜是左邊右邊各乘一個這個cosine transform 的那個matrix
+一個是有transpose 你要這樣子做的話呢你可以轉到這個來
+那麼因此呢這個意思是說你原來train 好的這個ㄚ還是ㄧ還是ㄨ
+裡面的這些個mean
+用這個方式把它轉到這邊來
+轉到這個log spectrum domain
+然後covariance 轉過來
+之後再進一步你要轉回到linear domain 的時候還要更複雜
+那這個這個其實就是我們剛才的那個那個那個exponential 跟log
+這邊寫的很簡單喔我這個只是取一個log
+這邊取一個exponential
+其實不是
+你如果仔細去分析那個數學的話
+是這個詳細數學我們這邊不講啊
+不過你你你去看的話你去看reference 就知道了啊
+那麼其實是蠻複雜的
+你這個是log spectrum domain 的mean 跟covariance 
+那你要變成linear spectrum domain
+那其實呢是嗯有更複雜這裡表示是我的mean 的第i 個component
+那這是表示這個covariance matrix 第i j 個element
+那我要做這樣子的這裡面是有exponential
+但是這個exponential 遠比我們的剛才講得複雜嘛
+我們這邊好像就是做個exponential 就可以過來
+其實不是這樣
+那是要這樣子的數學式子
+那你這樣得到linear spectrum domain 的mean 跟covariance
+那我的因此呢我原來train 好的clean speech 的model
+我不是直直接用它
+我經過這兩個transformation 之後
+變成linear spectrum domain
+其實我存在我的recognizer 裡面的model
+是這個model
+是這個model 因此我隨時可以把noise 加進來
+那麼因此呢我我原來做recognition 的時候
+我所有的這些model
+我就是存m f c c
+但是我現在不是
+我現在是經過兩次的transformation 就是這邊講的這兩次transformation
+把它變成另外一種東西
+那我現在這上面的這個mean 跟covariance 呢
+是用是用這個東西來存的
+我存起來是在linear spectrum domain 來存的
+我存的是這些model
+而不是這個model
+當我存的是這個model 的時候呢
+這個domain 跟noise 是可以直接additive 可以相加的
+所以呢我現在如果現場抽了這個noise 的話呢
+我把這個noise 可以train 出我的model 來
+那也一樣這個model 裡面有mean 跟covariance
+那所以呢這個是我的clean speech 的model 的mean 跟covariance
+這是我的noise 的mean 跟covariance
+ok 所以這是noise 的h hidden markov model
+我現在clean speech 我都以這種方式來存
+所以這個是linear spectrum domain
+這個是linear spectrum domain 所以可以相加
+然後我這邊所train 出來的model
+我也這個noise model 我也以這個domain 求出來
+所以呢這兩個我都在這裡
+所以可以用相加的
+那因此我的mean 呢就是把clean speech 的mean 加上noise 的mean
+covariance 就是clean speech 的covariance
+加上noise 的covariance
+那這邊你可以調一個參數就是g
+你要讓你的noise 多大
+那其實這個g 也是可以根據這個來來調的嘛
+就是說你可以算這中間的s n ratio
+你第一次可能比較難啦因第一次你不曉得我聲音多大
+但在這裡的時候你就可以算兩個的s n ratio
+就是這個這個這裡的noise 有多大
+然後我的speech 的聲音大概有多大
+你可以去根據這兩個的ratio
+來求這個g 值
+當你把這個g 做好之後
+你就得到這個model 這個這兩個加在一起的mean 跟covariance
+那到這個時候我等於把這裡面的每一個mean 跟covariance 都把noise 加進去了
+於是呢我現在一路轉回去
+我真正的recognition 要在這裡做嘛
+我們recognition 必須是m f c c 的嘛
+所以我一路再轉回去
+那這個process 跟這個就是它的inverse 啊
+那因為這個數學式比較複雜所以你看起來就好像複雜其實是一樣的嘛
+你很容易看舉例來講像
+像底下的這個式子就是上面這個式子的inverse
+所以呢你要先把它除以mu i mu j 對不對
+然後再加一這邊是減一嘛
+然後再取log
+於是就得到新的嘛
+等等所以這個式子就是它的inverse
+這個式子就是它的inverse 等等
+所以你加好後之後再一路轉回來
+那這個是它的inverse 這個是它的inverse
+那麼因此呢這樣一路回來之後你再辨識
+這個是這個p m  c 的基本精神是這麼做的
+那當然這個這個這個數學蠻複雜的
+所以呢從這邊走到這邊
+你要real time 的一抽出來馬上train 出來一路做這麼多事
+其實是不大容易的
+所以這原始一九九五年那個年代他們做的時候
+中間做了很多assumption 跟approximation
+也就是做一些假設之後我讓這個數學簡化一點我才能夠real time 一起來做
+但是既使經過了一堆assumption
+把它做一堆approximation 之後
+這個效果是不錯的嗯
+這個其實中間我們都做過的所以我們都知道
+我們做過的這樣子起來的話呢
+你確實可以當場抓一堆noise
+然後呢你經過你的transformation 之後
+你在這邊把它組合
+然後再回來啊
+所以呢那那就是我們剛才講的就是你你真正的那些聲音的的這個這個clean speech 所train 的那些model
+你並不以m f c c 的方式存在那裡
+而是你一路轉回來
+以這個linear spectrum domain 的的的以這些單位存在那裡
+然後我隨時加noise
+隨時過來在這邊做recognition
+那這個也就是我們之前這張圖的意思
+就是說你train 好的clean speech
+你不這個是在cepstral domain
+你要經過這就是嗯inverse cosine transform 這是exponential
+經過這兩個
+我要transform 到這個linear spectrum domain
+在這邊你才可以跟它做combination
+那我的noise 直接在這邊求出來就好了
+noise 不必到這來
+noise 直接在這邊做
+啊那你直接在這邊做combination 之後再轉回來啊
+所以這張圖所畫的
+其實就是剛才這張圖的簡化嘛
+啊就你在這邊做noise 然後跟它做結合之後再轉回來
+在這邊做辨識嘛
+那也就是我們這邊所講的意思
+那麼也就是說呢你的這個因為你的這個recognition 你必須是cepstral domain
+可是呢noise 跟signal 是additive 在哪個domain
+linear spectrum domain 你才可以說它們是additive
+而不是在cepstral domain
+所以你必須把它們都transform 回到這個domain
+然後去去相加
+那麼通常我們就是調這兩個東西
+就是mean 跟covariance
+mean 跟也就是也就是這邊的這兩個
+這兩個mean 跟covariance 我們可以調啊
+就把這個noise 都加進去
+那因此我用的就是一個noise model
+跟clean speech model
+這個嗯在在那個年代的時候一直有一個很大的疑問
+我到底要train model 的時候到底要乾淨的聲音來train 還是用noise 的聲音來train
+因為你如果用noise 聲音來train 的話
+好像跟noise 比較接近比較match
+但是在這個方法而言不是的
+我是用用乾淨的聲音來train
+因為我有了乾淨的聲音來train 之後
+我可以加任何一種noise
+我現場抽任何一種noise 加進來都可以
+就可以得到任何一種noise 環境之下
+那這是一個非常typical 的example 就是我們講的model based approach的做法
+那這個的我想這個的啊這個都已經講過了嘛啊
+它喔就我剛剛講的他用了一堆assumption 跟一堆approximation
+來簡化中間的數學
+然後使得我的這個整個process 可以real time 來操作
+那這個就是所謂的parallel model combination
+那詳細的內容
+我想這是相當這算是相當經典的一個作品
+雖然今天來講已經有很多方法比它好了
+不過這個是相當值得學習的一個很好的想法
+這個的的原始paper 是這一篇啊
+我這個二的reference 就是在講在講這個
+好那這個是model based 的第一個example
+那底下我們講第二個example 呢
+就是所謂的vector taylor series 
+另外一個example 就是也是model based approach 那是所謂的這個vector taylor series
+那這個觀念其實跟剛才幾乎是一樣只是做法不同而已
+也就是說它的想法還是這樣
+那麼我在開機前的零點一秒或者什麼的我抽出noise 來我train 一個model
+我隨時碰到silence 我都抽出noise 隨時train 新的model 然後跟clean speech model 去做結合
+所以這個觀念跟剛才都一樣啊
+那唯一不同是說它的做法不同
+它覺得說你像剛才那個個方法太複雜了
+它想一個比較好的辦法來解決剛才的我們剛才說你現在的你那些model 你要經過這麼在那個domain 去給它加加之後再這回來你real time 要做這麼多事情實在很複雜
+那他想了一個比較簡單的辦法
+那他用的辦法就是所謂的taylor series expansion 也就是這個這個vector taylor series 這個這個這個字的由來
+這個taylor series expansion 是什麼呢
+就是這個那這個是你從小就學微積分的時候就學過這個東西
+那那個是one dimension 的function 的時候有這麼一個taylor series 泰勒展開式
+那現在把那個再延伸變成n dimension 變成vector 就是了
+如果這個是f 的function那我現在如果要求某一個x 的這個f of x
+怎麼求呢這邊是說你如果要求某一個x 的那一點f of x 的話呢
+那你如果知道c 的那一點的話可以這樣子來求
+譬如說我如果知道c 在這裡的話
+那麼f of c 我是知道的這一點是c 點是我知道的這一點是f of c 我是知道的
+我就可以在這一點求它的斜率
+然後呢那這個這個斜率呢就是就是這個這個d f d x 的c
+所以呢這個斜率就是d f d x 的c
+然後這一段呢就是x 減c
+所以呢你如果把這個x 減c 乘上這個斜率的話呢
+你就可以得到你把這個乘上這個斜率就得到得到這一段
+所以呢你如果直接把所以你如果直接把f c 加上這個第一項的話呢
+就等於是把這個f c 加上x 減c 乘上這個斜率就得到這一項所以你得到就是這一項
+那得到這一項雖然不是原來的f of c 不是原來的f of x 但是接近嘛
+那中間差的這個呢那就是誤差
+那如果你可以求第二項的話會更好
+第二項的話呢就是把這邊再求一個二次微分
+然後跟這個的平方等等那就是第二項
+那你如果做第二項的話呢這個東西會更接近一點做第三項就會再更接近一點你看你做能夠做幾項的話呢
+其實就可以得到譬如說這個這個是n 次項的話呢你就會得到比較接近一個approximation
+這是所謂的泰勒展開式你從前學微積分或者學數學一定學過這個泰勒展開式
+那它現在怎麼辦它就用這個泰勒展開式進一步延伸為兩兩個function
+我們這裡只是f of x 嘛他現在變成g of x y
+我如果裡面有兩個variable 的話變成x 跟y 的話
+我仍然可以這個其實z 等於g 的x y 就跟這邊的y 等於f of x 是一樣的我把它延伸變成有兩個變數的我把它延伸變成有兩個變數的
+然後我再讓它的變數都變成vector
+這變成有n dimension 的x y 有n dimension 的y z 有n dimension 的z
+然後呢我再把它們變成random 的vector
+這裡面每一個dimension 都是random variable 還是有這個關係的
+當它變成random variable 之後我可以再假設它們都是gaussian
+當它們都是gaussian 之後我這個式子就變成這個式子
+那因此呢那這個式子是什麼這個式子其實是我們剛才的這個式子就是這個式子
+換句話說它沒有要像我們剛才的這個paparallel model combination 我們是要從這裡一路轉轉轉一路轉轉轉回到這來在這邊相加再轉回來
+這個計算量太大了他說呢我只要轉到這裡就好
+在這裡的這個這個加法做這裡這裡的這一堆複雜的這個數學呢其實我就把它變成一個taylor series
+所以呢它就我就不要從這裡我們剛才的parallel model combination 是要從這裡一路轉到這兒來然後再回來
+那它等於觀念沒有改變他只是一個比較聰明的做數學的方法
+他說我只要做到這裡就好了我在這裡做
+這裡還是很很複雜啊沒有關係我這裡就用泰勒展開式來做
+所以就是這個式子變成一個泰勒展開式
+所以你你看這個式子其實就是我們現在的這個式子ok 
+所以這個式子就是我們剛才的這個式子是完全一樣的
+那我現在是把這個式子裡面的這個這個當成x 這個當成y 然後這一堆function 就是g 的x y
+當這個是x 這個是y 的時候g 的x y 這個就是z
+因此呢它們在這裡相加的話呢是有一個複雜的數學關係是沒有錯
+但是呢我就把它看成是z 等於g 的x y 變成這個式子
+那我們剛才說這個式子的話呢我們把它看成是裡面有兩個variable 的f
+因此呢我可以我也一樣可以對這兩個variable 分別做微分
+然後我再讓兩個variable 分別都是vector
+因為我現在要把譬如說它的mean 要放進來的話這是一個vector
+這是這是一個vector 這是一個vector 變成n dimension 的vector
+那我一樣可以把這個式子推出來
+然後我真正推的時候它們其實不不只是vector 而且每一個dimension 上面的element 呢都是random variable
+所以它們是random vector
+那這上面每一個element 都是random variable 的時候呢我再假設它們是gaussian
+如果是gaussian 的話呢這些微分都可以求
+所以呢於是我這這個求法其實就是用這個泰勒展開式
+但是我把這個數學帶到這裡這裡面來做
+那如果它是gaussian 的話呢那它們的這個一次微分兩次微分這些東西呢這是一次微分兩次微分這些東西我都可以求得出來於是答案就出來了
+簡單講就是這麼這麼意思這就是叫作vector taylor series 啊
+所以呢我們說基本精神是跟p m c 是非常像的
+也就是說呢我在我我我我隨時把這個noise 我隨時像那邊一樣的作法
+我就是把這個silence 裡面的noise 抓到之後
+我隨時產生noise 的model
+之後呢我就跟我的clean speech 的model 去作結合
+這個觀念是一樣的
+不同的地方是說
+我是直接在log spectrum domain 就直接作組合作加乘了
+我不回到linear domain 去我直接在log spectrum domain 就直接加乘
+那怎麼加呢用taylor series
+就是我們剛才講的這個one d 的taylor series 把它generalize 變成兩個random variable 而且這兩個都是vector 都是random vector
+那其實z 也是所以是是x y z 這三個都是n dimension 的random vector
+然後呢你假設它們都是gaussian 它們的mean 跟covariance 都知道
+當它們mean 跟covariance 都知道的時候
+那麼我這個這個taylor series 就可以變成這樣子
+於是我的這個新的mean 的這個組合的那個vector 那個gaussian 的mean 怎麼求可以用這個方法來求
+那麼這個variance 怎麼求都可以用這個方法來求
+ok 應該說這裡還沒有假設它們是gaussian
+只要知道它們是只要知道它們是mean 跟covariance 就可以求了
+那通常在這個時候呢我們在假設它們是gaussian 的話這個微分更好微
+啊假設gaussian 是讓它們微分更容易微就是了
+那這樣子算出來之後呢我就把這個關係代到剛才的那個linear spectrum domain 啊log spectrum domain 的關係來
+把這個就當成是這個z 然後我這樣就照做於是我答案就出來了
+那這個呢就是vector taylor series
+那我想這個觀念很一樣所以我們就不需要多講只是一些數學不同而已
+你如果有興趣看這些數學的話呢這個reference 在下面一篇
+就是三的這個就是它當時的原始paper 是這一篇就是講這個東西
+那這個的效果不錯那這個我們從前也做過的
+那這個因為用了這個vector series 關係所以它的計算量沒有那麼大
+那也有相當程度精確
+所以事實上它這邊其實只做到兩次項只做到兩次項而已啊
+但是事實上效果不錯計算量也小很多那所以呢得到不錯的效果
+這個是一個後來使用地非常普遍大家都用它效果也不錯的方法這是
+以上講的兩個例子是所謂的model based
+那麼再來呢我們來看feature based
+那麼什麼是feature based 呢我們稍為回憶一下
+所謂feature based 是說我不動那個model 我來動feature
+我希望讓我真實的環境裡面的有被破壞的訊號的feature
+跟原來的clean speech feature 最好很像
+啊我的目的就是讓它們的feature 像
+所謂feature based 那怎麼做這件事呢
+那麼這裡面feature based 最基本最常用的這個就是所謂所謂的cepstral mean subtraction 這個c m s
+那這個方法是啊今天普遍用的最多的幾乎所有的語音系統都用這個
+它的效果有相當好的效果嗯就是c m s 
+那它的意思講起來非常簡單
+它原來的原來發明這個方法的時候是為了解決convolutional noise 的
+什麼是convolutional noise 呢你記得我們講的是說你這個東西呢被經過一些個convolutional 的破壞不只是加上去的noise 而是經過convolution
+經過convolution 之後破壞之後我如何能夠讓這個feature 得到feature 還是可以跟它很像呢
+那這個主要的想法來自我們講m f c c 的時候我們在七點零就說過了
+就是說在time domain 做convolution 其實在m f c c 的domain 呢就是相加啊
+那這點我們從前就說過了因為你是你你是這個做了f f t 的關係
+做了f f t 之後你你如果本來是convolution
+我的x 跟h 有一個convolution 的關係
+經過了f f 經過了f f t 到到frequency domain 是加是變成加法
+所以呢就變成它的它的它們這兩個的transform 的加法啊不是是乘法
+這經過fourier transform 之後是變成乘法
+然後呢我這個時候再取一個log 的話呢就變成加法
+對不對基本上是這樣子的關係
+也就是說我在求m f c c 的過程之中我有我有一個這個fourier transform 的過程還有一個取log 的過程
+那transform 的fourier transform 呢把這個convolution 把這個convolution 變成相乘
+那取個log 呢把相乘變成相加
+所以其實m f c c 裡面
+如果我我原來是兩個相做convolution 的話呢
+我到了m f c c 是變成相加的
+既然是相加的話呢那你其實只要減掉就行了嘛
+如果你有辦法知道那個h 是什麼的話
+如果我有辦法知道h 是什麼的話呢我就y 減h 不就是x 嘛
+那麼那你有沒有辦法知道h 是什麼呢
+你可以假設大多數的convolutional noise 改變是比較慢的
+什麼叫作改變比較慢呢
+你如果想這張圖我們說主要的convolutional noise 主要來自譬如說電話
+如果是我電話的這個變化的話呢
+你可以想像我打手機的時候在零點一秒之內我移動不會太多
+或者在零點一秒之內整個的transmission 環境不會改變網路環境不會改變太大
+所以你可以在零零點一秒之內我算假設它是一個固定的等等
+啊那當然換了零點一秒之後呢下一個零點一秒可能改
+但是沒有關係啊我就是每隔零點一秒我算一次嘛
+所以我如果你如果假設說我的這個h 是因為是我打的手機而我人在走動所以我我不斷地在變化的話
+那我可以假設零點一秒之內我的這個值變化不大
+而我每一個零點一秒估計一次新的h 值這樣我就可以減啦
+啊那所以基本想法就是這樣子
+所以當時原來的這個想法是來自這樣子的觀念
+就是我的convolution noise 在time domain 在m f c c 的時候呢變成相加
+所以我只要有辦法估計那個加的那個h 把它減掉就夠了
+那我可以假設這個h 變化比較慢
+譬如說零點一秒才才變一次我就零點一秒估計一次嘛
+那這樣的話我就可以減掉我基本上可以得到比較好的
+那那問題是這個h 怎麼求呢
+在當時一個最簡單的想法就是說我先假設我的x 是zero mean 
+如果假設我的x 是zero mean 的話那我那個y 我就做個mean 不就是h
+所以呢我就減掉那個mean 把它變成zero mean 就好了嘛
+那這個觀念就是所謂的cepstral mean subtraction 你就是把的cepstral 的mean 減掉
+講起來非常簡單的觀念你說欸為什麼是zero mean 沒有錯這個假設是有問題的
+啊說老實話當時他的想法是這樣來的他說假設它是zero mean 所以呢你這個h 呢這個h 呢就是我y 的mean 嘛
+對不對如果x 是zero mean 的話我這個y 上面取個mean 不就是h 嘛
+那麼因此呢我就減掉y 的mean 就好了嘛
+所以當時他是這樣想的
+那麼那也因為這樣子的話呢我其實就是把我的這個x 變成zero mean 就好了
+那麼這個mean 怎麼麼求呢
+over 一個utterance 或者是類似的我們剛才講譬如說我零點一秒求一次嘛
+那後來其實真正做的時候
+我們有很種多作法
+一種是說每一個utterance 你你講一句話有一個逗點
+等於是有一個停頓嘛對不對
+那你這一段裡面就求一個mean 通通減掉
+這段裡面再重新求一個mean
+這兩個mean 會不一樣你再減掉
+這就是所謂的by utterance
+嗯就是over 一個utterance 來做
+那其實還有很多別的辦法像我們後來其實不見得要這樣做
+而是怎麼做你就是你如果要要做這個frame 的時候我就是前面算多少frame 後面算多少frame
+你在這一段裡面求一個mean
+拿來減做中間這的相減
+待會呢待會到這兒來的時候呢
+我就在這個前後算一個mean
+對不對我永遠在前後算一個mean
+然後呢來算中間的那一個
+那其實也不一定要前後各取一段我也可以完全取前面
+譬如說我現在要算這個的時候
+我就拿前面的這一段
+求一個mean 來減它
+然後算這個的時候我在前面算這一段
+算一個mean 來減它等等都可以啊
+所以你其實用哪一段來算mean 其實都可以做
+然後效果都不錯啊
+所以呢那當然有最好的啦
+最好的你可以猜到應該是這樣子
+就是說我這個這個我永遠在前面後面都取一段
+隨著時間變動啊
+那像這類的方法我就因為我就是把mean 減掉嘛
+那就是所謂的cepstral mean subtraction
+那當時的想法原來是為了convolutional noise
+可是後來人家發現這個其實如果不是convolutional noise
+而是additive noise 一樣有效
+如果說我的根本沒有這個
+我根本沒有這個convolution 過程
+只是加沒有noise 的話
+我只是加noise 欸結果也很有效
+這有點奇怪為什麼呢
+後來了解其實這很簡單
+就是我把它們都變成zero mean 了
+所以它們統計就會接近
+換句話說你可以想我們講的
+這邊的問題就是它們不match 嘛
+這裡面的data 的統計特性
+跟這邊的data 統計特性不一樣不match
+既然不match 的話我有一個辦法
+就是我把它通通通通減掉mean
+變成zero mean 
+把它也通通減掉mean 都變成成zero mean 的話那這兩個就比較像了嘛
+就是這樣子啊
+也就是說我本來這堆的統計特性跟這一堆的統計特性都不一樣
+那我至少把它們的mean 都變成零
+當他們的mean 都變成零的時候就比較像了
+所以你把它們的mean 變成一樣之後它就像
+所以結果turns out 你即使不是convolutional 的
+你是additive noise 一樣有效
+所以呢這個這個東西會turns out 是一個很容易做
+只要減一個mean 而已就把它變成zero mean
+然後我training 也就先做了zero mean再去train 啊
+那這樣的話呢都有很好的效果
+那當然你如果從這個觀點來看的話呢
+它是直接immune to convolutional noise
+也就是說你如果跟任何東西去做convolution
+得到的答案是不變的
+對不對你想想就了解這點
+也就是說你現在我的x n
+如果跟任何東西去convolve
+我做了做了c m s 之後
+答案都是一樣的
+因為你convolve 的那個東西都是加了一個加了一個東西
+那你不管它原來是不是zero mean 啊
+我都把它變成一個zero mean 的東西嘛
+所以我我最最後的做法其實就是c m s 就是把它變成zero mean
+對不對即使它原來不是mean 也不是zero mean 也沒有關係
+即使它這個假設不正確
+其實這個假設真的不正確
+因為沒有理由它是zero mean
+但是我就反正把它都把它變成zero mean 了之後
+我的train model 也是用zero mean 去train 的
+所以我就通通把它變成zero mean 了
+那麼這個時候呢
+那麼不管你在跟什麼東西做convolution
+得到的都是那個zero mean 的東西
+所以就等於是完全把所有的convolutional noise 都解決掉了
+那麼因此我們今天在講的時候
+通常絕大多數的語音系統
+都做了這一步
+都做了這一步之後呢
+其實這個convolutional noise 就不是問題了
+幾乎都已經除掉了
+因為你那那一步就等於把這個拿掉了
+所以這個convolutional noise 就不是大問題就都減掉了啊我只要做了這一步
+所以c m s 是個非常有效的方法
+那當然你也知道它不改變delta 跟delta delta
+也就是說我總共有十三
+三十九維嘛我這個只做十三維啊
+對不對我那個vector 是三十九維的
+前面十三維m f c c
+這邊是一次微分這是兩次微分
+那你變把它變成zero mean 
+做做這個減法
+不改變它的一次微分跟兩次微分
+所以這二十六個沒有動
+但是這十三個我都把它變成zero mean 
+啊答案是這樣子
+那這個效果就就是不錯的啊
+那這是最簡單而且效果很好的方法所謂的c m s
+那後來有人在想了進一步
+他說當然你把它變成zero mean 不是很有道理啦
+那我們其實可以做得更好
+做更好的方法就是底下這個
+所謂的signal bias removal
+那這個bias removal 意思是說我這個h 我應該仔細算一下
+不要只是假設它是zero mean
+我怎麼仔細假設呢
+我就是用maximum likelihood 的criteria 來求它
+我given 一個model
+然後given 某一個h 的值的話
+我可以算在這個條件之下
+我會看到這些個observation 的機率
+然後我想辦法調這個h
+來maximize 這個機率可以做嗯
+那這個詳細我就邊不講了我會給你一個reference
+那其它的觀念都很像啦它只是說我現在這個我不要用mean
+這個zero mean 的假設太簡單了
+我應該做更精確一點
+怎麼做我就是用這個maximum likelihood 的方法
+這個就是likelihood function 嘛
+就是given 這個model given 這個model
+然後given 假設我設了某一個h 的話
+那麼在這個情形之下
+我我要看到這個observation 的機率要最大
+然後我去調這個h
+哪一個h 讓這個機率最大我就用那個h
+那這個的h 做出來的這個h 拿來減的話會更好
+你就不要用zero mean 來減用這個來減
+會得到更好
+那這個怎麼求這個怎麼求的
+用e m 啊
+所以我們這個這個講完我們就要來講e m
+所以e m 是到處都在用
+我用e m 的話呢我可以得到這個東西
+那麼因此呢我就可以這個經過幾個iteration
+得到這個值
+那這個效果會比這這個c m s 又好一點
+這是所謂的signal bias removal
+那你看顧名思義就知道
+所謂的bias 就是這個這個h 嘛
+那我把它拿掉嘛
+啊其實就是一樣的意思
+那這個的reference 在我上面的再下一篇
+就是第四篇就是signal bias removal 
+啊有maximum likelihood
+你如果詳細去看你就會知道它是怎麼做的
+那這是一個很簡單的例子在說
+我怎麼做它的feature based
+這是feature based 的例子
+那底下再來的下一個feature based 的例子呢
+就是所謂的temporal filtering
+什麼是temporal filtering 呢
+我們原來的這是語音訊號
+這是x n
+這是一個一個的sample
+我這個x n 我可以去做fourier transform
+得到我的spectrum
+然後呢我們說我們可以每一個frame 
+譬如說這兩百五十六個點換成五百一十二的點
+我可以得到一個m f c c 的vector
+譬如說這個是c one 這是c two 等等等等
+總共三十九個
+我待會呢譬如說shift 一百點
+我可以得到下面一個c one c two 等等等等
+這裡有三十九維
+我待會再shift 一百點
+我又可以得到一個等等等等
+對不對那它說呢你如果是這樣的話我其實當這上面有noise 的時候
+當我這個不管是convolutional 還是additive 我這個noise 加在這上面把它破壞了的話呢
+就是把這個東西破壞了嘛
+這個東西破壞了嘛
+那我其實我也可以把譬如說這個c one 看成是一個signal
+c two 看成是一個signal
+於是呢我就會得到一個像這樣的
+譬如說這是c one 的m
+這個橫軸是m
+這m 其實是我這個frame 的index
+這是這個c one
+這是這個c one
+這是這個c one對不對
+同理呢我c two 我也可以得到一個
+c two 的m 
+那麼我可能是另外一個樣子的
+這個是這是c two
+這是下一個c two
+這是下一個c two 等等
+那麼因此呢我把這裡的我我我何必還要去看上面的noise 呢
+我就看這個的就好了嘛我這樣總共有三十九個signal 在這裡
+或者說我有十三個signal
+對不對我有十三個signal
+那每一個呢它其實變化地很慢
+因為我這個是一百點
+假設我每一百點取一個window 的話
+我每一百點才會有一個點嘛
+所以這個變化的很慢的c one c two
+那我其實是在用這這堆東西在做recognition 嘛
+那你可以想像如果這上面有noise
+把這個破壞就是把這個破壞嘛你可以想像其實是這上面是有noise 嘛
+是這上面是有noise 嘛
+既然是這上面有noise 我可以在這上面做filter
+想辦法filter 這上面的noise
+那這就是所謂temporal filtering 的意思嗯
+那麼他們稱之為temporal filtering 就是說
+每一個component 在你的那個m f c c 那裡面
+當成是一個signal
+或者是它的time trajectory
+它的paper 裡面有的時候叫作temporal filtering 他們稱之為這個time trajectory
+當著time index 就是frame number progress
+我現在這個這個這是frame number
+每一個frame 每其實這每一個frame 相當於這邊一百點你如果是shift 一百點的話
+所以我每一個frame 才有一個點
+所以這邊的data 量比那邊少很多
+這個data 量少很多
+而且這個data 是真正的我的拿來做辨識的的參數
+所以這是重要的東西
+我在這上面做就好了
+我不要去搞那個
+這上面noise 太複雜了
+我搞最上面的noise 
+那如果是這樣的話呢
+我也可以把這個看做成是signal
+我也一樣可以做fourier transform
+那這個時候我所得到的東西呢
+它也有這種它的spectrum
+不過這個frequency 會很低頻
+因為我變得很慢嘛
+我我我上面是因為這個變化很快嘛
+我這個sample 很多變化很快所以我變成一個很多高頻的東西
+我現在是每一百點才有一個點啦
+所以變化很慢所以我這個頻率很低
+所以這是另外一種spectrum 
+跟這個是不一樣的
+是這種很慢的signal 
+就它的這些個m f c c 的參數的frequency 的domain 
+那那個是什麼呢
+叫作modulation frequency
+也就是說就是我們剛講就是說你現在是把每一個feature 每一個m f c c 的coefficient
+把每一個m f c c 的coefficient 看成是一個這個看成是一個signal
+或者time trajectory 
+然後呢那這個signal 我也可以做fourier transform
+得到它的frequency domain
+這個domain 呢這邊的frequency 呢我們跟這種是不一樣的
+跟這種是不一樣的這是另外一種frequency
+那我們稱為modulation frequency
+filtering 
+因為這上面的noise 其實就是破壞了這些值
+那我就在這上面在這裡做做filtering
+我就看在這個上面怎麼做filtering 我在這邊看它這邊長得怎樣
+我在這上面做filter
+那做怎麼樣的filter 呢
+這個是最早的一個想法
+當時發明這個的人他他說他做一個這樣filter
+那這個filter 這個filter 是寫成z transform 的寫法
+所以各位之中如果你對z transform 很熟的你就知道這是一個filter
+那你不熟的話你也沒關係
+你就知道我們是做一個filter
+那這個filter 長怎樣呢
+這樣的
+那你會看到這個橫軸就是modulation frequency
+也就是我是在這個frequency 上面去做filter
+不是這裡
+不是這裡我是在這裡做filter
+我就是要filter 這上面的noise
+然後呢你看它這個因為是很低頻的東西
+不像那個很高頻喔這很低頻的你看最大的這個是十個hertz
+這也是十個hertz 這裡是一百個hertz
+這裡是一個hertz
+所以呢他設計了一個這樣的filter 之後呢
+大概只有在一個一個hertz 或者零點五個hertz
+到十個hertz 左右
+是pass band
+讓這個讓這堆frequency 通過
+超過十個hertz 以上就把它濾掉
+同樣的低於零點五hertz 也把它濾掉了
+他的理由是什麼呢他說這個就是我們的typical rate of change of the vocal tract shape
+就你說話的時候我們嘴巴不會亂動啊
+你我你你每一秒你你所謂十個hertz 什麼意思
+十個hertz 就是一秒鐘變十次嘛
+我一秒鐘如果有十個cycle 就是十個hertz 嘛
+那你想我們其實人人說話你嘴你人說話是靠嘴巴動嘛你嘴巴不可能動那麼快啊
+你最快譬如說一秒鐘動十次吧
+如果一秒鐘動十次你也可以想像好比是一秒鐘講十個phone
+這是那種連珠砲的像張小燕那種的人她才會一秒鐘講十個phone 嘛啊
+那所以呢十十十這個十個hertz 就夠了嘛
+那超過十個hertz 以上的
+應該就不是人講話的聲音了
+那就把它濾掉嘛
+那就是noise
+同樣呢你如果在零點五hertz 以下的話
+那變成說你兩秒才發一個音
+那大概也已也已經不是人講的啦
+那那大概也是個noise 會把它濾掉啊
+喔
+所以他這是一個非常直覺的一個想法
+就是我去這樣的設計一個filter
+讓它呢大概在這個範圍之內譬如說在零點五hertz 到一個hertz 之間
+這邊大概到十個herz 這邊這一段是它的pass band
+然後呢再高頻的假設就不是人講的嘛
+再低頻也不是人講的那這些都是都是noise 嘛
+所以我至少這邊都可以濾掉嘛
+那我他這一段的frequency 基本假設就是typical range of change of vocal tract shape
+我們的嘴巴最多只能動那麼快嘛
+ok
+所以呢他就說因此我假設
+那麼其它的更高的頻或者更低頻呢就是我的noise
+於是我就設計這樣一個filter
+那這樣的filter 呢同樣呢apply 對每一個signal 都一樣啊
+它這邊我這邊畫的所畫就是跟我這邊畫的是一樣的意思啦
+就是我現在的每一個
+這是c one 的signal c two 的signal 到c 十三這十三個這十三維
+我分別都當成是一個signal 都通過一個filter 
+啊
+我都通過一個filter
+然後得到一個新的
+那這樣把這邊高頻跟低頻弄掉了
+所以呢它等於是一個特別design 的temporal filter
+把這個time trajectory 上面的這個noise 濾掉
+那這樣做之後欸turns out 效果是有進步啊
+結果這個這樣做之後呢我確實我就把我feature 變得比較好
+那這個真的做是怎麼做
+這一類的feature based 做法都是你要training 跟testing 一起做
+也就是說你你現在會變得怎樣
+我本來的training data 我就做這件事
+我training data 裡面的那些個filter 的的那些的m f c c 我就做了一次剛才講的那個filtering
+然後呢我的testing data 我也一樣做了那個
+我當這兩邊都做了都做了這個時候它們就比較match 了
+因為我的training data 跟新進來的recognition 要的聲音呢我這兩者的m f c c 我都做了這一步的動作
+我都做了這一步動作都把它濾掉了
+啊
+因此它們比較match
+而那些noise 都清掉了啊
+那這樣的話呢它們效果欸是不錯啊
+那這個是所謂的rasta
+其實這個名子很奇怪因為它原這個全文是relative spectrum
+那他就把這個很難拼嘛他就就隨便抓幾個字母就變成這個叫做rasta
+不過因為這個這是他發明的所以他的paper 這樣寫
+所以呢這個就是rasta 的基本想法就是這樣子
+那詳細的我就不講了
+那麼為什麼是這個他有他的道理
+那他有一堆方法做出這些值來等等
+那你這個如果有興趣的話
+這個原始paper 是我上面的下一篇
+第五篇啊rasta processing of speech 的這一個呢就是他當時的作法
+那如果說是rasta 可以這樣想的話
+那麼再下來呢
+其實就有一堆這個temporal filtering
+其它的temporal filtering 他說我為什麼要用你這個filter 呢
+你這個filter 你這樣講其實有點不通
+這個好像很直覺地用很直覺地在那邊想的
+真的是那樣嘛沒有這個道理嘛
+所以我應該用別的方法來求這個filter
+什麼方法呢
+就是data driven
+我真的用一堆聲音去train train 那個filter
+那這個就是所謂的data driven
+就是我用data 我用一堆data 去求
+看這個filter 到底應該長怎樣
+那這就有很多種方法了
+我們這邊舉幾個例子
+這邊的這邊的是用p c a 的方法我們之前講過的p c a 
+也可以做其它的用l d a 等等所以我們底下會講l d a
+那也可以再用別的
+啊這是用l d a 的然後還可以用別的
+那我們先來說這個p c a 的
+那它的意思是說呢
+就是我們剛才講你這個rasta 你這個filter 其實是很這個憑空亂想的你胡思亂想想一個辦法說
+我在十個hertz 一個hertz 到十個hertz 之間這很沒道理啊
+我為什麼不讓data 告訴我
+我就用一堆training data 來train 這個filter
+讓data 告訴我它應該長怎樣
+那用data 告訴我有很多種方法
+第一種方法就是用p c a 
+那你記得我們之前講p c a 是什麼
+p c a 是說
+假設這是c one 這是c two 這兩個軸
+假設我的一堆data 散在這裡
+是這樣的話
+我在c one 的軸上看到它們的distribution 是這樣的一個distribution
+在c two 上看到一個distribution 是一個這樣的distribution
+但是這兩個distribution 都散得不夠開
+我想辦法找另外一個軸
+這個軸呢譬如說在這裡e one
+在這個軸上呢我就發現它散得最開
+這是一個散得最開的distribution
+那因為這樣子的話呢我的這個散得最開我就把所有東西都都拉開了
+我辨識比較方便
+效果就會比較好
+這是p c a 的精神
+那這個意思是說我的每一個點
+我找一個新的軸之後我每我的每一點都投影到這個軸上來
+它們就散得比較開了
+那怎麼投影呢就是我原來的這一點就是x 是在c one c two 上面
+我現在投影上來呢就變成x 跟我這個e one 做內積
+這兩個都是vector
+我在做內積
+內積的結果因為這個是一個unit vector
+那我一做內積的話呢
+我就把這些點投影上來
+我得到這個上面
+它散得就比較開
+我就辨識得比較容易做得好
+那他說我可以用相同的觀念來想這件事
+因為你現在如果是這一個這個就是我們c one 的那個的signal 嘛
+我c one 的那個signal
+我要通過一個 
+我這個c one 的signal 我要通過一個filter 
+這是c one 的m 
+我要通過一個filter
+那通過一個filter 是什麼這是一個convolution 的過程
+那convolution 你你你只要熟悉convolution 你就知道
+所謂convolution 就是把這些個分別乘上一個constant 加起來
+那待會對不對
+這些個值分別乘上con 它們加起來
+然後呢得到一個值
+然後再來把這些乘上con 加加
+嗯這樣講
+就是說你把譬如說這四個分別乘上一個constant 加起來
+你得到一個值
+待會我把這四個乘上constant 一個constant 加起來
+得到一個值
+待會我把這四個乘上一個constant 加起來
+得到一個值
+那那個就是convolution 也就是filtering
+所以你其實就是把它們的這個分別乘上一個值加起來
+分別乘上一個值加起來
+分別乘上一個值加起來然後這個不斷的不斷的移動
+這就是這句話在講的意思你的filtering 其實就是一個convolution
+也就是weighted sum of a sequence of a 一個coefficient with length l slide alone f frame index
+你
+那我畫到這裡就是這個意思
+你把這四點分別乘上某一些值加起來得到一個值
+然後你下面這四個點分別乘上一個值加起來變成一個值
+等等等等
+那這些東西分別乘上一個值加起來這件事情
+其實不就是一個內積嗎
+其實就是一個內積嘛
+就等於說是你這四個值跟一個e one 去做內積的意思得到一個值
+待會再跟這個做內積
+再跟這個做內積嘛
+既然如此
+我現在要它們我現在如果以p c a 的觀念來想的話
+就是我希望它們最後出來的通過這個filter 之後出來的值能夠散得最開
+那怎麼散得最開呢
+那散得最開的方法我就是用p c a 來求
+那因此呢這個意思是完全一樣的
+我現在就是把譬如說如果我是這四個來求來相乘相加得到一個值
+這四個相乘相加得到一個值
+這四個相乘相加得到一個值這樣子的convolution 的話
+那我就把這四個當成個四維的vector
+這個四維的vector
+那這堆四維的vector 就是這些的點嘛
+那因此我就是有這些個以以剛才這個四維的點為例
+這就是一個四維的點
+那麼待會那個呢也是一個四維的點這也是一個四維的點
+我就把這些四維的點通通通通拿在一起然後來做p c a 
+來找它的最好的那個軸
+那個軸就是它的最大eigen value 的那個eigen vector
+這是我們中間講過的p c a
+那麼因此呢我現在就把它們
+那這些四維的點通通投影到這上面來的話
+那其實就是在做這件事情
+那也就是我把這個東西最大的eigen value 那個eigen vector
+當成我的
+當成我的那個filter 的coefficient 就可以了
+所以我如果用這個方法來做的話呢
+我就我就是maximize the variance of the weighted sum
+對不對
+那麼因此呢我就可以把這個這個求filter 的這個這個問題
+求filter 的問題就變成一個p c a 的問題
+因為我的
+我我我求filter 的問題其實是在求到底它們應該各乘上多少coefficient 去相加
+我就等於是在求這個東西
+那這個東西其實就是這個東西
+所以呢我就把我只要把這些個每四個點每四個點每四個點我有一堆training data
+我用training 的語音的這每四個點每四個點通通通通這個這個data 做出來變成一大堆點之後
+求它的p c a
+我得到最好的那個軸
+那個軸上面的那個coefficient
+其實就是我的filter
+那這就是這邊講的意思
+那麼因此我就是在v a 在maximize 它的這個通過這個filter 之後的variance
+那
+它的那那個filter 是其實什麼那個filter 其實就是這個第一個eigen vector
+那如果這樣的話呢
+做出來結果得到的filter
+你如果把他圖畫出的話
+跟這個有一點像但是不大一樣啊
+基本上也是可以證實他這個原來的想法蠻好的因為他大概也得到的圖我這邊沒有畫出來啊
+那他得到的圖大概也是
+譬如說大概一個hertz 以上到十個hertz 之內
+是很像這個情形
+在十個hertz 以上也再把它濾掉
+這邊也是把他濾掉這蠻像但是filter 長得不太一樣
+但那個filter 是有道理的啊因為是data 告訴我的啊
+因為那個那個filter 是我根據p c a 的data 告訴我這樣子比較好
+所以我用那樣來做個filter
+那這樣效果會比較好那就是用p c a 所所推的temporal filtering
+好
+那如果這個這個觀念可以了解的話呢
+那麼我們就可以進入下一面個呢就是l d a 的觀念
+那麼l d a 是跟p c a 蠻像的一個東西
+但是它比p c a 更進一步
+有更多的更多的想法
+啊
+什麼是l d a 呢
+這個也是在很多課裡面都學過的
+不不論是pattern recognition 還是這個machine learning 裡面大概都有這個東西
+就是所謂的這個linear discriminative analysis 
+啊
+那l d a 的基本精神跟這個有點像
+但它比它更進一步
+它的意思是說
+假設假設我的
+譬如說這堆點是ㄚ
+然後呢我的這堆點是ㄨ
+如果我知道這堆是ㄚ這堆是ㄨ的話
+我現在這個軸是c one 
+這個軸是c two 
+你會發現呢ㄚ的distribution 是這樣
+ㄨ的distribution 呢是這樣
+overlapped 地很厲害
+我在這裡切不開
+那我如果用c two 來畫的話呢我發現呢
+ㄚ的distribution 是這樣
+那ㄨ的distribution 呢是這樣
+也切不開
+但是真的他們切不開嗎
+其實我如果想辦法另外再找一個軸
+我把它們儘可能找一個怎麼樣的軸才是能夠切得最開呢
+那可能是在這裡
+這個是e one
+為什麼呢
+你如果看看的話你會發現
+譬如說呢
+在這個情形之下呢
+我的ㄨ到這兒來了
+然後我的ㄚ呢是在這
+那麼因此呢我原來在在在c one 或者c two 上面它們都overlapped 地相當厲害
+因此你不管怎麼切都有很多error
+可是我可能可以找到另外一個軸
+它們能夠分得比較開
+啊
+那
+那這樣的觀念就是所謂的l d a 
+就是我我仍然在做linear 的transformation
+跟這個很像轉一個軸嘛
+還是轉一個軸
+但是我找的軸呢跟剛才不一樣
+p c a 這裡我並不知道誰是ㄚ誰是ㄨ
+我只知道有一堆data 我我把這堆data 把它拉得開一點而已
+我不知道誰是ㄚ誰是ㄨ
+但是在這裡的話呢我是假設我知道誰是ㄚ誰是ㄨ的話
+我要把ㄚ跟ㄨ拆開來
+我重新再找一個軸我讓ㄚ跟ㄨ能夠拆得開來
+啊
+那這個觀念就是所謂的l d a
+ok 我們在這休息十分鐘好啦
+那麼l d a 的基本精神跟這個是很像的
+只是差一點點而已
+我們現在應該只剩下
+啊
+我們來說一下期末報告啊
+我們這門課期中考已經考過了然後嗯有兩個題目你suppose 也已經做了
+那麼於是你只剩下一件事情就是期末報告
+那我們的不過我們的期末報告佔分很重了佔百分之五十啊
+所以也就是說你前面的期中考也好
+那個習題也好
+總共只有佔百分之五十而已
+那期末報告是另外的百分之五十
+所以啊你得要花點工夫來做你的報告
+那麼我們的deadline 我現在是訂六月三十號
+這個是校例所規定的期末考結束以後的三天
+所以應該是盡量給你盡量給你最多的時間啊
+校例規定的期末考是六月二十七
+我們再加三天那這天是星期五
+然後我們訂五點
+下班時間
+你交到這個電資學院大樓就是這棟樓的五三一
+是我們的語音實驗室
+電資學院大樓五三一啊
+交給我們的任何一位助教
+不論是宮嵊益還是還是許長文啊
+就是在這個以前的任何時間都可以你最晚最晚是在這個時候為止
+超過這個時間就算遲交就是了
+這是我們講的deadline 
+那我想這樣應該有夠多時間了我希望你有夠多時間做它
+是期末考校例規訂的考完之後還多三天
+那麼我們可以可以做的這個style 應該是有
+第一種是reading report 
+我不要做任何程式做任何實驗我就是讀paper 就夠了
+我們講了那麼多paper 
+然後很多豐富的東西都可以都可以讀
+讀了之後我可以寫一個心得報告我就純粹是讀paper 的也可以
+當然你也可以做computer project 
+因為我們講的每一樣東西幾乎都可以寫程式
+然後都可以做你要做的事
+所以呢可以做computer project 
+你如果要做computer project 的話通常你需要data 
+那我們兩個習題已經給你不少data 了
+我們包括在第一題裡面給你很聲音的data 
+第二題給你很多文字的data 
+所以呢那同樣這兩個習題也給你很多工具
+包括第一題的這個h t k 
+跟第二題的這個s r i 
+它們都有非常多的工具可以用
+那你如果要做的東西比這還多的時候
+你可以找我們的助教說你要做的哪一種東西不夠
+所以想要多要一些data 或多要一些工具
+應該也是可能的
+那助教會過來跟我商量說哪些東西可不可以給同學啊
+那我舉個例子我們講的eigen voice 
+eigen voice 是可以做報告用的
+可是你如果eigen voice 是可以很可以適合做報告的題目
+可是如果你要做eigen voice 的話
+你需要有夠多的不同的人都有夠多的data 
+那我們給你的data 大概沒辦法做eigen voice 
+啊
+那麼因此呢在那個情形之下你就可以跟助教商量說我要做eigen voice 所以我的data 不夠多
+那我會跟助教討論
+拿一堆data 給你讓你可以做等等
+啊
+所以呢你如果要做computer project 的話
+基本上從我們兩個習題給你的data 跟工具來著手
+但是你如果覺得你的你的題目希望做更多東西
+可以
+啊
+你跟助教商量
+那助教覺得他有問題他可以來問我啊
+然後當然第三種是combination 
+也就是說你都有一點
+我讀了一些paper 之後
+然後把那些東西弄清楚之後我來做一個程式
+我兩個都做一點也可以
+哦所以這三種都行
+那然後呢我可以是這個啊嗯嗯這個team work 
+也就就是兩個人一組
+可以啊
+不要超過兩個人啊
+兩個和尚挑水喝是剛剛好
+但是如果三個和尚就會沒水喝
+啊
+所以呢就是
+你如果要兩個人一起做是有它的好處就是說我們兩個人合作的話讀paper 的時候我讀一半你讀一半
+那這樣的效果可能比一個人讀來得好我覺得是有道理的
+或者說你讀paper 我來寫程式
+啊
+只要這兩個人可以密切合作的話
+兩個人可以
+但是不要超過兩個人
+那這個時候你要註明每一個人的contribution 啊
+就是說如如果我們兩個人合交一份報告的話
+那麼你要裡面要註明清楚是誰我做哪裡他做哪裡
+那這樣就可以
+你如果沒有註明的話我就會以為是一個人護行另外一個人
+因為可能是一個人把另外一個名字寫上去
+啊
+那這樣子就不行
+所以你一定要註明說哪一部分是誰做的
+那那不管是你既使做的是computer project 的話你還是會要交一個書面報告
+就只是說你的因為你一定要有一個文字在描述你的程式嘛
+所以只是說你如果是做computer project 的話你的書面報告會變得很簡單
+這個少數幾頁就夠了
+你的重點是那個程式了
+啊
+那你如果是reading report 的話你就你就完全是書面報告啊對不對
+如果是computer project 的話你重點是那個程式
+但是你還是要有書面報告
+那不管怎樣呢這三種形態都有書面報告
+只是書面報告多少的問題那書面報告交的時間就是這個時間
+那你如果是computer project 裡面有computer 有程式的話
+你可以交一個光碟或者交一個什麼
+那當然你你如果想要demo 也可以啊
+不是一定要
+但是如果你覺得你寫的的程式適合demo 來呈現
+那麼如果光是交一個交一個光碟不見得能夠感覺到它多麼有意思
+demo 比較容易看得出來你可以說我要demo 
+如果要demo 的話呢就是在交報告的這個時候
+跟助教登記說我要做demo 
+那到那個時候的話
+我會來看demo 
+啊
+所以呢這最後面的五十分的話是我自己改的
+不是助教改的啊
+那
+這個所以這五十分的報告是我自己改的
+包括如果你有demo 也是你是demo 給我看的不是給助教看的啊
+那所以這個大概是關於期末報告這個你可以想的事情
+那我們到目前為止已經講了好些東西了而後面還有很多東西都都可以做為期末告的的思考的方向
+好這是關於報告
+那我們們現在回過來說l d a 
+我們說l d a 的精神是
+跟剛才p c a 不同的是
+p c a 是我只是希望把他散開
+l d a 是假設我知道這個是ㄨ這個是ㄚ
+我希望把ㄨ嘎ㄨ跟ㄚ分開
+那這是什麼意思呢什麼叫做把ㄨ跟ㄚ分開呢
+那麼我們如果用比較精確的語言來講的話呢
+是這樣講
+如果說
+這一堆是ㄨ這一堆是ㄚ
+這就是分得很開的意思對不對
+這樣我很容易區別
+但是反過來呢
+如果說
+這一堆是ㄨ
+然後這一堆是ㄚ
+這就是分不開的意思對不對
+那你想這個到底我們用什麼方式來說它們到底分得開還是分不開呢
+那個最簡單的方法就是還是用我們的covariance matrix 
+我們譬如說
+就這個而言
+這一點它有它的一個mean 
+對不對
+譬如說這是ㄨ的mean 
+那這個呢是ㄚ的mean 
+那除了mean 之外呢我還有什麼東西呢
+就是它跟mean 散得多開
+離mean 有多遠
+那這個東西呢就是我們講的covariance matrix 
+u 的假設我用我用這個這個u 來co 代表covariance matrix 
+這一堆有它的covariance matrix 
+這就是它的散得多開的意思
+怎麼講呢
+那你如果仔細想的話
+所謂covariance matrix 是什麼
+這covariance matrix 
+它的每一個element是假設叫作u i j 好了
+這它這是這個matrix element 
+它是什麼東西
+它是這個嘛就是這個x 減x i 減掉x i 的mean 
+x j 減掉x j 的mean 
+就是第i 個這我這個都是vector 
+每一個vector 有第i 個component 跟第j 個component
+這個x i 減掉x i 的mean 就是指它跟mean 的距離嘛
+我分別減掉它的mean 
+這個x i 減掉x i 的mean 就是指它跟mean 的距離嘛
+x j 減掉x j 的mean 是在j 上面它跟它的距離嘛 我都是在算它跟mean 的距離
+然後呢
+我再這兩個相乘求平均的這個東西就是u i j 
+這個matrix 裡面的每一個element u i j 就是這種東西
+那你就可以想像得到我這個matrix 的對角線上的每一個呢
+就是它的每一個component 自己的variance 
+這個你很容易想像就是我們平常講一個gaussian 的肥度
+對不對
+一個gaussian 這個是是mean 
+它的肥度就是它的variance 
+對不對
+這個variance 就是當i 等於j 的時候
+當i 等於j 的時候就是指對角線上面的這個東西的時候
+就是指每一個component 它自己的那個散開的程度
+所以呢這裡的在對角線上的每一個就是它散開的程度
+那同理
+不是對角線上的也其實也是一樣的意思
+只不過我現在i 不等於j 
+是i 跟i 散開的是i 跟它的mean 以及j 跟它的mean 各自散開的程度的平均嘛
+所以我變成用整個的matrix u i j 
+來描述這東西散得多開
+那你如果這樣想的話呢
+那你可以想得到我這邊的話呢
+就這個圖而言它們這個散得不開這個比較緊這個比較緊
+而這個呢就是散得很開
+譬如說這個一個這麼大這散得很開別外一個呢又這麼大
+那我希望得是變這種而不是變成這種
+那我就希望每一個class 
+這是一個class 這是一個class 
+我希望每一個class 的u 呢盡量小
+那那個class 就是我們這邊的u j 乘以weight w j 
+也就是說呢我現在我每一個class 每一個class 有它的mean
+就是它的mean
+有它的covariance matrix 
+哦
+那這個mean 跟covariance 就是我這邊講的這兩這兩個東西
+我每一個class 譬如說ㄨ譬如說這個是ㄚ這個是ㄧ
+那麼這兩個每一個class 有它自己的mean 有它自己的covariance 
+那麼我希望呢它們都盡量
+covariance 就是說它散從這個mean 散散開來的散開的程度
+我希望它越小越好
+那這就是所有的u j 的平均
+那麼weight 是什麼呢w j 是什麼是number of samples 
+假設我這邊有一萬個點
+這邊有十萬個點
+那我就這個乘以一萬這個乘以十萬
+或者說這個是乘以這個十一分之一這個乘以十一分之十
+那這樣就表示說我我我同時把它們散開的程度跟這個data 的量weight 進去了
+那這樣呢這個叫作within class the matrix the scalar matrix 
+就是指一個class 裡面到底它散得多開
+我希望每一個class 自己不要散得開來最好越緊越緊好
+所以我會希望這個u i j 的每一個element 越小越好
+對不對
+u i j  的每個element 越小越好就表示說我這個它的散開來的肥度越小
+那就表示越緊
+那這個是對每一個class 內部而言
+我都希望它都能夠儘量收得很緊
+這就叫作within class scalar matrix 
+但是還有一個東西呢就是between class 
+我還希望呢這個class 跟class 之間能夠散得開
+對不對
+我我不要這兩個雖然我我如果兩個排得很近的話還是會會混淆嘛
+我希望它們儘量散得開
+那這是怎樣呢那我就要有一個global mean 
+啊total mean 這裡有一個mu 是一個total mean 
+假設我有十個class 
+那這個十個class 的total mean 在這裡的話
+那我就把這裡的每一個mean 相對於這個mean 來做一個那個covariance matrix 
+那那個呢就是這個
+所以底下這個式子這個這個東西叫作between class 的scalar matrix 
+就是指class 跟class 之間我要它們這個分得開
+那我就是把它們的mean 拿來作做一個covariance matrix 
+ok 
+換句話說
+這個不好為什麼不好
+一方面是因為每一個class 自己散得開
+一方面是class 跟class 之間排得太緊了
+譬如說白色的這個mean 在這這裡黃色的這個mean 在這裡
+它們這兩個mean 太緊了
+所以呢一方面是我的within class 在class 之內我盡量要收得緊
+一方面呢我是要class 跟class 之間我要盡量拉得開
+像這個的話就是我class 拉得開又收得緊
+所以呢我有這個between class 的matrix 
+那這個其實是式子你看起來就知道它其實沒有什麼特別
+就跟我這個covariance matrix 是一樣的意思
+只不過我現在每一個就是各自的mean 
+每一個class 的mean 分別減掉那個total mean 
+那等於是這我們剛才是每一個點分別減掉它的mean 是一樣的嘛
+啊我等於是每一個每一個class 的mean 去減掉它的total mean 之後
+我來算這個covariance matrix 
+那然後呢我我用這個covariance matrix 來代表我的between class 
+那因此呢我變成是說我class 跟class 之間我要盡量散得開
+而同一個class 裡面呢我要盡量收得緊
+那相對於這個呢就是我同一個class 就沒有收緊就散開了
+而class class 之間又又變得很緊所以這樣就是不好
+這個是好的這個是不好的
+啊
+那麼因此我要怎麼做這件事情呢
+我我有兩個matrix 
+我要within 要越小越好
+between 的要越大越好
+所以基本上我是要把這兩個來相除
+就是把我要的東西是between class 的除以within class 的
+我這個東西要越大越好
+因為這個大就表示是說我class 跟class 之間分得開
+所以呢這是越大越好
+而這個東西呢要越小越好
+因為這個就表示說我的一個class 裡面是收得越緊越好
+那麼因此呢這兩個相除的話呢大就是可以最大嘛
+我如果這個東西是maximum 的話呢
+那就是表示是說這個越大越好
+這個比這個這個越大越好這個越小越好嘛
+或者說我的class 跟class 之間的距離相對於class 內部的距離是越大越好嘛
+對不對
+那你也可以解釋成這好比是s n ratio 一樣
+這個是class 跟class 之間的距離讓我可以拆開signal 的
+那這個呢是是noise 
+等於說是我每一個會把的noise 把它它的弄弄模糊的
+所以這個有點像s n ratio 一樣的東西
+所以我要的就是這個東西這個ratio maximum 
+就表示說這個這個最大這個最小
+但是呢不能這樣做為什麼呢這兩個是matrix 啊
+這是一個matrix 這也是一個matrix 
+matrix 哪能相除呢
+不能相除啊
+那怎麼辦
+我們就加一個trace 
+trace 是什麼
+你可以回去查你從前唸的線性代數裡面的matrix 就知道有一個trace 
+每一個matrix 我都可以做一個trace 
+做個trace 之後呢
+其實是相當於它的eigen value 之和
+那其實就代表它的total scattering 
+那麼換句話說
+你可以想像我們的譬如說我們的covariance matrix 它的eigen value 其實是什麼
+其實covariance matrix裡面的每一個eigen value 都代表它的那一個dimension 散開的程度嘛
+就是我們p c a 講的嘛
+它的散開的程度就是那個eigen value 嘛
+所以我如果把eigen value 之和加起來是trace 的話
+就代表它total 在每一個dimension 散開的程度
+就變成一個單一的值啦
+所以呢我這個matrix 我不能直接去求它不能直接去除它
+而我必需這兩個matrix 都分別求它的trace 
+當我這個也求trace 這個也求trace 之後
+分子就代表它的class 跟class 之間散得多開
+分母就代表每一個class 內部散得多開
+那你這個希望越大越好這個希望越小越好
+所以你是這兩個的trace 來相除我要maximum 
+那在這個條件之下我現在要做的事情是什麼呢
+我做的事情是要找一個軸
+原來的這個c one c two 這個軸可能不好
+我要找一組新的軸
+那一組新的軸呢使得它們能夠散得最開
+那這組軸怎麼找
+就是用一組orthonormal basis 排成w one w two 等等
+在k 個dimension 
+然後呢
+那我如果用這個w one w two 這k 個這個orthonormal basis 做成一matrix 
+來做這個轉來做這個新的軸的話
+那麼我的這個s 這這兩個這兩個這個scattering 的這個matrix 其實就是它的covariance matrix 會變成什麼呢
+會變成前後各乘一個這個w 啊
+所以這個數學式子是這樣來的
+所以呢我現在我我真正要maximize 應該是這個嘛
+我要maximize 的是這個嘛
+但是呢我現在要轉一個軸
+那個轉軸的那個matrix 呢就是w 
+那這個w 裡面的每一個column 就是一個basis 
+那當我用這個w 做個轉軸的時候呢
+那你的那個s 呢就會變成左右各乘這個
+這個s 也會變成左右各乘這個
+所以我就變成說是我要左右各乘一個w 之後這是transpose 這邊沒有transpose 這是全部各乘之後求trace 相除
+我要maximize 這個值
+那我選這條所有的w 去找
+哪一個w 讓它最大的那個w 就是我要的w 
+那用這個方式呢得到的答案就是我們講的linear discriminative analysis 
+那它的它跟p c a 有何不同
+p c a 只是找出一些principle component 使得它在那些component 上面散得最開
+但是p c a 並不知道誰是ㄚ誰是ㄨ
+所以p c a 只是把它們散得最開並不知道誰是是ㄚ誰是ㄨ它並沒有把ㄚ跟ㄨ散開
+但是l d a 是進一步
+l d a 是知道這一堆是ㄨ這一堆是ㄚ然後所以我要把ㄨ跟ㄚ這兩個class 拆開來
+所以呢l d a 使用的information 比p c a 要來得多
+in general 在大多數狀況l d a 的效果比比p c a 更好
+因此呢
+所以呢我們l d a 呢是目的是要找出最最有具有鑑別力的
+啊這個是鑑別力的意思嘛啊
+我要找出最有最具有鑑別力的那些個dimension 
+然後呢把它這樣子拆開來
+那如果是這樣子的話呢
+那我就得到這個這個最好的結果
+啊
+那這叫做discriminative linear discriminative 就是我有鑑別力的一個分析
+那麼當我這樣做的時候這個solution 是什麼solution 其實很簡單
+我還是找eigen vector 
+不過什麼matrix 呢是這個matrix 
+就是這個within class matrix 的inverse 乘上between class matrix 
+這兩個相乘之後還是一個matrix 
+這個matrix 的eigen vector 
+然後找它最大的eigen value 的
+那些個就是這些w 
+那麼因此呢跟剛才跟p c a 裡面一樣
+那麼eigen value 最大的那個eigen vector 是w one 
+第二大是w two 等等
+那結果我到時候在w one 上面呢我可以拆得最開
+然後w two 上我拆得第二開等等
+啊
+那這就是所謂的l d a 
+好
+有了l d a 之後那後面就一樣了我也一樣做這件事
+這張圖其實跟我們上面講的那個圖是意思是一樣的
+那麼跟我們那邊講的是一樣的
+你所謂的這個temporal filter 
+就這個c one 變成一個signal 要做一個filter 這件事情呢
+你可以想像成是
+這個這個convolution 其實就是在把這幾個分別乘上一個coefficient 加起來嘛
+所以你就是把這一堆這四個點這四個點這四個點都都當成是一個n dimension 的這些這些點
+然後你在這上面去做l d a 我現在是做
+剛才這邊是做p c a 我現在是可以做l d a 嘛
+喔那等等
+所以這邊圖畫的意思是一樣只是說我ok 我這個這個signal c one 當成是一個signal 
+然後呢你如果這三個一起乘上一個coefficient 的話呢
+這相當於是output filter 之後的第一個output 
+你這三個乘上下一個的話呢是第二個output 
+這三個再乘上下一個是第三個output 等等所以這個其實就是在做convolution 
+那你如果這樣來看的話呢
+我做l d a 跟剛才p c a 有何不同呢就是我要先分好class 
+假設我要辨識零到九的十個音的話
+哪些是零的
+我把那些個點點在這裡
+哪些是一的我點在這裡
+我通通都要分開來
+我都要分好class 就是了
+所以呢我的這些data 在做l d a 之前我要先分好class 
+哪些是一哪些是二哪些是三
+然後它們分別知道class 之後
+我就可以來做l d a 
+然後我把那個eigen value 最大的那個eigen vector 來做我的第一個軸
+也就是做我的那個filter 
+那這樣得到的結果呢會比p c a 更好
+那畫出來仍然是很像的
+不過不太一樣就是了
+那仍然是這樣大致在幾個hertz 之內的這個range 是最重要的
+然後別的部分把它濾掉一些
+那得到會更會得到更好的結果
+那不論是p c a 或者l d a 來做的話呢
+一個特點就是這裡的每一個filter 都不一樣
+c one 有c one 的filter c two 有c two 的filter 每一個都不一樣因為它們各自有它們自己的的統計特性都不同
+所以你得到的都不一樣就是了
+那這個是這個用l d a 來做的temporal filter 
+那跟剛才p c a 唯一不同就是我用l d a 
+那跟這個很像的還有用m c e 去做的m c e 是我在九點零講完e m 之後要講的
+這個我大概下週會講
+那麼所以這個呢就留到後面再說
+那這邊還有另外一個例子是說呢
+這個filter bank 本身也可以optimize 
+那這個的意思是很像的
+就是說我們原來講的這個
+這個這個求m f c c 的時候用的三角形的filter 來做
+排一堆三角形的filter 的時候是非常直覺而僵硬的沒什麼道理
+我們說
+譬如說這是這是一個這是一個filter 我們都是三角形的
+憑什麼是三角形呢
+沒有理由嘛
+那我們為什麼不能說這個是一個某一種的filter 
+那第二個呢是另一種的filter 
+第三個是另一種的filter 
+可不可以呢可以啊
+那因此呢這個filter 怎麼求
+我也可以用data driven 來求啊
+這是這邊講的data driven of filter bank 
+的意思就是這樣子
+也就是說呢
+我現在
+譬如說我我我我的這個filter 是在求這一堆對不對
+這一堆這個這個
+這一堆component 到時候要用三角形嗎還是用別的呢
+我如果有夠多的data 
+我拿夠多的聲音來求這堆frequency 的東西然後我可以用p c a 用l d a 都可以
+然後我來找到底怎樣的filter 找才好
+那麼結果它們可以找出來奇奇怪怪的形狀會更好會比三角形更好
+那就是這邊所講的事情
+你一樣的你就是假設這個是第一個filter 要做的這是第二個filter 要做的這是第三個filter 要做的
+你就有夠多的data 的話我就可以用p c a l d a 或m c e 都可以
+你用這些方法來做的話你都可以得到你想要的
+那那這樣都可以得到比較好的feature 等等
+那以上的這些就是嗯feature based 的一些例子
+那嗯在reference 裡面的話我這邊所列的
+哦第六個這個其實是一本課本
+那只是講l d a 在這裡面可以查得到
+那其實l d a 在很多課本都有
+你在你找相關的pattern recognition 或者machine learning 很多都有l d a 
+我這裡只是列其中一本作為例子而已 
+那第七個這一篇其實就是在講一個找這個filter bank 
+啊我就這個filter bank 怎麼求
+我不一定要三角形
+我就可以讓它我我我以optimize 我的辨日辨識結果來看的話
+我怎我我可以求裡面的東西的
+這個是這是這個reference 
+那嗯其實剛才講的那些temporal filtering 
+嗯有一個新的reference 可以參考的
+我還沒有寫上來
+這個
+就叫做optimization of temporal filter 
+類似這樣的名字
+for robust features 
+之類的名字啊
+這個是在同樣的這個期刊
+就是i triple e transaction speech audio processing 的這個五月兩千零六剛剛出來的
+那這篇就是把我們其實就是我們這邊講的好幾個都在這裡面
+包括我們這邊講的用p c a 用l d a 
+啊用p c a 用l d a 用m c e 這些東西它它都有在裡面
+那這個其實是我們實驗室的同學做的
+所以保證很好看啊
+ok 好那這樣的話我們把feature feature based 也講完了我們現在剩下最後一個那個這個enhancement 的例子
+那麼我們留到下週就可以了我們就可以下週我們就回到講九點零的這個e m 
+好這樣子我們今天上課上到這裡
+OK 我們上週這個十五點零還有最後一些最後一頁沒有講喔
+最後一頁要講的就是那個 speech  enhancement 我們也舉一個例子
+那就是這裡那所謂的 speech  enhancement 我們之前說過就是嗯
+當你的這個真正所要 recognize 的的的的聲音跟你做 training 的時候的聲音不一樣不 match 的時候
+那麼我們可以做 model  base 的部分我調 model 
+想辦法把 clean  speech 所 train 的 model 調成你的這個這個 testing 環境的 model 這是 model  base 的
+我也可以做 feature  base 的那麼我想辦法把 feature 調成跟這個 feature 很像的這是 feature  base 
+那當然還有一種情形就是我根本就在 signal 這邊做 我想辦法就把這個 signal 弄得跟它比較像
+那這就是所謂的 speech  enhancement 
+那 speech  enhancement 的發展歷史非常早
+那麼早早在七零年代六零年代的時候已經是一個研究的題目
+當時還沒有好好的做這個 speech  recognition 
+那就已經先有這個了因為當時的想法只是希望把聲音變的好聽一點
+譬如說當你在車裡面或者在飛機上這個講話的時候聲音永遠都有干擾這個時候我如何把那個聲音雜訊濾掉弄得乾淨一點當時的想法是這樣
+就讓它好聽就是了這是所謂的 speech  enhancement 
+但是到了 recognition 的時候其實發現其實不一定要再再好聽而且你如果把一個聲音弄乾淨一點的話其實對 recognition 也有幫助
+所以呢 speech  enhancement 也就同樣可以用在這裡喔
+所以這是一個相當有歷史的領域
+那我們這邊舉的一個例子也是非常有歷史的例子
+可能可以算是 speech  enhancement 裡面的最具代表性的一個例子
+那所謂的 Spectrum  Subtraction 就是 s  s 
+那這個也可以算是少數這個壽命最長的語音技術
+那麼它在七零年代一九七零年代的末期就已經非常成熟
+但是呢一直到現在仍然廣泛的在使用
+不但是廣泛的在使用而且不斷的有新的研究
+所以呢一直到今天仍然每年都有很多篇 paper 在說這個可以怎麼做做的更好等等一直都是
+到今天仍然是一個活躍的研究領域因為不斷有新的 paper 在說怎麼做喔
+所以可以說是少數最長命的最長命的這個也算是最有代表性的技術之一所以我們稍微提一下
+那這個觀念說穿了其實很簡單
+那它的想法只是說
+假假使我的語音訊號在這
+那麼雜訊是什麼呢雜訊是 noise 一般是奇奇怪怪的加在這個上面
+那麼加在上面之後把整個訊號都弄亂了而這個訊號常常是每一瞬間永遠不一樣
+對不對你這一段的 noise 跟這一段的 noise 是不一樣的
+你你真的要把它的 noise 去減掉還不知如何減法因為你其實根本就是 noise 跟 signal 混在一起
+你要把它扣掉拿掉這這不知怎麼拿
+那麼但是呢事實上有一個很自然的方法就是你如果做一個 fourier  transform 到 frequency  domain 去的話
+到 frequency  domain 的時候我的我的訊號仍然每一瞬間是不一樣譬如說我這個取的跟這個取的是不一樣的
+這個訊號的 fourier  transform 跟這個是不一樣的可是 noise 通常是很像的
+所以呢我如果我如果 noise 取出來是某一種樣子的話
+我下一瞬間的 noise 可能還是差不多的
+也就是說 noise 本身在 frequency  domain 的變化不會那麼快喔
+這個是一個這個 noise 絕大多數的 noise 都有這麼一個特性
+也就是說雖然 signal 在在這個 frame 跟這個 frame 是可能是差很大
+我的變化是相當多的它的它的 fourier  TRANSFORM 也是差很多的
+可是 noise 在這一瞬間跟這一瞬間你如果
+你看 time  domain 仍然差很多可是你如果做 fourier  transform 過來的話呢可能差不多
+喔因為這個原因呢所以就想出這個辦法
+就是我到 frequency  domain 去相減
+那也就是說呢你你今天這個我們說話的時候我們知道我們永遠是有一堆斷開來的 silence 
+換句話說我在講話的時候
+我絕對不是連珠砲一直說個不停而是我這一段說完之後我會停下來 either 聽對方講話 or 是我要換口氣或者怎樣
+有一段是空的之後才會有下一段
+那麼講完之後我又有一段是空的才會有下一段
+那麼當你在中間這段空的時候這邊顯然都是 noise
+同樣的一開機我還沒講話之前開機的這邊也是 noise 
+所以我只要在這個地方取 noise
+然後來做 fourier  transform 的話我得到這個 noise 的 spectrum 
+那麼因此呢我可以在這邊呢就拿這個當成是 noise 來減把它減掉
+基本上精神就是這樣子而已
+那麼因此呢譬如說我在一開機還沒說話之前有零點一秒的的空檔我就把那零點一秒的空檔拿來做 fourier  transform 
+那我就知道 noise 長怎樣那我可以假設這段時間的 noise 都是這樣
+雖然不完全是但是至少是像的所以我這一這一小段裡面我就都把它的全部都做 fourier  transform 都把它減掉
+之後呢就得到一個比較接近於真實聲音的東西
+然後等到這邊也有空下來之後我重新取新的 noise 
+取新的 noise 到這邊再來減新的 noise 喔
+那我這邊又可以取新的 noise 我這邊又可以減新的 noise 
+因此呢我就拿這一段來減這邊拿這一段來減這邊
+喔基本上想法是這樣子
+那如果是這樣子的話呢你大致上可以把
+當然不會 exactly 一樣啦 noise 當然也是在變啦不能說這邊的 noise 跟這邊的完全一樣是不會的
+但是呢它變化的比較少
+在 time  domain 變化得多在 frequency  domain 變化得少所以我以用它來當它來減的話呢是可以清掉不少 noise
+讓這個聲音好聽不少
+那這個想法就是所謂的 spectrum  subtraction 你看他名字就知道了
+就是我到 frequency  domain 去在它的 spectrum 上面相減
+那真的做的式子是稍微複雜一點是底下這個式子
+那它的意思是說呢我們每一個 frequency 去減
+這個就是 y 就是 y 就是我 signal 加 noise 當然 noise 也在這上面也加了在這上面嘛
+noise 跟這個一起加的嘛所以這個地方得到的是 signal 加 noise 這就是所謂的 y 
+但是呢我在這邊所得到的呢就是所謂的 n 
+所以呢我把 y 跟 n 都做 fourier  transform 
+然後呢在 frequency  domain omega 這個地方去 y 去減 n 
+基本上就應該得到比較接近原來的 clean  speech 這就是我這邊用的 x 的估計值 x  hat 
+ok 那這個就是它的這個基本的最基本的想法其實就是這樣子而已
+也就是說我的 clean  speech 是這樣
+這個是我的 clean  speech 就是 x 的 t 
+那我加上一堆 noise 那我假設是 n 
+於是呢我就把 y 減掉 n 得到我的 x 的 hat 喔
+但是呢這個時候要稍微小心一下就是我們真正做的時候呢這個 y 的 transform 
+你如果做出來很可能會變成這樣這是 omega 我的 frequency 
+那我我 y 做出來我們知道它其實有大有小嘛
+如果這個是我的 y 的 omega 
+就是我的這個這個 i 就是第 i 個 frame 喔
+這個 i 是指第 i 個 frame 的的那個做出來的這個這個 noisy  speech  y  of  omega 
+但是呢我減我這個這個我拿前面的這個這段這個還沒有開始講話之前剛開機的這個這零點一秒的這個 noise 拿來做的 transform 呢搞不好是像這樣
+譬如說是
+那這個呢我們如果說這個是這個 n  of  omega 
+那就是這個
+那這時候你就會發現呢因為 n  of  omega 如果這樣 y 如果是這樣的話呢有的地方 y 比起 n 來並不大
+當你像這一像這個 frequency 
+y 比 n 大很多的時候你可以相信如果把 y 減掉 n 之後大概把這個 noise 去掉不少是會比較好的
+可是你如果像在這個地方的話像這個地方的話呢你的你的 signal 並沒有比 noise 大多少
+noise 這個地方滿大的在這些 frequency 上 noise 滿大的而而 signal 滿小的
+你這個時候再減還還可靠嗎這個時候可能非常糟糕
+也就是說在在這些個 frequency 裡面它的 signal 比 noise 沒有大多少甚至於比 noise 還要小或者怎麼樣
+那你這時候還要去減一減的話減出來是八成是不對的
+因此呢怎麼辦
+那它的辦法就是說我取一個原來那個 y 乘上某一個 alpha 這個 alpha 是一個要選的參數譬如說零點幾
+你如果是減起來大於零大於它的原來的零點幾倍的話我就用減的
+可是如果小於它的零點幾的話我就不減了我就把原來那個乘上零點幾就算了
+我們舉例來講假設這是零點三的話
+那麼我拿拿這個大的乘以零點三之後
+凡是減了之後比那個零點三大都沒有問題我都用減的
+所以夠所以這個地方只要夠大的話我都用都用這個來減
+可是如果你這個一減之後比原來的零點三還要小的話
+那就表示這個這個 noise 已經大到一個程度這個地方這些個 frequency 就已經非常不可靠那我就不要減了
+我就把原來那個 y 乘上那個 alpha 就當成我的訊號了喔
+好所以呢它就有有這兩種做法
+那麼 depends  on 我有這個 alpha 就是它所謂的 flooring 就是說我有一個這個下限
+我減起來要比這個下限大的我才我才減如果比這個下限小我就不減了
+那這個是這個是這個所謂 Spectrum  Subtraction 一個最基本的一個一個公式就是這個東西
+那在在這個情形之下呢那還有一個問題就是說那你這個 noise 要怎麼算
+我們剛才講說 OK 我就是拿前面基本精神就是我拿前面這一段當成這邊的拿這邊這一段當成這邊的
+不過一個比較好的辦法呢我也是用一個 interpolation 
+也就是說我如果是這個 n 的 i 跟新的中間新的跟舊的有一個 interpolation 用一個 beta 
+那 beta 也是一個參數
+換句話說我如果前一個 frame 我是用這個 i 減一在減的話
+那麼我新的假設我現在得到一個新的 n 我不是直接用它的 n 而是用前面的來做 interpolate 
+換句話說如果我一開始剛開機的時候我用這邊得到某一個去減
+怎麼減我得到那個也是 averaging  over  m 個 frame  of  locally  detected  silence  parts 
+也就是說我不是拿最後一個而是假設說我剛開機有零點一秒還沒開始講話
+這零點一秒我其實得到了譬如說十個 frame 我是拿這個十個 frame 做平均拿來用
+那麼於是我用在這裡是沒有錯
+等到這邊我開始又得到新的 noise 的時候呢
+我新的 noise 平均得到新的東西呢我不是直接它來減它而是這個東西再跟前面呢來做一個 interpolation 
+那就是這邊的式子
+所以呢這個這個 i 的 n 這個東西呢是最新 detect 到的 frame 
+我現在在 frame  i 應該要用的是這個 noise 
+但是呢我不直接用它我跟之前的做個 interpolation 
+那這個 beta 也是一個重要的參數要選的
+那麼這樣之後呢你這樣的 noise 比較穩定一點我用這個東西來減它
+喔那那這個就是這個這兩個式子其實就是 Spectrum  Subtraction 最基本的公式
+那這裡面其實有很多的學問就是怎麼怎麼求這個 alpha 跟怎麼求這個 beta 
+那麼在什麼樣的 noise 狀況之下你怎麼樣子判斷這個 alpha 應該怎麼調
+那麼 alpha 跟 beta 最好是可以隨著 noise 的狀況隨著 signal 的 noise  threshold 你要能夠調它
+然後呢再進一步這兩個公式也可以調也是都是可以動的
+那麼這兩個公式如果動一動都可以變的更好等等喔
+那當然這些東西我們講起來呢都講起來這麼簡單那其實呢這邊相減呢只是他的
+這個你知道 fourier  transform 都是有 amplitude 跟 phase 的
+所以它是有一個 amplitude 你 transform 的時候是有一個 amplitude 有一個 phase 嘛
+還有一個 phase 
+那真正的比較好的做法是
+我減 amplitude 但是 phase 我用原來的喔他們通常的做法是這樣子所以呢
+就是 transform  back  to 當你這個減完之後就這個地方減了減完之後把它 transform  back 到原來的那個
+但是呢這個用原來的 phase 就是 phase phase 我沒辦法動它我就用原來的原來 y 有什麼 phase 就用 y 的那個 phase 
+然後一個 frame 一個 frame 轉轉回去你就可以得到一個有進步的聲音喔這就是所謂的 Spectrum  Subtraction 
+那在多數 case 都是有進步的
+但是你如果 s  n  ratio 很低的話
+這個 noise 很高 signal 很低 s  n  ration 很很差的話這個效果就不會好了因為你變成大多數都是這個狀況就不會好了
+所以這個是但是它有在很多時候都有相當好的效果喔
+那麼那麼很多時候你如果減不對的話會產生 musical  noise 
+什麼叫 musical  noise 呢就是你如果剛好譬如說
+這裡的 noise 剛好 locally 有一個比較高的 pick 
+那你它減它之後喔不對比較有一個低的它剛好有一個有一個低的一個有有一個低的 valley 
+那這個低的部分你你有的時候你你在這邊你沒有辦法沒有辦法除掉那個低的部分
+你就把它一減之後呢你那邊就多出一個高的出來那麼多出一個高的東西出來那個東西變成一個很奇怪的一個聲音
+變成一個某一個 frequency 有一個很奇怪的聲音被被減出來那個聲音聽起來像像某一個 SIGNAL  frequency 在那個地方
+那是所謂的 musical  noise 
+那麼在很多時候你如果這個 alpha 跟 beta 調的不好的話會跑出這種東西出來喔
+那那那他們有很多的研究如何如何做的更好也也是很多時候是為了要消除這個 musical  noise 喔等等
+那這個我想這個是簡單的解釋這個就是 Spectrum  Subtraction 
+那它的它的好處就是除了一方面可以 for  listening  purpose 一方面是 for  recognition  purpose 
+也就是說那麼其實早在七零年代這個辦法就已經出來了
+那在當時是只是為了 for  listening  purpose 就是為了好聽的
+那麼你在汽車裡面你在飛機裡面你在這個比較吵雜的環境之下的聲音你都可以加一個這個 process 
+都可以把它雜訊清掉相當程度變的比較好聽一點
+那到了後來有 speech  recognition 的時候人家發現其實拿這個當成 recognition 的 front  end 先減掉之後再做也會比較好所以呢這個也可以做 recognition  purpose 喔
+所以這個是 enhancement  speech  enhancement 的這個一個最代表性的例子
+那我們剛才提過這是最少數壽命最長的技術
+它在七零年代就已經出來了但是呢一直不斷有人在做研究因為不斷的可以把這個最簡單的方法做各種調改變
+呃最簡單的就是怎麼樣調這個 alpha 跟 beta 
+再複雜是怎麼把這個式子再做一點改變喔這個式子這邊都可以做一點改變譬如說這邊加上一個 alpha 次方加上一個 a 次方
+讓它在 a 次方的地方相減或者是怎樣有很很多這個手腳可以動
+那一直到今天每年仍然有非常多的 paper 再說這個怎麼做會比較好等等
+所以它活到現在而且還活的很好是少數壽命非常長的這個代表性的一個技術
+所以我們拿它來提一提作為這個 speech  enhancement 的代表性的作品
+那這個就是我們前面所說的這個這裡你如果直接在 signal 這邊做的話也是有東西可以做的
+那他的原我列了一個原始 paper 就是這裡的最後最後第二篇喔
+這個其實就是 Spectrum  Subtraction 的原始 paper 早在一九七九年所以是二十將近三十年前喔
+但是這個技術活到到今天仍然活的很好喔那麼這個
+那你如果去找 reference 的話每一年都可以找到很多 paper 我這個只是最早的最原始的那一篇喔
+那另外像這個第九還有一篇這篇我現在就不講了那你如果有興趣可以自己去看這個也滿有意思的它用一個所謂 union  model 
+它把它的這個把它這個這個 Spectrum 分成一段一段的
+因為很多時候這一段 noise 很厲害這一段 noise 不厲害所以你可以分成一段一段去處理哦等等
+那這個我想這一類的 paper 很多那麼在這個領域是今天語音研究非常非常熱鬧的一個大領域
+那麼你每年可以看到幾百甚至於是幾千篇 paper 都在搞這堆東西的喔
+那麼我們這邊講的算是比較早比較早比較呃五六年以上然後比較這個嗯經過時間考驗大家都認定還算是不錯的東西
+那新的很多很多那這個都是這個領域都是非常好的做報告的題材如果你對這個領域有興趣的話
+所以我們大概說一說好十五點零說到這裡

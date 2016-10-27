@@ -1,0 +1,59 @@
+那這三樣東西怎麼求呢在下一頁我又要 define 一個新的東西叫做 gamma  t 的 J K 嗯
+這個東西有一點複雜不過呢其實蠻簡單你如果記得 gamma  t 的 j 是什麼的話 gamma  t 的 j 是什麼呢
+就是我們剛才講的這一個
+我們剛才一直在加這個東西嘛就是這一個
+那它就是這個嘛就是我剛才加的這些東西就是 gamma  t 的 j 
+那麼就是說我看到整個的聲音而我時間 t 的時候掉在 j 的掉在 i 的機率叫做 gamma  t 的 i 或者 j 
+那我現在要再 define 一個新的東西叫做 gamma  t 的 j 跟 k 再多一個 k 那 k 是什麼呢
+你如果仔細看一下的話這個 k 呢它是說就是包括我在第 k 個 Gaussian 的機率
+那其實呢你只要看這裡就好了看這一項其中前面這一項其實就是我們原來的 gamma  t 的 j 前面這一項就是我們原來的 gamma  t 的 j 
+那就是多了後面這一項那後面多了這一項就是把這個 k 算進來的意思
+OK 那麼前面這一項就是我們我們這個之前講的 gamma  t 的 j 那基本上就是 alpha  beta 相乘 normalize
+那這個東西呢也就是我們之前在 problem  two 的時候上次上課在講 problem  two 的時候
+講的這個 gamma  t 的 i 這個是 problem  two 的時候第一個 approach 所講過的東西
+那這個你看我們當時說過這個 gamma  t 的 i 就是這個就是我們這邊講的這個啦就是這個啦
+那它的式子就是這樣算的嘛 alpha  t 的 i  beta  t 的 i 除以這個嘛那這個也就是我現在的這個式子
+就是這個式子 OK 所以我就是就是這個 gamma  t 的 j 但是呢我後面多了一個 k 我剛才是只有一個 index  j 的
+現在變成兩個 j 跟 k 那 k 是什麼呢 k 就是後面這個後面這個是什麼你仔細看看就是 Gaussian 
+那麼上面是一個 Gaussian 底下是全部 Gaussian 的和什麼意思呢我們如果用 one 一個 dimension 是比較容易想像它的意思
+就是說假設我有很多個 Gaussian 
+那麼這是一個 Gaussian 這是一個 Gaussian 這是一個 Gaussian 這是一個 Gaussian 這是一個 Gaussian 
+那麼今天呢假設第 k 個 Gaussian 在這裡
+譬如說這是第 k 個 Gaussian 
+這是第 k 個 Gaussian 
+或者叫做第 k 個 mixture 這邊常常寫成 mixture 因為它們都稱為 mixture 所以一個 Gaussian 就是一個 mixture 
+如果這是第 k 個 Gaussian 的話呢那麼所以呢分子就是第 k 個 Gaussian 所以這是第 k 個 Gaussian 的 mean 跟 covariance 等等等等
+而分母呢是全部加起來的然後我他們都拿那個時間 t 的那個 vector 放進去
+我現在講的是 t 嘛這個是 t 嘛所以我是把時間是 t 的那個 vector 放進去所以呢譬如說時間 t 的那個 vector 呢是這一個
+這個是這個是 ot 的話放到這來的話呢在第 k 個 Gaussian 的時候在這裡
+這樣我們就用這個好了這個是在 t 的時候在這裡可是如果放在全部的話呢它是一個它是一個
+有這麼多 Gaussian 加起來它是一個可能是一個這樣子的
+是一個這樣的東西所以呢那個呢是這個
+所以呢我的分母就是這個 Gaussian 的這個全部的 Gaussian 的值分子是這個 Gaussian 的值 OK 所以後面這項是這個意思嘛
+就是說我現在把我那個這是一大堆 Gaussian 的組合嘛對不對一大堆 Gaussian 的組合那你看你是要看一個單一的 Gaussian 還是看全部
+那我如果是單一的 Gaussian 的話我把我的 ot 我時間 t 的 vector 放在那裡得到一個值
+但是呢我如果全部加起來的話我也可以放進去也得到另外一個值看看這兩個的 ratio 是多少
+那這兩個的 ratio 顯然告訴我的意思是說對這個 vector 而言我現在在算這個 ot 我現在是時間是這個 t 嘛
+我對這個 ot 而言對這個 vector 而言那麼它在這一個 Gaussian 裡面
+會得到多少分數跟在全部裡面的比例是多少那那個比例其實就是我們到時候就是要算這個
+就是算我的這個 weight 就是在 state  j 在的時候呢第 k 個 Gaussian 的 weight 多少嘛
+也就是我要算就這個東西就是
+當我在變成這個的時候一大堆 Gaussian 加起來每一個 Gaussian 要有一個 weight 嘛那這個 weight 怎麼算這個 weight 就這麼算
+所以呢我是要跟這個有關 OK 好那我們現在再看一次我現在算這個 gamma  t 的 J K 的目的是為了要算這個 weight 嘛哦
+那我怎麼算呢我就是把 gamma  t 的 j 先算出這就是剛才講的那個
+就是在時間 t 的時候它平均會掉在 i 上的機率是多少這個時候我是只要掉在 state  i 就好了
+我沒有管它掉在哪一個 Gaussian 裡面對不對所以呢 Gamma  t 的 j 呢只是說在時間 t 它在 j 上面就好了
+那麼沒有管它在它在哪一個 Gaussian 上面那所以在後面我再多乘一個東西就是要講它如果在哪一個 Gaussian 上面的話會怎樣
+所以呢我就要算它在這個 Gaussian 上面除以它在全部的這個 ot 放進去它的 ratio 差多少 OK 
+好那如果這個了解的話那這個就是我們講的 gamma  t 的 J K 的意思那如果有了這個的話那我現在就可以把它這個算出來就變這樣
+那這個式子你再看看我其實就是把 gamma  t 就是這邊算了半天這個 gamma  t 的 J K 就拿來就是了
+那唯一不同的是你看我分子就是我這邊算的東西從 t 等於一到大 t 我就是把這個 gamma  t 的 J K 從第一加到第兩百五十
+我就全部加起來這就是分子那就表示說我在這個時候
+時間是在 j 的時候那麼它在第 k 個 Gaussian 的 weight 是多少然後我全部加起來這樣總共是多少
+那除以分母呢也是一樣的東西只是呢我每一個 t 的時候我把所有的 Gaussian 全部加起來了
+對不對所以等於是做個 normalization 對不對你如果不看這邊如果不做這個這邊也不做這個的話這個除以這個就是 normalization 
+就把所有的這個 k 等於一到 m 就是所有的 Gaussian 全部加起來所以呢我的分母跟分子是一樣的東西我只是把所有 Gaussian 全部加起來
+所以一 normalize 之後就是它的 weight  OK 所以這樣的話我就這個 gamma 算了半天之後我的目的呢
+第一個目的達到了就是我可以估計這個這個嗯在 state  j 的時候在 state  j 的裡面這一大堆 Gaussian 的裡面
+那麼第 k 個 Gaussian 的 weight 怎麼算可以用這麼算那這樣講其實也是嗯跟剛才講的一樣就是這個式子其實也是用也是用 E M  theory 推出來的
+那我們後面會講現在只是說他的物理意義這其實是有物理意義的這這樣的意思

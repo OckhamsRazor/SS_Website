@@ -1,0 +1,146 @@
+這是一樣的
+所以呢以此類推就可以變成
+ n  dimension
+所以我這個會有 n 個
+然後呢我這 n 個構成一個 vector
+那每一個值都有一個上下限正負 a 之間
+然後呢我把它切成很多小塊
+就是每一小塊叫做 j  k
+每一小塊有一個代表值叫做 v  k
+然後我仍然是一個 mapping  relation 
+depends  on 你那 n 個值的 vector
+掉在哪一塊裡面對不對
+你那 n 個值的 vector 掉在哪一塊裡面我就用那一塊的代表值來代表
+那到時候呢我就變成剩下 l 個代表值
+所以我只要 r 個 bit 就可以代表它等等等等
+那這個都一樣
+那到這裡的時候你就可以發現其實
+我可以變成 n 之後呢
+那麼並不見得這個一定是剛才那譬如說相鄰的 n 個 sample
+可以是任何的 n 的不同的參數都沒有關係
+當你是 n 的不同參數都沒有關係的時候
+那其實我們在做的事情是等於是在這個看這些 data
+這些這些個 data 它們之間的關係了
+那麼這個時候我們再回過頭來講
+現在最大的難題就是
+你倒底怎麼做這堆 code  book
+倒底它應該怎麼求
+那你可以想像它顯然有道理
+但是它要怎麼做
+你憑什麼到這個這個邊界怎麼畫定
+然後這個代表怎麼設定
+那這個其實是經過很多年
+很多人一直想不出來
+因為這個 v q 的觀念其實很早就有了
+但是人家一直想不出怎麼做這件事
+那麼真正做出來的時候是在七零年代的末期
+那做出來的人是因為
+到那個時候 computer 進步到一個階段
+可以處理大量 data 了
+於是他就想到說其實這個 code  book
+這個code book是可以用大量的 training  data 來 train 的
+那麼因此他就想出這個用大量 training  data 用 computer 來 train
+讓它自己收斂 train 出一個 model 來的方法
+那這是七零年代的末期所出來的
+那麼要講這件事情呢
+我們要先 define 任意兩個 vector之間的一個 distance
+因為它是這個演算法完全是用 distance 來算的
+那麼這個 distance 就是在假設這個是 two  dimension 的話
+這上面的任意兩點我怎麼 define 它的 distance
+如果這是 n  dimension 的話
+這上面任意兩點我怎麼 define 它的 distance
+我們先要 define 好一個 distance 之後
+那它就可以用那個 distance 去去算這件事情
+去做出這個去做出這個切割的動作
+那這個就是我們這邊講的
+所以它要先 define  distance 的原因
+那這個 distance 怎麼 define 呢
+它說其實你自己可以 define 照你的要求
+那麼你只要符合這些條件
+什麼是 distance
+就是 s 乘以 s 對應到正的 real  number
+也就是你你這裡面任意取兩個 vector 出來
+任意取兩個 vector 出來都對應到一個正的 real  number
+然後呢它有這些條件
+就是這就是一般的 distance 所需要的條件
+譬如說任意兩個 vector  distance 呢應該是正的 real  number
+如果一個 vector 跟它自己的 distance 呢應該是零
+然後呢它們是可交換的
+你 x 跟 y 的 distance 跟 y 跟 x 的 distance 是沒有區別的應該是一樣的
+然後這個呢是三角不等式
+三角形的兩邊合大於第三邊對不對
+就這個是 x 這個是 y 這是 y 這是 z 那這是 x 跟 z
+那兩邊合呢要大於第三邊
+這都是 distance 的意義
+當你符合這些條件之後你自己可以隨便怎麼定義
+那這邊舉幾個例子是一般常用的 distance
+那這些 distance 都符合這些條件
+那顯然你還可以設很多其實的 distance
+那舉例來講這個就是我們所熟知的歐幾里得距離嘛
+對不對每一個 dimension 都平方的 distance 都平方就是了
+這是歐幾里得距離
+那這個呢我不平方我做絕對值可不可以也可以
+這是所謂的 city  block  distance
+city  block  distance 什麼叫 city  block 呢
+你可以想像就是在假設在街道城市的街道裡面它都是這樣子的
+所以你如果要從這一點走到那點去怎麼走
+你只能夠走這樣子過來
+那這個距離就是你的 x 跟 y 分別都求 difference 取絕對值
+那這就是所謂的 city  block  distance
+那麼你沒有辦法做直線距離
+這個就是 city  block  distance
+那底下這個距離呢
+嗯這個名字比較難念
+不過它的你看它的長相就知道了
+這個就是 covariance  matrix
+所以這個長相其實就是 Gaussian  distribution 後面那個東西
+你現在應該很熟悉那個 Gaussian  distribution
+就是後面有 e 的 minus
+前面有一個 vector 然後乘上一個 inverse  matrix
+然後再乘上一個這個對不對
+那後面的這堆東西就是這個 distance
+就是這個 distance
+那這個東西就是 inverse 的 covariance  matrix
+那這是什麼意思呢
+我們其實很簡單的解釋就是
+你最容易想像就是假設是對角線的
+假設是只有對角線其它都是零的話
+在這個狀況的意思是說
+我這邊的 x  one  x  two
+都要分別 normalize  by 它的 variance 除以它的 inverse 嘛
+就是它們這個 distance 對到 normalize  by 它們的 variance
+那為什麼呢因為我不同的值它可能的 range 有大有小
+譬如說假設這是某一個東西它的 range 都是正一到負一的
+可是這個呢是從正一萬到負一萬的
+如果是這樣的話這是正一到負一這是正一萬到負一萬的話
+你算的 distance 馬上它 dominate 它
+它的差距它的差異就沒有了
+那你怎麼辦
+它們都先 normalize  to 它們的 variance 之後
+它們的差異就一樣了對不對
+像這類的功能就是顯現在這裡了
+那我現在再進一步我可以把這邊變成不是零的
+那有類似的情形
+那這就是
+其實就是我們一般做 Gaussian 的時候後面這個東西本來就是這個意思
+那這麼一來的話呢那這個就是所謂的這個 distance
+那你也可以想很多別的 distance
+譬如說
+我們剛才講的歐幾里德 distance 是 xi 減掉 yi 的平方
+你也可以為每一個 dimension 做一個不同的 weight
+這樣也可以啊
+如果你覺得哪個 dimension 比較重要你該 weight 比較多這也是一種啊
+那同樣呢我們剛才講
+我們剛才講你 design 這種東西的時候
+要考慮的一個因素是 error  sensitivity
+那麼假設你要做的東西是
+耳朵要聽的聲音或者眼睛要看的畫面的話
+看你聽覺視覺會感覺什麼
+會怎麼樣都可以把那個感覺上差異的要求通通都放到這個 distance 裡面去
+那我的目的就是希望
+我看起來覺得跟原來的一樣好看
+聽起來就跟原來一樣好聽都可以
+如果這樣的話我就想辦法把
+怎麼樣子讓我聽起來的差距顯現在這裡面我就把它放進去等等
+所以呢這些不同的因素我都可以放到那個 distance 裡面去考慮
+那有了這些 distance 之後呢

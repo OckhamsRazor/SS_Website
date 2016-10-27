@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timestamp>
+  <time>
+    <begin>30.621</begin>
+    <end>37.7279</end>
+    <sentence>8</sentence>
+    <sentence>9</sentence>
+    <sentence>10</sentence>
+  </time>
+  <time>
+    <begin>71.4756</begin>
+    <end>74.9485</end>
+    <sentence>19</sentence>
+  </time>
+  <time>
+    <begin>99.9494</begin>
+    <end>102.317</end>
+    <sentence>27</sentence>
+  </time>
+  <time>
+    <begin>169.852</begin>
+    <end>174.284</end>
+    <sentence>43</sentence>
+  </time>
+  <time>
+    <begin>351.762</begin>
+    <end>359.935</end>
+    <sentence>96</sentence>
+    <sentence>97</sentence>
+  </time>
+</timestamp>

@@ -1,0 +1,63 @@
+那這邊還有另外一個例子是說呢
+這個filter bank 本身也可以optimize 
+那這個的意思是很像的
+就是說我們原來講的這個
+這個這個求m f c c 的時候用的三角形的filter 來做
+排一堆三角形的filter 的時候是非常直覺而僵硬的沒什麼道理
+我們說
+譬如說這是這是一個這是一個filter 我們都是三角形的
+憑什麼是三角形呢
+沒有理由嘛
+那我們為什麼不能說這個是一個某一種的filter 
+那第二個呢是另一種的filter 
+第三個是另一種的filter 
+可不可以呢可以啊
+那因此呢這個filter 怎麼求
+我也可以用data driven 來求啊
+這是這邊講的data driven of filter bank 
+的意思就是這樣子
+也就是說呢
+我現在
+譬如說我我我我的這個filter 是在求這一堆對不對
+這一堆這個這個
+這一堆component 到時候要用三角形嗎還是用別的呢
+我如果有夠多的data 
+我拿夠多的聲音來求這堆frequency 的東西然後我可以用p c a 用l d a 都可以
+然後我來找到底怎樣的filter 找才好
+那麼結果它們可以找出來奇奇怪怪的形狀會更好會比三角形更好
+那就是這邊所講的事情
+你一樣的你就是假設這個是第一個filter 要做的這是第二個filter 要做的這是第三個filter 要做的
+你就有夠多的data 的話我就可以用p c a l d a 或m c e 都可以
+你用這些方法來做的話你都可以得到你想要的
+那那這樣都可以得到比較好的feature 等等
+那以上的這些就是嗯feature based 的一些例子
+那嗯在reference 裡面的話我這邊所列的
+哦第六個這個其實是一本課本
+那只是講l d a 在這裡面可以查得到
+那其實l d a 在很多課本都有
+你在你找相關的pattern recognition 或者machine learning 很多都有l d a 
+我這裡只是列其中一本作為例子而已 
+那第七個這一篇其實就是在講一個找這個filter bank 
+啊我就這個filter bank 怎麼求
+我不一定要三角形
+我就可以讓它我我我以optimize 我的辨日辨識結果來看的話
+我怎我我可以求裡面的東西的
+這個是這是這個reference 
+那嗯其實剛才講的那些temporal filtering 
+嗯有一個新的reference 可以參考的
+我還沒有寫上來
+這個
+就叫做optimization of temporal filter 
+類似這樣的名字
+for robust features 
+之類的名字啊
+這個是在同樣的這個期刊
+就是i triple e transaction speech audio processing 的這個五月兩千零六剛剛出來的
+那這篇就是把我們其實就是我們這邊講的好幾個都在這裡面
+包括我們這邊講的用p c a 用l d a 
+啊用p c a 用l d a 用m c e 這些東西它它都有在裡面
+那這個其實是我們實驗室的同學做的
+所以保證很好看啊
+ok 好那這樣的話我們把feature feature based 也講完了我們現在剩下最後一個那個這個enhancement 的例子
+那麼我們留到下週就可以了我們就可以下週我們就回到講九點零的這個e m 
+好這樣子我們今天上課上到這裡

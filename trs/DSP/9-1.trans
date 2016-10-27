@@ -1,0 +1,116 @@
+我們今天最主要要講的不是這個而是 e  m  theory 所以我們今天要回到九點零我們來講的是 e  m 
+那麼九點零要說的其實是一些個重要的我們在這個語音這個領域一些很幾個比較重要的方法
+那麼我講的第一個是就是 e  m  theory  e  m  algorithm 
+那麼除了 e  m 之外第二個我後面要講的是這個 m  c  e 
+那麼 m  c  e 帶出來的就是 DISCRIMINATING  training 那這也是今天另外一個非常重要的研究領域喔
+那麼 m  c  e 講完之後第三個是 m  m  i  e 就是 Maximum  Mutual  Information 
+這個也許暫時沒時間講我們先講前面這兩個
+那麼我們先從 e  m 開始
+e  m 我們已經聽過很多次了因為我們從頭一直在講怎麼樣做 e m 
+一直在講用 e  m 幹嘛用 e  m 幹嘛那 e  m 是什麼
+e  m 它它主要是拿來估計某一個統計模型的參數
+ok 也就是說一個一個任何一個統計模型的的裡面的參數我們都
+我們一天到晚都要估計的但是呢你在估計的時候常常發生困難那我們常常就用 e  m 
+那麼一個最簡單的例子是 gaussian 
+那麼你可以想像假設我有一個東西是一個 gaussian 
+那麼這個 gaussian 的最主要的參數是什麼第一個它的 mean 第二個它的 variance 
+假設我有一堆 x 假設我有一堆 x 
+那麼譬如說 x  one  x  two 我有一大堆 x 這是我的 observation 
+當我有這一堆 observation 之後
+我要用一個 gaussian 來 model 它那就是要一個 mean 跟要一個 variance 
+那這個怎麼做呢如果只有這樣這是很容易啦
+那我們講的是說類似這樣的問題只是說沒有這麼容易而已
+那麼另外一個情形譬如說我現在不是一個 gaussian 我有好多個一個 gaussian 做不出來我有好多個 gaussian 可以做的出來那就是 g  m  m 對不對我可以做成一大堆 gaussian 
+那我要求每一個 gaussian 的 mean 跟每一個 gaussian 的 variance 
+欸那這時候就比較難了到底應該怎麼樣子去求它的每一個 mu  I 跟每一個 sigma  I
+等等那像這類的情形呢那都是我們講的就是
+你你要你要你要做某一個 probabilistic 的 model 
+上面有一堆參數你怎麼求這些參數 given 這一堆 observation 
+那當然你如果要用這一堆 observation 這一堆 observation 去求這一堆參數通常是有一個 criterion 
+所以我們通常就是說你有一個 given 的 criterion 在那個 criterion 之下你要來求這堆東西
+那我們這邊先舉兩個簡單的例子第一個 criterion 就是 maximum  likelihood 
+這是我們已經用了很多了所謂的 m  l 
+那第二個就是 m  a  p 就是 Maximum  A  Posterior 
+那這兩個是最常用的 criterion 
+那麼舉例來講所謂的 maximum  likelihood 那你已經應該已經非常熟悉我們一再的使用
+那它的基本精神就是我假設這些個 parameter 集合成一個 set 叫做 theta 
+也就是說這一堆這一堆東西叫做 theta 
+就是我的這些 mean 啦 variance 啦等等等等等等
+假設我有我有 n 個假設我有 n 個 gaussian 的話我就有 n 個 mean 跟 n 個 variance 
+這堆東西我叫做我的 parameter  set 就是 theta 
+那麼於是呢我所謂的如果如果我的 criterion 是 MAXIMUM  likelihood 的話
+那就是 m  l 的 criterion 那麼 m  l 的 criterion 就是這個東西等於 maximum 
+也就是說也就是說如果你我要找這組 set  theta 就是這組參數我要找這一組參數 theta  
+such  that 那麼 given 這些 theta 之下我 observe 到所有的 x 
+這個 x 就是我這邊的所有的 observation 這就這就是我的所有的所有的 observation  x 的機率是最大的
+也就是說 given 這一堆 theta 其實 given 這一堆 theta 的意思就是 given 這 given 這一堆 theta 的參數就表示這一個 distribution 已經做出來了
+那這個 distribution 裡面呢我看到這個的機率要最大對不對
+也就是你要找某一種你給他一個這個機率模型的長相
+然後裡面所有的參數你可以去調調到最後使得我在這個機在這個 model 之下我看到這些東西的機率是最大的
+那這個就是所謂的 maximum  likelihood 因為這個東西就是所謂的 likelihood  function 
+這是如果用 m  l 就是 maximum  likelihood 來作為我的 criterion 的話
+那如果不是用這個而是用 m  a  p 的話也一樣那這個你應該也很熟我們之前也已經講過很多次了
+m  a  p 是反過來是這個東西要 maximum 
+也就是說呢是 given 看到這些東西之後那麼那個這個 parameter  set 的機率最大的
+那是所謂的那個叫做 A  Posterior  probability 也就是事後的就是說假設我 observe 到 x 了
+在 given  given  observe 到這堆 x 的條件之下我去調所有的 theta 這裡面每一個都去調
+然後看到底那一組 theta 的機率是最大的
+因為 given 這一個東西之後的這裡每一個值都有它的機率
+因此我就變成是 given 這個 x 然後去調所有的 theta 看哪一個 theta 讓我最大
+那就是那這個東西就是所謂的 A  Posterior  probability 所以呢這就是所謂的 m  a  p 
+那 m  a  p 的這個機率跟 m  l 的機率這兩個剛好反過來就這樣子
+那我們之前也一再說過所以你應該是知道的那這個通常這個 A  Posterior 的這個機率通常是難求的
+所以呢我們常常是把他倒過來用 Bayes  theorem 變成變成這個乘上這個然後除以他等於 maximum 
+但是因為這個時候呢這個 x 是 given 的我要求的是 theta 
+所以這個 x 是 given 的所以呢這個除不除沒有關係我們不除它就剩下這兩個相乘
+所以呢通常這個 maximum  A  Posterior  probability 是變成是要這兩個相乘是 maximum 
+那前面第一項其實就是 m  l 的這個東西
+但是它比 m  l 多了第二項就是還有一個這個的 distribution 在
+那這是他們如果用 m  a  p 來做的話就是這樣子
+那我們現在講的 e  m 不是在講這兩件事
+而是說這是兩個例子
+就是 given 某一個 criterion 
+在 given  criterion 之下我要求這些東西的時候
+那所以呢可以是 m  l 的 criterion 我要 maximize 這個東西
+也可以是 m  a  p 的 criterion 我要 maximize 這個東西 
+or 是隨便其他什麼都可以
+只要你 given 一個 criterion 我要做要求這個求這些個 parameter  theta 
+那麼在某些狀況之下我們都會需要用 e  m 
+那麼這裡舉一個簡單的例子是在說這個 case 是簡單到不需要用 e  m 的例子
+它是說假設我只有一個 gaussian 
+當你現在有好多個 gaussian 的時候其實這個時候是可以用 e  m 來做的
+當你現在有一把 gaussian 我現在這麼多東西
+這麼多 observation 我假設有一把 gaussian 到底哪一個
+這個怎麼樣調這些 gaussian 的 mean 跟 variance 才能夠最好
+這個其實是用 e  m 比較好是可以用有很多方法來做但是 e  m 是一個比較好的方法
+但是反過來我今天如果只有一個
+喔我假設我只要一個 gaussian 
+它的 distribution 很簡單只有只有一個我只有一個 mean 跟一個 variance 
+那這個時候我只有一個
+這個 i 都不要了
+假設是這個 distribution 很簡單我其實用一個 GAUSSIAN 就夠了只有一個的話那這個時候其實你如果要的是 m  l 的 criterion 的話
+這個答案很簡單就是這樣喔
+那這是可以證明的我這邊不去證它不過你可以在很多課本上查得到
+就是說你你如果只用一個 gaussian 去 model 一堆 data 的話這一堆 x  n 這一堆 n 就是我的這一堆 observation 喔
+那這一堆 x  n 就是我的這一堆 observation 這每一個 x 可以是一個 n  dimension 的是一個 n  dimension 的 random  variable 
+那麼我現在如果有一堆 x 假設我只用一個 gaussian 
+它有一個 mean 跟一個 covariance 來做的話
+那這個答案很簡單你如果要的是用 m  l 的你要的是用 m  m  l 的 principle 的話呢
+其實我只要把所有的 x 拿來求它的 mean 
+那個 mean 就拿來當 mean 就好了
+然後有了 mean 之後我就可以求它的 covariance 
+那這就是那個 covariance 這樣答案就對了喔
+所以換句話說如果只用只用一個 gaussian 當然我這樣畫的是好像 one  d 的
+其實在這裡講的是一個 n  d 的 problem 
+假設這裡每一個 x 都是 n  dimension 
+然後我要用一個 gaussian 來來 model 它
+這一個 gaussian 其實就是我們這邊講這裡面的一個橢球那它有一個 mean
+這是它有一個 mean 然後呢它有它的肥度
+這個肥度在每一個 dimension 都有它的肥度那就是它的 covariance  matrix 
+那你如果是要求這兩個東西的話呢其實如果只有一個 gaussian 是很容易做的
+你就你就是把這一堆 data 分別去求它的 mean 跟 covariance 
+這一堆 data 得到的 mean 就是那個 maximum  likelihood 的 mean 
+那麼這樣子求出來的根據這個 mean 就可以求它的 covariance  matrix 
+那你得到的 covariance  matrix 就是它的 maximum  likelihood 的 covariance 
+這是你在很多課本上都可以查的到的一個非常基本的一個 maximum  likelihood 的 estimate 這樣就可以做出來
+所以你如果只有一個 gaussian 的話呢不用 e  m 這樣就出來了

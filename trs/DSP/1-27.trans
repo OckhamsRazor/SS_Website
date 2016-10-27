@@ -1,0 +1,60 @@
+那我們講的語音技術雖然是寫在這個地方顯然是被這些影響
+那這就是這個 D  S  R 需要克服的問題
+那可能怎麼做呢那麼可能的做法包括
+譬如說所謂的 packet  re  sequencing
+嗯就是說你的這個呃
+我收到的 packet 之後我要把他重新 sequence 一次
+所謂 error  concealment 是說當你發現哪裡有 error 之後你想辦法做一個假的訊號
+假設他跟真的一樣把他貼進去補起來這個叫 error  CONCEALMENT
+這些東西呢
+你基本上可以想像成是
+發展一個叫做 convergence  functionality 就是有的人這樣講啦
+這個圖跟剛才有何不同你如果看的話
+如果你如果看的話剛才這圖上面就是 core  technology 就是這些東西
+那我現在呢是把這個再拆成兩半
+所以下一張圖是這邊拆成兩半
+我co co 這個 core  technology 在上面
+我底下多了這個叫做 convergence  functionality
+那他的功能就是我剛才講的這些
+packet  re  sequencing 或是 error  concealment 這類的事情
+他的目的我們比較抽象來講就是增加了這一個保護層
+使得
+我的這個 link  level 跟 transport  LEVEL 這邊的這一堆問題呀
+變成是 transparent  to  core  technology
+讓我的從上面的 technology 來看的話呢
+他們好像什麼問題都沒有一樣
+他所有的問題在這邊都把他吸收掉了
+對不對這邊所有的問題這邊都吸收掉了之後呢我這邊看起來是沒有問題的
+或者是說這是一個保護層哪
+他保護層把他保護的好好的
+你這邊的各種變化呢都到這裡為止被檔掉
+這邊看起來是乾乾淨淨的
+嗯這是所謂的 convergence  functionality 的意思
+那當然即使是這樣還是會有些 error 會跑上來
+有 error 跑上來那怎麼辦呢你上面一定要更 robust
+所以想辦法要有一些更 robust 的方法的 core  technology 來對付這些 error
+你最常用的辦法是像 verification 嘛
+像這個我們後面都會再說到
+好那這是一點零我們說到這裡
+一點零是有 reference
+嗯我來 check 一下他是
+這邊不曉得有沒有二點零
+如果這個 REFERENCE 應該是在
+嗯有沒有二點零呀
+可能助教沒有放他認為今天只教一點零是沒錯 ok
+那如果沒在這裡的話你只要去到網站上看在二點零的
+二點零的這個
+標題的那一頁裡面就有他上面就有他 REFERENCE  for 一點零
+嗯所以我們今天這樣子講完一點零之後你其實可以看一點零的 REFERENCE
+那 REFERENCE 有兩篇
+一篇是就是在講我們剛才講的這些東西的
+在網路環境之下這些技術的一些基本東西的概念等等
+那那篇是第一篇保證很好念
+因為那是我寫的
+那第二篇是在講 dialogue
+就是嗯是 M  I  T 的
+教授所寫的就是 dialogue
+口語對話的一些最基本的知識
+是滿好看的嗯所以我想那兩篇應該都可以看
+這是我們第一週的一點零的 REFERENCE
+好我們現在上到這裡

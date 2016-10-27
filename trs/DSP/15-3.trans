@@ -1,0 +1,163 @@
+那麼這個關係是什麼關係也許我們底下這個圖看得比較清楚
+啊像這張圖
+那麼這張圖所說的是真正的的m f c c 之間的關係
+那你記得m f c c 是怎樣的
+我們是這個經過一個f f t 
+得到的是一個spectrum
+然後我在這上面用filter bank
+一個個三角形的filter bank
+得到一個值對不對
+每一個三角形的filter bank 得到一個值
+每一個三角形的filter bank 得到一個值
+我再把這個值拿去做這個啊取它的energy
+取它的這個這個power
+這個絕對值的平方
+然後再取log
+當我這個都做完了之後呢我再做一次discrete cosine transform
+這樣之後才得到m f c c
+ok 這中間有這麼多個程序的
+那我不只是frequency domain 而已
+我還絕對值平方我還做log
+我還做d c t
+才是這些東西
+那我現在要辨識的是這些東西啊
+我現在辨識的譬如說這個model 是什麼model
+我們說他譬如說這個state 是長怎樣的
+這個state 是長這樣的
+它裡裡面有有這些個gaussian
+那它有這個mean
+它有這個covariance 等等
+這些是什麼都是都是in m f c c domain
+對不對這都是三十九維的m f c c 在那裡面的東西
+那麼這個noise 跟這個東西在time domain 是相加的
+可是在這裡面到底是什麼關係呢
+那就是我們這裡所說的這張圖所畫的
+就說呢你你第一個你可以想像
+我在time domain
+我在這邊的時候是time domain 是x n
+這是我的speech
+noise 是n 的n
+這兩個是相加的
+time domain 是相加的
+經過f f t 之後呢
+在frequent domain 還是相加的
+還是相加的可是呢我取絕對值平方之後呢
+其實已經不完全是相加了對不對
+你這邊可以想像成為我的是是這個這這兩個是相加的
+我取了f f f t 之後這邊還是相加的
+然後呢我取了絕對值平方之後呢
+其實已經不完全是相加
+不過我們仍然可以假設
+非常接近相加
+那就是所謂的linear power spectrum domain
+所謂的linear power spectrum domain 就是指這一個
+就是說我做了絕對值平方以後
+它是相當於power spectrum 的的的power 的spectrum
+那在這個時候呢我們仍然可以假設
+雖然這已經是不完全正確了但是還是可以假設
+這是所謂的linear power 的spectrum domain
+它們還是相加的所以我這邊的符號裡面
+s 是我的clean speech n 是我的noise
+我仍然可以假設它們是相加的
+可是再來我幹嘛呢
+再來我就取log
+一取log 鐵定不是相加了
+那取log 之後呢就變成另外一種關係
+那我這邊的的這個符號呢
+這個這個x 跟n 代表的是clean speech 跟noise
+那這個x 呢是真正的noisy 的speech
+然後呢那這個是指它在剛才講的linear power spectrum domain
+就是取了絕對值平方以後的這個東西
+我們假設它是相加的話
+我取了log 之後呢
+就是做了這個log 之後
+那做了這個log 之後呢
+你至那我們現在的符號就是我右上右上角加一個l
+代表這個是取了log 之後的
+所以這個x 的l 就是這個x 取log
+這個東西取log 就是這個
+那個這個x 取log 就是x 的l
+這個n 取log 之後呢就是n 的l
+這就是這邊的這三個式子ok
+所以呢我右上角加了這個l 呢就在這個domain
+那這個domain 我們稱為log spectrum domain
+取log 的叫做log spectrum domain
+那在這裡的話呢我就右上角都都加了l
+所以呢我的這個x 取了log 得到這個右上角的l
+x 取了log 之後得到了這個x 的l
+n 取了log 得到了這個東西
+那如果是這樣的話
+那它們這三個東西的關係在這個domain 是怎樣的呢
+那你會發現它們的關係是這樣
+也就是說你需要把這個clean speech 的在這個domain 的這個clean speech 跟noise 呢
+分別先取exponential 才會回到這個domain 來
+如果我把它們分別取exponent 分別取exponential 回來的話
+這裡是相加的
+所以它們分別取exponential 之後變成x 跟n
+於是呢我就可以相加
+這個加就是在這邊加
+加完之後我再取log 回來
+就是這個對不對
+所以在這邊的時候這兩個只是這樣相加得到它的話我們假設它們是相加的了
+在這邊不是相加
+是要分別取exponential 回到這邊之後相加
+然後再取log 回來
+這個是在log spectrum domain
+就是我取了這個時候
+它們的關係是這個關係
+那如果是這樣的話呢我現在還要再做一次discrete cosine transform 才會變成我的m f c c
+還有一個這個勒
+那這個更複雜這個其實是我們這邊很偷懶的就是寫一個c
+這個c 的意思就是這個discrete discrete cosine transform 的意思
+那這個是一個複雜的process 不過我們簡偷懶一下就這樣子寫
+於是呢這樣得到的是cepstral domain
+也就是m f c c domain
+也就是這個m f c c 上面的東西
+那我就在右上角寫一個c
+那這個關係呢
+那我們說這個就是這個log spectrum domain 上的的x
+做一個cosine transform 得到c
+這也是偷懶的寫法啦本來不是這麼這麼簡單
+但你可以想像是一個cosine transform 的一個function of 這個啊
+這樣子你把他想成是一個function
+那我們是我這邊是簡寫就是寫成一個這個c 就是了
+所以呢你把他經過cosine transform 得到這這這個東西
+經過cosine transform 得到這個東西
+同樣的這個x l
+經過cosine transform 的話得到這個這個x c 就是這個
+那這個noise 的linear 的log spectrum domain 的noise 呢
+也是一樣經過cosine transform 得到這個東西
+那麼因此就是這個式子
+它這個log spectrum domain
+要經過這個cosine transform 得到這個這個cepstral domain 的東西
+那如果這邊關係是這樣的話呢
+那它們之間的關係是什麼呢
+是這個式子
+那就更複雜啦
+那就是你要先把這裡的signal 跟noise
+分別先做inverse cosine transform
+才可以對不對它們要先經過inverse cosine transform
+得到這邊的這個那就是這兩個式子
+所以呢我這兩個先經過inverse cosine transform 得到這邊的這個東西
+然後呢在在這個地方之後我再分別取它們的exponential
+回到這邊來
+所以它們都經過inverse cosine transform
+再經過exponential
+才一路回回到這來
+到這來才可以相加
+加完之後呢我再取log 回來到這裡
+再做一次cosine tansform才會到這裡對不對
+所以呢我在這邊的時候呢是要這樣子做的
+那麼那麼因此你可以想像到
+我們在講這個幹嘛是在講這件事
+我現在做recognition 的時候這些model
+這些model 裡面的東西都是m f c c
+都是在這裡的
+那你這邊抽到的noise 我也可以做m f c c
+也在這裡的
+那你怎麼怎麼做怎麼做這兩個相加呢
+你必須在這裡做
+這裡不能做所以一定要轉回去轉到這邊來
+在這裡做相加再轉回來啊
+那這整個過程就是我們在這邊講的這個
+noise model 跟你clean speech model 怎麼加呢我一定要回到那個domain 去加

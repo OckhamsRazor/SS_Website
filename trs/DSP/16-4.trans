@@ -1,0 +1,85 @@
+那怎麼看這個language understanding 呢這有很多種做法
+所謂understanding 你要抓到它的意思
+那這裡面呢我們舉其中一個最常用的最簡單的做法
+就是所謂semantic class 
+它就是有一個entity 然後有一堆attribute 或者叫做slots 
+舉一個最簡單的例子譬如說買飛機票
+那你就是系統要了解user 要的到底是哪一個flight 
+那user 要的東西呢我們叫做一個就是所謂一個entity 
+就是這個flight 
+那這個entity 裡面呢就有一堆這個所謂的attribute 
+譬如說呢如果就flight 而言
+哪一家航空公司聯合航空
+出發地點是舊金山
+目的地是boston 
+時間是哪幾月幾號等等等等
+這每一個呢就是所謂一個attribute 或者一個slot 
+那這這理得東西呢就是所謂filler 
+所以你的所謂的slot and filler 就是每一個slot 有一個filler 填進去
+那如果這樣來看的話這就是我們所謂簡單的一個semantic frame 
+那你就變成說是在這個dialogue 過程中就是要把這些東西一路填過去
+如果user 說了這個
+你就知道這個是填在這裡
+user 說了那個就填在這裡等等
+那然後哪些還沒說你就要去問user 哪些你要的是什麼
+那這樣的話呢就是一個比較容易一個非常簡單的方式來做到這樣的事情
+那如果是這樣子把它一個一個的attribute 或者一個一個的slot 填進去的話呢
+填進去之後也就假設你understand 這個是這個
+所以它講的這個呢是指一個date 
+它講這個是指填那個表但這個這是一種簡單的understanding 的方法
+那一個比較完整的方法呢應該是做這個所謂sentence parsing 
+或著context free grammar 
+那這個在一般的language understanding 裡面他們很很常用的
+那這個我們舉一個很簡單的例子來說大概是什麼意思
+他他要有一個所謂的grammar 
+就是一個文法
+那這種文法是稱之為context free grammar 
+c f g 也就是我並沒有特別規定
+它的context 要是什麼的
+那這些grammar 有很多種型態
+最基本的型態像這樣
+它就是所謂的一個rewrite rule 
+譬如說一個sentence 
+你可以把它rewrite 成為一個名詞片語noun phrase 後面接一個動詞片語
+那什麼是動詞片語呢
+動詞片語它說呢是可以是一群v cluster 一群動詞
+後面接介系詞片語
+這個p p 是介係介係詞片語
+那什麼是v cluster 呢
+就是一群動詞的結合呢他說v cluster 可以是一個would like to 
+然後呢後面接一個動詞
+那這個動詞是什麼呢可以是譬如說是可以是go 可以是fly 等等
+那介係詞片語是什麼呢是一個介係詞後面接一個名詞片語
+那那個介係詞呢可以是to 
+那那個名詞片語呢可以是個名詞
+那個名詞可以是boston 等等等等
+那這樣你最後就可以得到說假設user 說這句話
+i would like to fly to boston 
+而這句話已經被recognize 出來的話
+那麼你可以根據這如果這句話被正確recognize 出來你可以根據這堆rule 
+可以把它分析出來哦它是這樣的一個結構
+那你這個結構知道的時候
+你其實就已經知道它的意思了
+它的意思應該是說這是它的動詞
+他的這個是它的介係詞片語用來形容它的動詞
+所以呢它的fly 是to boston 的
+那這個是這個user 要做的事等等等等喔
+所以呢當你這個這個整個句子結構分析出來的時候你大概就得到一個好的understanding 
+那這個通常是這樣的c f g 呢
+是可以跟n gram 結合的
+我們知道n gram 只講local relationship 
+n gram 只是說這個word 後面接不接這個word 
+或者這兩個word 後面接不接這個word 
+它只管這個local relationship 
+而沒有管整個句子的structure 
+而這個c f g 呢是管整個句子structure 
+所以它跟n gram 基本上是互補的
+所以可以整合
+那n gram 管local relationship 
+而沒有管semantics 
+那當然你也可以反過來在這裡面加機率
+那這裡面加機率有很多很多種方法
+你可以把這些rule 給它機率
+也可以把這裡面放機率進去等等喔
+那麼各有不同的做法
+那基本上呢這個都是常用的情形

@@ -1,0 +1,150 @@
+那再來呢這個是講這個這個discourse analysis 
+就是講我們剛才大部分都還在講這一塊
+那我們現在來講一下這個
+這個要注意些什麼地方呢
+你可以想像的是說
+你可以把user 的user 在說tomorrow 
+所謂tomorrow 是什麼
+是幾月幾號
+因為你如果買飛機票那飛機票database 不會說tomorrow 怎樣
+它會說幾月幾號有哪些航班幾月幾號有哪些航班
+所以這類的就是屬於相對的expression 
+它說next week 所謂next week 是指幾幾號到幾號喔
+你要把他們講的每樣東西你要把他convert 到正確的
+譬如說he he 是指誰
+那你都可能在前後文之中你在前後對話中間你會知道這些東西
+你要把他們對應過去
+自動inference 
+也就是說呢你要知道哪些information 還沒有講
+然後沒有講的是指什麼
+舉例來講譬如說這個如果user 問你how many flights in the morning 
+欸什麼叫how many flights in the morning 
+那顯然他前面已經說過了我要從台北去紐約
+如果是這樣的話顯然是指從台北到紐約的how many flights in the morning 
+那它講到底是指哪一天
+前面一定大一定講過哪一天
+所以呢也就是說你在現在在講某句話的時候你要跟前面很多話堆兜起來嘛
+那也是我們之前講的這個地方
+你要把之前的所有知道的東西跟現在的一路兜起來
+得到一個新的
+所以你把這個這個user 講的話一路兜起來
+那也就是我們這邊所畫的d discourse 
+你就是不斷的把之前講過的話累積起來
+大概知道在講什麼
+那然後呢你就可以判斷說ok 
+他現在講的意思是什麼
+所以當user 說how many flights in the in the morning 
+顯然是指我們剛才已經說過的從哪裡到哪裡哪一天都講在裡面
+然後呢你要做inconsistency 跟ambiguity detection 
+你可能中間有不對的
+譬如說他說這個ㄜ我要到台中
+待會兒他說欸台東有什麼地方有什麼旅館
+那台中跟台東不對的呢
+你就表示說你中間有一個辨識錯誤
+你要中間有inconsistency 
+那麼你要去重新去confirm 到底是台中還是台東
+那然後呢你當然你就最常用的方法就是我們剛剛講的就是用所謂dialogue state 
+或者semantic slots 
+那所謂semantic slots 就是剛才講的這個case 嘛
+就是你這樣你用一堆slot 
+它們你都一個個填進去
+那每填好一件事情就是一個state 
+那麼因此呢你就等於是一個用一個這個呃states 的方法
+來來隨時紀錄我現在隨時紀錄現在user 要的是什麼
+一路填進來
+那至於dialogue management 呢我們再講一下
+dialogue management 是指這一塊啊
+這一塊
+那也就是這一塊
+假設你知道state 是什什麼的話
+那麼你下個action 是什麼
+那這個時候呢有很多種情形
+基本上來講它的任務就是要如何control dialogue flow 
+你讓這個dialogue 能夠順利的進行
+然後想辦法跟user 互動
+然後呢看看下一步應該做什麼事
+譬如說你發現還有哪些哪些東西沒有填進來
+你要去問user 還有哪些沒有填的要問它
+哪個東西需要confirm 不太對了
+你要去跟他confirm 
+然後呢你這個如果有inconsistency 
+你要跟它clarify 喔
+哪些是還空的slot 你要把它填起來等等
+這樣一步一步朝向整個task 完成
+那這中間你可能還要做的就是想辦法optimize accuracy 跟efficiency 
+所謂optimize accuracy 譬如說你是不是應該要去confirm 一下
+提高accuracy 
+但是一再confirm 的話會很煩
+我也許為了efficiency 我不要confirm 那麼多次
+為了user friendly 
+讓user 比較喜歡一點
+你可能也不要那麼囉嗦喔等等
+如何optimize 這個東西
+這都是在management 要做的東西
+那這有很多種做法
+那譬如說以這個例子的話呢它有一個所謂的dialogue grammar 
+那你可以看成一件一件事情它說什麼東西做完該做什麼什麼做完該做什麼
+然後呢你有一個像類似finite state machines 的方法來操作它
+譬如說這是一個sub dialogue 
+先是一個opening 
+open 之後呢下步是個sub dialogue 
+去問你的目的地要到哪裡去
+問完問完問完之後去確認一下
+那塊填好沒有
+沒有填好啊欸那就再從來
+填好了之後呢再下去
+那這時候我下個可能是要問說從哪裡出發
+再看填好沒有
+沒有填好再重來等等
+那你可以從這邊open 就直接往這邊走也可以你可以寫一個grammar 
+讓它在不同的sub dialogue 裡面跳過來跳過去喔
+那麼你也許這還沒有講完
+欸但是他的那句話顯示我已經到這來了
+那也也許讓他可以這樣
+也許不讓他可以這樣喔等等
+所以你可以在中間可以操作讓他怎麼進行
+那另外一種做法所謂plan based 
+這個plan based 的意思是人工智慧裡面的一個專有名詞啊
+那我們這裡不細說
+基本上就是用plan 的方法來規劃怎麼樣進行這個dialogue 
+那基本上這裡面很難的就是如果是mix initiative 
+我們剛剛講如果user 他自己說一些話
+你要能夠處理的話
+他不完全answer 你的
+他自己說一些話你要能夠處理這個時候就比較難
+那這個時候呢一個系統通常我們怎麼measure 它的performance 
+dialogue 的performance measure一向是一個本身是一個研究課題
+因為不知道怎麼measure 它
+那麼最基本的做法你有兩類
+internal 的跟overall 的
+internal 你可以量它的word error rate 
+但通常error rate 不太準
+我們要的可能是slot accuracy 
+所謂slot accuracy 就是說你的understanding 對不對
+以剛才這個例子為例的話
+這邊總共有五個slot 
+那麼對了幾個
+中間倒底word error 如何沒有關係
+你說他說我要到san francisco 去
+他講了什麼話word word error rate 多少沒有關係
+重要的是這個san francisco 有沒有對
+所以呢如果這個對就是對嘛
+這就是所謂的slot accuracy 
+所以呢你如果比較可靠的算法
+是算這個slot accuracy 
+那但是還有更重要的就是overall 的performance 
+譬如說success rate 
+就是說你這個一百個人打電話進來
+你倒底它的飛飛機票買成而且買對的有幾次
+有多少人掛了電話就是很生氣的電話掛了就走了
+那有多少次等等
+這就是所謂的success rate 
+那這個是我的accuracy 的measure 
+但是呢你如果為了要success 很可能讓它一再的confirm 
+於是呢變成term 很多
+這也不好
+所以你要算average number of terms 
+所有的success 的task 裡面它用幾個term 完成的
+那當然越少的term 越好
+所以呢這就有efficient 這是屬於efficiency 等等
+那這些都是比較常用的performance 

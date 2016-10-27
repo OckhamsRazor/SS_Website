@@ -1,0 +1,25 @@
+那麼再下來其實跟這個相關的有另外一堆
+我們待會在說我們先把這個講完
+就是這個keyword 
+keyword base 是另外一堆
+那麼基本上呢你可以想像就是
+我們說你如果一堆文字的文字的文件的話
+我要有一套演算法去自動抽keyword 
+我如果有辦法自動抽keyword 的話
+我就可以得到一堆keyword set 
+有了keyword set 之後我們就可以做keyword spotting 
+這個是在十點零裡面我現在還沒有講
+我們盡快講到這個keyword spotting 
+那你知道所謂keyword spotting 就是user 講了講了一段話
+我不要辨識整段話
+我只要看它裡面有沒有我的keyword set 裡面的某一個keyword 
+我我如果有keyword set 裡面某一個keyword 我把它抓出來
+那就是所謂的keyword spotting 
+所以呢我今天如果我有辦法把每一篇文件自動抽他的keyword 
+放在這個keyword set 裡面的話呢
+我只要user 輸入什麼話我就去抓裡面的keyword 
+我抓得到的話
+我就說他有這個keyword 
+那我就可以回去說耶剛才這些裡面是那些文章有這個keyword 
+那就找出來了喔
+那這就是keyword base 的方法來做這件事

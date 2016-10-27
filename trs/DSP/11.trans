@@ -1,0 +1,2414 @@
+ok 我們開始哦
+我們這段九點零跟十點零我們先跳過去我們今天先講十一點零哦那我先說一下就是九點零這裡面
+很重要的東西是包括這個em theory em algorithm 
+那這個嗯我們在期中考之後會會來講
+但是現在我先把它略過去因為嗯這裡面有點boring 數學很多
+那麼但是呢是很重要的東西我們後面會一再地要用到
+我們em 這邊會說
+然後後面m c e 這個也是很重要的東西我們也是後面會說的
+只是說我們現在嗯先進入後面的部份
+這樣子讓我們這個進度比較合理一點
+那我們先開始十一點零
+我們上週下課前已經稍微說了一下
+那麼十一點零在講的東西是不同的speaker 的聲音都不一樣會怎樣
+那我們說過的情形是
+如果說這堆是這堆是譬如說阿
+這堆譬如說是e 
+本來是可以這樣區別開來的
+但是你如果想想做成speaker independent 
+用很多很多譬如說五百個男生五百個女生
+把所有的不同的speaker 的都考慮進去的話呢
+你很自然情形就會變成阿會變成很多
+它有不同的人會散開來
+e 也會變成很多
+於是呢阿可能會變成這個樣子e 可能會變成這個樣子
+於是他們就疊在一起了
+那這個時候呢無可避免地
+你雖然因為我的training data 包含了很多人的聲音了
+但是也因此呢也因此呢它這個可以handle 很多人聲音
+但是因此它正確率就會低
+因為他們無可避免地會疊在一起
+那這時候怎麼辦呢我們最常用的辦法就是speaker adaptation 
+這是到目前為止比較好的辦法
+那麼adaptation 的意思是說我只要用少量的data 就可以確定
+那個speaker 的聲音是怎樣的
+譬如說這個這個新的speaker 用這樣的系統的時候他講第一句話的時候我們就可以發現
+其實這個人的阿是在這裡的
+所以呢它的其實是阿是這個
+這個人的e 其實是在這裡的它的e 其實是這個
+那其實呢我們就把它拆開來了喔
+等等那這個就是講speaker adaptation 
+那麼我們底下講的幾個都是speaker adaptation 裡面的比較嗯重要的這個代表性的經典作品
+那麼稍微早一點
+但是是到目前為止我們都知道它確實有效而且普遍地使用的
+那就是這一個我們第一個要講的就是這個map 的這個adaptation 
+然後呢再下一個是所謂的m l l r 
+就是maximum likelihood linear regression 
+然後再來一個呢就是這個eigen voice 
+那這三個可以算是嗯speaker adaptation 裡面比較早出現比較早但是也比較有代表性
+大家都覺得相當相當不錯也有恩一定的經過一定的稍微早一點經過好幾年
+大概經過時間考驗之後大家都覺得不錯的
+那在底下還有兩個就是這個c a t 跟s a t 
+那我們大概就講這五種這個比較
+有代表性那事實上它的方法千千萬萬
+近年尤其還有很多那我們講近年的我們都不太講我們講這都稍微早幾年的
+原因是近年還沒有經過時間考驗
+我們不能確定它們真的夠好阿
+那麼因此我們講的是比較早的
+那再講eigen voice 之前我們還要講這個嗯pca 
+因為這個eigen voice 是以pca 為基礎來做的等等
+好那我們現在先看第一個
+就是這個map 的principle 
+那麼所謂的map 呢這個這個觀念其實我們已經講過很多次都知道
+我們現在只是把這個這個maximum a posterior 這個觀念呢
+放到再來做這個speaker adaptation 
+那這個意思你可想而知就是我現在已經有一堆這個speaker independent model 了
+那這個speaker independent model 就是我們前面說的我用了譬如說五百個男生五百個女生
+所以train 了一個general model 
+對多數人都可以用
+只是正確率不高
+那我有了有了這個model 呢
+那我現在這個model 假設我有一堆tri phone 或者一堆什麼
+我們假設是tri phone 好了
+譬如說有五千個tri phone 
+那麼這個m 就是五千
+然後每一個tri phone 有一個hidden markov model 
+它有a b pi 都有了
+那不過這個是general 對一千個人所train 的
+那現在呢這個新的speaker 來了
+這個speaker 講了一句話是他的o 
+那這個speaker 講的講的這句話o 呢你可以想像它裡面有很多phone 
+他講的這段話裡面呢
+它有一堆phone 你可以抓說ok 這個是這段是某一個tri phone 
+這段是某一個tri phone 等等你可以去抓
+因此呢這段tri phone 相當於這堆音
+於是你想辦法用這個去adapt 這個東西
+把這個呢把這個e 呢調到這邊來對不對
+然後這個tri phone 相當於這堆音
+所以呢我想辦法拿拿這個來
+去去調這個
+那麼就知道那個r 呢其實是這個嗯等等
+那麼這個是它的基本的想法
+所以我現在就是given 這個speaker 的adaptation data o 
+裡面有一堆不同的縫
+於是想辦法用它去train 它用它去train 它等等
+那你你怎麼根據這堆聲音去調這個
+跟這堆聲音去調這個呢
+那它基本的原理就是所謂的map 
+那這個式子沒什麼特別就是我們平常講的map 
+也就是given 一個observed 這個data 
+那麼base on 這個observed data condition 呢
+我想辦法去調這個裡面的所有的model 
+那麼使得我找其中的一組model 能夠讓這個機率最大
+那麼使得我找其中的一組model 
+能夠讓這個機率最大
+那這個機率就是所謂的a posterior 的機率
+a posterior 這個a posterior 的機率也就是在given observation 的條件之下
+我調所有可可能的這個這個這個model 參數想辦法讓這個機率變得最大的那一個最大的那一組就是我要的
+所以這個其實沒有什麼特別跟我們之前所講的所有的a posterior 的機率是一樣的
+所以這個其實沒有什麼特別跟我們之前所講的所有的a posterior 的機率是一樣的
+那這個式子也就是跟我們前面所講的所有的map 是一樣的
+那現在後面也是一樣
+因為這個機率我們不會算
+但是我們比較會算的是反過來的
+於是就把它倒過來這就是bayes theorem 
+倒過來之後就變成這樣子寫
+然後乘上那個的機率除以observation 的機率
+那到這裡還是跟我們之前講的完全一樣的習慣的作法
+就是這個時候因為我現在是調所有的lambda 參數
+想辦法找一個這個機率最大的
+所以呢
+那麼我就把這個那麼底下這個倒是無所謂因為這個反正對所有的o 都是一樣的
+對所有的lambda 而言我現在是要找lambda 嘛
+那麼這這這個對所有的o 都一樣所以不用看
+所以我只要maximize 上面這兩個
+於是就變成那兩個
+那到這裡的時候呢有個問題就來了
+雖然這個機率我可以算
+這個機率我們會算因為given 這些model 
+given 這些model 可以看到這些observation 這個我們是會算的
+h m m 就會算這個東西
+可是這個是什麼呢這個實在不知道
+這個model 的機率是什麼
+我們really 不知道
+你凡是所有的要做map 都會碰到這個問題
+我們要知道怎麼算這個
+那在這裡的話呢這是當初做這做這個方法的人他下了一堆功之後做了一堆assumption on 這個機率
+因為這個不知道嘛
+所以他做了一堆assumption 
+有了這堆assumption 之後就可以推這個式子
+他推了一堆數學
+那堆數學是基基本上就是based on em theory 
+那個這個em 就是我們剛才說在九點零我們會詳細說的
+那現在我們先姑且先把它直接跳過去
+那那一堆這個theory 的部份
+我們跳過去等到嗯過兩週之後我們會講那個em theory 
+到時候你就會就可以看在paper 裡面寫得很清楚
+我們就不詳細去推它
+他推了之後得到這樣子的答案
+他有一整套答案我們這邊這邊只舉一個例子
+我們說過從這裡開始
+因為我們講的都是研究的課題
+所以我們不再詳細地說每一件事
+我們只是拿代表性的東西來說一下
+那詳細的留給你做為這個各位的寫期末報告的題目
+所以我們就不多說我們就舉個例子
+它那樣推之後得到一個像這樣的答案
+這個答案是他的答案裡面整套裡面的一個
+我們拿一個來看
+這個是什麼呢就是它的mean 怎麼調
+假設這個是一堆一堆mean 
+我們舉例來講我的某某一個
+我的某一個tri phone 的某一個state 
+某一個tri phone 的某一個state 它是一堆gaussian 
+那麼於是呢這每一堆gaussian 有一個mean 
+那麼這些mean 呢
+應該怎麼調
+我本來的tri phone 的mean 是這樣子
+現在知道了這個聲音
+這個speaker 是這樣子的
+於是呢這堆聲音拿來調這個這裡面
+於是呢我我的那個tri phone 的那個mean 呢
+那個tri phone 在裡面的這個gaussian 這些mean 要調
+這些mean 怎麼調呢
+這個mu j k 就是這些mean 
+是它的某一個tri phone 的lambda i 裡面的第j 個state 的第k 個gaussian 
+ok 
+所以mu j k 是一個gaussian 的mean 
+第j 個state 第k 個gaussian 的mean 
+那怎麼調呢它把它從mu j k 調成mu j k 的star 
+那這個調的過程呢用這個式子
+這是他經過做了一個assumption on 這個東西然後用em theory 去推推出這個式子來
+那這個式子到底是什麼呢這個看起來有點複雜我們稍微看一下它的意思
+它是有意思的
+那麼這個mu j k 呢是某一個參數
+所以這邊是那個mu j k 是那個參數
+然後這邊是什麼呢有這個gama t 的j k 
+這是什麼東西呢
+這就是我們在四點零裡面
+推hidden markov model 裡面的嗯basic problem 三的時候我們用過的
+這個gama t 的j k 
+那當時我們推過這個gama t 的j k 是相當於前面這些東西alpha t 跟beta t 的j 
+這些是什麼這就是我們當時的foreword 跟backward 的variable 
+那麼就是在時間t 走到這個state j 等等
+那麼這個alpha t beta t 等等
+那這兩個相除之後的意思
+相當於我們當時說的gama t 的j 
+那麼就是given 這個model 
+given 這個model 
+然後我現在看到這整個的observation o 的情形之下
+在時間t 等於j 的機率
+時間t 等於j 的機率是這一塊
+就是這個
+然後呢要乘上後面這個
+後面這個是什麼呢
+是我把現在這個時間t 的這個o t 
+放在第k 個gaussian 上面
+除以放在全部的gaussian 裡面
+那這個的意思我們當時也說過就是你等於是
+我現在如果有有一堆很複雜的distribution 
+你把它看成是好多個gaussian 
+好多個gaussian 
+那裡面呢假設我現在要考慮的是第k 個gaussian 
+第k 個gaussian 的話呢它是裡面的某一個
+譬如說是這一個
+這是它的第k 個gaussian 
+那麼於是呢我現在就把我的時間
+我先把我的時間t 的那一個o t 
+放在第k 個gaussian 上面
+這個得到的機率是多少
+以及放在整個的這裡
+那它變成這個是這個機率是多少
+那這個機率除以這個機率
+所以整個的是這個嘛
+所以呢我把我現在時間o 的那個observation 放在這一個gaussian 上面的機率
+除以放在全部的gaussian 的機率
+那就是這個東西
+那等於是說我現在在算的是
+我不光是在時間t 是在state j 上面
+在在這裡或者在這裡
+而且呢我還把還算它現在是在這一個gaussian 裡面的機率等等
+那這個是所謂的gama t 的j k 
+所以呢這個這個是gaussian 的index 
+這個是state index 
+然後幹嘛呢它在這邊去做一堆summation 
+t 等於一到大t 這是什麼就是我整個的observation 
+那這裡講的這個observation 應該是指譬如說這一個
+譬如說這一段我們知道它是應該去adapt 這個e 的這個tri phone 的
+那麼因此呢這個呢就是我所謂的時間t 等於一到大t 
+那用這堆呢去adapt 這一個
+待會呢這個r 呢是這段
+這是這是這是另外一個從一到大t 呢我去adapt 這一個
+那麼這個時候我怎怎我怎麼辦呢
+是用這樣這個式子
+這個式子什麼意思呢
+看起來有點頭大
+不過我們可以用簡單的符號來想
+它的意思呢就是這樣
+這個式子你可以看成是一個
+a 加上summation b t summation over t 
+然後呢是a 的v 加上summation 的b t o t 的t 
+我們這我這只是把符號簡化一點
+這樣會比較好看
+所以呢所謂的a 就是這個tau j k 
+所謂的bt 就是這個gama t 的j k 
+如果寫成這樣的話呢比較容易看
+變成這樣子
+變成這樣之後你怎麼看式子呢
+我現在如果把它看成這樣的話
+我現在如果先不把這個
+它應該是這個括號在這裡啦我現在如果括號先不不括在這裡
+我如果括號括在這裡
+比較容易想像它是什麼
+那這個時候其實就是這兩個相加分之這兩個分別除以這兩個
+那這個意思其實就是
+一一個譬如說一個alpha 乘上v 加上一減alpha 乘上o t 
+那這就是一個內差嘛
+就是一個內差嘛
+換句話說
+我今天如果原來這個v 就是我的mu j k 
+就是我的某一個mean 
+那我如果原來某一個mean 在這裡
+現在呢這個人講的這個聲音
+他的他的聲音不是exactly 在這裡他的聲音在這裡
+那怎麼辦我就在這兩個中間做個內差
+然後當成中間那個值
+對不對
+就是說我我原來的mean 在我原來的mu j k 的mean 在這裡
+某一個譬如說e 的音它在這裡
+現在這個人講了講了e 它它在這裡
+因此我就取中間的那一點
+那中間這點就是在做這個內差
+那所以一個是alpha 一個是一減alpha 
+那這個內差讓它這個靠近誰呢
+由這個alpha 來決定
+這個alpha 呢其實就是這個a 加b 這個b 分之a 嘛
+來決定說這個比較靠近哪邊
+它等等於是你如果這樣看是這個意思
+那現在其實不是這樣
+其實我們說這個括號不是這樣括的
+這個括號是這樣子括的
+那意思是什麼呢因為我講的不是只有一個聲音
+而是我有一堆聲音嘛
+它的這個它的這個這個e 有一堆從e 到t 呀
+有一堆啊
+那這一堆不是都一樣啊
+因此呢你可以想像它其實不是只有一個
+而是有好多個
+它有好多個在這裡
+這是t 等於一t 等於二一直到t 等於大t 
+有這麼多個在這裡
+所以它的內差呢是要要跟每一個分別去做
+等於是這樣子嘛
+我變成是從這點向這些每一個點去移動
+對不對所以呢就變成這個所有的那這個這個b t 就是這個b t 就是我們這邊的gama t 的j k 
+那這些個b t 呢告訴我每對每一個t 而言的那個o t 
+它呢在不同的地方
+那我到底應該各weight 多少
+然後呢那我其實把它們全部平均起來得到一個
+所以我基本上是從這點向這些點去移動
+但是呢我把它weight 起來
+最後移動一個值
+那那個值就是這樣
+基本上是是這樣算的
+那比較像這個東西不是不是exactly 這個東西啦
+並不是等於
+只是說你可以想像成像這樣的東西但但但但是它一個一個都去移動之後平均起來得到一個
+那等於是這樣的意思
+所以呢這句話這就是我們底下講的這句話他說weighted sum 
+把這個原來的mean 向向o t 的方向移動阿
+那麼向所有的這些o t 
+凡是它掉在第j 個state 跟第k 個gaussian 的這個條件之下
+那麼向那就based based on 這些東西這些gama 
+去向這些東西去移動
+然後移到一個某一個合理的位置去
+那當然現在這些b t 是沒有問題我們就有有gama 可以算
+那tau j k 是什麼呢
+tau j k 就是等於是這裡的一個weighting 
+你可以看到它是一個parameter having to do with prior knowledge about mu j k 
+通常呢是跟那個number sample use to train 這個有關
+換句話說
+你如果原來這個mean 是用非常多的data train 出來的話
+我這個可能比較相信這個比較可靠
+現在你這個人只講了這這幾個音我就把它調過去嗎有點危險
+那在這個情形之下我就把這個weight 比較重
+我就把這個值變得比較大
+如果我這個是用夠非常多的data train 出來比較可靠的話
+我就weight 它比較重一點
+我讓這個值比較大
+因此我就移動比較少
+那反過來如果我原來train 這個的時候這個聲音本來就不夠多
+我本來就data 不夠多所以不太可靠的話呢
+我就weight 少一點
+我就讓這個值小一點於是就比較靠比較向這個方向移動
+等等ok 
+所以呢這個移動多少這個alpha 是跟它們的相對大小有關嘛
+那麼因此呢是跟這個地方跟這個這個原來這個mean 的可靠度有關
+因此呢我就跟我的prior knowledge 有多少有關好
+那麼跟我原來用多少sample train 出來有關
+那這個其實這個參數就是它原來的假設這個prior knowledge 裡面的東西
+ok 好那這樣我們大概可以解釋這個式子的意思
+那它其實不光是這樣
+它其實這個這個式子並不是這樣用嘴巴講講它的道理出來不是
+它是完全用數學推出來它有一堆很很完整的的的的的theory 
+根據em 去推推最後去推出這個式子來
+只是推出這個式子之後我們可以看得出來它式子是有道理的就是了
+那麼因此呢我們這樣做之後我現在這個mean 呢可以用這個方式來調
+可以調到那麼你現在聽到它的那個聲音是e 的話我就可以調那些e 的那些model 
+讓它呢比較像那個新的speaker 講的聲音等等喔
+那這個不光是這個mean 可以調所有參數都可以調
+包括這個gaussian 裡面的covariance matrix 
+這裡面的covariance matrix 做的東西都可以調
+它的weight 也都可以調等等
+那我們這邊就不多不多講但是如果有興趣可以去看這個原始paper 裡面都有
+那這個辦法有個最大的弱點
+就是只有那些有data 的才會調
+unseen model 就不會動
+那什麼意思呢你可以想像我現在user 講的這句話裡面有什麼phone 我就調什麼
+那沒有的phone 我就沒有調啊
+也就是說呢你你今天真正的這個model 這整個的state 上這個整個空間裡面有所有的音的譬如說五千個tri phone 在這裡
+那現在user 講了這句話之後那他總共只講了裡面的十個phone 
+於是呢那十個講到的phone 可以調
+這個phone 說到了它呢把它調過來
+那這個phone 說到了呢那這個phone 它調過來
+那這個phone 說到呢它調過來
+這個phone 說到呢它調過來
+假設我有五千個tri phone 在這裡的話呢它其實總共只調了這裡他講的這句話總共只有十個phone 的話就調了那十個而已
+其他的就會全部都不動
+阿那這個也就這邊講的就是只有有data 的才會動
+unseen model 全部不動
+那麼那這個其實是map 的基本精神因為map 就是這樣子
+就是given observation 
+那given 這個東西之後我調這個
+那當然我沒有看到當然就不動啦
+那因為這樣的關係所以呢它的一個最大的弱點就是你要有夠多的data 
+你通常一句話只有十個phone 的話你只會調十個
+那講了一百句話呢其實可能只有裡面並不是一百乘以十
+很多常用的phone 已經出現很多次
+沒有常用的phone 還沒有講到
+那因此你講了夠多data 它可能還沒有調很多點它還是沒有調到
+那麼因此呢它的performance 是你如果這個data 這個adaptation data 你這個speaker 講的話有限的話
+它呢其實performance 進步呢會是比較有限的喔
+這個是map 的方法的基本的缺點
+這是原始的map 方法的缺點
+那麼我們如果畫一個圖來看的話呢
+就可以畫成這樣
+這個是adaptation data 的量
+那這個呢是我的正確率
+那假設這個上限是speaker dependent model 
+那這邊呢是speaker independent model 
+也就是說如果你針對某一個speaker 跟它收集大量data 之後
+你可以train 到這麼好
+可是我們現在如果拿一千個speaker 的話不會太好
+就會有個差距是在這裡
+那現在你讓那個那個speaker 來講話
+他講的講的話我這個正確率會慢慢從這邊慢慢上上來
+基本上它是隨著你的data 越來越多我會進步
+那就是我們剛才講的因為你講的一句話裡面有十個phone 我就調了裡面的十個phone 
+你講了十句話裡面有五十個phone 了喔我會調裡面五十個phone 等等
+所以基本上你你你講的data 越來越多的時候呢你這個會慢慢上去
+那最後它應該會趨近於這個s d 的model 
+它的上限是慢慢接近於這個地方
+這是我們講的map 
+那當然它的好處是說當你的data 夠多的時候它會趨近於這個地方
+但是它的壞處就是說你一開始的時候它其實進步得很慢
+這邊還差很多它進步得很慢喔
+這是map 的原始map 的這個的缺點
+但是它的好處它的它的這個map 的這個這個principle 這個maximum 這個a posterior 這個原理是非常精確的一個原理
+所以這個式子是相當有道理的
+那麼只是說呢它這樣做不了太好就是了
+那這個map 的方法我就說到這裡
+那麼你如果要詳細看的話就是它的原始paper 就是這一篇
+雖然一九九四年已經十年多了哦
+不過這個應該可以算是一個重要的經典
+所以嗯所有的講到這個的paper 都要site 這一篇因為這個是嗯我們今天來看仍然相當不錯的一篇喔是值得參考的
+你如果有興趣的話
+那這個方法有它的弱點我們剛才講了
+因此呢底下我們來講下一個方法就是如何克服這個弱點
+那麼後來就有人想了這個方法
+所謂的maximum likelihood linear regression 喔m l l r 
+那它的意思是什麼呢
+我把這個gaussian 
+先把它分成一堆class 
+然後呢為每一個class 建立一個transformation 
+喔現在不是這樣啦
+假設我現在的這一堆所有的tri phone 的那些不同的音的mean 
+我們先說mean vector 好了
+假設它們在這裡
+那剛才我們說如果是map 的話呢
+我現在是聽到什麼聲音我會調這個
+聽到這個聲音調這個沒聽到的我全部都不調嘛
+那這樣的結果呢我我我只有所有的unseen model 都看不到嘛
+對不對我們剛才的問題就是這個
+所有的這個這個unseen model 我都沒有辦法調嘛
+那它現在的辦法呢這個這個maximum likelihood linear regression 最大最大的目的就是我要unseen model 全部都要調
+你只要講一句話我就開始全部都動
+那怎麼可能呢
+我我我只看到我只聽到那幾個音我憑什麼可以全部去動呢
+他說我現在把它分分群
+舉例來講譬如說這一群其實都滿接近的
+我我把它叫做c one 
+那這是一群
+這群滿接近的我都叫做c two 
+這群比較像的聲音我把它叫做c 三
+然後我我為每一群定義一個transformation 
+就是這裡面的每一個這個mu mu j k 還是一樣
+就是第k 個第j 個state 的第k 個gaussian 
+那我現在怎麼調呢
+都有一個公式就是a 乘上這個加上b 
+所以呢譬如說c one 的話我就會有它的a one 
+跟b one 
+使得告訴我說這一群全部怎麼調
+都有一個共同共同的方向
+都向這個方向調
+那c two 我也有一個a two 跟b two 
+它給我一個共同的方向說是這樣調
+c 三我也可以求出一組參數就是a 三b 三
+它給我一個共同的方向是這樣調等等
+那我如果可以找得出這些來的話呢
+我就直接調了
+舉例來講假設我今天這個還是一樣這個user 說了這句話
+這裡面呢這一段是某一個phone 
+這段是某一個phone 
+那麼根據這些個phone 的話呢
+啊turns out 它是這裡這裡的某一個
+這裡的某一個
+這裡的某一個
+那於是c one 裡面呢我我聽到的是這些
+別的都沒有聽到
+但是我根據這個聽到的呢
+我就根據這聽到的這這些聲音
+我就求出整個的a one b one 
+於是我整個一起動
+那同理呢我如果這邊我這邊有聽到譬如說這個那裡有什麼聲音
+這邊有個什麼聲音
+它那剛好是在這裡
+跟這裡跟這裡ok 
+我就根據這些東西呢
+我就調出一個a 三b 三來
+但是a 三b 三不是只調這三個而是我整群一起調了
+那麼以此類推
+我雖然user 只說少數幾句話
+我只要每個class 裡面都有說到
+於是我就整個一起動了
+這是它的基本觀念
+所以呢它就define 一個這樣的transformation 
+那這個a mu 加b 這個transformation 是一個非常簡單的linear transformation 
+當然是比較粗的
+跟剛才不一樣
+你知道剛才這裡面的它是用這個去算的
+用這個去算所以它是完全在算機率然後去調那些東西
+那我現在這裡沒有
+它這裡只是給它一個很粗的
+所以所以這個是一個比較粗的transformation 
+那這個a mu 加加b 的這個東西其實就是multi dimension 的linear regression 
+那你記得我們從前講的我們從前講的linear regression 我們在七點零的時候說過這件事
+就是什麼是linear regression 如果two dimension 的話呢就是你給我一堆點
+我想辦法找一條直直線
+這條直線是y 等於a x 加b 
+然後我希望有了這條直線之後所有的所有的點呢
+跟它的距離是最近的
+那這個是所謂的linear regression 
+在two d two two dimension 的平面上的時候這是所謂的linear regression 
+那現在這個一樣
+不過變成n dimension 
+變成multi dimension 的時候呢我不是a y 等於a x 加b 而是什麼呢
+是整個的n dimension 裡面的的那個vector 是乘上一個matrix 加上b 是一樣的意思
+所以這叫做linear regression 
+ok 那麼如果我現在用這個linear regression 的方式
+來為這一群一群的class 都找出他們的transformation 的參數來
+這樣子的話呢那這個怎麼找
+每一個class i 我都要找它的a i b i 
+那憑什麼呢
+憑這個
+那它用這個這是什麼這是likelihood function 
+也就是說如果你給我lambda 是原來這一堆原來這一大堆的model 叫做lambda 
+現在你你現在給我a i b i 之後
+ok 原來這一堆
+給我這個a one b one 之後呢
+我的新的新的model 就變成這個lambda 裡面的所這邊c one 裡面的所有的mean 
+都用a one b one 去調它
+調完之後的那個model 
+我要看到我的這個observation 裡面的這些個聲音
+的機率是最大的
+ok 所以呢就是說譬如說我這個c one 用這堆a one b one 去調之後呢
+調完的model 
+我要看到這些掉在這裡面的這些聲音的機率是最大的
+那這個機率呢其實就是likelihood function 
+given 某一組model 之後看到聲音的機率
+這個是這個likelihood function 
+所以呢我要它是最大的
+然後去找最大的那組a 跟b 就是我的a one b one 
+ok 所以呢我就在調所有的a 跟b 裡面去找
+讓這個機率最大的
+那那這個呢就是maximum likelihood 
+因為我現在是這個是likelihood function 
+我要maximize 這個東西所以這個是maximum likelihood 
+那那麼這樣做的話呢所以我現在這個名字就叫做maximum likelihood linear regression 
+這四個字是這麼由來的喔
+這個linear regression 是指這個公式
+是一個很粗的transformation 
+那它本身是一個linear 的
+transformation linear regression 
+那maximum likelihood 是指說這兩個參數怎麼求
+是用maximum likelihood 方法來求的
+那當然你要求要maximum 這個方法當然不容易
+那個詳細的數學推導也有一大堆
+那根據什麼還是一樣根據em 
+喔那這個em 我們留留到後面會說
+那基本上呢你可以想像這個em 是很重要
+因為像這類都有同樣的問題就是你給我一堆observation 我就要去找這個參數
+跟前面是一樣的
+前面的這裡也是一樣
+你給我一堆observation 之後我要去找這裡面一大堆參數
+那怎麼找我們都是用em 的方法喔
+那這邊也是一樣用em 的方法來找的
+那如果是這樣的話呢我們就就是這邊講就是說我我所有的gaussian 
+我在同一個class 裡面的話呢
+我都我都用同樣的一組a i b i 去調它
+所以這就是parameter parameter sharing 
+或者adapt data adapt adaptation 的data 的sharing 
+也就是說我現在只要聽到這些個聲音
+那麼它們這幾個聲音聽到之後
+我所有的這些model 這些個mean 
+都share 了共同的這些個data 
+都share 了共同的data 
+所以是這個是data 的sharing 
+同樣呢我用這些data 求出這些參數之後呢
+它們share 了共同這些參數
+所以是這些個model 的parameter 的sharing 
+我這個都是sharing 的觀念
+於是這樣的話呢我沒有看到的model 也都可以跟著調了
+沒有看到的model 我都可以跟著調
+那這個時候很大的一個問題是你怎麼分群對不對
+這才是問題
+到底哪些個該變成一群然後它們用同一組參數
+哪些個該變成一群變成同一組參數呢
+怎麼分群呢
+當然你可以想像兩個原則
+一個是data driven 
+一個是knowledge based 
+也就是說呢所謂的knowledge driven 意思是說我們可以有一些knowledge 
+譬如說這裡這一堆都是ㄓㄔㄕㄖㄗㄘㄙ大概是比較像的我們給它們一群
+這一堆是這個ㄅㄆ　
+這個這個ㄉㄍ比較像的ㄉㄍ給它一群ㄅㄆ給它一群等等
+母音給它一群子音給它一群等等　
+這個是可以完全根據knowledge 就可以分群
+但是更重要的是什麼呢data driven 
+也就是根據data 去算
+通常我們去算gaussian 的distance 
+這個常用的辦法是算gaussian 的distance 
+也就是說你你每一個gaussian 你可以算
+嗯對不對你如果這裡有一個gaussian 
+這裡有一個gaussian 
+你可以算它們之間的distance 
+那麼根據這個distance 來算說凡是distance 比較近的那一群
+那麼它們在一起的
+我我假設它們是共用的喔
+你可以算gaussian gaussian 的distance 這樣來做
+這是data driven 
+那通常是可以這兩者並用就是你一面用data driven 的方式
+一面用一些knowledge 
+這樣子來分群
+但是問題是到底應該分多少群才好呢
+你可以想得到的是你不能分太多群
+也不能分太少群
+為什麼呢
+如果分太多群的話你就沒有用了
+你如果這個一群這個一群這個一群這個一群那你每一群都要一組a i 都要有data 
+那你結果等於等於每一個自己都要調一樣的
+所以顯然你要有夠多的在一起一群
+夠多的在一起一群那麼群的數目不能太多
+這是第一個原則就是你不能太多群嘛
+你如果太多群的話就每一群都需要夠多的data 才能做你這樣就不行了
+所以呢群數不能太多
+反過來呢也不能太少
+因為因為你群數很少顯然太粗嘛
+如果我這邊總共只分三群的話
+很顯然是說這一大堆不太像的通通都變成一群了
+都用同一條顯然不好嘛
+所以呢你也不能太太少群
+太少群就會太粗
+所以呢我一定是要這個不多不少
+那這個東西原則是什麼呢
+基本的原則就是說我要有夠多的data 就可以給它一群
+那什麼意思呢
+就是如果說你這裡面明明有相當多的data 了
+假設說這些也有data 這個也有data 這個這個也有data 這個也有data 
+如果data 夠多的話明明這個data 夠train 兩群的話
+那我寧可把它分成兩群對不對
+我這群找出一個a i b i 來
+那這個可以變成另外一群
+對不對我只要我的data 夠多
+如果我data 夠多到可以得到a one b one 跟a two b two 
+兩組參數的話我寧可分成兩群嘛對不對
+那麼我我只要data 越多到讓我可以把它分得細我寧可分得細比較好
+我如果那麼多data 結果只弄一個比較粗的一群的的調是比較不不理想嘛
+所以我的這個基本的principle 是應該是我基本上是它們一定要像
+這個所謂的similar property 就是要像
+就是要像底下那樣我根據他們的data driven 跟knowledge 來判斷它們是應該是一群的
+要夠像
+一方面呢如果它們有夠多的data 就自成一群
+那這個是我們講的分群的原則
+可是你想這怎麼做呢
+我怎麼知道哪哪些又像又有夠多的data 呢
+因為user 顯然它隨便在說不同的話
+他不斷的話不斷的說進來
+你怎麼知道誰哪些是剛好是一群而且有夠多的data 呢
+那比較好的辦法就是一個tree structure 
+那這個所謂的tree structure 是怎樣呢就是我想辦法先把它們之間的關係先建好一個tree 
+我們舉個例子來講
+假設這裡面所有的所有的gaussian 的mean 
+我們都是在最底層
+是一群
+是一系列的
+然後呢如果它跟它比較像我們可以用它跟它比較像
+它跟它比較像
+那它跟它呢比較像
+那它跟它比較像等等
+那麼於是呢我們可以得到一個像這樣子的tree structure 
+譬如說我們得到一個這樣的tree structure 
+那這個時候呢完全我就告訴它們這個tree structure 告訴告訴我們它們之間的相似性
+這個tree 怎麼建的這個tree 就是根據這個data driven 跟knowledge driven 想辦法建這個tree 
+然後這個時候depend on 這個user 說了什麼話
+它什麼話進來我去看它的data 在哪裡
+我們舉個例子來講
+假設它的假設它的聲音進來的時候呢
+這個data 很多
+多到它自己以為它自己知道怎麼怎麼調的話
+我根本它自己就是一群
+可是呢這些都沒有data 
+當這些都沒有data 的時候呢
+那那我很可能就是把這這些東西合在一起
+看成是這一個
+於是呢這個也是一群
+那麼假設這個量這個data 量夠多到可以得到一組a two b two 的話
+那你可以想像的是對對於對於這個而言
+我其實完全根據這個我就知道它怎麼調
+可是因為其它都沒有data 嘛
+我就這整個的呢我就也用我我整個就都用這個來來調了
+但是呢我也很可能是是另外一種狀況
+是說其實這裡面的這裡有一些data 
+這裡有一些data 
+它們兩個加起來的data 夠多到可以train 一個
+如果是這樣的話呢
+那我也許就讓這些個這些個變成另外一個
+然後呢得到一組等等ok 
+所以呢就是說我我完全depend on 這個data 進來的狀況
+我如果有一個tree 已經建好的話
+depend on 我的data 進來的情形
+那麼你發現說這裡有一點data 
+但是不夠train train 一個這個a i b i 
+這裡有一點不夠
+但是那那這邊沒有
+如果這邊沒有的話呢它們share 一個還是在這裡還是不夠
+它們沒有它們share 一個在這裡還是不夠
+但是呢我這個跟這個加起來夠了
+於是呢到這邊為止我在這裡夠了
+於是呢我就變成這一群我可以得到一個
+等等喔
+那也就是說完全那就是就是這邊講的就是說這個我可以dynamically adjust class 
+當你摸了data 當你的data 不斷進來的時候
+那麼那麼你你可以建一套這個把這個tree 建好
+然後我有一個演算法
+然後當我的聲音進來的時候depends on 我現在你說的是什麼話哪些音掉在哪裡
+然後我去看每每一個地方
+到底哪些地方構成夠多的data 可以train 嘛
+可以train 出這個a 跟b 出來
+我就在那邊呢看到高到什麼層次嘛對不對
+如果這邊的data 不夠這邊的data 不夠但是它們加起來的話呢到這邊才夠
+於是呢其實這邊就共用一個了
+那麼於是呢我我就可以說是這個這個每一個狀況是完完全全是depends on 這個data 進來我隨時在調
+那麼我我也很可能說是這個每每一群完全看狀況來決定誰誰變成一群
+所以我的聲音當user 的聲音不斷說進來的時候我隨時在調這邊的東西
+然後看這個嗯哪些夠多了可以調成一群我就調成一群
+然後呢你繼續下一段話再說進來幾句話的時候我這個就會又變了
+我又可以不斷地調因此我可以不斷地調的比較好
+那那就這邊所講的
+我我dynamic 來來調所有的class 
+當我越越說越多話的時候
+然後呢那這個原則呢就是這個node including minimum number of gaussian 
+但是呢有足夠的data 的就變成一個class 
+那一方面呢就是我們講為什麼要minimum number of gaussian 
+就是要細嘛對不對
+如果它們已經夠了話我就它們自己變成一個
+這樣這個比較細對不對
+那這邊因為沒有啊
+沒有我就只好跟別人一起合用一個對不對
+所以呢當我沒有data 就跟別人合用一個難免比較粗
+凡是有細的地方我就把它變細喔
+所以呢就是minimum number of gaussian 
+但是有夠多的data 就可以做
+那如果這樣子來的話呢那我就可以達到我的目的
+那麼有一個tree structure 之下
+看data 進來的狀況
+然後我隨時調中間的東西
+我去隨時調它的參數
+那這個想法呢嗯獲得了相當不錯的結果
+那你可以想像它的它的情形
+跟剛才的map 比起來最大的不同就是它現在的curve 會變成這樣
+就是我一開始還是從這裡開始
+但是它的斜率比較高
+它會比較快
+它的它斜率會比較快
+因為我我現在data 不斷進來它馬上就正確率會提高
+但是有有個問題就是說它它會它會比較快saturate 
+那為什麼會saturate 因為畢竟它這是一個是一個比較粗的model喔
+那麼嗯就是說這句話就是ma 就是faster adaptation 你調得比較快
+你你會進步得比較多喔
+你只要有much less data 你就可以調所以它進步比較快
+可是呢它有一個很大的問題就是這個saturate at low accuracy 
+你你這個再多data 也沒有用了
+為什麼因為它是一個比較粗的model 
+它的model 本身不夠精細
+因為它只是一個a mu 加b 
+這個東西只是一個linear model 不是一個很好的model 
+所以呢你現在不管怎樣都是是這樣用這個a 跟b 在調是一個比較粗的
+所以你不太可能可以調到那麼好喔
+所以呢你如果是這個m l l r 的話呢是像這樣的
+那麼我我開始比較快
+可是呢我沒有辦法像map 可以一直上去
+map 可以這樣一直上去
+可以趨近這個真正的你的你的這個s d s 
+它沒有辦法
+它到了一個地方它就saturate 
+它跑不上去了
+這個是m l l r 的情形
+那那這個東西呢他還有一個地方可以進一步做就是什麼呢我這個這個a 呢
+可以是full matrix 
+也可以reduce 到diagonal 或者block diagonal 
+什麼意思呢就是我這個a 
+基本上這個a 是你可以看到是三十九維假設我這這裡是三十九維的參數的話
+那這個a 是三十九乘三十九的一個matrix 
+如果它是三十九乘三十九那是很大啦
+那變成是一個這麼大的matrix 
+那這裡面三十九乘三十九要參數很多
+那我如果data 只有那麼少可能沒有辦法調那麼多
+那怎麼辦呢
+第一個辦法就是我假設它只有diagonal 
+只有對角線才有值
+其它都是零
+我如果這樣的話呢我只要三十九個
+我只要三十九個參數就可以描述這個a 
+當然你假設它這邊都是零的話是有一點這又是又是一個簡化的假設
+因此呢你如果這樣做的話呢你假設它是diagonal 的話
+你可以reduce 到diagonal 你的你的這個需要的data 量就會少
+因為我只要調這些就夠了
+所以呢我需要的data 量比較少我就可以調出這個a 跟就可以求出這個a 跟b 出來
+所以我需要的data 量比較少
+因此呢你可以得到的情形是
+你得到的情形是這個會更快
+這個我如果是diagonal 的的a 的話
+它會調得更快
+會更快上來
+因為我只要我只要那三十九個參數
+本來是三十九乘三十九我變成只要三十九個就夠了
+所以我比較少的data 我就可以把那個調好
+會進來會進來更快
+可是呢我會我會更快saturate 
+我會我會這個進步得更快可是我會更快就就上不去了
+因為那個更粗嘛
+對不對你可以想像因為它更粗
+更粗所以它有更大的問題就是它上不去
+所以呢這是reduce 到diagonal 
+那這個折衷的辦法呢就是block diagonal 
+所謂block diagonal 呢是說呢我現在把它變成中間是一塊一塊的
+那麼不是零的不是只有對角線而是這一塊這一塊
+也就是說讓它們相鄰的這些東西有關係
+但是別的地方讓它是零
+當我變成這樣一塊一塊的時候
+當然我的參數是介於這個跟full 的中間
+我需要的參數比三十九要多
+但是比三十九乘三十九還是少很多
+所以那個是介於中間的
+那你如果把它變成block diagonal 的話呢你得到的情形大概也就是在這個中間
+這兩個折衷的辦法在這個中間這樣子
+那這些東西呢就是構成所謂的m l l r 
+那這個東西在嗯這個方法在嗯相當長的時間
+很多人在不同的系統裡面使用
+效果都很好
+所以這個是恩另外一個非常重要的被普遍使用的方法
+在我們這裡就是底下的第三個reference 
+是它的我這邊都只給這個第一篇哦就是它的這個原始paper 第一篇是在這裡
+那在這個之後有一大一大堆人在作跟這個以這個為基礎在發展
+就像那個也有
+那那個我這邊就不列了你自己可以去找喔
+那所以呢這個m l l r 的這個原始paper 是這一篇
+是九五年所以大概也已經十年的歷史
+那當然當它的這個方法出來的時候
+得到這個現象
+就是mr這個m l l r明顯比map快的時候
+那map的人就覺得說不服氣了
+他說啊你你會這麼進步是因為你分群
+是因為你分群你做這個tree structure 
+其實我map 我也可以分群啊
+那你可以想想看map 是不是可以分群可以啊
+我其實map 這裡我也可以以群為基礎來做
+我不要以每一個mean 來做
+我也可以以群來做我也可以做一個tree structure 
+所以後來就有tree structure 的分群的map 
+那如果如果是那樣做的話呢那map 這條這條曲線的差異它也可以它這個也可以向上向上shift 
+那它的好處是它最後還是可以收斂到最上面去
+所以它有它的有各種不同的方法喔
+那我們這邊都不多講就是說你如果有興趣自己去找都可以找得到
+那麼map 我也可以用tree structure 做也可以把它弄上來喔等等
+那嗯那當然就是說這個不同的方法他們自己各有不同的狀況
+那麼有的時候是a 比較好有的時候是b 比較好
+這個看情形
+那在這裡的話呢
+這個恩我們這邊只給我這邊只所列只是最原始的paper 而已你如果去找的話後面還會有很多篇
+怎麼樣改進
+這後面也還會有很多篇怎麼樣改進
+那我們就不多說了就是了
+那再下來我們要講的就是這個pca 
+那pca 是一個數學的方法
+用在很多地方
+那麼包括pattern recognition machine learning 什麼東西都都都在用它
+那麼我們這裡用pca 的目的是要作底下的這個eigen voice 喔
+所以eigen voice 是另外一個在九八年到兩千年之間所出現的一個新的方法
+那它有它的有趣的地方
+所以這是我們底下要講的東西
+那要講那個之前就要先我們先要簡單地講一下什麼是pca 
+然後我們才可以開始往下講喔
+ok 好我們先在這裡休息十分鐘
+ok 好我們開始接下去講底下這一段
+我們要先說一下這個pca
+然後呢以pca 為基礎我們就講底下的eigen voice
+那麼pca 是一種數學工具
+那麼用在很多地方所以你也許在別的課學過也不一定
+那麼如果學過就當成是一個複習喔
+那麼pca 是幹嘛的呢
+它的基本想法是這樣
+假設說最簡單的想法假設我有兩兩個dimension x one 跟x two
+我有一堆data
+在這個空間上面分佈
+那我現在如果是用我傳我原來的x one x two 為來為軸的話
+它們的distribution 其實是比較緊的
+譬如說我在x one 上面我看到它是這樣的一個distribution
+它是一個這樣的distribution
+那我在x two 上看到的是這樣的distribution
+那事實上呢是不是只有這兩個軸可以用呢其實不然
+我們知道在兩度空間裡面你其實可以選擇的軸有無限多個
+舉例來講我如果選擇這個軸的話呢
+假設這是y one 的話
+那這個軸裡面呢我看到其實就會變成一個這樣子的distribution
+那這個散開就比這兩個x one x two 都散開得多
+那散開得多是什麼意思呢你可以想像因為我們是用分出來
+這個是ㄚ這個是ㄧ這個是ㄨ
+你如果它擠在一堆的話呢ㄚ跟ㄧ跟ㄨ就比較擠在一堆
+你如果把它用這個軸把它拉開來的話呢
+這個ㄚㄨㄧ可能就拆得比較遠ok
+那這個是pca 的基本的想法
+就是說你的data 原原來可能是用某一種物理量的軸
+來來分佈的一個空間
+在這個軸上面它的distribution 可能不太好
+它們可能是這個比比比較緊的
+可是你如果可以找到一個軸
+讓它的分佈散得最開的話
+散得最開之後你很可能因此你就能得到比較好的
+這個比較能夠把它拆得開來
+那這個是pca 的基本的想法
+就是假設我們這邊是講兩維的空間
+但是事實上是可能是要n 維啦喔
+所以我假設是一個n 維空間的random vector x 
+那x 就是這些個點就這些點
+它都是n 維的
+所以呢每一n 這樣寫的意思是說我的每一維都是一個real value 的random variable 
+那麼我有n 個real value 的random variable 
+構成一個n 維的random vector 
+它的dimension 是n 
+那相當於這邊的這個空間
+這邊畫的是二
+那然後呢我們在pca 裡面都是先假設它是zero mean 的
+不是zero mean 的話呢我就先把它減掉mean 把它變成zero mean 就是了
+它是zero mean 的
+然後呢我希望找到一組新的orthonormal basis vector
+e one e two 到e k 
+那譬如來講這個y one 就是我們剛才講的e one 啊
+就是我希望找到這組basis e one e two 
+我有一組新的e one e two
+那我希望在這個basis 上可以怎樣呢 
+可以做到第一個呢我這個e one 的transpose 這個t 是transpose x 是maximum
+什麼意思其實e one 你知道我現在的e one 是一個是一個都是一個這個column vector  
+這是所謂的e one 
+我都是用column vector 來代表
+所以e one 的transpose 呢就是這樣子的
+是一個row vector 
+這是e one 的transpose 
+然後呢乘上x 的話呢
+x 是是一個column 的
+這個是x 
+所以e one 的transpose 乘上x 其實是什麼就是他們的內積嘛
+對不對就是它跟它的內積
+所以呢其實就是e one 跟x 這兩個vector 的內積
+那如果它是內積的話那那其實因為這兩個vector 都是內積你就可以知道就是這個e one 跟的長度跟x 的長度跟它的cosine theta 相乘
+但是因為e one 的長度e one 我讓它是單位長的unit vector 
+這是e one 
+它是單位長的unit vector 
+所以呢讓它單位長是一
+於是這是什麼這就是它的投影嘛
+所以呢你如果說是我們來看如果這個是e one 的單位長的unit vector 
+而我的這是我的x 的話其實就是什麼
+就是它的投影嘛對不對
+我得到的這個這個值其實就是x 乘上cosine theta 就是它的投影
+所以呢這邊說了半天的意思
+這個e one 的transpose t 
+其實就是指所有的x 投影到這個e one 的軸上來的投影的值
+就是這個東西就是這個東西那就是就是它的投影的意思
+ok 所以呢我們現在說
+我現在就是要這個投影的這個variance 要最大
+這是我的最最大的principle 就是在這裡
+也就是說我現在要找出一個一個新的basis 來
+它的unit vector 是e one 
+然後我把所有的點通通都投影到這個上面來的時候
+在這裡的variance 要最大
+也就是能夠散得最開
+如果散得最開的話呢那我就最容易把它區別出來
+所以呢我就是把所以這個e one 的transpose 乘上x 呢我們說其實就是在作內積
+然後其實就是指x 投影到e one 上面去的投影的值
+那麼我要這個投影的是maximum 
+這是我的第一個目標
+也就是說x 有maximum variance 當投影到e one 上來
+那當你這個e one 決定之後我可以決定e two 
+e two 是怎樣我這邊是只能畫一維但事實上當然不只一維
+當我這個e one 決定是這樣之後呢
+垂直於e one 的呢可以有無限多個vector 
+對不對我第二個dimension 是我我重新定義一組這個這個這個basis 嘛
+所以第二個dimension 是要跟它垂直的
+可是given e one 之後垂直於它的是無限多個
+我要選擇哪一個呢我要選擇那一個是在投影上去是最大的那一個
+ok 所以呢從i 等於二開始
+譬如說i 等於二的話我就是要e two 要跟e one 垂直
+然後呢我現在e two 的i 跟x 要maximum 對不對
+所以呢也就是說當我e one 選定之後
+我在所有垂直e one 的裡面選擇第二個e two 
+使得它們的投影在上面是最大的
+那有了e two 之後呢我就可以選選擇e 三以此類推
+那麼我e 三要跟e one 跟e two 垂直
+那麼當然跟e one e two 垂直的e 三又有無限多個
+我要選的那一個是投影最大的
+以此類推所以這個是第二第二條式子的意思
+就是你你選擇的每一個e i 
+都要它跟前面的i 界e one 到e 的i 減一都要垂直的那個e i 
+而那個e i 呢要它的它投影上去要最大
+那麼因此呢就是說也就是說我的x 要有maximum variance 
+投影到每一個e i 上面去
+這樣我總共選擇k 個出來
+那這個就是我們要做的事情就是pca 的目的就是這樣子
+於是我就在這邊可以找到k 個basis 
+那麼等於是一個新的一個dimension 的空間
+所有的點都投影的那個空間上面去
+那它們每一個空間我都散得最開
+這是pca 的目的
+那這個詳細的我們就不說我們就說它的solution
+solution 是什麼呢
+你就是把所有的x 去求它的covariance matrix 
+那麼什麼是covariance matrix 呢這個應該很熟悉了
+因為我們的每一個gaussian 
+我們每一次從頭講的gaussian 就是那個就是covariance matrix 
+那麼by definition covariance matrix 就是底下這個東西
+expectation value of x x transpose
+就是x 跟x 的transpose 
+那是什麼呢
+我們說x 是一個column vector 
+x transpose 呢是一個row vector 
+那這兩個去做結果是怎樣呢
+這個column 跟個row 相乘呢
+就乘成一個matrix 
+所以呢你就得到一個所以你得到的就是一個一個matrix 
+這個matrix 裡面的每一個東西是什麼呢
+譬如說這是第i 個第j 個的話
+那這個是什麼
+這個就是x i 跟x j 
+那真正講起來它應該是這個是要扣掉它的mean 
+所以應該是x i 減掉x i 的mean 
+乘上x j 減掉x j 的mean 的這叫做covariance matrix 
+不過我們這邊是因為都已經先說它是zero mean 了
+我先說它是zero mean 所以可以不寫這個就是了
+因為它是zero mean 
+那基本上你應該是這樣子一個東西
+對不對
+那也就是說這裡的所謂的x i 就是指這邊第i 個
+x j 就是指這邊的第j 個嘛
+那其實就是就是這裡這個x 裡面的第i 個跟第j 個之間的covariance 
+那這樣就構成一個matrix 
+那這個matrix 就是我們這邊所謂的這個covariance matrix 
+所以呢你怎麼做這件事呢這個solution 就是說我現在去先把這一堆data 
+你先拿這堆data 每一個都是有有n 個dimension 
+n 個random variable 嘛
+那我就把這些東西把第i 個跟第j 個去算它的covariance ma 的covariance 值然後就構成一個matrix 
+那你zero mean 就就這個就不用管了
+那麼沒有zero mean 就把mean 減掉
+得到這個matrix 之後
+你只要去求這個matrix 的eigen vector 
+那這些個eigen vector 裡面呢每一個eigen vector 都對應到一個eigen value 
+那你就選擇那eigen value 最大的那k 個
+就是你要的這些個basis 
+那這話怎麼講呢
+你你回想一下你從從前學的線性代數裡面的eigen value 跟eigen vector 
+任何一個matrix a 
+我如果乘上一個vector u 的話
+任何一個matrix a 乘上一個vector u 的話基本上是把它變成另外一個vector v 
+ok 
+基本上乘上一個vector v 
+會變成另外一個vector u 
+但是呢如果說它沒有變成另外一個vector 
+還是自己的那個vector 
+只是scale by 一個parameter lambda
+這個時候這個就叫做eigen vector 
+對不對
+那這個時候的eigen vector 裡面的這個scale 的這個vector 呢
+這個scale 的這個vector 呢就是eigen value 
+所以這是eigen vector 的定義嘛
+就是我我每我matrix 可以找到它的eigen vector 
+使得相乘的時候呢其實只是一個scaling 
+而那個scale 呢就是我的eigen value 
+那你如果回想這件事情的話那這邊的是一樣的
+你就是去把那個covariance matrix 求出來之後
+就求這個covariance matrix 的eigen vector 
+那你如果回想你的數這個線性代數的話呢
+這邊如果是n by n 的話呢
+我可以找到n 個eigen vector
+這n 個eigen vector 我可以把它排起來
+可以把這個matrix 變成diagonal 
+也就是說有一個這樣子的關係
+這是我的第一個eigen vector 
+這是我的第二個eigen vector 
+等等等等
+我總共有n 個eigen vector 
+我n by n 的matrix 有n 個eigen vector 
+可以排成一個matrix 
+如果是這樣的話呢
+我中間這個matrix 就可以變成所有的eigen value lambda one lambda two 一直到lambda n 
+其它都是對角線以外都是零
+然後第三個matrix 呢是完全一樣
+只是把它transpose 過來
+所以第一個row 是我的第一個eigen vector 
+第二個row 是我的第二個eigen vector 
+等等等等
+最後一個呢是我的第n 個eigen vector 
+那這三個相乘就是我原來的那個covariance matrix 
+這個應該你在線性代數有學過這個東西
+這個式子其實只是這個式子的衍伸
+這個是我每一個eigen vector 都長這樣
+然後我有n 個eigen vector 
+這n 個把它排起來
+然後把它這個做一些matrix 的重整
+就可以變成那個式子
+那這個意思是說
+我我一個matrix 可以拆成三個matrix 相乘
+其中中間那個變成對角線的
+而對角線上的每一個element 就是我的eigen value 
+那每一個eigen value 是對應到一個eigen vector 
+也就是說每一個eigen vector 
+有一個它所對應的那個eigen value 
+是那個值
+所以呢value eigen value 跟eigen vector 是對應的
+因此呢這邊的第一個eigen value 
+是對應到這邊的第一個eigen vector 
+第二個eigen value 是對應到第二個eigen vector 等等
+那麼於是呢
+我們可以把一個matrix 這個co 這個covariance matrix
+拆成這三個相乘
+其中中間是這個對角線的
+那這個是我們如果對它做eigen value 跟eigen vector 的分析的話可以得到的
+那這時候呢它這邊說呢我們是
+怎麼辦呢我們通常的作法是把這個eigen value 照大小順序排列
+我這邊可以照照大小順序排列
+就是最大的那個eigen value 放在最上面
+第二大的排在第二個
+到後面越來越小等等
+那如果這個是最大的話呢
+那那它所對應的就是最大的那一個的eigen vector 
+這是第二大的eigen value 它所對應的就是第二大的那個eigen vector 等等
+當我把它排成這樣子之後呢
+我現在可以做一個很重要的簡化
+就是我不要全部了
+我只選擇前面的k 個就好了
+譬如說我只要選擇前面的k 個
+這邊我也只要選擇前面的k 個
+這邊我也只要選擇前面的k 個
+那麼這三個相乘仍然是一個n by n 的matrix 
+因為這個是n by k 
+嗯我這邊是用小k n by k 那這個呢是k by k 
+這個是k by n 
+所以乘出來呢仍然是一個n by n 的matrix 
+而那個n by n 的matrix 會跟這個非常像
+只差一點點
+那麼為什麼會非常像
+是因為我們現在已經把按照大小順序排列
+那這個是最最大的那個第二最大的
+那你剩下的可能是很小的
+那剩下可能是很小的所以呢你你你這邊很小的東西去乘進去加進去那個值很小很小
+所以大部分的它的covariance 裡面的大部分東西
+都用前面的k 個dimension 
+或者這邊的k 個eigen vector 
+跟這k 個eigen vector 幾乎就已經能夠呈現原來的了
+因此呢我只要選擇前面的k 個就可以了喔
+它是這樣意思
+那當然那個k 是多少我們沒有說
+但是我基本上呢就是我可以把原來的n by n n 度空間reduce 到只有k 度空間
+那這k 度空間其實就是這邊的第一個
+這個e one 就是這邊的第一個dimension 
+e two 就是第二個dimension 這樣我總共k 個
+得到一個k 度空間的話呢
+almost 就是原來的了
+因為剩下的這個效果影響都很小
+因為這些只是這些
+這些都是很小的值了
+所以呢那麼這些影響都不大了所以呢會得到一個非常接近原來的東西
+那這樣的結果就是我們這邊所說的
+我現在呢就是選擇k 個
+這個k 個就是這邊的夠大的eigen value 的k 個
+k 個夠大的eigen value 
+剩下都很小了的
+那這k 個也就是covariance matrix 裡面的k 個eigen vector 
+相當於那k 個最大的eigen value 
+於是呢我現在得到一個新的vector 
+我現在變成k 個dimension 
+就用這這個東西構成一個新的k 個dimension 
+那麼然後呢我的每一個x 
+就乘上這個a 的transpose 
+就對應到那個那個新的空間裡面去
+那這裡你看那這個東西其實就是我們上面剛才所講的這個
+e one 的transpose 乘上x 
+e two 的transpose 乘上
+我每一個都一樣
+就變成所謂a 的transpose
+a 是這個嘛
+a 是這堆k 個
+就是這一個這k 個這個就是所謂的a 
+那a 的transpose 就是這個嘛
+a 的a 的transpose 就是這個嘛
+所以呢a 的transpose 乘上x 的話呢
+其實就是每一個eigen vector 都乘上x 
+跟上面這個其實是完全一樣的
+阿啊我剛才擦掉了
+跟那個是完全一樣的
+所以呢那這個意思呢其實就是我現在把這個點
+全部這些點全部對應到一個新的一個sub space 
+只有k 個dimension 
+這個k 個dimension 
+是原來n 個dimension 的一個sub space 
+可是這些點投上去它在上面所呈現的
+的distribution 跟原來是差不多一樣的
+那麼這個意思呢我們不太容易畫出來
+不過如果我們用三度空間來畫的話
+我本來是三度空間的一堆點
+那我的sub space 就是兩度空間
+也就是說我在這上面找到某一個譬如說這一個這個平面
+這是一個兩度不太好畫我有有一個兩度空間的平面
+我看看怎麼畫喔
+這樣子好了喔
+就是說我在原來的這個三度空間的上面
+我找出一個兩度的平面
+那這個平面such that 我這些點通通投影到這上面來
+之後我得到這些個點
+那turns out 在這些點在這個兩度空間的sub space 這個sub space 上所呈現的
+跟我原來在三度空間呈現幾乎是一樣的
+而反而在這上面呈現反而是拆得最開的
+拉得最開的
+就好像剛才的這個軸
+我這個是兩度把它呈現在一一度上面是一樣的啦
+我這是兩度上面把它把它投影到一度上面這我把它拉得最開
+那同理呢我這邊畫的是三度把它投影到兩度來也是一樣的
+那我就是把它變成我我在等於是本來是這麼多個點但是呢我把它找到一個兩度空間的這個找到這個兩度空間的這個平
+之後呢我它投影投影在這上面之後呢
+其實反而是拆得最開
+雖然dimension 減少了
+但是反而是拆得最開
+我就在上面做這n 個做這k 個dimension 就好了
+喔就這個意思
+那這個就是什麼這個就是y 等於a 的transpose x 
+那我就等於是我把原來的x 上面的每一個點嘛
+對不對我x 上面的每一個點通通都分別乘上這個
+就投影到這個新的空間上面
+那就那邊那個case 
+我就把x 上面的每一個點通通投影到那個那個sub space 來
+於是這個k 個dimension 這個sub space 呢
+它的dimension 是比原來的n 小
+但是呢當你這個所有的點投影上去的時候呢
+其實這些投影的這些y 
+已經是跟原來的整個的distribution 是最接近的
+是非常接近的
+而我現在dimension 小很多
+而最大特點就是說我現在的每一個dimension 上面的variance 都是最大的
+所以呢就好像這個東西我投到這邊這個是最大的
+那同理呢我投到這邊的時候呢這上面每一個dimension 都是最大的
+它的它的每一個每一個dimension 上面呢這個投影都是拆得最開的
+那這個就是這個的這個pca 的意思
+那底下有講一下這個pca 怎麼prove 
+那我想這個比較不那麼有興趣你看一下
+那我們不不詳細地講
+那基本上呢它的意思就是其實不難prove 
+那我只要做這個嗯做個lagrange multiplier 然後去maximize 就是了
+舉例來講這個e one 怎麼求
+e one 就是要這個東西maximum 嘛
+就是要e one 的transpose 乘上x 
+的variance 要maximum 
+那這個variance 是什麼呢
+這個variance 就是它的平方求平均
+它的平方就變成e one 的transpose 
+乘上x 乘上x 的transpose 再乘上e one 
+然後求平均
+但是這邊的random variable 只有x 
+e one 不是
+所以呢我平均就到中間來了對不對
+所以呢我這個的variance 就是它的平方
+就是e one 的transpose x x transpose e one 
+然後我這個時候求平均就是平均中間這一塊
+而平均中間這一塊其實就是我的covariance matrix 
+這個就是我的covariance matrix 
+ok 就是這裡這個東西
+所以呢我就是要這個東西要等於maximum 
+那我substitute 什麼constrain 
+e one 是要單位長
+那我就maximize 這個東西substitute 這個constrain 
+怎麼做
+用lagrange multiplier 
+所以我的object function 呢就是
+嗯這裡有點寫錯了
+這個應該是這個不是variance 這個是expectation 喔
+也就是說
+這個東西應該是這個東西吧
+所以這個不是variance 這個是expectation 
+那我現在就是把這個我要maximize 的這個東西
+減掉這個lambda 就是我的lagrange multiplier 
+乘上這個constrain 
+我要maximize 這個東西我就對它微分
+對每一個e one 的component 去微分等於零
+那這樣子呢我就可以微分之後我就可以得到這個式子
+這個式子是什麼其實這個東西就是covariance matrix 
+那那個covariance matrix 乘上e one 等於lambda one e one 
+這個就是eigen vector 的式子嘛
+這個就是那個covariance matrix 
+乘上它的eigen vector 
+就等於原來的eigen vector scale by 一個eigen value 
+就這樣子就出來了喔
+所以這是第一個就可以這樣子做
+而且你可以發現那個eigen value 也就是我要的那個最大的那個那個variance 
+所以呢我這個第一個eigen vector 得到的就是第一個dimension 
+而這上面的那個variance 那個最大的我maximize 那個variance 
+就是這個第一個eigen value 
+那以此類推我現在第二個照做
+第二個照做我的constrain 只多了一個第二個還要跟第一個垂直
+照做我就可以得到第二個等等
+那麼因此呢我的第二大我的第二大的那個variance 就是這個lambda two 
+就是這個第二個eigen value 就是它第二大的
+然後它的相對的的vector 就是e two 等等
+那麼這樣一來呢我的這個這個pca 的原理大概就這樣
+這是一個非常簡單的解釋當然pca 本身含有也是有很多學問的
+那在一般的譬如說pattern recognition 
+或者說是嗯machine learning 啊什麼這些書上都可以找得到
+那我這邊有給你一個reference 
+如果有興趣的話光是pca 可以寫一本書的
+那這是大概是寫得最完整的一個關於pca 的一本書
+這我們圖書館是有的
+好那有了這個pca 之後我們現在要來看的
+是怎麼樣用pca 來來做這個eigen voice 
+那麼eigen voice 的想法是延續剛才講的
+就是說我們這個聲音
+我現在一個新的speaker 來
+我怎麼樣子在很多unseen 的data 裡面
+我要能夠一起調嘛
+我不能只聽到那幾個聲音之後調那幾個聲音
+我要一起調
+我怎麼樣可以一起調呢
+我們m l l r 等等有它的辦法它做一個tree structure 來來做這些事情等等
+那eigen voice 是另外一個想法
+也是一樣的目的
+我希望能夠在最少的聲音聽到最少的那些音
+我要整個model 全部一起調
+那怎麼做這件事呢
+那我們現在來看
+我先是假設我有這個一群這個train training speaker 
+每一個training speaker 我可以為他train 出他的speaker independent phone model 
+那麼我們舉例來講假設每一個train 每一個training 的speaker 
+那麼我就請那個speaker 發夠多的聲音
+把他的所有的音都唸到之後
+train 出他的speaker dependent phone model 來
+那如果是這樣的話呢我現在就可以把它所有的phone model 兜起來兜成一個很大的vector 
+就是這邊所謂的super vector super vector 
+什麼意思呢
+譬如說我現在有一個speaker one 
+那個speaker one 他train 他唸了夠多聲音之後為他的每一個phone 
+都train 出它的model 
+假設說這個這個是某一個tri phone 這個是ㄧ這個是ㄚ這個是ㄨ這個是ㄊ等等等等
+那然後呢每一個model 裡面的每一個state 
+每一個model 裡面的每一個state 都是一堆gaussian 
+每一個gaussian 的mean 就是這些東西
+那我就可以把所有的這些個gaussian 的mean 
+把它全部串接起來
+然後變成一個很大的vector 叫做super vector 
+舉例來講它的
+它的每一個mean 是一個一個的mean 
+我就把它一路這樣串接起來
+那這是一個非常大的vector 可以多大呢
+我們舉個例子像這樣子
+假設它是五千個tri phone 
+五千個tri phone 
+每一個tri phone 有三個state 
+每一個state 裡面有八個gaussian 
+每一個gaussian 有一個mean 
+那個mean 是三十九維我們算是四十維
+那這樣一乘是多少是四百八十萬個參數
+構成一個四百八十萬維的一個非常大的matrix 
+ok 所以呢
+那一個speaker 我就得到一個很大的一個vector 
+大到什麼程度呢有四百八十萬個component 在這裡
+是一個四百八十萬維這個n 是很大很大的的一個vector ok 
+那這是一個一個training speaker 可以這樣
+那我現在呢有一群
+譬如說我有一千個training speaker 
+那每一個每一個training speaker 都做這件事
+那第二個training speaker 呢他的聲音不一樣啦
+所以他有另外一堆點
+他有另外一堆點
+那邊就可以得到另外一個
+也是四百八十萬維的另外一個ok 等等
+那這樣子的話呢我現在如果有有一千個training speaker 的話
+我就得到一千個這樣子這個四百四百八十萬維的這個大的vector 
+既然有一千個了
+我可以想像成是一個random vector 
+它有一千個sample
+就好像這邊的一千個一樣
+這邊有一千個點嘛
+或者說你可以想像成是這邊的一千個點
+那所不同的是我現在這個空間非常大
+不是這邊的三度
+我這邊是四百八十萬維的
+ok 那麼因此呢如果是這樣的話你可以想我我這個空間是什麼
+這個空間好比就是這個空間好比就是一個四百八十萬維的一個空間
+那每一個speaker 其實是裡面的一個點對不對
+我第一個speaker 得到一個四百八十萬第一個speaker 得到一個四百八十萬維的vector 
+相當於這裡面的一個點嘛
+這裡面的一個點
+它是一個第一個speaker 得到一個四百八十萬維的vector 
+相當於一個這個四百八十萬維空間的裡面的一個點
+第二個speaker 呢也得到一個四百八十萬維的vector 
+是這裡面的另外一個點等等
+那我現在有一千個speaker 就是這裡一千個點嘛
+對不對我就一千個點在這裡
+所以呢我等於是有一個四百八十萬維的空間
+那這個空間上的任何一點其實都相當於一套model 
+因為你空間上的任何一點你都可以想像是這空間上的任何一點
+譬如說這裡的任何一點
+你都可以想像是一個就是一個四百八十萬維的一一個一個這個vector 
+如果這樣想的話
+那麼喔不是這邊上的任何一點是是那邊那個空間上的任何一個點
+都是一個四百八十萬維東西
+那這裡面的譬如說前面若干維相當於某一個mean 
+這邊若若若干維相當於某一個mean 對不對是不是這樣子
+就好像原來的這邊的若干維是相當於某一個mean 
+這邊的若干維相當於某一個mean 
+它是這串起來的嘛對不對
+我本來這個就是這樣做的嘛把一個一個mean 把一個一個mean 串起來變成一個大vector 
+等等一個一個mean 串起來變成一個大vector 
+那這樣構成那那個空間裡面的構成那個空間裡面的那一點
+因此呢現在那個空間裡面的任何一點你也可以想像成相當於某一個mean 某一個mean 某一個mean 
+所以呢你任何一點呢相當於某一組這個model 
+然後呢也就是相當於某一個speaker 可能是這樣子的
+因此呢你可以想像這裡的這個上面的每一點
+都可以相當於那一大群的
+這裡的每一點相當於四百八十萬維
+相當於那一大群的phone model 的的這些個mean 
+那麼如果是這樣的話
+那上面的每一點其實相當於一個speaker 
+也就是說每一個training speaker 是它那裡的一個點
+好如果是這樣的話我現在可以對那個點對那堆我現在有一千個點在這裡啦
+我就可以對這一千個點來做pca 
+怎麼做
+第一個要把它變成zero mean 
+所以減掉mean 嘛
+因為我們剛才講了我pca 都是都是當它是在zero mean 之下才有這堆solution 
+所以呢我要先讓它是zero mean 
+所以我第一個呢減掉mean 
+減掉mean 之後我再求它的covariance matrix 
+求出來之後呢
+這個covariance matrix 我就可以求它的eigen value 跟eigen vector 
+那底下這個式子就是我這邊的這個式子
+就是你這邊的是k 個
+這k 個就是我這邊紅色的這k 個
+就是這第一個
+然後這個lambda i 就是我中間這個這k 乘k 個lambda i 的matrix 
+然後右邊的這個呢
+這個的transpose 就是這k 個
+那這樣乘起來呢幾乎就是原來的covariance matrix 
+所以這個式子就是我這邊所紅色的這個式子
+而這個lambda i 就是我的那i 那k 個最大值的eigen value 
+那這k 個呢就是我的eigen vector
+有最大的它的lambda one 大於lambda two 大於lambda k 
+就是第一大第二大第三大這樣我總共k 個
+這樣的k 個呢就是我的k 個最大eigen value 的那k 個eigen vector 
+然後呢那當然你要怎麼選擇k 
+你要使得大於k 的已經小到夠小了
+也就是說你怎麼選擇這個k 呢
+一定要讓這後面已經很小很小零點零零零多少
+很小所以呢它們的效果在這裡不明顯了
+那在我們做過的經驗這個k 大概從五十到兩百五十之間的差不多啦喔
+你雖然原來這邊有四百八十萬個或者多少個
+你這邊的非常大
+這邊的dimension 可能是這個n 可能是
+當然不一定要四百八十萬
+可能是夠大的至少上萬哪喔
+成千上萬的
+但是你最後可能只要五十到兩百五十個
+就變成一個相當小的就夠了
+因為其他東西都已經效果非常小
+因為這些值都是非常趨近於零的eigen value 都可以不用了
+那這個意思等於是說
+我這邊本來是一個四百八十萬維的空間
+每一點是一個speaker 
+他有他的全套的model 的參數
+是一個點
+那我現在呢等於是說
+我把它reduce 到一個五十維或者是兩百五十維的一個小的sub space 
+那這個小的sub space 裡面的每一點都是對應到那一點的
+舉例來講呢譬如說這一點就是投影下來對應到這一點
+這一點就投影下來對應到這一點
+這一點就投影到這一點
+這一點呢是投影到這一點
+那每一點在這邊都有一個它對應的
+那這些它所對應的就是我們剛剛講的y 
+那它跟它的關係就是y 等於a 的transpose x 
+就是就是我們剛剛講的這個嘛
+喔就是這個
+我投影過來就是y 原來是x 
+就是這個關係
+好那有了這個之後呢
+那我現在可以怎樣呢我下一頁的上半段
+其實跟剛才是一樣的
+就是因為powerpoint 我沒有辦法同時呈現兩張
+接不起來
+所以這一塊其實就是剛才的底下這塊是完全一樣拷過來而已
+那這個時候呢這個我的新的那個k k 的space 就是我所謂的eigen voice space 
+也就是說我現在不再需要考慮這個四百八十萬維的大空間了
+我只要考慮這個五十維的小空間
+這五十維的小空間的每一個點也就是原來的那個點
+只不過原來那個呢是y 
+我現在到這邊的呢是x 
+那我們說呢y 呢等於a 的transpose x 
+所以呢它們有一個直接的one to one 的mapping 的關係就是這個關係
+所以我現在只要在這個上面考慮就行了
+那這裡的每一點
+其實呢我也只要我把它inverse 回去就可以算出x 來
+所以每一點的y 呢我都可以對應到x 
+而那個x 呢就有四百八十萬個值
+它就相當於所有的phone model 的mean 
+對不對我那個x 找出來之後
+就相當於那那這些個值就對應到這個mean 
+這個值就對應到這個mean 等等
+因此呢我這四百四百八四百八十個一出來的話
+我其實就已經這個model 就已經有了
+好因此呢我現在只要考慮這個我現在只要考慮這個五十維的空間
+在這五十維的空間裡面就是我們所謂的eigen voice space 
+就是由這些eigen vector 所展開的
+然後呢我現在每一點
+其實代表整套的phone model 對不對
+就是我們這邊講的因為這裡的每一點是y 
+y 都可以對應到x 的關係是這個
+所以你當然也可以我用這個的inverse 去乘的話
+就可以得到x 嘛
+那x 就是這上面的點
+那這上面的點是四百八十萬維的
+所以就對應到所有的phone model 的所有的mean 都在那裡了
+所以呢每這上面的每一點
+其實都代表整套phone model 的參數
+那麼因此呢這個呢等於說是那這個k 個eigen vector 其實代表最重要的speaker 的特性都在那裡了
+那我是怎麼求出來的我是用很多的training speaker 
+他們的大量的training data 所train 出來的那些一大堆的phone model 
+然後得到了這一堆
+那這個的每一個呢就代表了我的最重要的speaker 的特性
+什麼叫做最重要的speaker 的特性呢
+那麼他們研究結果譬如說第一個e one 
+你可以猜e one 是什麼e one 就是男生跟女生
+你的第一個e one 的vector 
+它的一面就是一面就是男的一面就是女的
+然後越是越是粗粗厚的男生就是e one 的值越從這邊跑
+越是嬌細的女生聲音越往這邊跑
+那基本上幾乎就是一半男生一半女生
+當然你有的時候有一點點不同
+有一些男生的聲音很嬌細的就會跑到這邊來
+有些女生聲音很粗厚會跑到這邊來是會
+不過基本上這個幾乎就是e one 就是男生跟女生
+這是通常我們本來如果你把一群speaker 去分兩群的話通常就會分成男的女的喔
+那這個是speaker 最明顯的區別就是這個性別
+那其實e one 就是性別
+那同理e two e 三大概都可以找到一些物理意義
+那麼因此呢這些就是最具有最重要的speaker 的特性就在裡面
+那麼因此你大概有五十個到兩百五十個之間你這個space 幾乎就是所有的speaker 在這裡了
+那你如果這樣想的話呢
+每一個新的speaker 也可以在這邊找到一點
+現在一個這這一千個speaker 都是training 的speaker 
+train 好這個model 之後
+一個新的speaker 來了
+他講了一句話
+那怎麼辦
+我就根據那個speaker 的那一句話想辦法locate 他在這裡他在這個eigen voice space 裡面的哪裡
+如果他是這一點的話
+那我就可以同樣地用這個inverse 回去
+就知道喔它原來是這個上面的這一點
+如果是那一點的話呢那一點是四百八十萬維的
+於是就已經告訴我所有的這個它的所有的mean 是什麼都有了ok 
+那這就是它的基本精神
+所以呢一個新的speaker 進來
+我只要在這個eigen space 裡面找到一點就是了
+那這個eigen space 裡面所以一個新的新的speaker 進來
+我就想辦法在這個兩百五十維裡面找到它的那一點
+那那一點怎麼找
+那一點就是a i e i 嘛
+就是我現在有每一個eigen vector 
+分別找一個相對於那一個的coefficient 
+然後做一個linear combination 
+a i e i 就得到我的y 嘛
+因此我要找的就是這五十個a i 
+那這五十個a i 怎麼找
+maximum likelihood 
+一樣我用這個式子
+那也就是說呢我現在你可以想像是我我只要找到這五十個a i 的話
+a i e i 就可以得到我的在這上面的這一點
+那這一點呢又根據這個transformation 我就知道它是在四百八十萬維上那一點
+就得到一全套的得一到全套的的所有的phone model 
+那因此呢given 這堆的model 的話呢
+那麼我會看到現在它講的這句話的機率最大的會是哪一個值
+所以我還是一樣根據user 說的這句話新的speaker 進來講的這句話
+我根據這句話
+我要找這一點
+怎麼找就是找這些個a i 的值
+such that 這些a i e i 加起來之後
+所對應到這一點對應到那一點之後的那一那一點所對應的那四百八十萬個model 
+四百八十萬的值的那些個model 呢裡面會看到這個的機率是最大的
+那這個呢這一樣又是maximum likelihood 這就是likelihood function 嘛
+對我就得到maximum likelihood 
+然後我怎麼求這個東西呢用em 
+還是用em 
+所以這個em 是很重要的我們後面會說這個em 
+那麼這樣一來的話呢我就是要找所有的a i 
+裡面使得這個機率最大的
+使得這個likelihood 最大的那一個那組a i 找到的話
+那就是我要的a i 
+這組a i 一找到
+我就把這個a i 對應回去
+a i e i 就可以得到這個y 
+有了這個y 我就可以對應回去得到x 
+有了這個x 我就有了他全套的聲音
+again 這裡我有一大堆unseen 的聲音我都一起找到了
+這邊雖然只有少數這幾個音
+這裡只有這一堆這一堆phone model 聽到而已
+我只有聽到這堆phone 
+可是根據這堆phone 我找到這堆a i 的時候
+a i 所對應的這一點跟這一點
+可不是只有這些phone 
+而這個是對應到所有的phone 
+所以呢所有的unseen 的model 一起看到
+那這個就是eigen voice 基本精神
+那麼也就是說呢我現在是
+我只需要small number of parameter 
+這些a i 
+這個a one 到a k 就是這k 個a i 的值
+我只要有這些個值的話呢已經就足夠讓我可以specify 整個的整個的speaker 
+因為我把所有的model 全部算出來了
+那這樣子的話呢我可以只需要很少量的data 我就可以很快速地調過去
+你只要講第一句話
+你只要講第一句話第二句話
+這邊就已經非常清楚告訴我這些東西的a i 是什麼值
+我就對應到就出來了
+所以結果你所得到的情形呢是
+比剛才這個如果我現在這個圖上來看的話呢
+你可以想像的這個eigen 這個eigen voice 的的斜率是更高的
+這個是我們的這個eigen voice 的話
+它的斜率是更高的
+就是因為我只要最少的你譬如說只有五十個或者說兩百五十個
+這個參數非常少
+所以呢我只要很少量的data 
+就可以讓我把這五十個a i 
+或者兩百五十個a i 找到之後
+我就可以很快地調過來
+那麼因此呢它是一個比起來是它的速度比剛才那些都快
+我只要很少量的data 
+所謂的rapid 的意思
+這個快速是指我需要的data 少
+你只要講少數幾句話
+我就整套全部學到了好
+那麼只需要very limited quanity of training data 我就可以調得很好
+那但是呢這也有一個缺點
+它是saturate at low accuracy 它一樣同樣同樣的問題
+這邊雖然很好
+斜率是是最快的
+但是呢它又有同樣的問題就是我會又會在更低的地方saturate 
+為什麼會在更低的地方saturate 呢
+這個最大的問題應該是說因為我的too few free parameter 
+我現在參數只有兩百五十個嘛
+那我等於說用這兩百五十個或者五十個參數
+要對應到四百八十萬個參數去
+所以這個matrix 本身的精確度是是一個問題嘛
+對不對我現在這邊只有兩百五十個
+可是我這邊要對應到四百八十萬個去
+所以這個matrix 的精確度是不容易做得很好嘛
+那麼因此呢我這邊太少只有只有五十個或者兩百五十個
+當你data 再多的時候它有沒有會更好呢不見得了
+因為你的data 再多的話你這中間不夠好的話你就好不了了
+所以呢它有同樣的問題就是performance 會saturate at lower accuracy 
+好因為我too few free parameters 
+這是它的一個限制
+那既然是這樣於是就有人想說我其實也可以用我們上面所說的tree structure 
+或者是這個分群的方法
+喔沒錯他們後來他們就有人做了tree structure 的分群的方法
+我也一樣地可以把這個做成一個這樣子的結構
+就是tree structure 的結構嗯
+那當我的data 越來越多的時候
+我變成一個一個的
+我我的這個這個sub space 變成一個一個的
+變成更精細的
+我data 少的時候我就只有一個
+data 多的時候我就拆成很多個
+他們也可以這樣做
+你如果這樣做的話呢那這個就可以saturation 這個就會上去嘛喔等等
+那這些我們就不講了你如果興趣你自己去找找reference 可以找得到
+所以呢這是它的基本上的limitation 
+不過也有可以克服它的辦法
+讓它的saturation 向上移動
+那當然它的eigen voice 還有一個很大的限制就是說它的所需要的計算量跟memory 跟training data 都是比較大的
+那你可以想像我要我要做一個夠好的covariance matrix 
+需要譬如說一千個speaker 或者多少個
+所以我的需要的training data 也是比較多的
+然後我要做四百八十萬維的這個pca 
+這個計算量是很大的
+memory 也是夠大的喔
+所以基本上的cost 是比較高的
+但它有它的很精采的地方就它可以做一個這樣子的的的結果
+使得我可以用很少量的很少量的這個speaker 的聲音
+我就可以很快地調回去
+就可以由這一個這個點對應到那邊那個點去可以就對應到那四百八十萬個參數去
+喔這個觀念是相當相當值得學習的
+那這裡面我們再如果再回過頭去看一下剛才這裡的話呢
+其實你也有改改進它的空間
+就譬如說呢你你這個vector 
+不一定要是這四百八十萬維
+你也可以用別的來做
+譬如說我可以用m l l r 裡面的a 跟b 來做
+那也就是說
+那這個的point 是說
+我們剛才講這裡很大的一個問題就是你這你這兩百五十維
+你要對應到這四百八十萬維
+所以中間這個transformation 會變成要要要這個transformation 不容易做得做得精確
+所以最好這邊不要那麼多嘛
+不要這麼多的辦法呢就是我改用a 跟b 
+你記得我們我們上一上一堂課講的m l l r 裡面
+我把這個空間分成一群一群
+這是c one 裡面有a one 跟b one 
+這是c two 裡面有a two b two 的等等
+那我現在不要拿這些東西來做這個vector 
+我用這個東西來做
+可不可以也可以
+那其實這些a one b one a two b two 其實代表的也是那個speaker 嘛
+對不對你如果給我一個x i 的speaker independent model 的話
+你給我a one b one a two b two a 三b 三
+其實也就一樣define 了那一組vector 
+那所以我就不要用這麼多了我就用這個a one b one 
+那這樣就少了很多喔
+所以呢我也可以用這個方式
+就是這個嗯我用這個在這裡嗯就是m l l r 裡面的a 跟b 的column 
+譬如說這個這個a 的matrix 我就把這一個一個排起來
+也可以
+那這樣的話它就不會有四百八十萬維
+也許只有譬如說一萬維或者多少
+我的dimension 可以大為縮小或者只有五千維呀什麼的
+那這樣子的話我比較做起來會比較好做
+而且也比較克服一些困難喔等等
+那這些都是可以做的空間
+那嗯這個是我們這邊講的
+那它的基本精神你現在大概可以了解
+那我們等於用pca 的方法
+把每一個speaker 本來一個speaker 有他的model 
+有一大堆參數
+那那些參數不管怎樣
+不管你是用它的mean 還是用它的a 跟b 
+總之排成一個很大的vector 
+那我現在呢把這個這個多維的高維的vector reduce 到一個很低維的空間來
+靠什麼用pca 的方法
+是我想辦法去找那些個dimension 它的variance 最大
+是我想辦法去找那些個dimension
+它的所有的統這個變化都在這上面呈現了
+所以呢我那麼多的變化我就在一個很小的五十維的空間裡面呈現了
+就是這個東西
+那麼於是呢我就變成一個小的space 
+就是我的eigen voice space 
+於是呢我現在的每一個speaker 是這上面的一個點
+就是training speaker 一二三每一個就是這些點
+同樣地每一點你都可以想像是一個speaker 
+那新的speaker 進來也就是這裡面的一個點
+所以每一個新的speaker 我只要找到它的coefficient a i 
+就可以了
+那些a i 就對應上這些點我就對應到這全部的東西
+那a i 怎麼做
+用em 做maximum likelihood 可以得到
+那這就是這個eigen voice 基本精神
+那你如果要詳細看的話
+eigen voice 的原始的paper 是再下來這篇喔
+就是這一篇
+那兩千年
+那這個這個裡面有詳細說
+by the way 我這邊講的這這幾個東西都是用em train 的
+所以呢在這些paper 裡面你看到一堆數學
+看不懂它在說什麼的時候其實那堆就是在講em 
+那麼所以呢等到我們講到em 你那堆就會看懂喔
+那就像我們這邊講的這裡
+我要求這個怎麼求
+它會有一大堆數學那堆數學其實就是em 
+那然後呢就用那個就可以求出來等等
+那這個是講這個eigen voice 
+好那我們這邊講的所有的這些都是很好的期末報告的題目
+我下週會再講一下期末報告的的規定是怎樣怎麼做
+不過基本上就是說嗯你可以完全用讀paper 然後就寫這個reading report 
+因為因為paper 很多你可以去找你只要根據一個
+光是這一個題目你就可以找到一堆
+喔譬如說eigen eigen voice 
+你就找你從這個去找的話你就會有有有一堆
+你光是看這些就可以就做也可以
+那當然你要寫程式也可以你可以做程式
+然後可以做這個computer 的這個報告也可以
+那當你在做computer 的報告的話
+你可能你的data 不夠
+你可以用我們所提供的data 就是嗯習題
+習題都會給你很多data 嘛你可以用那個習題data 來做
+但是習題給你的data 不見得一定適合你要做的題目
+譬如說如果要做這種speaker 的題目的話
+你需要有很多不同的speaker 
+每一個speaker 的量要夠多
+然後我才可以做這些事情
+那我們給你的data 不見得符合的時候
+你可以跟助教討論
+那麼在可能範圍之內我們會請助教提供你這些個data 
+喔所以你要做程式的也可以
+那這些東西都是可以做報告的題目
+那麼再下來的應該還有兩個我不準備再花很多時間講了
+一個就是這個speaker adapt training 就是s a t 
+一個就是class adapt training 就是c a t 
+那這兩個嗯應該就嗯是再下去的兩個也是蠻有代表性的喔
+那我們也許先我們先在停在這裡休息十分鐘
+那麼底下的一堂課我們請助教來講第二個習題
+那麼我們的第二個習題是train language model 的n gram 的習題
+那第二個習題我們會在我們待會在討論個交習題的時間
+我想會是在期中考以後
+考完期中考以後你再做就行了
+不過我先給你這樣子
+ok 我們先在這裡休息十分鍾
+現在來
+我們現在來看那個嗯第二題習題喔我們請助教來講
+各位同學我現在來講一下這一次的作業二
+嗯我們的作業二是要你去做有關於language model 的training 
+那我們用的工具是s r i l m 
+對那等一下會提到就是怎麼去找這套工具
+那再來就是我們之前有學到過perplexity所以這次我們是用它來看
+在language model上面的一些evaluation 的結果
+s r i l m 可以在這個地方找就是這是他們的官方網頁
+那它上面只有提供source code所以你下載之後
+要再自己去compile build 
+那它的平台應該是unix 跟linux 我沒有看我沒有看過windows就是
+好那下面就是它download 的網頁
+那我們現在是用版本一點四點六
+它有出一個一點五點零是新版的
+不過那個是beta 版所以我們是還是先用舊就是目前最stable 的版本一點四點六
+那在這個部份就是
+後面會有一個簡單的一些指令告訴你說怎麼樣去怎麼樣去安裝這個軟體
+那它自己有一個官方的install 的 document
+不過基本上就是你們光看這個document 大概還是很容易裝不起來
+那我們會在我們的網頁上面提供一個有關於詳細安裝的一些就是方一些過程
+還有一些常見的問題跟解決的方法那
+所以這個的話可能要請你們在安裝的時候到網頁上去看
+那這部份可能會是你們遇到最大的麻煩那
+這邊解決完之後面應該就還好
+那這邊是大概就是你們download這個檔案回去之後去看一下大概是怎麼樣去install這部份
+那再來是我們檔案是分兩個喔一
+個是我這個這個這個投影片那另外一個是我們這次用來做作業二的一些data一些training的corpus
+那檔案叫做h w two 點tar 點g z 
+那這個也是會放在網頁上讓大家下載
+那一樣我們也是有限制下載的時間那時間到了請大家就是在這之前要下載完
+那後面是大概會
+這個完這個powerpoint 的後面會大概教你一下你把這個檔案下載下來之後你要怎麼做
+那基本上就是把它展開然後到那個目錄下去
+然後你如果已經compile 完s r i l m 的話
+在這邊你可以直接做一些很簡單的工作就可以得到得到結果
+那這邊就是就是大概在講怎麼做那
+這邊也是請同學下課下載回去做再自己看一下這裡怎麼做
+那基本上來說這裡應該都不會遇到問題啦
+是重要就是你在compile 的時候可能會比較麻煩而已
+那我講一下就是我們這一次提供的corpus就是有分為商業跟體育兩個corpus 
+那當然就是我們會交叉做比對
+就是你拿商業的新聞來做training corpus然後去看看它對體育的新聞的perplexity怎麼樣
+然後再看看它對於商業新聞的perplexity 怎麼樣
+那就是讓你看說同質性的語料它的perplexity 的高低的變化
+那就是有兩個有兩組test 跟兩組training 所以就是會有四種比對的結果
+那最後你會有一個類似就可以得到這樣子的結果就是你的training 是商業跟體育
+然後test 是商業跟體育那
+結果你就是要把你
+這個作業的第一題就是你要把這四個結果求出來然後交給我們
+對
+那第二題就是你要說一下就是你在這個結結果裡面觀察到的現象
+那再來是你可以做一些bonus 的部份就是
+你可以把一些data 做做變化譬如說像這邊講到
+你可以把兩個training data 放在一起做做更大的一個training data 
+或者是你可以把train 跟test 放在一起那看看就是
+因為我們剛才就是如果你只用商業的train然後去拿它的test data 來做test 的話
+這個叫做open test 
+就是你的training 跟跟test 是不一樣的東西
+那如果你是把test 加進來一起算的話就叫close test 
+就是你可以把可以把test 的語料拿進來做training 
+那結果應該會理論上要比較好才對因為它會比較更接近你的test data 的
+那我們就是有提供一個e mail 信箱讓你交作業
+那也是記得要交到交到這個e mail 去
+那主旨跟格式也都放在這邊
+那希望同學就是不要遲交因為這個作業應該也不會太難
+那大概是這樣子
+ok 
+嗯稍微補充一下喔
+就是我們現在要做的第二題是train n gram language model喔 
+那給各位用的就是這個s r i 
+就是這是stanford research institute 他們所發展的一套
+s r i 的tool kit 就是專門train n gram 的
+那裡面其實還有很多東西你如果去看的話喔
+那麼包括我們講的各種smoothing 的方法什麼它都有的喔
+你都可以用
+然後
+那麼詳細的東西
+那這個是講怎麼樣子去download 它等等
+然後怎麼樣安裝喔
+我想剛才已經說過了
+那麼
+嗯我們的我們的data 我們的training 跟testing data 還是一樣要
+我們還是七十二小時吧
+你現在裝好沒有
+已經放上去了所以我們就從今天中午十二點開始七十二小時就是三天之內
+好不好
+到星期五中午以前你download 完畢
+之後我們就收掉了就不再裝了
+ok 
+嗯
+那同樣的情形這所有的training data 都是屬於有智財權的
+所以麻煩各位就是你用就好
+那麼不要留給別人ok 
+喔
+然後你這個課結束我沒有叫你交回來但是你也就不要流出去了就是了
+啊
+那這只是給給你作習題用的而已啊
+那這裡面有一點要注意就是說
+並不是你拿到一堆文章就可以train language model 為什麼因為我們中文是有詞的
+你如果得到一堆一堆一堆字的話
+你只能train 字的n gram
+喔 
+那你記得我們說過我們中文的話你可以做字的n gram 你你也可以做詞的n gram
+詞的n gram 你要先知道誰跟誰是一個詞
+這是一個三字詞這是兩個字詞這是一字詞
+那這個詞的n gram 會比字的n gram 好很多
+那字的n gram 有字的n gram 的好處是不用斷詞詞的n gram 的話你得斷詞
+ok
+喔
+那我們現在的給你的應該是已經都斷好詞的對不對
+對
+都是斷好詞所以你可以直接可以做詞的n gram 
+但是當然你也可以把那個斷詞的詞的邊界拿掉你可以做字的n gram 你也可以做的
+喔
+所以這都是有你可以做的空間在內
+那然後這個嗯我們就是給你兩套
+一套是體育新聞
+一套是這個工商產業新聞
+所以你基本上可以發現這兩套的的詞彙跟句型都是不太一樣的所以它們的perplexity 什麼都是不一樣的
+那這點我們在講language model 那時候都提過這些事情所以我想你大概可以回回想一下大概就會了解所以中間跑來跑去
+會有各種狀況
+然後你也可以做各種不同的組合等等喔
+好那我們嗯討論一下交報告的時間
+那我想是今天是五月二號
+今天是五月二號
+下週是九號再下週是十六號
+我們這天考期中考
+再下週是二十三號
+所以呢我覺得合理的時間是期中考後一週
+怎樣有沒有問題
+好不好我們就是期中考考完你還有一週的時間嘛
+這個鐵定一週是做的出來的啦
+所以這個我們就以期中考後的一週五月二十三號為deadline 
+好不好
+喔
+ok 好那就這樣子
+那我們期中這個這個題目的部份就到這裡
+你幫我回到上課的地方
+待會下課拿下來發
+你印好了沒有
+印好了ok 好那就
+我們待會下課的時候我們會發上一次考試的考古題
+好
+這樣你就會知道我們
+來這樣就可以你你拿這個好了啊
+這樣子你就這個嗯你就知道我們考試會怎麼考的喔
+好那我們回到剛才說的
+嗯ok 我們已經說到eigen voice 講完了我們底下要講的是s a t 跟c a t啊 
+這個我們就很快說一下s a t 的觀念是什麼呢
+s a t 是所謂的speaker adapt training 
+它的觀念是說想辦法decompose phonetic variation 跟speaker variation 
+這是什麼意思
+就是說我們我們講的這個這些個distribution 
+是包含這兩種variation 在裡面
+譬如說我們說這堆是ㄚ
+這堆是ㄧ
+那ㄚ跟ㄧ是有區別的
+這是所謂的phonetic variation 
+可是問題是有一堆speaker variation 
+也就是說你今天如果讓讓五個人來唸ㄚ的話他每一個人唸的ㄚ不太一樣
+所以呢你如果五個人來來唸ㄚ的結果呢
+這堆就會變大
+同樣呢你如果讓五個人來唸ㄧ的話每一個人唸的ㄧ也不太一樣於是它也會變大
+於是就會搞在一起
+那這是這個搞在一起使得我們分不清楚的原因
+其實是因為這兩種phonetic variation 跟speaker variation 混在一起了
+所以它的想法是什麼呢
+它說我想辦法把speaker variation 拿掉
+讓它儘可能把speaker variation 除掉
+讓它儘可能只剩下phonetic variation 
+就是說如果不同的speaker 的ㄧ不太一樣
+我有沒有辦法把它除掉
+然後呢使得它最後只剩下原來的這一個
+如果最後只剩下原來這一個
+這些ㄧ的話呢
+這是真正的phonetic 的ㄧ
+就是這樣子
+因為speaker 的不同而造成那個變化呢我讓它拿掉之後
+變成這樣子
+那同理呢ㄚ我也把這些儘可能把這個speaker 的variation 拿掉
+我看能不能讓我的ㄚ呢變成只有這一堆
+如果這樣的話呢他們的每一個都比較compact 
+那就可以得到一個這個這個這個我儘可能把這個speaker variation 除掉之後呢就得到一個比較compact 的model 
+那這個compact 的model 的話呢我就可以拿這個來train speaker 
+independent model 的話就會比較好啊
+所以呢就可以for first adaptation 也就是說呢
+我的這個我們不管哪一種方法都是從這個s d 從都是從這個s i 開始train 的嘛
+那這個s i 如果可以好就會好嘛
+對不對我想辦法把這個s i 提高
+怎麼提高法呢
+就是我這個s i 儘可能是用
+儘可能是想辦法先把speaker variation 除掉之後變成這種我再來train 就會比較好
+但怎麼除法呢
+它說至少我可以用m l l r 裡面的y 等於a x 加b 
+什麼意思
+我們本來是y 
+等於a x 加b 是什麼
+是說這個x 是speaker independent model 
+然後經過這個transformation 之後呢得到這個是speaker dependent model 
+對不對
+這個是針對某一個speaker 的
+這個是那麼因此呢從這個觀念來來想你就可以想這個a 跟b 其實是a 跟b 其實是這個嗯描述了這個人的東西
+對不對
+那既然如此當然我也可以反過來
+你可以想像是說我每一個人的聲音我就來做這件事
+你可以想像我的inverse 是什麼呢
+就是x 是等於y 減b 
+然後乘上這個a 的負一吧
+大概是這樣
+這就是x 
+所以你今天如果我我把每一個每一個speaker 的s d 算出來之後
+我來做類似這樣的一件事情的話
+其實我就等於是把它的speaker 的特性somehow 把它的speaker variation 除掉之後
+想辦法走向s i 嘛
+對不對
+那其實這個東西其實也是一個這個東西也也是一個等於是嗯你你你寫成另外一個就是其實也也可以寫成a bar 的y 
+加上b bar 等於x 
+你也可以這樣寫嘛
+所以你就是說你你現在是可以把一個speaker dependent 的東西拿來
+也是一樣做相同的一個linear regression 
+可以變成s i 的
+等於是這個意思嘛
+那它的想法就是用這個方式來做
+所以呢我可以用m l l r 裡面的a 跟b 你求出來之後
+你也可以一群一群來做
+然後呢想辦法用這個方式來除掉它speaker 自己的東西之後
+剩下一個比較s i 的
+然後這樣的話呢那每一個人那這樣這時候不同的人的ㄚ就會比較像
+不同人的ㄧ就會比較像
+於是我就得到一群那這個是真正的speaker independent
+可是它們是很compact 的
+那不會再散得那麼開
+因為我已經把這些東西都除掉了
+所以即使是你找了五五百個男生與五百個女生
+這一千個人他們的ㄚ搞不好都比較接近
+所以都在一起了
+那這樣子
+那用這個方式來做
+那這個觀念就是所謂的s a t 
+我畫的這張這個底下這半就是這件事情
+所以呢譬如說speaker one speaker two 到l 個speaker 
+每一個人分別找出他自己那一堆的a i b i 來
+然後呢就這個你就可以做這樣的事情之後把它的儘可能把它的speaker vari variation 都拿掉
+剩下一個比較乾淨的
+然後呢拿來train 一個比較compact 的speaker indepen independent model 
+那這個model 就拿來做那邊的s i model 之用
+然後你現在不管後面做什麼都可以
+那基本上那個應該是比較好
+所以你起點比較高你這個狀況就比較好
+嗯這就是s a t 
+那詳細的數學式子講寫起來很簡單就是底下這個
+你原來的s i model 怎麼做的
+其實就是這個式子
+這個也是一個maximum likelihood 
+就是我如果我要找一堆m a 我要找我要找這堆model 
+使得given 這堆model 之後
+我看到的這些聲音
+那這些就是所有的譬如說一千個一千個training speaker 五百個男生五百個女生的一千個人的聲音
+的機率是最高的
+這個就是likelihood function 
+那我要我要找找那一組model 的參數
+就是譬如說這所有的phone model 裡面的mean 啊covariance 這些東西我要找所有這些東西
+使得given 這堆model 之後
+我會看到這些training data 的機率是最高的
+那我調這些東西調到那個最高的那一組就是我的s i model
+所以s i model 說穿了就就是就是在做這個式子
+那我現在不同的是怎樣
+我現在稍微改變一點點
+是說我要做一個比較compact 的s i model 
+把這個model 變成一個compact 的s i model 
+然後呢我這裡面有一堆a i b i 
+對每一個speaker 都有一組a i b i 在那裡
+因此呢我現在要找的是不光是這一組compact 的model 
+還包括所有的a i b i 
+那這些東西我都要一起找
+這些個model
+compact model 以及所有的a i b i 都要找
+然後都通通都要調
+看哪一組最後讓我看到這個機率最大的
+那於是我就把這個東西拿來作為我的
+那這個就是我用這個方式來做出來就是我的s a t 
+喔這就是speaker adapt training 
+那簡單講就是這樣的意思
+那這個詳細你如果要看的話reference 應該是在前面的再下一篇
+喔嗯這個這個是speaker adapt training 喔
+就是就是這一篇呢喔
+就是七號的這篇speaker adapt training 是這個
+那底下呢我們可以再講一下是是這個
+還有一個就是是c a t 是class adaptive training 
+這c a t 的觀念是什麼呢其實也很簡單講穿了就是這樣
+就是我的training speaker 先把它分群
+那你知道我們講假設我有五百個男生五百個女生
+不是每一個人的聲音完全不一樣
+有的人的聲音比較像
+那一群人比較像這一群人比較像等等
+那我其實可以做一件事情就是
+把這些speaker 根據他們的聲音的特性來分群
+假設這是一千個speaker 
+我先根據他們的某一些特性去分群
+譬如說分成兩群
+結果這邊有五百六十個
+這邊有四百四十個等等
+那如果分成兩群多半分出來一半是男生一半是女生啦
+然後呢再進一步再分
+再進一步再分
+這樣你可以分成根據某一些差異去把它分成一棵tree 
+那到時候每一個到時候每一個leaf node 裡面的那一群人的聲音就是很像的
+那麼因此呢你這樣就可以得到一群一群的人就是一個個cluster 
+每一個cluster 的人呢
+他們是聲音比較像的一群人
+所以呢我就就把這個training speaker 分成r 個cluster 
+那我用一些speaker clustering 的方法
+那這個我們我想這邊就不講你如果有興趣去查reference 都有喔
+我就把它這個人分分群嘛
+我分好群之後呢
+每一群去train 它們的model 
+那也就是說我現在可以這個每這個每一群的人
+這一群的人我們可以train 它們的model 
+這一群的人我可以train 它的model 等等
+那我新的speaker 呢就是interpolate from the mean 
+那麼因此你可以想像這個這個很簡單的觀念就是說
+我現在有這個l 個training speaker 
+把它分成r 群
+這是第一群第二群第三群
+每一群它們都train 出一個
+它們的model 
+那麼不是每一個人一個model 而是這一群人一個model 所以我總共有r 群有r 個model 
+那一個新的speaker 來呢是它們的interpolation 
+那也就是linear combination a i m i
+那換句話說
+這個新的speaker 它要它要用怎麼樣子的model 呢
+那就是用它的用它的跟它的每一個人都用一點
+有一個weighting parameter 
+那這個觀念其實跟剛才的eigen voice 是很像的
+你如果看eigen voice 是指
+是a i e i 嘛
+a i e i 得到那個eigen voice 
+那它現在呢其實很像
+是a i m i 
+那不同的地方在哪裡
+這邊的每一個mean 
+沒有理由它們是orthogonal 
+也沒有理由它們是
+怎樣因為它們只是每一群人這一群不太一樣
+每一群不太一樣我就做一個linear combination 
+可是剛才的的eigen voice 的話呢
+它們是都e i 都是orthogonal 
+對不對它們全部都是orthogonal 
+然後呢它們的這個都是eigen vector 求出來所以它們代表很清楚的speaker 的特性
+那這裡比較沒有
+那只是每一群有一個有一個vector 
+那麼有它的mean 
+或者是說是你每一個phone model 的裡面的每一個phone 的每一個mean 
+它都有一個值
+對每一群人而我就做一個linear combination 
+那這個a i 怎麼求
+a i 一樣我用maximum likelihood 
+那用什麼方法還是一樣用e m 
+這都是用e m 喔都是用e m 
+所以呢
+這邊也是一樣
+我的a i 用maximum likelihood 來求　
+那這個時候常常我可以加一個所謂的mean bias 
+什麼是mean bias 　
+mean bias 就是剛才這個　
+我這個c a t 可以用這個來做
+你可以想像的是我如果得到一個這個的話呢
+這個是一個基本上是所有的人的聲音都像的是那一個
+然後呢你現所以呢這個m b 就是那個mean bias的 
+就是這個mean bias 
+那這個就是剛才的這邊的這個compact 的speaker independent model 所train 出來的
+那train 好之後
+我我以那個為準
+然後新的speaker 來看它跟它差多少
+它跟它差的跟這個有一點像差一點的把它加進去
+跟這個有一點像把它加進去
+這樣再把它加進去
+所以呢以mean bias 為準
+所以mean bias 的位置是一
+然後其它呢再weight 一個a i然後我加進去這樣就可以啦
+喔
+那這個觀念就是所謂的c a t 
+class adapt training 
+那我想這個簡單解釋就是這樣子
+那詳細的話呢在剛才的再下一篇
+嗯再上一篇這一這一篇第六篇
+class adapt training 就是就是在講這個東西喔
+這個是兩千年的
+那所以我想這些大概是嗯speaker adaptation 的比較代表性的一些
+那我講說其實在最近幾年還有很多
+那我們不講那麼太新的東西因為太新的東西還沒有經過這個時間的考驗
+跟沒有被多數人的認定所以我們暫時不用
+但是都是寫報告的好題材
+所以你都可以去看然後都可以當拿來拿來當當報告
+但是我們在課程課堂裡面當教材來講的話呢我們講比較被肯定的
+那麼有有比較長的歷史然後大家都覺得不錯的喔
+那我們講這講到這裡
+那最後一章是講還有另外一種東西就是speaker 的這個recognition 
+換句話說我的我還有另外一個問題是要判斷它是誰呀
+那我們之前講的都是反過來就是你可以想像
+我有兩種啊就是phonetic variation 跟speaker variation 
+那我們一直之前講的所有的東西都是希望把speaker variation 消掉
+想辦法強調phonetic variation讓我能夠分辨它是ㄚ還還是ㄧ
+但是反過來有另外一種問題是反過來
+我並不care 你講的是什麼話
+我要知道你是誰
+那這就是我要強調speaker variation 的了
+那我目的是要recognize speaker 而不是recognize content 
+那這個的用途你可你可以想像很明顯的有兩大類
+一類就是speaker 的identification 
+就是確認他是誰
+那麼
+舉例來講呢假設有一個有一有一間實驗室那麼只有一群人可以進去
+那那那你說我是誰
+然後它可以確認你是不是那個人
+如果是那個人的話呢就讓他進去
+喔
+那個門就可以打開這個芝麻開門喔等等
+那你也可能是就是基本上就是就是在一群人裡面確認他是誰
+那另外一個很常用的例子就是這個勒索恐那個勒索案
+這個電話勒索的時候你把那個電話拿來那個聲音到底是誰的
+你從所有的有前科犯的聲音裡面去找
+喔等等這就是所謂的identification 
+那verification 是說要verify 是不是他講的那個人
+他說我是某某人
+那你要確認那個人就是他喔
+那這個就是speaker 的verification 
+那這些東西的最基本精神就是所謂的g m m 
+那g m m 其實跟h m m 是一樣的東西它只是少掉時間上的state 
+也就是說我們原來的
+我們原來的h m m 是這樣
+這一個state 一個state 一個state 
+在這個state 裡面有一堆gaussian 
+說明在這個state 裡面它是怎麼distribute 
+在這個state 有另外一個gaussian 
+那麼就不太一樣了
+到這個state 又有另外一個gaussian 
+又不太一樣了等等
+那麼因為我們講一個聲音的時候你本來就是從頭到尾有變化嘛
+那我這個是這個譬如說零
+這個是ㄌ這個是ㄧ這個是ㄣ
+所以呢我這個聲音有變化零一定是這樣過來的所以我這個這樣子變
+但是我現在如果是要分這個是speaker 是誰的話
+我不再需要這樣子
+我不care 你是零還是是ㄌㄧㄣ還是ㄣㄧㄌ不是沒什麼關係
+我只要知道這個是張三發的還是李四發的
+所以呢我不再需要分這個時間上的差異
+我乾脆就把它合成一個model 
+一個model 就夠了
+因此我就把這些全部train 在一起得到一個
+那這個可能是比較複雜的
+我有很多個gaussian 
+那麼通常譬如說
+兩百五十六個或者五百一十二個
+這個gaussian 數目很多
+那麼其實這gaussian 裡面可能有的gaussian 是ㄚ的gaussian 
+有的是ㄨ的gaussian 
+喔
+那反正都在這裡面
+我有一大把
+那每一個人有這麼一個model 
+那這個model 就是所謂的g m m gaussian mixture model 
+那除了說它只剩下一個state 之外其它跟我們之前講的幾乎是完全一樣的
+所以我只要有一個喔我只要有一個state 
+那麼不管你發的是什麼音反正是這個張三有一套他的
+對不對
+那麼張三有他的兩百五十六個gaussian 的一個model 
+李四有另外一個這兩百五十六它的每一個就不太一樣一點就是了
+那於是呢
+每一個人都有一個
+所以呢這就是譬如說這個m 就兩百五十六個model 的gaussian 
+每一個gaussian 就是有一個mean 一個covariance 
+跟一個weight 
+所以呢你要算某一個聲音的話
+就是算這個嘛一樣的
+就把那個把這個聲音裡面的每一個feature vector 代進去
+去算它的gaussian 的分數
+然後呢這個
+你看誰的分數最大嘛
+因此呢你我我如果有三百個speaker 就有三百個這種東西
+我現在一一段聲音進來我就把它的每一個feature vector 
+都放進去
+放進這三百個model 裡面
+看誰的model 最大等等
+那這就是這個
+所以這就還是一樣這是maximum likelihood 
+因為這是個likelihood function 就是球求這個maximum likelihood 
+那當然我現在用的這個嗯parameter 可能有點不同
+因為我們原來
+原來做做這個的時候我們希望儘可能的是
+把speaker variation 拿掉要強調phonetic variation 
+所以在那個時候我們用m f c c 
+那現在呢我現在是要儘可能地把phonetic variation 拿掉
+我要強調speaker variation 所以不見得m f c c 還對
+那你可以用其它的
+喔
+基本上你就是希望找那些參數是帶有speaker 的特性的
+那麼譬如說你在m l l r 裡面的那些a i b i 是可以拿來用的
+eigen voice 裡面的那些a i 
+c a t 裡面的a i 喔
+這些
+c a t 的a i 就是剛才這個嘛
+就是這些a i 嘛
+喔
+那eigen voice a i 就是這些嘛
+那這些應該都代表speaker 的特性
+所以都可以拿來用
+不過其實多數人用的最簡的還是用m f c c 
+換句話說m f c c 其實是包含著這兩者的
+我們很難從m f m f c c 裡面真的把speaker 的特性除掉
+同樣也很難真的把這個除掉它兩兩個都有
+所以呢m f c c 其實是可以拿來分辨是什麼音
+也可以拿來分辨是什麼人
+喔所以其實m f c c 是是是可以用的
+喔
+那這就是所謂的g m m 的基本精神
+那底下的這個verification 呢我們要用到這個likelihood ratio test 
+那這個是我們在這個十點零裡面會講到那個時候我們再來說
+喔ok好我們這個部份今天說到這裡
+那剩下的時間現在應該是助教有把那個期中期中考的考古題拿來哦
+所以我們可以各位可以來拿一下這個這個期中考的題目喔
+ok 好我們今天上到這
+喂
+那個忘記忘記講一件事喔就是我們想要徵求上課的同學有人抄筆記抄得比較完整的
+我們想徵求一份好的筆記來幫助我們就是因為我們後面要做那個這個課程錄影的我們要做那個喔後製作
+那麼在黑板上我我畫的圖啊這些東西不見得拍得那麼清楚所以需要一個比較好的筆記喔
+所以各位如果如果有筆記抄得比較完整的可以跟我們的助教聯絡如果你的可以提供筆記給我們的話
+ㄜ 我們之前所說的這些都是speaker 的adaptation
+也就是如何去調這個acoustic model
+讓他調到調到適合每一個speaker
+恩 也就是調這些個h m m
+讓他適合每一個speaker
+然後我們針對每一個speaker 去做recognition
+那最後的speaker recognition是反過來
+是說我現在不是要去辨識這個speaker在說什麼
+而是去辨識他是什麼人
+當我們要知道他是什麼人的時候呢我們現在變成是要這個把這個speaker 的variation 強調出來
+而把phonetic variation丟掉
+那麼換句話說呢我們要根據這個人的的話在說什ㄜ欸根據這個人說的話來判斷
+這個他是什麼人
+那這個情形其實最標準的作法
+就是把h m m 本來的這個state 全部merge 
+換句話說這個本來我們h m m 裡面為什麼會有這麼多state
+是因為我們我們要分辨他講什麼話顯然是一個phone 接到另外一個phone 
+前面這些個phone 是在講某一個音後面是講某一個音
+那麼因此呢我們講這個話必須是這樣一個音接一個音下去的
+所以呢他有一個順序
+這個時間的順序就是由這不同的state 來描述的
+當我們在考慮一個speaker 的時候呢則不同
+當我們考慮一個speaker 的時候我們只要問這個聲音是誰講的
+並不care 它是什麼音
+因此呢我們不再需要根據這個音的時間順序來考慮了
+因此呢最簡單的辦法就是把它們合成一個大state 
+當我把它們合成一個大state 的時候我只要一個state 
+那裡面有一大堆的gaussian 
+那麼這時候一大堆的gaussian 呢你就可以想像它就是一個只有一個state 的h m m 
+那這個呢就是我們這邊所謂的g m m 
+那不同的speaker 它的這些東西不一樣
+那麼用這個來判斷啊
+這就是所謂的g m m 
+那麼因此呢他它跟我們所說的h m m 其實沒有太大不同
+變成只只有一個state 就是了
+那麼在只有一個state 的情形之下
+在只有一個state 的情形之下那我現在就變成有一堆gaussian 
+然後呢每一個gaussian 有一堆weight 加起來
+那麼我可以為每一個speaker train 這堆東西
+所不同的是我現在這堆gaussian 的數目應該是蠻多的
+因為你可以想像不管它發什麼音
+它的每一個phone 每一個音它都在這裡面呈現
+那麼所以呢你基本上通常我們們都需要比較多的mixture 的數目
+也就是這個大m 要比較大
+這m 要比較大
+那麼舉例來講呢如果我們是有某一種種語言有六十個phone 的話你至少每一個phone 都要呈現在這裡
+那麼每一個phone 如果有兩個三個gaussian 的話
+那就是一百二十八或者兩百五十六個mixture 喔
+才比較足夠一點
+所以通常是一個比較mixture 數目比較大的一個g m m 
+那這樣的話每一個人都做一個這樣的model 之後
+那看是誰的分數比較高就可以了
+這個就是g m m 的做法
+那麼這時候用哪些feature 
+depends on 你喜歡哪一種
+那麼雖然m f c c 我們通常拿來是辨識它的fanatic variation 的
+其實它也帶著speaker variation 我們知道因為不同的speaker 它的distribution 其實不一樣的
+所以以m f c c 是最常用的因為你就直接可以用
+當然你也可以用那些些m m r 裡面的參數
+eigen voice 裡面的參數
+c a t 裡面的參數等等
+都是可以的
+這個是講speaker recognition 
+你要辨識它是什麼人
+那另外一種speaker variation 呢
+是它說它是誰我要確認它是不是
+啊那這個時候呢speaker variation 通常我們分成兩大類
+一個是text dependent 
+就是你要規定它說哪一句話
+那根據那句話來判斷它說的對不對啊
+所以這是所謂text dependent 
+一種是text independent 
+就是隨便它說什麼話我都可以判斷它是不是它講的那個人
+這是text independent 
+那基本上來講呢是text dependent 一般認為比較容易被破解
+那原因很簡單因為你就變成只要講那句話
+那只要那句話這個是誰的聲音就認為是誰的嘛
+所以最最簡單的破解它的辦破解它的辦法就是如果某人他講那句話的時候
+你偷偷把他錄下來
+於是我就可以拿那段他錄好的聲音
+我就可以去破解所有它的東西啊
+所以這個是speaker dependent 的弱點
+但是這樣當然它的正確率比較高因為去針對那句話來做的
+speaker independent 因為不針對某一句話所以呢正確率稍微低一點
+那這裡面一個基本的做法是要做這個likelihood ratio 
+這個東西我們現在還沒有講是在十點零裡面
+不過我已經現在先把十點零先跳掉了
+所以我們現在暫時先不說這塊
+這個呢我們等到十點零的這個likelihood ratio 講過之後
+我們再來講它

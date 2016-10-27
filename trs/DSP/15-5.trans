@@ -1,0 +1,111 @@
+那底下我們講第二個example 呢
+就是所謂的vector taylor series 
+另外一個example 就是也是model based approach 那是所謂的這個vector taylor series
+那這個觀念其實跟剛才幾乎是一樣只是做法不同而已
+也就是說它的想法還是這樣
+那麼我在開機前的零點一秒或者什麼的我抽出noise 來我train 一個model
+我隨時碰到silence 我都抽出noise 隨時train 新的model 然後跟clean speech model 去做結合
+所以這個觀念跟剛才都一樣啊
+那唯一不同是說它的做法不同
+它覺得說你像剛才那個個方法太複雜了
+它想一個比較好的辦法來解決剛才的我們剛才說你現在的你那些model 你要經過這麼在那個domain 去給它加加之後再這回來你real time 要做這麼多事情實在很複雜
+那他想了一個比較簡單的辦法
+那他用的辦法就是所謂的taylor series expansion 也就是這個這個vector taylor series 這個這個這個字的由來
+這個taylor series expansion 是什麼呢
+就是這個那這個是你從小就學微積分的時候就學過這個東西
+那那個是one dimension 的function 的時候有這麼一個taylor series 泰勒展開式
+那現在把那個再延伸變成n dimension 變成vector 就是了
+如果這個是f 的function那我現在如果要求某一個x 的這個f of x
+怎麼求呢這邊是說你如果要求某一個x 的那一點f of x 的話呢
+那你如果知道c 的那一點的話可以這樣子來求
+譬如說我如果知道c 在這裡的話
+那麼f of c 我是知道的這一點是c 點是我知道的這一點是f of c 我是知道的
+我就可以在這一點求它的斜率
+然後呢那這個這個斜率呢就是就是這個這個d f d x 的c
+所以呢這個斜率就是d f d x 的c
+然後這一段呢就是x 減c
+所以呢你如果把這個x 減c 乘上這個斜率的話呢
+你就可以得到你把這個乘上這個斜率就得到得到這一段
+所以呢你如果直接把所以你如果直接把f c 加上這個第一項的話呢
+就等於是把這個f c 加上x 減c 乘上這個斜率就得到這一項所以你得到就是這一項
+那得到這一項雖然不是原來的f of c 不是原來的f of x 但是接近嘛
+那中間差的這個呢那就是誤差
+那如果你可以求第二項的話會更好
+第二項的話呢就是把這邊再求一個二次微分
+然後跟這個的平方等等那就是第二項
+那你如果做第二項的話呢這個東西會更接近一點做第三項就會再更接近一點你看你做能夠做幾項的話呢
+其實就可以得到譬如說這個這個是n 次項的話呢你就會得到比較接近一個approximation
+這是所謂的泰勒展開式你從前學微積分或者學數學一定學過這個泰勒展開式
+那它現在怎麼辦它就用這個泰勒展開式進一步延伸為兩兩個function
+我們這裡只是f of x 嘛他現在變成g of x y
+我如果裡面有兩個variable 的話變成x 跟y 的話
+我仍然可以這個其實z 等於g 的x y 就跟這邊的y 等於f of x 是一樣的我把它延伸變成有兩個變數的我把它延伸變成有兩個變數的
+然後我再讓它的變數都變成vector
+這變成有n dimension 的x y 有n dimension 的y z 有n dimension 的z
+然後呢我再把它們變成random 的vector
+這裡面每一個dimension 都是random variable 還是有這個關係的
+當它變成random variable 之後我可以再假設它們都是gaussian
+當它們都是gaussian 之後我這個式子就變成這個式子
+那因此呢那這個式子是什麼這個式子其實是我們剛才的這個式子就是這個式子
+換句話說它沒有要像我們剛才的這個paparallel model combination 我們是要從這裡一路轉轉轉一路轉轉轉回到這來在這邊相加再轉回來
+這個計算量太大了他說呢我只要轉到這裡就好
+在這裡的這個這個加法做這裡這裡的這一堆複雜的這個數學呢其實我就把它變成一個taylor series
+所以呢它就我就不要從這裡我們剛才的parallel model combination 是要從這裡一路轉到這兒來然後再回來
+那它等於觀念沒有改變他只是一個比較聰明的做數學的方法
+他說我只要做到這裡就好了我在這裡做
+這裡還是很很複雜啊沒有關係我這裡就用泰勒展開式來做
+所以就是這個式子變成一個泰勒展開式
+所以你你看這個式子其實就是我們現在的這個式子ok 
+所以這個式子就是我們剛才的這個式子是完全一樣的
+那我現在是把這個式子裡面的這個這個當成x 這個當成y 然後這一堆function 就是g 的x y
+當這個是x 這個是y 的時候g 的x y 這個就是z
+因此呢它們在這裡相加的話呢是有一個複雜的數學關係是沒有錯
+但是呢我就把它看成是z 等於g 的x y 變成這個式子
+那我們剛才說這個式子的話呢我們把它看成是裡面有兩個variable 的f
+因此呢我可以我也一樣可以對這兩個variable 分別做微分
+然後我再讓兩個variable 分別都是vector
+因為我現在要把譬如說它的mean 要放進來的話這是一個vector
+這是這是一個vector 這是一個vector 變成n dimension 的vector
+那我一樣可以把這個式子推出來
+然後我真正推的時候它們其實不不只是vector 而且每一個dimension 上面的element 呢都是random variable
+所以它們是random vector
+那這上面每一個element 都是random variable 的時候呢我再假設它們是gaussian
+如果是gaussian 的話呢這些微分都可以求
+所以呢於是我這這個求法其實就是用這個泰勒展開式
+但是我把這個數學帶到這裡這裡面來做
+那如果它是gaussian 的話呢那它們的這個一次微分兩次微分這些東西呢這是一次微分兩次微分這些東西我都可以求得出來於是答案就出來了
+簡單講就是這麼這麼意思這就是叫作vector taylor series 啊
+所以呢我們說基本精神是跟p m c 是非常像的
+也就是說呢我在我我我我隨時把這個noise 我隨時像那邊一樣的作法
+我就是把這個silence 裡面的noise 抓到之後
+我隨時產生noise 的model
+之後呢我就跟我的clean speech 的model 去作結合
+這個觀念是一樣的
+不同的地方是說
+我是直接在log spectrum domain 就直接作組合作加乘了
+我不回到linear domain 去我直接在log spectrum domain 就直接加乘
+那怎麼加呢用taylor series
+就是我們剛才講的這個one d 的taylor series 把它generalize 變成兩個random variable 而且這兩個都是vector 都是random vector
+那其實z 也是所以是是x y z 這三個都是n dimension 的random vector
+然後呢你假設它們都是gaussian 它們的mean 跟covariance 都知道
+當它們mean 跟covariance 都知道的時候
+那麼我這個這個taylor series 就可以變成這樣子
+於是我的這個新的mean 的這個組合的那個vector 那個gaussian 的mean 怎麼求可以用這個方法來求
+那麼這個variance 怎麼求都可以用這個方法來求
+ok 應該說這裡還沒有假設它們是gaussian
+只要知道它們是只要知道它們是mean 跟covariance 就可以求了
+那通常在這個時候呢我們在假設它們是gaussian 的話這個微分更好微
+啊假設gaussian 是讓它們微分更容易微就是了
+那這樣子算出來之後呢我就把這個關係代到剛才的那個linear spectrum domain 啊log spectrum domain 的關係來
+把這個就當成是這個z 然後我這樣就照做於是我答案就出來了
+那這個呢就是vector taylor series
+那我想這個觀念很一樣所以我們就不需要多講只是一些數學不同而已
+你如果有興趣看這些數學的話呢這個reference 在下面一篇
+就是三的這個就是它當時的原始paper 是這一篇就是講這個東西
+那這個的效果不錯那這個我們從前也做過的
+那這個因為用了這個vector series 關係所以它的計算量沒有那麼大
+那也有相當程度精確
+所以事實上它這邊其實只做到兩次項只做到兩次項而已啊
+但是事實上效果不錯計算量也小很多那所以呢得到不錯的效果
+這個是一個後來使用地非常普遍大家都用它效果也不錯的方法這是
+以上講的兩個例子是所謂的model based

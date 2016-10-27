@@ -1,0 +1,68 @@
+那這個就是底下啊就是底下這張圖所畫的
+也就是說這個是這個做這個viterbi 過程之中的那個圖
+我們從前在講四點零五點零一直到後面我們常常在用的圖
+橫軸是時間
+縱軸是一系列的state 
+那假設說譬如說這邊走的是這個三個state 是一個phone b 
+這三個state 是一個phone a 
+那它們b 跟a 連起來是一個word w 
+那如果是這樣的話呢
+那這個的意思你看就知道
+就是說我這些frame 這個frame 是在這個state 裡面
+然後這三個frame 呢是在這個state 裡面
+這兩個frame 是在這個state 裡面
+那這些加起來就是這個phone 的三個state 
+同理這個加起來就是這個phone a 的兩個state
+你如果這樣看的話那這些加起來就是這個word w
+那如果這樣它這邊就是說你的phone level frame level 的分數呢
+每一點都加
+每一點都算
+然後呢你如果phone level 的話呢你就是在算譬如說這邊的這五個點這五個frame 是這個phone a 嘛
+所以你就把這些東西平均起來
+你在end of the phone 的時候在這裡的時候你算一次這個phone 的分數
+那你如果要算這個word 的分數的話呢是這個全部平均起來
+這些東西等於是這些通通一起算了
+那這是一個phone 這是一個phone 這個跟這個平均起來
+你會得到一個這樣子的
+那在這裡的時候把這個word 再算進去
+那然後這樣這個分數幹嘛呢
+這個就這個就用在我們這就是我們第八點零所講的viterbi beam search 
+就是在這個裡面算的時候
+我們在當時有過的這個分數
+那這是在intra word transition as example 
+就是在這個裡面嘛
+你如果記得的話就是在這個裡面的某一個transition 的時候
+那這個viterbi 是怎樣的呢
+這個是在時間t 會在state q t 在of word w 的時候的分數
+在時間t 的時候走到state q t of 這個word w 的分數
+那是怎樣呢是在t 減一的時候在q t 減一的w 裡面
+然後呢再加上我從t 減一到t 呢我有transition probability 
+然後我有把新的frame 放在q t 裡面的機率等等加起來
+這個其實就是我們在八點零裡面所說的那個分數
+我現在可以比它再多加一個
+多加了一個這個是什麼呢
+這個就是我們剛才講的這個喔multi level confidence score 
+我把這這confidence 加在這裡
+所以呢我在做的時候這個就是我們原來的做viterbi 時候那個公式的那個分數
+我現在多加一個這個
+那這個呢就是這個raw 的m i t 這個東西
+就是我們剛才講的這個multi m 就是multi level 
+那麼在state i 在時間t 的時候的得到的這個分數
+我把這個分數呢加在這裡
+那它的功能其實就是我們剛才講的這個現象
+也就是說你你如果那個分數大的話呢
+其實就沒有功能
+它就是變成零嘛
+當你分數大時它趨近於零嘛
+趨近於零所以呢就等於沒有一樣
+可是如果分數差的話
+分數小的話呢就變成非常negative 
+變成負得很厲害
+負得很厲害的話呢你就把你那條path 會把你那條path 的分數變得很低
+所以呢只有unlikely path 會被reject 喔
+你越是不太可能的path 中間你你一路走那幾個frame 或幾個phone 越不太可能的話
+分數馬上會變得很低
+就是unlikely 就會被reject 掉
+然後呢你這個對可能的path 沒有什麼影響因為它會變成零
+因此呢你在beam search 很有幫助
+就在中間走的時候呢它會自動把不太可能的東西拿掉等等

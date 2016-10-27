@@ -1,0 +1,75 @@
+那再來呢這個呢其實就是我們第十二點零講的latent SEMANTIC 
+那這一塊其實跟我們十二點零講的沒什麼不同是一樣的
+那本來十二點零的那一招就是當初人家發明他的時候就是為了做這件事情用的
+那那他的point 在哪裡呢
+它主要的point 應該是這是所謂的concept matching 以別於所謂的term matching 
+這個這個意思是說就是我們之前講的
+因為user 通常是懶惰的
+user 只會講一兩個term 
+他要找的東西可能不是那一兩個term 所能描述的
+就好像user 他就他就輸入一個Bill Gate 
+輸入一個Bill Gate 
+但是事實上他要找的東西裡面可能包含他要找的可能包包括microsoft 
+包括windows 
+包括這個什麼dot net 
+這個等等等等他有很多
+甚至於有intel 啊什麼什麼
+user 要找其實是很多這些東西
+但是呢他可能只輸入一個Bill Gate 
+如果他只輸入個Bill Gate 的話你那文章裡面必須要有Bill Gate 
+否則就找不到
+那這個就是所謂的term matching 
+因為我們之前講的都是這樣做的
+你如果看這個的話
+其實是在match 這個term 
+所以你如果沒有講到他的話
+你沒有輸入那個term 他就是沒有嘛
+你如果用前面的這些個都一樣
+這些都是在term 做matching 
+包括vector space 這些都是用term 在做match 
+都是這個所謂的term matching 
+但是你現在如果改用改用LSA 來來來做的話
+就是我們這邊講的所謂的latent SEMANTIC indexing 
+那這個其實就是我們十二點零所說的那一招
+那也就是說我們十二點零的時候呢
+我們把它把它變成這個這個這個term 跟document matrix 之後
+你記得我們做了這個SINGULAR value decomposition 之後
+轉成一個譬如說八百維的空間
+在這裡面的每一維變成concept 了
+所以這個時候當你每一每一維變成concept 之後
+我現在其實在做的事情是把這些文章都轉到這這個空間來變成concept 
+那麼因此你如果記得的話
+我們當時就有譬如說這個我的我的這個fold in 
+我可以把user 的query 當成一篇文章
+把它放進來
+於是呢我我把它放到這裡面來之後
+我是在這八百維裡面
+去看它是那一個concept 
+那這個時候它裡面會有出現哪些term 就不重要了
+他的那個concept 
+很可能就是這一堆所構成的那個concept 
+那你裡面講的究竟是講的Bill Gate 還是講的microsoft 其實不重要了
+他都會幫你map 到那個concept 去
+所以呢他就有concept matching 
+他等於是針對concept 來做喔
+這個是LSA 最大的好處
+那這是我我們十二點零講的這堆東西
+其實最早是用來做retrieval 之用的
+那只是說這個後來人家拿來做language model 而已
+那麼因此呢我們是可以回過頭來看
+用這個的話
+那就是一樣這個是跟我們十二點零講的完全一樣你就建一個term document matrix 
+然後做SINGULAR value decomposition 
+然後那你現在怎麼找
+很簡單就你把user 那個query 
+把它當成是一篇新的文章把它放進來
+把這個user query 當成一篇新的文章
+把它放進這個空間來
+然後他也有一個vector 
+於是呢你拿那個query 的vector 去跟所有的文件的vector 去做內積
+那這樣你就可以找到它跟哪一篇最像
+而這個像是在那個concept 的空間裡面像
+不一定是term 像不像而是concept 像
+所以這樣這個就答案就出來喔
+那這個我想細節我們就不用講
+你大概就知道這個就跟我們那個是完全一樣的

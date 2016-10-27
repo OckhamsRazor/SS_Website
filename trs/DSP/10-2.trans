@@ -1,0 +1,186 @@
+那其實不不一定要對每一個word 來做我也可以對每一個frame 來做
+對每一個phone 來做喔
+那這樣的話我真正在辨識的時候我不見得像剛才那樣我只是為辨識到那個word 我來算一算它好不好
+不是這樣子
+我可以從頭在整個recognition 的這個架構裡面我就從頭來做這件事
+那這個就變成所謂frame level 的confidence score 
+我可以每一個frame 都做
+那我如果每一個frame 都做的話就變成這樣
+那這個式子其實就是剛才的這個式子
+是一樣的我剛才我是在看它是是這個word 跟不是這個word 的ratio 
+那現在呢我變成是這個這個frame 是不是那個state 
+所以呢lambda i 呢就是state i of 某一個phone p 的它的hidden markov model 
+所以呢我也只是看那一個frame 我本來剛才是在看整個signal 整個utterance 
+那我現在不是了我現在只是看那一個frame 
+我每一個frame 呢就有那個frame 我我當它是某一個phone p 的hidden markov model 某一個state i 這個lambda i 的話呢
+它在那個lambda i 的的分數
+跟它不是那個的分數
+所以這個是那個不是那個lambda i 的anti model 或者background model 
+那它可以trained with cohort set for the phone unit p 
+就是它的那個phone 的cohort set 等等
+有我們剛才說的那種情形
+那這樣的話我就得到那一個frame 的時候的
+我完全只有那個frame 的那個那個feature vector 
+在是這個state i 跟不是這個state i 的一個這樣子的confidence score 
+那然後呢這個score 可能就是我們剛才提過這這些score 不見得是這個分數剛好在零跟一之間或者怎樣所以你其實可以做一些normalization 
+或者做一些mapping transformation 
+讓它它的range 比較符合我們要的
+像這裡這個case 它是說我可以做一個什麼呢
+我可以做一個這個這個其實是一個log sigmoid function 
+你看這個裡面這個裡面這個東西其實就是我們之前講過的sigmoid 
+那麼外面呢其實是再加了一個log 
+sigmoid 是怎樣呢我們之前說過
+它相當於這種東西
+也就是在這這邊趨近於零這邊趨近於一
+那在零到一之間呢我我有一個transition 
+把它switch 過來
+那個transition 的位置呢
+就是theta 
+然後這個這個這個transition 過去的斜率
+是由這個gama 來決定
+換句話說呢我這個可以可以更更斜
+也可以更陡等等
+那這個時候這個就depends on gama 
+所以gama 決定這個斜率theta 決定我這個transition 的範圍
+那這個是一個sigmoid 介於零跟一的
+是裡面這塊
+現在再加一個log 會怎樣呢
+加這個log 之後呢你可以想像會變成怎樣呢
+log 的一變成零
+所以這邊呢是變成零
+log 的零會變成負的無限大
+所以你得到的是一個這樣子的curve 
+那那這個點呢就是log 零點五的地方就是了
+那現在呢如果不同的那同樣的我這一點仍然是theta 
+這點仍然是theta 
+那我的不同的斜率其實就就造成我不同的這個譬如說我可能有的時候是這樣的
+那也有的時候是這樣的
+喔等等
+那那就是不同的斜率
+那我不同的gama 就造成一個這樣的關係
+那總之呢它是在原來是趨近於這邊的時候是正的趨近無限大它是一的會變成零
+然後負的會變成負無限大
+那這就是所謂的log sigmoid function 
+那如果是這樣的話呢我現在就是把把這個喔我把這樣所得到的這個這個raw i 啊
+就是本來這個東西啊
+我把它放到這來
+放到這來之後呢放進這個function 裡面去呢所以如果說是我們原來這個東西本來就是在算它大小
+看我們原來這個東西本來就是看它的大小
+那麼越大表示它越可可靠越小表示越不可靠
+那我現在是如果每一個frame 都做這件事的話呢
+而且我給它每一個frame 這件事情我都給它做一個log sigmoid 的話呢
+那就是說如果它大的表示比較可靠的呢
+就會趨近於零
+如果是小的話呢就變成負無限大
+那這幹嘛呢
+這個其實就是拿來做在我們正常的辨識裡面
+那這個相當於說我們在八點零裡面所講的那個search 的process 
+我們你記得我們八點零的時候我們說我我現在譬如說有六萬個word 
+構成一個tree 
+我有六萬個word 的一個lexicon 
+你這裡面每一條path 就變成一個word 
+你這個走到底之後你會接下一個去去copy 你又可以走出一堆word 出來
+你如果在這裡的話我也可以接一個下面一個tree 
+然後這個呢走完之後又有又可以接下一個等等等等
+那我們的辨識是在這個上面做一個viterbi 
+那這個viterbi 這樣一路走
+你可以得到譬如說呢這個是這樣子再走過來再走過來
+那這樣就得到某一個word 接某一個word 接某一個word 等等
+這是我們在八點零裡面說的這個辨識的架構
+那這邊講的其實是你在做算這個中間的時候呢
+我隨時可以多加一個這個分數
+我一路加這個分數的時候你記得我們在viterbi 裡面我們是通常譬如說做這個做這個beam search 
+也就是說我會保留分數最高的一堆path 往前走
+那這個時候我中間如果我一路走的時候我每一個frame 都加一個這個的話
+這邊是這個橫軸是時間嘛
+每一個frame 它都在每一個frame 它都有都有一個分數有一個位置又這樣子走過來
+那我每一個frame 每一個t 這邊就是一個o t 
+那我就可以在那個model 裡面的那個state 去算它這個分數
+然後放進這個sigmoid 來
+就會得到像那邊那個情形
+也就是如果是如果這個分數高的話
+它其實就是零
+所以呢沒什麼影響
+所以不怎麼影響
+可是如果說它的分數低的話
+就這個小的話呢
+這個小的話那邊就會變得變得很負的
+變成非常負之後呢就讓你這條path 就不見了
+因為會變成分數這條path 對不對你如果走到這邊的時候
+這個confidence measure 很低的話
+那它就會變成很負的
+於是你那個那個分數就會變得很低
+就會就會被排除在我的那個beam search 裡面喔等等
+所以呢這樣一來的話呢我就可以這樣一路走到中間我可以用這個
+那隨時在看你哪一個frame 走到哪裡覺得很不可靠
+那條path 可能是不對的
+啊就可以這樣子做
+所以這個是在frame level 做的confidence score 
+那光是這個可能還不太夠
+因為frame level 常常不太可靠
+因為那個frame 不太對
+但是也許前後的frame 都對的話表示這個可能還是對的
+因此呢我們再加上phone level 跟word level 
+那phone level 是什麼呢
+就是我在算這個frame level 的同時呢
+我當我辨識到一個phone 的時候
+把那個phone 一路走過來所有的frame 平均一次
+所以這個只是做一個平均的意思
+你看這個raw j 其實就是就是這個東西
+這個raw j 就是這個東西就是它的那個那個frame u 的分數
+那麼我假設我那個phone p 它的長度是tau 的話就是有tau 個frame 是那個phone 的話那我就把那tau 的分數做一次平均去把它通通加起來再除以tau 就
+就做一次平均
+所以你看它這個u 
+就是這個t 
+它是從t 減tau 加一加到t 嘛
+就是你從這個前面tau 個一路平均下來平均到這裡
+所以我就是把它一路做一個平均
+那如果是這樣的話呢
+我就evaluate at the end of phone 
+那現在你如果從這裡走從這裡走走到這邊的時候是一個phone 的話
+譬如說走到這裡是一個phone 的話
+那我在這個中間每一個frame 我都算一個分數
+當這個phone 走完的時候我算一次
+這個phone 的平均分數
+那同理呢我也可以做一個word level 的
+就是當我走走完一個word 的時候那個word 是由好幾個phone 拼成的
+那我那個word 是由好幾個phone 拼成的話我就把所有的那些phone 的分數分數加起來再平均一次
+那我假設那個word 有n 個phone unit 喔
+n 是total number of phone unit in the word 
+那我就是把它那所有那些phone 的分數再平均一次等等
+那它也是evaluate at the end of word 
+當你一路走走到這邊底的時候
+我走到一個end of word 
+那這個時候呢我有我可以把這上面這幾個phone 的分數再平均一次
+那就是這個word 分數等等
+那如果這樣做的話呢我就變成每一個unit 每一個frame 每一個frame 再算一次
+那每一個phone 再算一次
+到每一個word 再算一次
+那用這個方式來做的話我就可以得到一個generalized 的confidence score 
+我一路做都在做
+那跟剛才這個不一樣
+剛才這個是我辨識出某一個word 來去做一次
+那現在這個不是
+現在這個是我一路每一個frame 每一個frame 都在做
+然後呢每走完一個phone 做一個phone 
+每走完一個word 做一個word 
+那於是呢我就有這三種分數
+這個是frame 的那這是phone 的這是word 的
+這個是word 的這是phone 的這是frame 的
+我分這三種分數我分別都weight by 一個加一個weighting factor 之後呢
+這個就是我的multi level confidence score 
+就是包括所謂multi level 就是有phone frame level phone level word level 
+我把它全部weight 起來
+那那這個地方的話呢
+那我們這邊看到是說以這三個weight 呢
+如果不是在end of the phone 的話
+phone 的weight 就是零
+如果不是在end of the word 的話呢word 的weight 就是零
+所以呢那麼它只有在end of phone 的時候算phone 的分數
+end of word 的時候算word 的分數
+那這個point 在這邊講就是你的frame level 的分數
+也許不夠stable 
+所以你average over phone over word 會比較好
+也就是說我這個這個frame 的分數也許算出來不太可靠
+如果前面後面都有一堆的話呢
+你算出來比較可靠所以你把它把整個的前後一起平均一下會比較好

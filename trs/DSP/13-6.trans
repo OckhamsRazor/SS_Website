@@ -1,0 +1,342 @@
+那底下呢我們就先來說第一個這個vector space model 
+這也是retrieval model 裡面最基礎
+最常見
+見那麼最簡單也
+其實它也非常有效的
+那喔這個的基本精神就是我
+我為每一個每一個document d d 或者每一個query q 
+的representation 就是一一個vector 
+那也就是說我們這邊的剛才這邊的每每一個document 的representation 那個d 
+就是一個vector 
+每一個q 就是一個vector 那
+那一個vector 是什麼呢
+就是我們這邊的用這一些個每一個indexing feature 
+當成他的喔其實每一個type of feature 就有一個vector 什
+什麼叫每一個type 
+譬如說我們們剛才講如果以word word 為單位的話呢
+這個word 是一個type 
+所以我就為word 建一個vector 
+如果我是以三個phone 為三個phone 的phone sequence 為單位
+那我也為它建一個個vector 
+那這個每每一個呢這叫做一個type of indexing feature 
+那麼我們舉例來講假設說我以word 為單位
+我以我如果以word word 為單位的話呢
+假設gates 在我的辭典裡面
+所以gates 是一個word 
+那麼我我每一個word 我就有一個element 
+就有一個dimension 
+這是第一一個word 第二個word 
+一直到譬如說我有五萬個word 
+我就要五萬個dimension 
+每每一個word 裡面有一個東西有一個component 
+那這個時候呢呢假設這個gates 是這裡面的一個字的話
+是一個word 的話我
+我針對這個gate 會有一個數數字在這裡
+等等那每一個word 都有一個
+個那這樣構成一個vector 
+是我們講的這個以這個type j 如果這個j 是word 的話
+我就有一個word 
+那我如果是以phone 為為為為這個element 
+然後我如果是以每三個phone 的
+的一個phone sequence 當成一個element 的話呢
+那就變成說
+我譬如說我的phone 有六十個
+phone 有六十個
+那三個phone 連連起來的sequence 
+sequence 至少是有六十的三次方個
+那這裡的每一個都有都有一個在這裡
+譬如如說在這個case 
+這個ga 後面接ts 
+ts 那這是這三個phone 連起來
+這是一個
+然後呢譬如說這裡有一個
+這三個phone 連起來這是一個等等等
+那總共有這麼多個
+個那每一個是一個element 
+那這樣我構成一個這樣的vector 等等好
+是這樣的意思
+所以呢所謂的的每一個每一個type of indexing feature 
+像這就是一一個type of indexing feature 
+這就是一個type of indexing feature 
+我都有一個vector vector 
+那這個vector 裡面面的每一個
+我們說每一個這個element 我會有一個component 有一個數值啦那
+那這個數值是什麼呢
+就是這個z 的j t 
+那所以以呢這個j 就是我的type j 
+t 呢就是針對某一個對對某一個indexing term t 
+譬譬如說在這個case 這個個indexing term 
+我們就叫做t 
+所以這裡在這個case 而言我這個t 有譬如說五萬個
+那這裡的每一個都是是一個t 
+所以每一個這邊的那個這個這個東西就這邊講的z j t 
+就是是這個z j t 
+那同理呢那麼在這個case 的話呢
+這一個這三個phone sequence 
+這三個phone sequence 連起來的這個phone sequence 是
+是我們這邊所謂的一個term t 
+那這裡的一個element 叫做z 的的j t 等等
+好那如果是這樣子的話呢
+那麼這個z j t 等於什麼呢
+最重要的就是這一個count 
+也就是這個c t 
+c t 是什麼呢就是就是這個term 的count count in the document 
+如果這篇文章是在在講微軟什麼什麼裡面bill gates 出現了十次
+那這個e 那個那個數字就是十
+那你可可以想得到如果這篇文章是在講微軟是在講這個什麼麼的話
+那很可能bill gates 會出現十次
+windows 會出現現二十次
+然後什麼dot net 會出現個十五次
+microsoft 會出現一這個一百次等等
+但是會有一大堆東西是沒有的
+這是空的都沒沒有
+好那麼因此呢這個feature vector vector 
+基本上就已經描述了我的這個這篇文章
+它裡面會說些什麼什麼東西喔
+等等所以呢你就就是把它的裡面的每每一個word 把它count 好
+那就他的這個那就是我的這個痾這個ct 就是我的的frequency count 我
+我或者是用這個word 或者是用這個phone sequence sequence 都一樣我這樣得到一堆count 
+那不同的人用的公式不太一樣
+最多的人寫成這樣樣子
+不過有的人不用log 有的人取log 
+取log 沒有什麼特別的道理
+只是有人做實驗取log 比較好就是了
+那你知道取log 比較好的原因是說因為它是一一個數目太大的時候他會把他壓下來
+它不是linear 上去的
+那那麼因此呢當你數目多的時候不要增加那麼快
+它有這個好處
+那麼麼這個有的實驗顯示這樣比較好
+那還有的人喜歡加一個e 有的人不加
+那加個e 那也也是類似情形
+那你可以想像的是
+多的還是照樣會多嘛
+但是呢原來如如果只只出現一次log 之後log 一變成零
+那這裡都至少加了一就不會變變成零了之類的
+那也是有人做實驗他比較好
+那有的人不要加所以這個不不一定
+那不管怎樣呢這個東西有個專有名詞就叫做做term frequency 
+那你可可以顧名思義就知道就是指這一個term 
+這是所謂的一個term 
+這個term 的frequency 
+這個term 的frequency 
+那這是一一個非常重要的訊息說明這篇文章
+這篇文章他哪一些個term 出現
+哪一些個term 出現現表示這篇文章在說的是什麼東西
+啊因為到時候我就是要要比對這些字有沒有比對這些word 嘛那
+那麼因此呢這所謂的term frequency t f 
+那還有另外一個東西也很重要呢就是後面這這一項
+那這個東西是什麼呢
+這個n t 呢是指total number of term of documents in the database 它包括這個term term 的
+我們以這個gates 而而而而為例的話呢
+我整個網頁一百萬篇篇裡面
+講微軟的講gates 的會有gates 這個字的
+有一千篇的話
+那這個n t 呢就是一千
+那麼這個n 是什麼n 是total number number of documents 
+那麼因此呢n 是什麼假設我我總共是一百萬篇就是一百萬萬
+那麼一百萬除以一千之後呢
+那還有還有好多萬阿
+那這個數字很大
+痾對沒有錯
+這這個數字很大就表示說這個很重要
+那麼也就是說假設我我全部的是一百萬篇裡面
+只有一千篇或者五百篇或者五十篇
+有這個字的話
+那顯然這個字出現顯示抓到這這些文章的能裡很強
+所以呢這個是很重要的
+那麼因此呢我用這個一除之後
+那你可以反過來
+來像我們之前提到過的例子
+在這裡的話我們譬如說妳可以想到的
+的的也是一個字阿
+你如果的是這這裡的話
+那在每一篇文章裡面都有
+那這個就是沒有意義的字
+你譬如說this 
+這些function word 
+或者at 
+這些些個word 在這裡都是沒有意意義的
+每一篇文章裡面都有的
+那這些東西呢你或者說是它的音
+譬如說this 這
+這個phone sequence 在這裡的話呢
+就是沒有意義的
+因為它每一個裡面都都會有
+那麼那麼因此呢
+如果是這一些個東西的話呢
+呢那麼我在一百萬篇裡面每一百萬篇都都有
+一百萬除以一百萬之後是一log 一就是零
+零那這個就沒有了
+啊這個值就變成零了
+那那麼因此呢這個等於是在在說到底我的所有的我的整個database 裡面我用一個database 去算
+我就會算出來說那麼這堛漕c 一個term 它的重要性
+那麼麼如果說是每每一篇都會有的的話呢那那這個就是一了
+那這個這個log 一就是零就是沒有重要性
+那反過來如果在一百萬篇裡面只有十篇有的
+那這個顯然很重要
+你有了這個幾乎就是要找到那十篇去了
+那因此呢那這就是所謂的這個那這個值就會很大
+那這就是所謂的inverse document frequency 
+因為它把document 的數目做在分母母上面
+所以是跟document 數目是相反的
+所謂inverse document frequency 就是i d f 
+那麼i d f 非常清楚的告訴我們哪一個term 比較重要
+那這個東西跟我們在十二點零所說的另外一個東西西意思是非常像的
+你如如果記得的話其實在那埵酗個很類似的東西是entropy 
+我們在十二點零的的時候
+我們數算這個的時候
+這個term document 的的這一個term document 的matrix 裡面的那一個element 裡面
+我也在數count 
+這是非常像的喔
+非常像的我也在數count count 
+在數count 之後呢我再做一個entropy 的動作
+這個normalize entropy 其實是相很像的意思
+那麼麼我做normalize entropy 的結果也會使把這些個word 的效果降成很小很小
+然後會把特別的word 的效果果拉的很高
+好那意思是一樣的那
+那只是有不同的作法
+這個normalize entropy 是一個很好的作法
+同樣的這裡的i d f 也是一個個這裡的i d f 也是一個重重要的很好的作法
+所以這個是痾目的是非非常接近的
+好那這兩個連起來就是所謂的tfidf 
+在information retrieval 的領域裡面這是一一個非常常用的詞
+所謂的tfidf 就是指這兩個東西相乘
+那一個個代表的是它的count 
+一個代表的是它的重要性
+那這兩個一乘起來的結果就告訴我這個element 這個值應該要多少
+好那如果這個有了的話
+我現現在就是為每一個每一個document 
+我為每一個document 我都建了一個這個這個個vector 
+然後呢同樣的我也為query 建相同的一個vector 
+我今天user 輸入的說他他要找的是什麼
+他要要找的是microsoft 
+那這個時候呢我也一樣為他建這個vector 
+不過現在user 很懶他只輸入了了一個字
+就是microsoft 
+所以呢就是這個字出現了一次而已
+別的什麼都沒有別的全全部都是零
+但是這樣的user query 我也建一個相同的vector 
+那這個做法跟剛才一樣的作法
+我也是是不是只算一個count 我也要算i d f 
+然後就是把這個t f i 都算出來之後呢得到一個數值
+這是z j t 在這這裡
+那這個個是我為user 所建的
+user query 所建的
+那user 也建了這個vector 
+我這這邊也建了這個vector 
+之後我這兩個vector 就可以做內積
+因此呢我底下就可以做這個內內積
+這裡的這個符號不對阿這個是電腦的問題
+所以應該就是我就是為這這兩個vector 做內積
+那做內積積之後其實再normalize 它的長度
+就是這個這這個cosine 嘛你知道
+就是這個這兩個vector 做內積
+但是這個內積是是包含了它的vector 自己的大小
+所以我要把大小normalize 掉
+因為它也許這這篇文章長達十萬十萬個word 
+那裡面這個數目就很多啦
+那這篇文章只有二十個word 
+這數目就很少啦啦所以這個大小顯然不對嘛
+所以你要把它大小的normalize 掉
+把vector 的大小normalize 掉之後
+後剩下其實就是它的內積
+也就是cosine theta 這個東東西
+那這個值基本上是在一到負一之間嘛
+那你可以知道他在在一附近的時候就是是他們最像的時候嘛等等
+那零左右就是他們最不像的時候
+那所以你只要用用這個方法來做的話這個
+其實就是所謂d j q j j 就是q j 就是user 的query 
+user 輸入的說我要找microsoft 
+那這個時候呢user 的那個query 就是q j 
+我對這個對user 做的這個que 這個vector 
+那麼我每一篇文章所做的呢就是d j 
+我就分別都去做這個內內積
+然後看誰的內積大就就是跟誰接近嘛
+那你可以想像其實的結果是說
+因為user 只輸入這個而已
+大部分都是零的
+這邊全部都是零
+所以這個內積結果其實就是把這邊的microsoft 
+這邊如果這個字是microsoft 的話
+這個不是零的那些文章就會抓出來
+就會抓到microsoft microsoft 嘛阿
+所以這個只要這樣內積一乘的話呢就會把你要的抓出來
+那然後這個j 是我們們剛才講的type 
+所以呢我譬如說這個個word 是一個j 
+這個三個phone 連起來這也是一個j 
+我有好好多個j 
+我就把它們通通都每對每一種type 我都做一次次這個內積
+都有一個分數
+然後我更成上一個weight 把它全部加起來
+那這樣子的話我就得到一個個total 的分數
+那於是就知道user 要輸入的跟他跟誰比較像
+那這個就是最基本的這個痾痾vector space model 的原理
+那你在做文字的時候也是這麼做的
+我們如果是是這個這個如果是文字的retrieval 的話呢
+他也也也這樣做
+那這就是retrieval 裡面最基本vector space model 
+那我們不同的是說文字的時候呢
+他大概不需要用這個phone sequence 這種東西
+他就用這個word 就好了嘛好
+但它它可以有more than two words 
+譬如說你你應該是兩三個words 連起來是更好的term 
+譬如說bill gates 
+要bill 跟跟gate 連在一起那
+那個bill 跟gate 連在一起的時候才是有意義的
+否則一個bill 是很多bill 
+bill 但是呢有gates 的bill 那就是特別的
+所以你可以把兩三個個words 連在一起
+所以他還是有可以有很多個不同的term 
+但是它基本上文字只要要用word 來做就好了因
+因為word 一定對
+只有在語音的時候候才我要用像phone 這種東西來做
+那在語音的時候除了用phone 這種東西來做做之外呢我其實還可以做什什麼呢
+我這時候我的這個除了用count 之外
+我還還可以用這個分recognition score 你辨識的分數啊
+confidence measure 這個我們本來在十點零裡面講的
+不過我們現在在十點零還沒講
+所以呢不過你可以了解所謂confidence measure 意思就是我每一個辨識結果
+我都可以以給他一個分數
+當我辨識出來得到一個word sequence 的時候
+我可以為每一個word 我每一個辨識結果給他一個個分數
+譬如說在零到一之間
+譬如說這個是零點九
+這是零點七七這是零點三這個零點五
+那給他一個分數的意思是是說我對於這個recognition 的結果的confidence 有多多少
+那越接近於一的表示越可靠
+大概是對的
+那如果很低的表示說我雖然辨識出這個來我對他覺得他很可能是錯的
+的那我可以用很多在辨識中間的各種的的information 
+來算出這樣子的所謂的confidence measure 
+那麼那麼等於說是我對每一個word 都可以給他一個我的confidence 
+那你可以把這一類的東西
+不論是這一種種的confidence measure 
+或者是recognition score 
+放到這裡面來也就是你在數count 的時候
+不光是數count 
+你每一個個count 可以把這些東西加起來
+那他就不見得是出現一次不是一次他只有零點點三分
+因為我我不太相信他
+啊可以把這些算算進去
+那這樣的話就變成語音的
+所以語音可以用這個方式就可以這樣做了
+那這這個所謂的vector space model 是是基本上的model 我們可以看成是這樣子的
+大的vector 來這樣來算
+並不表示你寫程式的時時候真的要這樣子寫
+那為什麼呢因為你可以想像其實在真正程式在操作的時候
+可能遠比這個要來的簡單
+為什麼呢
+因為user user 輸入他只輸入microsoft 一個字
+所以以其實呢我所謂的這個user 這個q 的這個microsoft 
+就是只有這個element 
+別的沒有嘛
+那因此呢當這個跟這個來做內積的時候
+其實只是在算這個個的microsoft 裡面面的這個幾分然後這個跟這個個相乘就好了
+別的根本就不要嘛
+那麼因此呢你真的在寫程式的時候候你很可能是變成
+我這邊雖然我每一篇文章的這個q 的
+這個d 我要這樣建起來
+來可是到時候我並不見得真的要做內積
+我只要看user 輸入的那個是什麼之後我直接這個從那個element 去找這個element 就對了嘛
+嘛所以呢真正做的時候不見得是是真的要有這麼多vector 在做內積就是了
+好那那這個是基本的vector space model 

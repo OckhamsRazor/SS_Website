@@ -1,0 +1,133 @@
+好有了剛才的那個perplexity 的定義之後
+你了解它的意思我們先來看一個比較簡單的例子
+這個例子很簡單這樣你比較有點感覺它們在講什麼
+這邊所做的事情是我們把網路上的這個新聞網站去download 一堆新聞
+就是我們中文的新聞網站台灣的新聞網站download 一堆新聞
+然後這些新聞裡面它的網站它自動分類了
+這政治新聞啊什麼等等財經新聞體育新聞等等等等社會新聞這樣
+總共各download 量這麼多
+然後總數是這麼多
+那這個呢我們拿它來train
+當成這個training corpus 然後去train language model
+所謂train language model 就是去算那個n gram 
+去算unigram bigram trigram 
+當你language 算好之後
+我就可以來算
+那我另外還要找一堆testing corpus
+因為我要算我們剛剛講要算這個perplexity 一定要有個文章才能算嘛
+我另外要再找一堆testing 的
+去算這個testing 的我沒有寫在這裡就是了
+那另外算找一堆testing 的這個嗯corpus 來算它的language model
+那我們剛才講的這件事情其實也可以這樣子看就是說
+你顯然是要用兩個database 
+一個是train 它一個是test 它
+所以譬如說我這個是一個這個training training corpus 
+我用這個來train 那堆language model
+所以呢我就會我用這個language model 的training 的演算法
+去算它的n gram 
+所以這邊得到的就是n gram 
+就是我們剛才所寫的w i 的機率
+這個東西
+這就是我的n gram 
+我有了n gram 之後呢
+我要有另一個testing corpus 
+d 
+就是我們講的testing corpus
+p 跟d 嘛
+就是我們前面這一頁所說的p 跟d 
+算出這個東西出來這是perplexity evaluation
+ok
+所以我顯然需要兩個兩個database 
+這個是拿來train 
+train 出來這些東西之後我用另外一個去測它
+那因為光是這個不能算嘛我一定要有個東西去測它所以拿這個來來測它然後算出這個來
+那我剛才講的這個例子也是這樣
+那麼我們這邊是
+分別為每一類的新聞做一個language model
+我有政治新聞的language model我有體育新聞的language model 等等等等
+那你看到這個總共這麼五十八點一的裡面
+政治新聞占了十九點六台灣的新聞裡面政治新聞比例之高啊
+這個台灣人之熱衷政治可以想像
+那那我現在假設是
+這裡的每一類我都做了個language model 之後我都在每一類我也都找個testing corpus 去去測的話
+算出來的perplexity 在這裡
+這是第一類第二類這是右邊這一
+我現在講的是domain specific 
+就是每一個domain 做一個language model 
+所以我政治新聞做一個language model
+財經新聞做一個language model 等等等等的話呢
+我然後我就分別用政治新聞去測
+我有另外政治新聞的testing corpus
+財經新聞有財經新聞的testing corpus 分別去測的話
+得到的perplexity 是右邊這條灰色的
+那你可以看到呢譬如說在這裡最低的是什麼我們說越低越好嘛
+因為它代表的是我的我的這個constraint 
+對不對
+我的branching factor 是越低越好嘛
+最低的是五號
+五號是體育新聞
+它體育新聞其實只用了最小的training data 它只有這麼小的量
+就train 出一個來
+它就只有三百多
+那這什麼意思呢你可以想像其實體育新聞是一種最簡單的語言
+因為它講的其實就是一堆體育的事件
+球賽啊
+這隊多打一球那隊多贏一球然後它輸了一球所以它多了兩分然後它贏了
+等等
+喔
+它大敗它什麼東西就這樣子
+所以它的內容其實它的辭彙也很單純
+它的語言結構也很單純就是這些事情
+那這就是體育新聞所以呢它雖然有很小的training corpus 它得到的perplexity 也是最低的
+但是你注意看一下
+我們的政治新聞perplexity 也很低
+我們的政治新聞裡面其實是內容如果我們去看的話是千變萬化
+裡面的這些政治人物說的話是多的不得了很有學問這樣那樣
+但是如果我們去分析他們說的語言的話
+它的辭彙也就是那些辭彙
+調過來調過去
+然後它的句型也就是那些句型而已
+所以它講的話其實跟打一場球是一樣的
+只是在
+只是在打另外一種球好像是不同的球就是了
+那就是我們政治新聞裡面的
+這個說穿了就是口水了口水就是這樣
+那你說什麼是perplexity 最高的
+四號
+四號你看這麼高比人家高好多好多
+四是什麼呢
+這個其實是文教新聞
+就是這個文教也就是包括教育文化啦你可以想像有教改
+有大學校長的問題有這個什麼這個哪一個這個嗯哪一個博物館怎樣啦有一個什麼這個歌劇來表演啦又是什麼
+什麼樣的都在裡面
+所以文教是一個最複雜的環境
+它的辭彙也最豐富它的語言也最豐富所以它的perplexity 是最高的
+我想這是一個簡單的例子大概你應該這樣你比較了解我們講的perplexity 是什麼
+那左邊這個藍色的線是什麼呢
+左邊藍色的線是說我現在做一個general domain 的
+就是我現在把所有的東西
+我不分領域我當成一個然後train 一個language model 的話
+然後再分別去去那個language model 就等於是全部平均在一起啦
+全部平均在一起之後我再拿那個去算剛才的那些個測試的database 
+我剛才有政治新聞有財經新聞我那些我再去測的話呢
+那你會發現它們的perplexity 都比較高
+這藍色這個都比較高
+換句話說它的我所得到的機率的這個我所得到的機率的這個branching factor 都比較大
+那意思也就是說我的language model 比較差
+對不對
+perplexity 越高就是越差嘛
+那換句話說
+為什麼比較差就是因為其實每一個domain 它有它自己的語言結構
+它有它自己的辭彙跟語言結構
+所以財經新聞跟體育新聞跟政治新聞跟社會新聞它們內容顯然是不一樣的
+所以它們之間的n gram 的關係是不同的
+你如果做個general 的domain 的language model 把它們全部平均在一起當然也可以
+但是呢也就因此你的constraint 是比較差嘛
+你如果針對每個domain 自己去算的話都會比較小
+因為它的domain 是比較精緻
+它的那個變化比較少變化所以比較perplexity 比較小
+這就是這邊講的domain specific 這個domain specific 的language model 呢
+我用domain specific 的corpus 去train 的話
+那麼它都會有一個比較好的
+都會比這個general domain 的language model 來的好
+而這裡面呢體育新聞是最低的perplexity

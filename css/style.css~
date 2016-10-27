@@ -1,0 +1,101 @@
+body				/*CSS Style for body*/
+{
+	background-color: #000;
+	overflow-y: hidden;
+}
+#header				/*CSS Style for header*/
+{
+	color: rgb(122,122,122);
+	text-align: center;
+}
+#flvContainer		/* CSS Style for flv Player*/
+{
+	margin-right: 15px;
+	margin-left: 30px;
+	margin-bottom: 20px;
+	padding: 5px;
+	width: 500px;
+	height: 400px;
+	float: left;
+	background-color: red;
+	border: 1px solid black;
+}
+#slidesContainer		/* CSS Style for current Slides Pic*/
+{
+	margin-left: 15px;
+	margin-right: 30px;
+	margin-bottom: 20px;
+	padding: 5px;
+	float: left;
+	width: 500px;
+	height: 400px;
+	background-color: yellow;
+	border: 1px solid black;
+}
+#activeTrs			/*CSS Style for active transcription*/
+{
+	margin-left: 40px;
+	margin-top: 20px;
+	padding: 5px;
+	clear: both;
+	width: 80%;
+	height: 85px;
+	background-color: white;
+	border: 1px solid silver;
+	filter: progid: DXImageTransform.Microsoft.Gradient(startColorStr='#FFFFFF', endColorStr='#efefef', gradientType='2');
+}
+#activeTrs p
+{
+	line-height: 1.1;
+	margin: 0px;
+}
+#sidebar		/*CSS Style for bottom sidebar*/
+{
+	margin-top: 10px;
+	width: 100%;
+	height: 250px;
+	position: absolute;
+	border-top: 5px solid rgb(111,111,111);
+	background-color: silver;
+}
+.tab			/*CSS Style for tab in bottom sidebar*/
+{
+	margin-right: 10px;
+	padding: 0px 15px 0px 15px;
+	float: left;
+	width: auto;
+	height: 20px;
+	background-color: rgb(153,50,180);
+	font: italic normal bold 1.2em Arial, sans-serif;
+	overflow-y: hidden;
+	cursor: hand;
+}
+.tab_main		/*CSS Style for tab main page*/
+{
+	clear: left;
+	margin: 0px;
+	padding: 0px;
+	border: 1px solid #999;
+	height: 228px;
+	width: 99.9%;
+}
+.tab_sub		/*CSS Style for tab submain section*/
+{
+	float: left;
+	clear: none;
+	margin: 0px 1px 0px 0px;
+	padding: 5px;
+	border: 1px solid #000;
+	height: 218px;
+	width: 32.3%;
+	overflow-y:	scroll;
+	background-color: green;
+}
+#trs			/*CSS Style for transcription sction*/
+{
+	float: left;
+	height: 228px;
+	width: 99.9%;
+	overflow-y: scroll;
+	background-color: red;
+}

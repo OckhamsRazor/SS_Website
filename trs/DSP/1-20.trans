@@ -1,0 +1,10 @@
+那再來呢 speaker  verification 你要確認他是誰我們剛才的 de 例子提到過就是如果你要開信箱他的一個重要的問題就是確認這個 speaker 確實是該開的了信箱的那個人
+這就要問你 password 是什麼等等這就是 speaker  verification 就是要 verify 那個 speaker 就是他所 claim 的那個人
+那你需要的 application 那他的那就是說在網路上有很多 application 都是需要知道他是誰就需要 verify
+那我們今天講的 verification 有兩大類第一類是 text  dependent 叫他講某一個話叫他講某一句話規定好他就要講那一句話 speaker 還有一種是 text  independent 隨便你說什麼都可以所以呢就是這兩大兩大類隨便你說什麼都可以判斷他是誰還是不行
+那我們今天其實 verification 不能做到百分之一百還是會有誤差所以我們常常會跟其他的 verification 結合起來像我們剛才講的例子他說你告訴我你的 password 那這個就是跟 password 結合
+因為你本來輸入電腦的那個 password 也是一個 verification 那我等於把那個 verification 再加上聲音的 verification 兩個做在一起
+那基本的原理很簡單都是這樣的就是每一個 user  train 一個他自己的 model 所以我現在說什麼話的話呢我也是在那裡面抽出他的 feature 來跟這個是一樣的
+不過這裡面的特徵參數可能不一樣這個是我這邊是代表誰的聲音我抽出他的feature 之後為每一個人都建一個他的 model
+那麼因此呢你現在就可以跟他的 model 來比較看看他跟他到底像不像是還是不是等等這就是 speaker 的 verification
+我們以上講的這幾個是是最核心的技術包括 speaker 的 verification 包括 understanding 包括合成包括辨識等等

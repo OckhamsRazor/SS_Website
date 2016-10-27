@@ -1,0 +1,194 @@
+那底下再來的下一個feature based 的例子呢
+就是所謂的temporal filtering
+什麼是temporal filtering 呢
+我們原來的這是語音訊號
+這是x n
+這是一個一個的sample
+我這個x n 我可以去做fourier transform
+得到我的spectrum
+然後呢我們說我們可以每一個frame 
+譬如說這兩百五十六個點換成五百一十二的點
+我可以得到一個m f c c 的vector
+譬如說這個是c one 這是c two 等等等等
+總共三十九個
+我待會呢譬如說shift 一百點
+我可以得到下面一個c one c two 等等等等
+這裡有三十九維
+我待會再shift 一百點
+我又可以得到一個等等等等
+對不對那它說呢你如果是這樣的話我其實當這上面有noise 的時候
+當我這個不管是convolutional 還是additive 我這個noise 加在這上面把它破壞了的話呢
+就是把這個東西破壞了嘛
+這個東西破壞了嘛
+那我其實我也可以把譬如說這個c one 看成是一個signal
+c two 看成是一個signal
+於是呢我就會得到一個像這樣的
+譬如說這是c one 的m
+這個橫軸是m
+這m 其實是我這個frame 的index
+這是這個c one
+這是這個c one
+這是這個c one對不對
+同理呢我c two 我也可以得到一個
+c two 的m 
+那麼我可能是另外一個樣子的
+這個是這是c two
+這是下一個c two
+這是下一個c two 等等
+那麼因此呢我把這裡的我我我何必還要去看上面的noise 呢
+我就看這個的就好了嘛我這樣總共有三十九個signal 在這裡
+或者說我有十三個signal
+對不對我有十三個signal
+那每一個呢它其實變化地很慢
+因為我這個是一百點
+假設我每一百點取一個window 的話
+我每一百點才會有一個點嘛
+所以這個變化的很慢的c one c two
+那我其實是在用這這堆東西在做recognition 嘛
+那你可以想像如果這上面有noise
+把這個破壞就是把這個破壞嘛你可以想像其實是這上面是有noise 嘛
+是這上面是有noise 嘛
+既然是這上面有noise 我可以在這上面做filter
+想辦法filter 這上面的noise
+那這就是所謂temporal filtering 的意思嗯
+那麼他們稱之為temporal filtering 就是說
+每一個component 在你的那個m f c c 那裡面
+當成是一個signal
+或者是它的time trajectory
+它的paper 裡面有的時候叫作temporal filtering 他們稱之為這個time trajectory
+當著time index 就是frame number progress
+我現在這個這個這是frame number
+每一個frame 每其實這每一個frame 相當於這邊一百點你如果是shift 一百點的話
+所以我每一個frame 才有一個點
+所以這邊的data 量比那邊少很多
+這個data 量少很多
+而且這個data 是真正的我的拿來做辨識的的參數
+所以這是重要的東西
+我在這上面做就好了
+我不要去搞那個
+這上面noise 太複雜了
+我搞最上面的noise 
+那如果是這樣的話呢
+我也可以把這個看做成是signal
+我也一樣可以做fourier transform
+那這個時候我所得到的東西呢
+它也有這種它的spectrum
+不過這個frequency 會很低頻
+因為我變得很慢嘛
+我我我上面是因為這個變化很快嘛
+我這個sample 很多變化很快所以我變成一個很多高頻的東西
+我現在是每一百點才有一個點啦
+所以變化很慢所以我這個頻率很低
+所以這是另外一種spectrum 
+跟這個是不一樣的
+是這種很慢的signal 
+就它的這些個m f c c 的參數的frequency 的domain 
+那那個是什麼呢
+叫作modulation frequency
+也就是說就是我們剛講就是說你現在是把每一個feature 每一個m f c c 的coefficient
+把每一個m f c c 的coefficient 看成是一個這個看成是一個signal
+或者time trajectory 
+然後呢那這個signal 我也可以做fourier transform
+得到它的frequency domain
+這個domain 呢這邊的frequency 呢我們跟這種是不一樣的
+跟這種是不一樣的這是另外一種frequency
+那我們稱為modulation frequency
+filtering 
+因為這上面的noise 其實就是破壞了這些值
+那我就在這上面在這裡做做filtering
+我就看在這個上面怎麼做filtering 我在這邊看它這邊長得怎樣
+我在這上面做filter
+那做怎麼樣的filter 呢
+這個是最早的一個想法
+當時發明這個的人他他說他做一個這樣filter
+那這個filter 這個filter 是寫成z transform 的寫法
+所以各位之中如果你對z transform 很熟的你就知道這是一個filter
+那你不熟的話你也沒關係
+你就知道我們是做一個filter
+那這個filter 長怎樣呢
+這樣的
+那你會看到這個橫軸就是modulation frequency
+也就是我是在這個frequency 上面去做filter
+不是這裡
+不是這裡我是在這裡做filter
+我就是要filter 這上面的noise
+然後呢你看它這個因為是很低頻的東西
+不像那個很高頻喔這很低頻的你看最大的這個是十個hertz
+這也是十個hertz 這裡是一百個hertz
+這裡是一個hertz
+所以呢他設計了一個這樣的filter 之後呢
+大概只有在一個一個hertz 或者零點五個hertz
+到十個hertz 左右
+是pass band
+讓這個讓這堆frequency 通過
+超過十個hertz 以上就把它濾掉
+同樣的低於零點五hertz 也把它濾掉了
+他的理由是什麼呢他說這個就是我們的typical rate of change of the vocal tract shape
+就你說話的時候我們嘴巴不會亂動啊
+你我你你每一秒你你所謂十個hertz 什麼意思
+十個hertz 就是一秒鐘變十次嘛
+我一秒鐘如果有十個cycle 就是十個hertz 嘛
+那你想我們其實人人說話你嘴你人說話是靠嘴巴動嘛你嘴巴不可能動那麼快啊
+你最快譬如說一秒鐘動十次吧
+如果一秒鐘動十次你也可以想像好比是一秒鐘講十個phone
+這是那種連珠砲的像張小燕那種的人她才會一秒鐘講十個phone 嘛啊
+那所以呢十十十這個十個hertz 就夠了嘛
+那超過十個hertz 以上的
+應該就不是人講話的聲音了
+那就把它濾掉嘛
+那就是noise
+同樣呢你如果在零點五hertz 以下的話
+那變成說你兩秒才發一個音
+那大概也已也已經不是人講的啦
+那那大概也是個noise 會把它濾掉啊
+喔
+所以他這是一個非常直覺的一個想法
+就是我去這樣的設計一個filter
+讓它呢大概在這個範圍之內譬如說在零點五hertz 到一個hertz 之間
+這邊大概到十個herz 這邊這一段是它的pass band
+然後呢再高頻的假設就不是人講的嘛
+再低頻也不是人講的那這些都是都是noise 嘛
+所以我至少這邊都可以濾掉嘛
+那我他這一段的frequency 基本假設就是typical range of change of vocal tract shape
+我們的嘴巴最多只能動那麼快嘛
+ok
+所以呢他就說因此我假設
+那麼其它的更高的頻或者更低頻呢就是我的noise
+於是我就設計這樣一個filter
+那這樣的filter 呢同樣呢apply 對每一個signal 都一樣啊
+它這邊我這邊畫的所畫就是跟我這邊畫的是一樣的意思啦
+就是我現在的每一個
+這是c one 的signal c two 的signal 到c 十三這十三個這十三維
+我分別都當成是一個signal 都通過一個filter 
+啊
+我都通過一個filter
+然後得到一個新的
+那這樣把這邊高頻跟低頻弄掉了
+所以呢它等於是一個特別design 的temporal filter
+把這個time trajectory 上面的這個noise 濾掉
+那這樣做之後欸turns out 效果是有進步啊
+結果這個這樣做之後呢我確實我就把我feature 變得比較好
+那這個真的做是怎麼做
+這一類的feature based 做法都是你要training 跟testing 一起做
+也就是說你你現在會變得怎樣
+我本來的training data 我就做這件事
+我training data 裡面的那些個filter 的的那些的m f c c 我就做了一次剛才講的那個filtering
+然後呢我的testing data 我也一樣做了那個
+我當這兩邊都做了都做了這個時候它們就比較match 了
+因為我的training data 跟新進來的recognition 要的聲音呢我這兩者的m f c c 我都做了這一步的動作
+我都做了這一步動作都把它濾掉了
+啊
+因此它們比較match
+而那些noise 都清掉了啊
+那這樣的話呢它們效果欸是不錯啊
+那這個是所謂的rasta
+其實這個名子很奇怪因為它原這個全文是relative spectrum
+那他就把這個很難拼嘛他就就隨便抓幾個字母就變成這個叫做rasta
+不過因為這個這是他發明的所以他的paper 這樣寫
+所以呢這個就是rasta 的基本想法就是這樣子
+那詳細的我就不講了
+那麼為什麼是這個他有他的道理
+那他有一堆方法做出這些值來等等
+那你這個如果有興趣的話
+這個原始paper 是我上面的下一篇
+第五篇啊rasta processing of speech 的這一個呢就是他當時的作法

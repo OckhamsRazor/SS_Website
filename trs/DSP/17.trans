@@ -1,0 +1,311 @@
+那麼再下來我們底下要要進入的呢
+是這個十七點零
+就是這個distributed speech recognition 
+我現在要要在整個的無線環境裡面做這件事了
+那麼這個時候呢
+喔哦對我剛才漏了我大概有提到一下
+就是這個這個dialogue 這裡面我講的內容大致上是根據這個第一個喔
+就是這本書的第十十七章
+這個是大概講得算是大家所公認的dialogue 的核心的東西大概是這些
+我們基本上以這個這個為主
+那那事實上我剛剛講過就是每一個單位做的每一個dialogue 系統他們都有他們自己那一套
+那麼不太有一個共同的這個學理基礎或是什麼啊
+那你去看每篇paper 都很有一套都講得很有道理
+啊底下這些reference 大概是那樣的東西
+那這個都可以參考
+那其實你如果看近這邊是比較早早一點的
+你近一點的還有更多
+只是說每一種我們也不能講那個就是可以做為很好的基本架構
+因為每一套每一家都不太一樣
+好那麼關於這個這個這個distributed speech recognition 跟wireless 
+呢我們現在就是要把這個wireless 環境放進來
+換句話說這是我們在二點零的時候所畫的圖
+一個recognition 有這麼複雜
+從front end processing 
+到這個acoustic model language model 然後辭典然後這個再做search 
+這麼多東西
+你真的都能夠放在手機裡面嗎
+當然不一定
+但是呢不放在手機裡面也沒關係
+通常我們可以把這個東西拆開來
+拆成一小塊放在手機裡面
+然後另外一大塊呢放在server 裡面
+因為你絕大多多數要做的事情其實是要跟server 幹嘛幹麻
+你是要跟sever communicate 
+所以那你何不把這些複雜的東西都放在server 裡面去
+那user 只要做一些手機上只要做一些簡單的東西就好了
+譬如說我在在做的front end processing 
+就是判斷一下哪裡是speech 哪裡是noise 
+然後把m f c c 求出來
+那些m f c c 呢就變成feature vector 
+我就把它裝裝在pocket 裡面送到server 去
+那後面所有事情都讓server 做
+像這類的想法
+那這就是我們講的所謂的這個把speech recognition 呢把它partition 
+拆成兩半
+分分別放在client 跟server 裡面
+就變成client server 的架構
+那這樣好處當然就是說我的這個client 的負擔很輕
+反正事情都在那裡做
+但有個很大的壞處你可以想像就是我把整個的wireless network 包到我的系統裡面來了
+這裡等於是說把整個的wireless 塞到這中間
+所以呢我的系統裡包括整個的wireless 
+而wireless 有一堆wireless 問題
+譬如說它有error 
+它的pocket 會丟掉
+它的bandwidth 問題等等那堆問題就都跑進來了
+那這個就是distributed speech recognition 所要考慮的問題
+我必需考慮到這裡面的問題
+但它的好處是我可以有非常多的user 
+共用相同的server 
+那為了得到這一點我們就要就有不同的做法來做這些事情
+ok 我們進入最後這一段
+那麼我們說這個distribute distribute speech ecognition 的目的是要把recognition 拆成一半
+拆成二半然後把它放到wireless 網路裡面去
+那這最大的問題就是我們把wireless 包到裡面來了
+變成為變成為這個這個把wireless 包到我們系統裡面了
+所以呢wireless 問題都跑進來
+那基本上有什麼問題呢
+就是wireless bandwidth 非常有限
+所以它的它能夠送的bit rate 非常有限
+然後它可能也是隨時變化的
+它有很多error 
+然後呢它的這個甚至於還是birth error 
+所以一堆error 在一起
+那都造成recognition 的問題
+那為了克服這個問題怎麼做法呢
+基本上開始想的問題有這三種
+就是所謂client only client server 跟server only 
+所謂client only 是說呢我就把everything 都放在sever ㄜclient 這端
+我把從feature feature extraction 到recognition 
+全部都放在我的手機上面或者放在我的p d a 裡面
+那是有人這樣子做的
+那他那個p d a 裡面就可以辨識所有東西啊等等等等
+然後呢我辨識完之後才變成辨識結果變成這個零跟一送出去
+那這樣的好處最明顯的好處就是我的speech recognition 會變成independent of wireless 
+因為wireless 的後面的是
+我recognition 在這裡面完成了所以呢我可以完全自己掌握
+不受wireless 的影響
+我的recognition 完全不受wireless 影響這是它的好處
+可是當然有個明顯的壞處
+就是說我的limitation by computation requirements for handheld device 
+你這個手機或者p d a 它的memory 它的計算量都是有限的
+因此你必需要把你的recognition 去配合那個
+通常它要把language model 切的很小
+它要把辭典收小
+它要把什麼東西search space 變小才可以做等等喔
+比較麻煩
+這是它明顯的一個麻煩
+所以呢我雖然全部都在client 上做
+好處是很明顯的
+但是呢它有它的麻煩
+那比較多的人想的是這個就client server model 
+就是我們剛才說的我把它切成二半
+我feature extraction 在這裡做
+這個m f c c 抽出來之後
+我就把這些m f c c 呢想辦法做compression 
+變成一堆零跟一
+就塞到那個package 裡面去
+是透過wireless 
+到了終端那邊就是server 呢
+才來我的feature 把feature recovery 回來那裡之後我來那裡做recognition 
+application 都在那裡做
+那這樣子的話呢我就一半在client 
+一小半就是feature extraction 在client 
+大部分的recognition 在server 
+明顯的好處是我把它的computation requirement 切成兩半
+那這部份小適合放在client 
+這部份大適合放在server 
+而且呢我省了很多bandwidth 
+因為我把feature 抽出來之後m f c c 我可以做compression 剩下很好的bits 來傳送
+所以我省了很多bandwidth 或者bit rate 的空間
+但是它有一個最大的問題就是跟已有的手機的電話不相容
+也就是說你今天的手機電話
+沒有裡面沒有幫你充m f c c 阿
+那那它們是抽另完一堆的feature 
+那你知道我們的這個我們打電話的時候我們也是一樣從聲音裡面抽一堆feature 然後拿去傳送
+但是我們那種feature 是所謂這個perceptual efficient 
+我們打電話的時候所抽的feature 是為了聽的方便
+所以呢你是抽那些feature 之後我可以recover 成為一些聲音
+那些聲音其實已經跟原意差很多了
+但是我聽起來還很像
+所以呢所以呢這個這個喔我們平常的打電話所用的是這種feature 
+那m f c c 不是的
+m f c c 是for recognition purpose 
+就是說做recognition 的時候很適合
+可是呢它並不是並不是perceptual 的efficient 
+所以你如果是這個你今天的手機裡面打電話的時候
+手機它也把聲音抽feature 
+它抽的是另外一堆feature 
+那堆feature 呢它們解回來的聲音跟原音不像但是聽起來像
+那麼那那因此呢跟我們要的m f c c 是不一樣的
+所以呢你要這樣做的話呢除非你可以想像我的手機得要有二個二個抽二種feature 
+難道說我打電話的時候用這種
+然後我如果是上網去幹嘛用語音輸入又是另外一種嗎
+啊那這是一個很大的問題
+所以呢基本上就是說跟跟現有的手機的電話並不相容
+你除非你現有的手機通話你得要有二套
+上網用語音上網去辨識的時候是另外一套
+打電話是這一套什麼什麼的很麻煩
+那這裡面有一個最大的問題就是說呢
+m f c c 是並不能夠recover 成為原來的語音的
+m f c c 只是為了辨識好
+所以呢m f c c 有沒有辦法恢復成為原來的聲音聽起來像的呢
+基本上是不容易做
+那麼到了最近幾年人家很努力所以有人做出比較像的
+那你也不是完全用m f c c 來做
+而是另外先求pitch 
+你如果pitch 也求出來也一起送過去的話呢
+m f c c 再加上pitch 是有辦法recover 到跟原音比較像的
+於是有人說那這樣子的話那我們就把這個手機現在在用的那套不要了
+啊我們就都用m f c c 
+那麼於是呢這個都用m f c c 的話呢
+那打電話的人也用m f c c 然後他到那端他用pitch 來recover 成原來的聲音
+還是可以聽
+但問題是人家手機公司不願意這樣做啊
+人家手機每年每年年產量已經幾億台幾億支
+那人家裡面的晶片人家不是做這個
+人家不用m f c c 啊喔
+所以就是基本上有這個問題就是不相容
+那為了要相容呢就有人想另外一招就是server only 
+那我就用現成的手機
+這就是現成的手機就好了
+那就用他們這種perceptually efficient 的的feature 抽出來
+就用他們的手機的網路傳
+只是到了接收端呢我再把它解回來
+這個時候你打打手機電話的人就這樣子去聽啊
+聽起來就跟原音很像
+可是我們如果拿那個解回來的聲音再來抽feature 
+再做recognition 的話呢
+這個問題就是我的正確率變得很差
+那原因就是我們剛才講過
+我們打手機的電話的時候它抽的feature 是另外一堆feature 
+那堆feature 可以解回原來的聲音
+你在接收端是可以解回原來的聲音
+你用耳朵聽起來是很像的
+可是只是耳朵聽起來像而已它其實跟原音差很多了
+所以你拿那個去求m f c c 的話
+做recognition 正確率差很多
+那你不然怎麼辦呢那我就另外一個辦法我想辦法從這種feature 裡我能不能抽出m f c c 出來
+這是有人在想的問題
+就這邊講我要找出recognition efficient 的feature 
+從perceptually efficient feature 裡面找出來
+也就是說你你現在傳的是這些feature 
+那你這些feature 裡面能不能對應到m f c c 
+能不能找出這個對應關係
+如果可以的話
+我就直接從這個找出m f c c 出來然後recognition 
+那麼問題是到目前為止這個並沒有非常好的答案就是了
+那這樣不管怎樣它的好處就是跟手機電話完全相容嘛
+所以任何人買它的手機就可以用嘛
+那只是我接我的server 要做一些手腳嘛
+那問題是這個怎麼能夠做的好
+所以這是所謂server only 我都在server 做
+那這個就是一般人用手機
+一般人用的手機網路就好了
+那所以呢這有這三種做法
+那今天來講大部分的努力是大部分的研究是這種最多
+這種也有一些啊
+這二種大概都有就是了
+那不過這種多一點
+就這種而言這client server 的怎麼辦
+你你的m f c c 怎麼做compression 呢
+那最常用的就是底下這張圖就是所謂的split vector quantization 
+你譬如說我們有十三個m f c c 
+我這十三個m f c c 可能包括一個energy 
+那我就兩兩做一個v q 兩兩做一個v q 
+於是我就可以得到分別去有optimize bit allocation 
+譬如說這個比較重要我給它八個bit 
+做一個八個bit v q 
+這個呢我做七個bit 七個bit v q 
+這個做六個bit v q 這個做五個bit v q 等等
+那你因為兩兩的v q 是只有兩個
+是很容易做計算量很少
+在手機就直接做這個v q 是很容易做的
+而這樣一來這個八個bit 這個七個bit 什麼什麼的話我這個bit 數目可以變得很少
+所以呢我在傳送的時候我把這些v q 的參數再放到packet 裡面去傳送
+那我的error 也很少喔
+那麼需要的bit rate 也很少
+所以這個是今天多數做這個領域的人所用的方法
+所謂的split 意思就是說我不是這十三個一起做一個v q 
+你也可以十三個一起做一個v q 啦不過如果十三個一起做一個v q 的話你計算量就很大了
+那個v q 就會計算量很大
+這樣你拆成很多小的話呢
+就是所謂split v q 
+你就是這樣的話你每個計算量都很小
+那這個是這個喔最常用的辦法
+然後呢你要想辦去做error protection 
+因為這些東西錯的話麻煩就比較大了
+你想辦法做error protection 就是你在你把這些bit 放到packet 裡面去的時候
+你要加各種的error control 的方法
+那麼你可以想像你不同的bit 
+重要性可能不同
+有的可能比較重要有的可能不重要
+所以呢你最好是讓它不同的參數
+有不同的或者不同的bits 給它不同的error 這個correction 或detection 的方法
+那讓它比較重要的bit 可以保護得很好阿
+然後比較不重要的bit 我就比較隨便一點
+那然後呢阿很重要一個問題你還是一樣要跟現有的無線網路的平台相容嘛
+就是你不能自己做一個說我怎麼怎麼怎麼做
+那人家現在的無線網路人家根本不做這件事的話
+你塞不進去嘛
+所以呢這都是跟現這個是engineering problem 
+就是說你必需跟很很所有的現有的平台要能夠相容塞得進去
+那還有一點就是說呢你你不要把它想得這個全部都錯的
+那我今天如果是這個錯的話
+我也許只要想辦法再再我如果做error detection 
+知道是這個錯
+別的都還是對的
+那我只有處理這個錯就好
+等等這就是你如果能夠知道error 發生在哪裡
+那是最好的
+那然後呢這個另外一招就是所謂error concealment 
+就是你怎麼樣子你知道它錯了你怎麼樣把它補回來
+你把它補回來然後做一個很像的貼上去
+看起來好像沒有錯一樣
+這所謂error concealment 
+那一個最簡單的辦法這是講裡面最簡單的辦法就是說外插法啦
+外插法就是說我今天有假設我現在有這一個一個的feature 
+feature vector 
+這樣子送過來
+這是t 
+t 加一t 加二等等
+這是一堆一堆feature 
+我今天如果發現這個錯掉了怎麼辦
+我如果這個錯掉的話呢那我可以拿前面這個你可以想前面這個可能跟它最像
+所以拿前面這個去
+然後呢前面這幾個可能也都比較像
+光用這一個也許不太可靠這裡面也許也有錯啊
+所以我就拿前面這幾個喔
+所以像這個case 就是說我拿t 減k t 等於一到l 
+我就拿前面的l 個
+做一個平均
+然後呢那畢竟還是最近這個最可能嘛
+所以我就用跟最近的t 減一這個
+來做一個interpolation 
+所以這個乘上beta 這個乘上一減beta 
+那這樣的話呢拿拿這個跟拿這堆一起做個interpolation 之後呢
+來取代這個
+那這是一個很簡單的做法
+當然效果不見得很好
+那當然你也可以做內插的
+這是外插這是內插
+內插就是說你也可以拿後面的嘛
+你如果可以把後面這些東西也弄進來幾個
+然後呢一起做
+那這個就是所謂內插
+那你也可以用別的方法等等
+那最好就是說你不要當成這整個vector 都錯了
+不要都當成這整個都錯了
+而是這個如果你知道是這個錯
+你知道是這個錯我別的就都算對
+我別的都算對
+我只是這個用這個跟這個對不對
+喔我只是用這個來算這個
+那別的我都知道是對的話是最好
+但是當然這個就你要用更多的error control 的bits 放在裡面才知道說是這個錯別的是對
+那那這個就是最基本的想法
+那當然你真的詳細做有很多學問就是你怎麼樣去管這個error 
+你從頭從頭就開始怎麼樣處理到最後
+然後怎麼樣讓這個error 的效果能最小等等
+我想我們就不多說下去了

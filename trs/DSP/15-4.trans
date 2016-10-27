@@ -1,0 +1,206 @@
+那這個一個更清楚的圖呢就是底下這張圖講的
+那這張圖所說的事情呢
+那啊其實我現在畫成橫的了
+不過意思跟剛才是一樣的
+這個linear spectrum domain
+哦我這邊是分成三段
+右邊這個linear spectrum domain 就是剛才的上面這裡
+然後中間的log spectrum domain
+就是剛才的中間這裡
+然後呢左邊的cepstral domain 呢
+就是就是剛在的這裡
+那麼因此呢我們剛才講說你要你要把它一路這樣轉回來轉到這邊來相加再transform 回來
+那在我們這邊這張圖的話就一路這樣過去
+在這邊相加再一路transform 回來
+那這個情形其實講的跟剛才是一樣的
+不過這邊稍微再再detail 一點
+那你就知道這個關係其實不是那麼簡單
+那舉例來講呢
+我們剛才這是一個簡單的示意圖
+我們說喔ok 你如果這邊在log spectrum domain
+做一個cosine transform 變成cepstral domain
+或者這邊做一個inverse cosine transform 變成這個domain
+這個所謂cosine 跟inverse cosine tansform 真正的做的時候
+是這個式子
+那麼你真正要做的是它的每一個mean 跟covariance 
+也就是說我的譬如說ㄚ的model
+裡面的每ㄚ的model 每一個state
+每一個state 裡面的每一個mean
+它有它的mean 跟它的covariance
+那這個mean 跟這個covariance 怎麼轉
+那這個mean 呢就是在我右上角寫一個c 表示是在這個cepstral domain
+就是m f c c 的就是這些個clean speech 的hidden markov model
+這些clean speech 的hidden markov model 上面那些m f c c 的以m f c c 為單位的mean 跟variance
+你要怎麼轉到log spectrum domain 來
+其實是做一個這樣子的東西
+那這裡的c 是我們把cosine transform
+寫成一個matrix 相乘
+然後呢那其實是一個inverse 的那個matrix
+你這樣呢可以把這個mean 轉到這個mean 來
+那covariance 轉得更複雜是左邊右邊各乘一個這個cosine transform 的那個matrix
+一個是有transpose 你要這樣子做的話呢你可以轉到這個來
+那麼因此呢這個意思是說你原來train 好的這個ㄚ還是ㄧ還是ㄨ
+裡面的這些個mean
+用這個方式把它轉到這邊來
+轉到這個log spectrum domain
+然後covariance 轉過來
+之後再進一步你要轉回到linear domain 的時候還要更複雜
+那這個這個其實就是我們剛才的那個那個那個exponential 跟log
+這邊寫的很簡單喔我這個只是取一個log
+這邊取一個exponential
+其實不是
+你如果仔細去分析那個數學的話
+是這個詳細數學我們這邊不講啊
+不過你你你去看的話你去看reference 就知道了啊
+那麼其實是蠻複雜的
+你這個是log spectrum domain 的mean 跟covariance 
+那你要變成linear spectrum domain
+那其實呢是嗯有更複雜這裡表示是我的mean 的第i 個component
+那這是表示這個covariance matrix 第i j 個element
+那我要做這樣子的這裡面是有exponential
+但是這個exponential 遠比我們的剛才講得複雜嘛
+我們這邊好像就是做個exponential 就可以過來
+其實不是這樣
+那是要這樣子的數學式子
+那你這樣得到linear spectrum domain 的mean 跟covariance
+那我的因此呢我原來train 好的clean speech 的model
+我不是直直接用它
+我經過這兩個transformation 之後
+變成linear spectrum domain
+其實我存在我的recognizer 裡面的model
+是這個model
+是這個model 因此我隨時可以把noise 加進來
+那麼因此呢我我原來做recognition 的時候
+我所有的這些model
+我就是存m f c c
+但是我現在不是
+我現在是經過兩次的transformation 就是這邊講的這兩次transformation
+把它變成另外一種東西
+那我現在這上面的這個mean 跟covariance 呢
+是用是用這個東西來存的
+我存起來是在linear spectrum domain 來存的
+我存的是這些model
+而不是這個model
+當我存的是這個model 的時候呢
+這個domain 跟noise 是可以直接additive 可以相加的
+所以呢我現在如果現場抽了這個noise 的話呢
+我把這個noise 可以train 出我的model 來
+那也一樣這個model 裡面有mean 跟covariance
+那所以呢這個是我的clean speech 的model 的mean 跟covariance
+這是我的noise 的mean 跟covariance
+ok 所以這是noise 的h hidden markov model
+我現在clean speech 我都以這種方式來存
+所以這個是linear spectrum domain
+這個是linear spectrum domain 所以可以相加
+然後我這邊所train 出來的model
+我也這個noise model 我也以這個domain 求出來
+所以呢這兩個我都在這裡
+所以可以用相加的
+那因此我的mean 呢就是把clean speech 的mean 加上noise 的mean
+covariance 就是clean speech 的covariance
+加上noise 的covariance
+那這邊你可以調一個參數就是g
+你要讓你的noise 多大
+那其實這個g 也是可以根據這個來來調的嘛
+就是說你可以算這中間的s n ratio
+你第一次可能比較難啦因第一次你不曉得我聲音多大
+但在這裡的時候你就可以算兩個的s n ratio
+就是這個這個這裡的noise 有多大
+然後我的speech 的聲音大概有多大
+你可以去根據這兩個的ratio
+來求這個g 值
+當你把這個g 做好之後
+你就得到這個model 這個這兩個加在一起的mean 跟covariance
+那到這個時候我等於把這裡面的每一個mean 跟covariance 都把noise 加進去了
+於是呢我現在一路轉回去
+我真正的recognition 要在這裡做嘛
+我們recognition 必須是m f c c 的嘛
+所以我一路再轉回去
+那這個process 跟這個就是它的inverse 啊
+那因為這個數學式比較複雜所以你看起來就好像複雜其實是一樣的嘛
+你很容易看舉例來講像
+像底下的這個式子就是上面這個式子的inverse
+所以呢你要先把它除以mu i mu j 對不對
+然後再加一這邊是減一嘛
+然後再取log
+於是就得到新的嘛
+等等所以這個式子就是它的inverse
+這個式子就是它的inverse 等等
+所以你加好後之後再一路轉回來
+那這個是它的inverse 這個是它的inverse
+那麼因此呢這樣一路回來之後你再辨識
+這個是這個p m  c 的基本精神是這麼做的
+那當然這個這個這個數學蠻複雜的
+所以呢從這邊走到這邊
+你要real time 的一抽出來馬上train 出來一路做這麼多事
+其實是不大容易的
+所以這原始一九九五年那個年代他們做的時候
+中間做了很多assumption 跟approximation
+也就是做一些假設之後我讓這個數學簡化一點我才能夠real time 一起來做
+但是既使經過了一堆assumption
+把它做一堆approximation 之後
+這個效果是不錯的嗯
+這個其實中間我們都做過的所以我們都知道
+我們做過的這樣子起來的話呢
+你確實可以當場抓一堆noise
+然後呢你經過你的transformation 之後
+你在這邊把它組合
+然後再回來啊
+所以呢那那就是我們剛才講的就是你你真正的那些聲音的的這個這個clean speech 所train 的那些model
+你並不以m f c c 的方式存在那裡
+而是你一路轉回來
+以這個linear spectrum domain 的的的以這些單位存在那裡
+然後我隨時加noise
+隨時過來在這邊做recognition
+那這個也就是我們之前這張圖的意思
+就是說你train 好的clean speech
+你不這個是在cepstral domain
+你要經過這就是嗯inverse cosine transform 這是exponential
+經過這兩個
+我要transform 到這個linear spectrum domain
+在這邊你才可以跟它做combination
+那我的noise 直接在這邊求出來就好了
+noise 不必到這來
+noise 直接在這邊做
+啊那你直接在這邊做combination 之後再轉回來啊
+所以這張圖所畫的
+其實就是剛才這張圖的簡化嘛
+啊就你在這邊做noise 然後跟它做結合之後再轉回來
+在這邊做辨識嘛
+那也就是我們這邊所講的意思
+那麼也就是說呢你的這個因為你的這個recognition 你必須是cepstral domain
+可是呢noise 跟signal 是additive 在哪個domain
+linear spectrum domain 你才可以說它們是additive
+而不是在cepstral domain
+所以你必須把它們都transform 回到這個domain
+然後去去相加
+那麼通常我們就是調這兩個東西
+就是mean 跟covariance
+mean 跟也就是也就是這邊的這兩個
+這兩個mean 跟covariance 我們可以調啊
+就把這個noise 都加進去
+那因此我用的就是一個noise model
+跟clean speech model
+這個嗯在在那個年代的時候一直有一個很大的疑問
+我到底要train model 的時候到底要乾淨的聲音來train 還是用noise 的聲音來train
+因為你如果用noise 聲音來train 的話
+好像跟noise 比較接近比較match
+但是在這個方法而言不是的
+我是用用乾淨的聲音來train
+因為我有了乾淨的聲音來train 之後
+我可以加任何一種noise
+我現場抽任何一種noise 加進來都可以
+就可以得到任何一種noise 環境之下
+那這是一個非常typical 的example 就是我們講的model based approach的做法
+那這個的我想這個的啊這個都已經講過了嘛啊
+它喔就我剛剛講的他用了一堆assumption 跟一堆approximation
+來簡化中間的數學
+然後使得我的這個整個process 可以real time 來操作
+那這個就是所謂的parallel model combination
+那詳細的內容
+我想這是相當這算是相當經典的一個作品
+雖然今天來講已經有很多方法比它好了
+不過這個是相當值得學習的一個很好的想法
+這個的的原始paper 是這一篇啊
+我這個二的reference 就是在講在講這個
+好那這個是model based 的第一個example

@@ -1,0 +1,68 @@
+底下這個圖是講一下他們通常用的architecture 
+這裡兩個例子這個是所謂的galaxy 
+galaxy 是m i t 所提出來的那一套
+那這個也有個中文名字叫做銀河
+因為他們的那個galaxy 有中文版就是銀河
+那基本上這個galaxy 
+那這個是a t n t 的這個版本
+galaxy 基本上你可以看到它就是用一堆server 
+那它把server 分成兩類
+一類叫做human language technology server 
+這個是domain independent 
+這個做recognition 
+這個做understanding 
+喔這個是nature language understanding 這個是task with speech 合成的
+這些東西呢是independence of task domain 
+那另外呢有一堆是domain server 
+是針對domain 的
+譬如說買飛機票的這是一個domain 
+問餐館的這是一個domain 
+問氣象這是一個domain 等等等等
+那麼於是呢你對每一個domain server 
+針對某一個task 
+提供所有東西給它讓它去做這個
+舉例來講你如果買飛機票的話
+你要把city name 你要把航空公司的名稱給它放在它的辭典裡面
+於是你就用這個做辨識的時候呢
+就就會辨識你要的這些東西
+那同樣的呢
+那麼如果這個時候系統要跟user 說什麼樣的航班什麼
+那些東西我給了這個t t s 
+他就可以講航班等等
+那這樣明顯的一個好處就是說你把它分成domain dependent 跟domain independent server 
+那如果是這樣的話呢
+那麼我現在增加新的domain 
+可能這邊都可以用相同的東西
+只是針對那個domain 我有新的辭典
+我有新的language model 喔等等
+那於是在那個domain 裡面我就用那套這樣子
+那這個是它的基本的這個精神
+那當然user 在這端
+透過網路它不管是用電話p d a 什麼什麼都可以
+等等那這樣做的話我可以有比較高的portability 去different task 
+所謂portability 就是我做好一個買飛機票的dialogue 之後
+我能不能把它很快把它轉成問天氣的
+我能不能很快把它很快轉成問一個city 裡面的tour 等等
+那這個轉把一個task 做好之後轉到另一個task 去的
+這是所謂的portability 
+那越難轉就是越不portable 
+ㄜ那麼你把它拆開來之後是比較容易portable 
+那這個也是今天的dialogue 仍然存在的問題就是
+絕大多數的dialogue 系統都不是那麼portable 
+你它如果是在city 裡面問問路的話
+你要把它變成問天氣是很難的
+所以呢你要要port 到另一個去
+結果你每次都要重做一個那是很累的
+所以這仍然是今天一個很重要的問題如何解決
+右邊這個圖是a t n t 的其實它你仔細看它的精神是很像的
+他們只是每一個單位都喜歡有一個自己的就是了
+像他這邊的這一堆像a s r 的server t t s server 就是這個嘛
+一樣的嘛
+就是每一個他有一個server 
+然後呢他的server 這邊有一個所謂server provider 的這個interface 
+然後這邊有user 他user 在上面就是這邊這邊了
+user 在上面
+於是就有user 的a p i 
+於是中間把它兜起來等等等等
+所以這個跟這個其實觀念是很像的
+好關於這個dialogue 我們說到這裡

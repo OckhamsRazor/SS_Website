@@ -1,0 +1,23 @@
+body{
+	background: white;
+}
+h1 {
+	text-indent: 5px;
+	font: italic small-caps bold 2.2em Times New Roman, sans-serif; 
+}
+img {
+	float: right;
+	border-top: 1px silver solid;
+	border-bottom: 2px gray solid;
+	border-left: 1px silver solid;
+	border-right: 2px gray solid;
+	padding: 1px;
+}
+li {
+	clear: left;
+}
+a {
+	float: left;
+	margin-left: 3px;
+	margin-right: 5px;
+}

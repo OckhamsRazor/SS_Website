@@ -1,0 +1,236 @@
+好這一段講完我們再要講第二件事情就是怎麼樣找這些個 feature
+那麼怎麼樣算這個 feature 我們之前大概說了一下就是我可以把
+我用一個在移動的 window 那麼不斷取一段
+譬如說兩百五十六兩百五十六點來算一個 feature
+譬如說這個是 signal
+我拿這一段譬如說兩百五十六點
+我算出一個 feature 來
+就是一系列的 feature  vector
+我們說三十九個我叫做 O  one
+那麼待會兒我再 shift 多少得到第二個我得到一個叫做 O  two 等等
+那麼我們現在來講的是這怎麼做
+怎麼樣 given 這兩百五十六點或五百一十二點我怎麼算這個東西
+那這這就是我們所謂的 Front  end  Signal  Processing 就是最前端的做這件事情
+然後呢就是我們所謂的 Feature  Extraction 抽這個 feature
+這裡面要做的第一件事情就是所謂的 Pre  emphasis
+喔要講這個東西呢我們就要說一下 time 跟 frequency 之間的關係
+那我假設多數人都知道都了解 time 跟 frequency 之間的關係
+但是也許有少數人並不見得 exactly 清楚所以我做一個非常簡單的解釋
+我們知道在時間軸上
+我們很習慣的在時間軸上來看一個 signal
+譬如說這個是這樣子的
+如果這個是 X  T 也好然後或者我在上面取 sample 就得到 X  N 也好
+這個是 X  N
+這是我們所謂的在時間軸上來呈現一個 signal 就是 time  domain 的
+representation
+那事實上還有另外一種 representation 方法呢是在 frequency 的軸上
+譬如說這個是 omega 這是 frequency
+所以我就有 frequency  domain 的 representation
+那在這上面的話呢我任何的一個點
+就像這上面任何的一個點代表某一個時間一樣
+這裡面任何一個點所代表的是一個 frequency 譬如說 omega  one 這是一個 frequency
+omega  two 代表另外一個 frequency
+那他是什麼意思呢 omega  one 所代表的是某一個
+譬如說 e 的 J  omega one T 的一個東西
+omega  two 的話所代表的是另外一個 e 的 J  omega  two  T 的這個東西
+那麼這些東西是什麼東西呢
+我們簡單的解釋就是在這上面也會有一個
+就像這上面會有一個一樣這上面也會有一個
+那麼我如果把這個叫做 X 的 omega  one
+就像這邊是譬如說這個是 T 的話這邊我有 X 的 T 是完全一樣的
+這個是 T  one 的話這邊有 X  T  one 嘛
+這邊如果 omega  one 我也有 X 的 omega  one
+那這個東西呢我可以寫成譬如說 E 的呃我可以寫成譬如說他通常是一個複數是一個 complex  number A  one  E 的 j  phy  one
+就是這個東西
+那麼這是什麼玩意兒
+那麼他有一個複數他是一個 complex  number 所以有一個 amplitude 有一個 phase
+你如果不容易想像他是什麼東西的話呢就把他跟他兜在一起他其實就是這個東西的 coefficient
+你就會得到譬如說 A  one  E 的 J  phy  one
+就是這個東西乘上 E 的 J  omega  one  T
+那麼這個東西
+就是這個 frequency
+就是這個這個 omega  one 代表的是這個 frequency E 的 J  omega  one  T 的這個東西
+那他的大小呢是他的 coefficient 呢是這個 A  one  E 的 J  phy  one
+你因此得到這個東西
+這是什麼東西呢一個最簡單的想法就是我取他的 real  part
+我如果取他的 real  part 的話就得到 A  one  cosine 的 omega  one  T 加上 phy  one
+噢你這樣這樣你就了解了他只不過是一個 cosine
+這個 cosine 的大小 A  one 就是剛才這邊的這個 A  one
+他的 phace  phy  one 就是這邊的 phy  one
+而他的 frequency  omega  one 就是這邊的 omega  one
+ok 那同理我這邊也會有另外一個譬如說是
+x 的 omega  two 在 omega  two 上面有 x 的 omega  two
+他呢是 A  two 他也是一個 complex  number 是這個東西
+那他其實跟這個兜在一起的話呢跟剛才一樣他所代表的呢是另外一個就是 A  two  cosine 的 omega  two  T 加上 phy  two 的一個這樣的 cosine
+那這個 cosine 的大小是在這裡他的 phase 是在這裡他的 frequency 是在這裡等等
+那麼於是呢我們真正可以做的事情是把它變成一個
+complex 的 representation
+我這邊的任何一點
+任何一個 omega 三上面也都有一個
+omega 四上面也有一個
+他分別其實是都像這個一樣都是代表某一個 cosine
+那麼於是呢我在這上面你可以想像成是一大把 cosine
+這是一個這是一大把 cosine
+呃這是一個 cosine
+這是一個 cosine
+這是一個 cosine 等等
+那每一個 cosine 的大小
+到底他的振幅有多大這個大小呢就由這個 A  one  A  two 決定了
+那麼這個 phy  one  phy  two 是什麼呢是他這個 cosine 的相對於時間 T 零的位置
+對不對你這個這個 cosine 後面這個的東西代表零在哪裡嘛
+那如果你這個值不同的話這是這個 cosine 是前後移動
+這個前後移動的位置是這個 phase
+然後它到底震動的有多快就是這個 frequency
+所以這三樣東西就決定了這這 cosine 裡面的三個參數這個大小它相對於零的位置以及它震動的多快
+那麼我可以把這個 signal 拆解成為這一大堆的 cosine
+那麼我這裡的每一點都代表一個 cosine 你把它加起來就是這一個
+ok 因此我有兩種 representation
+第一種是 time  domain  representation 我直接在 time 上來看每一個時間上它是有多少
+我也可以是一個 frequency  domain  representation
+那麼它是等於是說我在每一個 frequency 代表某一個 cosine 它的它的這個大小它的這個位置在哪裡
+那麼這些這些 cosine 加起來應該會等於那一個
+那這兩種 representation 之間的關係呢那就是我們所知道的所謂的 fourier  transform
+那麼也包括你如果修別的課你學到所謂的 fast  fourier  transform  F  F  T
+那我如果用程式來算通常是算這個東西那我有個快速演算法可以把這個算成這個這個算成這個呃那之間的關係就是這個
+好我們簡單解釋這個 time 跟 frequency 之間的關係是這樣那我這邊馬上就要用到這裡
+我們說我做第一件事情是所謂的 pre  emphasis
+這事情是幹麻的其實只是一個這樣的過程而已
+就是假設我原來的聲音這個叫做 X  pron 的 N 的話
+我做的第一件事情就是把它做一個這樣子的運算
+把 X  pron 的 N 變成 X 的 N
+什麼運算就是這邊的這一個式子
+很簡單的只是他減掉前一個然後乘上一個 A
+通常這一個 A 是一個非常接近於一比一小一點點的一個值譬如說零點九六或者零點九七這樣子的一個數字
+我這樣做之後得到了這個 A 那這個過程叫做 pre  emphasis
+那麼熟悉 Z 的人各位之中如果有人對於 Z  transform 很熟的話就知道這個關係就可以寫成這個 Z 的關係
+如果你不熟的話不知道也沒關係
+那也就是說這個呢我把它寫成 h  of  z
+這個 h  of  z 呢就是
+我這邊寫的一減掉 A 這個負一
+那其實這個 h  of  z 的這樣的意思其實就是底下這個式子的意思就是我做了這麼一個這個運算
+那如果你並不了解這個為什麼是這樣的話沒什麼關係我們這只是一個符號而已
+那麼這樣是幹什麼的
+那你如果熟悉 Z  TRANSFORM 的人就了解你可以分析出來說它其實就是把高頻拉高的意思
+那什麼意思呢就是我們剛才說我的我的 signal
+我 always 可以作經過這個 fourier  TRANSFORM 把它轉到 frequency  domain 來看
+看這個 frequency  domain 的 representation 來看每一個 frequency 的那個 cosine 長怎樣的話
+那麼我來做的時候
+我拿這個做剛才的那個 fourier  transform 我基本上會得到
+像這樣子的
+我的聲音基本上是越高頻的它就越低
+越到了高頻它就會一直掉下來它會一直掉下來
+因此呢越高頻的聲音基本上是越微弱我比較不容易分析出來那些東西
+因為這樣子的關係所以呢這個 pre  emphasis 一個很簡單的目的是把它重新拉高
+把這個地方呢把它拉上去
+讓他們這些高頻的部分都往上拉
+越是高頻掉的越多我就越拉的越多讓它基本上比較平一點
+這樣高頻的聲音也夠
+夠強到我可以分析的出來 ok 這個是 pre  emphasis 最基本的意思是這樣子解釋
+ya 不是
+很多很多很多聲音是很高頻但是很重要的譬如說嘶
+這是非常高頻的像雜訊一樣你講的也沒錯但是我們聲音裡面沙的 sh 撒的 s 都是非常高頻的
+ok 是很像你講的雜訊但是都是我們聲音很重要的部分 ok
+好那麼所以這個是講這個 pre  emphasis 的部分
+之後呢再下一件事要說的就是 End  point  Detection
+也就是說我們其實我們的聲音裡面
+充滿了沒有說話的部分
+當我講一句話的時候從某一個某一段時間開始講
+前面沒有講
+那麼你不要以為一定是這樣的乾乾淨淨的其實沒有講的部分呢它也一樣有東西這就是什麼呢就是剛才你講的雜訊
+那麼通常
+雜訊是 everywhere 都存在的它永遠有的當你有有聲音的時候其實雜訊是加在這上面
+但是當你沒有聲音的時候它也是有的
+因此就 computer 而言就你的那個 speech  processor 部分而言它怎麼知道哪裡是聲音哪裡是雜訊呢
+我們需要有辦法知道 ok 從這裡以後是有聲音之前都是雜訊那我盡可能不要把這些東西拿來算
+你可以想像如果我不知道這一步我沒有做這一步的話
+我會把一堆雜訊都拿來當成是某一個聲音我去辨識它是什麼聲音我可以辨識出來一堆東西不過那一堆東西是錯的那這樣會非常複雜所以我需要做這件事情把它切開
+切出來哪裡是真正聲音的 ENDPOINT
+或者說做這個這個我們叫做 SPEECH 這個我們叫做 silence  silence 不是真的 silence 是 noisy 的 silence
+所以呢我要做這個 speech 跟 silence 的 discrimination 所以我需要做這件事情
+那這個問題其實是很難的
+那麼但是用處是非常多的就以你今天
+打電話而言那你知道你跟你的跟你的朋友用手機通電話的時候
+你們兩個在講話其實是等於是
+用了兩個線等於是用了兩條線
+當你在說話的時候你的朋友在聽
+當你說完的時候他開始講話
+他講的時候你你是聽的
+除非你們兩個在吵架
+那麼否則的話呢
+他講完你再講
+所以其實你說話的時間只有這些
+他說話的時間只有這些
+基本上來講一個人說話的時間不到一半不到百分之五十
+那這些部分是什麼這些部分都是 silence 或者說都是 noisy
+那你如果有本領把它切出來的話那這些我都不要送
+我只傳這個我只傳這個這樣我才節省我的 bits  per  second
+我如果這些東西都當成是語音在那邊傳送的話我用了很多 bits 傳的都是 noise
+那這些這個所以這個是用途在很多地方都有用的東西
+問題是怎麼做這件事
+因為他根本跟我們的聲音是看起來是很像的這就是所謂的 Endpoint  Detection
+那我這邊講的是一個最基本簡單的方法就是算這個 short  time  energy
+那麼所謂 short  short  time  energy 你看這個式子就了解了
+我只是把每一個 sample 平方
+然後讓他加到某一個 window 裡面
+這個 window 最常用的 window 就是
+不是最常用最簡單的一個 window 就是長方形的
+也就是說
+也就是說我現在是一個
+零到 L 減一是一別的地方是零
+對不對這樣子這個是 window 的 N
+阿我這邊寫 M 也可以這個是 M window 的 M
+這個是一個最容易想像的最簡單的長方形的 window  window 是 M
+如果是這樣的話呢你看這意思不外乎只是說
+我把我的我只算一個 window 裡面的 square 加起來嘛
+那那在這個式子而言你可以想像我是把那 window 放在 N 的位置上
+就得到時間 N 的這個 short  time  energy
+譬如說在這裡而言我的這個橫軸是 M
+然後呢假設假設這一點是 N
+我就在這邊放了一個 window
+我就把這裡面的每一個 sample 的平方加起來
+只加這個 window 而已嘛這外面都是零嘛對不對於是我就得到一個點得到某一個點叫做 E  N
+這個就是我的 E  N 對不對
+我我是把我這個 window 放在這個這個零的位置放在 N 的位置
+我就得到一個這個 window 然後我把這裡面的每一個點分別把它平方
+平方加起來我就得到這個 E  N
+然後我現在把這個 window 不斷的移動我這個 E  N 就變成一個一個數值
+那你可以想像我這個 E  N 大約是這樣子
+當我 window 移到這兒來的時候開始有這個訊號比較大的話他就會比較上來
+E  N 就會慢慢的上來
+那這就是我的 E  N
+這 short  time  energy  as  a  function  of  time
+那我這樣的 window 不斷移動我的 E  N 不斷大起來我可以定某一個 threshold
+譬如說呢當我超過這裡的時候這是我的 threshold
+我就假設從這裡開始是語音
+這是一個非常簡單的方法
+那麼他的基本的精神是假設說
+畢竟你講話的聲音應該比 noise 大一些
+所以呢你你如果講的聲音也跟 noise 一樣大的話那當然就 noise 跟聲音混在一起你就不知道了嘛
+所以你講講的聲音 suppose 你的語音要比 noise 要大一些所以我就不斷的求這個 short  time  energy
+然後我這個 E  N 不斷的 shift
+當我超過某個 threshold 的時候我就認為是開始講話了
+這是一個最簡單的方法即使是這個方法呢我仍然需要 depends  on 這個 noise 有多大
+你可以想像我在教室裡面我如果開了冷氣或者什麼或者是
+背景雜訊比較厲害的話這個比較大的話
+我的 threshold 要不一樣
+我的 threshold 可能是隨時要調的
+那這個時候的情形很可能是
+你在還沒開始講話一開機還沒開始說話的時候先收一次
+當時的 noise 狀況算一個當時的 E  N 然後用那個來 define 一個 threshold
+於是呢我的 threshold 超過那個我就算是我有在說話等等
+所以這就是我這邊所謂的 adaptive  threshold 你就是要隨時
+在一開機還沒說話之前隨時收當時的雜訊算當時的 background  noise 的 E  N 是多少然後定那個東西等等
+那即使是這樣做那個方法顯然不夠好
+那麼那麼你可以想像出來我在很吵雜的環境
+我在街上走的時候我打的手機
+這個街上的雜訊跟我講的話幾乎是一樣大聲的話我怎麼辦等等顯然不是這麼容易
+所以這只是一個非常簡單的 example 說明這一類的方法那真的做法顯然要比這個複雜的多
+那這個我們在有個專有名詞叫做 V  A  D 就是 VOICE  activity  detection
+這是所謂的 V  A  D 那麼也就是說
+我其實隨時要去自動 detect 什麼時候是 VOICE 的
+active 譬如說只有這一段這一段是 active 那這一中間這一段呢是沒有 active 我要能夠抓的出來
+那一直到今天這仍然是一個非常重要的研究的課題
+那麼一大堆 paper 在在做這個因為你到底怎麼做的好
+尤其在一個非常吵的環境在路上在街上在地鐵裡面在這個
+雞尾酒會裡面在餐廳裡面那麼各有不同的狀況你如何做這件事情這是所謂的 Endpoint  detection
+那麼當我做到這點之後 ok 那再來就比較好了

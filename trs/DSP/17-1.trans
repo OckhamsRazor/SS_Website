@@ -1,0 +1,65 @@
+那麼再下來我們底下要要進入的呢
+是這個十七點零
+就是這個distributed speech recognition 
+我現在要要在整個的無線環境裡面做這件事了
+那麼這個時候呢
+喔哦對我剛才漏了我大概有提到一下
+就是這個這個dialogue 這裡面我講的內容大致上是根據這個第一個喔
+就是這本書的第十十七章
+這個是大概講得算是大家所公認的dialogue 的核心的東西大概是這些
+我們基本上以這個這個為主
+那那事實上我剛剛講過就是每一個單位做的每一個dialogue 系統他們都有他們自己那一套
+那麼不太有一個共同的這個學理基礎或是什麼啊
+那你去看每篇paper 都很有一套都講得很有道理
+啊底下這些reference 大概是那樣的東西
+那這個都可以參考
+那其實你如果看近這邊是比較早早一點的
+你近一點的還有更多
+只是說每一種我們也不能講那個就是可以做為很好的基本架構
+因為每一套每一家都不太一樣
+好那麼關於這個這個這個distributed speech recognition 跟wireless 
+呢我們現在就是要把這個wireless 環境放進來
+換句話說這是我們在二點零的時候所畫的圖
+一個recognition 有這麼複雜
+從front end processing 
+到這個acoustic model language model 然後辭典然後這個再做search 
+這麼多東西
+你真的都能夠放在手機裡面嗎
+當然不一定
+但是呢不放在手機裡面也沒關係
+通常我們可以把這個東西拆開來
+拆成一小塊放在手機裡面
+然後另外一大塊呢放在server 裡面
+因為你絕大多多數要做的事情其實是要跟server 幹嘛幹麻
+你是要跟sever communicate 
+所以那你何不把這些複雜的東西都放在server 裡面去
+那user 只要做一些手機上只要做一些簡單的東西就好了
+譬如說我在在做的front end processing 
+就是判斷一下哪裡是speech 哪裡是noise 
+然後把m f c c 求出來
+那些m f c c 呢就變成feature vector 
+我就把它裝裝在pocket 裡面送到server 去
+那後面所有事情都讓server 做
+像這類的想法
+那這就是我們講的所謂的這個把speech recognition 呢把它partition 
+拆成兩半
+分分別放在client 跟server 裡面
+就變成client server 的架構
+那這樣好處當然就是說我的這個client 的負擔很輕
+反正事情都在那裡做
+但有個很大的壞處你可以想像就是我把整個的wireless network 包到我的系統裡面來了
+這裡等於是說把整個的wireless 塞到這中間
+所以呢我的系統裡包括整個的wireless 
+而wireless 有一堆wireless 問題
+譬如說它有error 
+它的pocket 會丟掉
+它的bandwidth 問題等等那堆問題就都跑進來了
+那這個就是distributed speech recognition 所要考慮的問題
+我必需考慮到這裡面的問題
+但它的好處是我可以有非常多的user 
+共用相同的server 
+那為了得到這一點我們就要就有不同的做法來做這些事情
+ok 我們進入最後這一段
+那麼我們說這個distribute distribute speech ecognition 的目的是要把recognition 拆成一半
+拆成二半然後把它放到wireless 網路裡面去
+那這最大的問題就是我們把wireless 包到裡面來了

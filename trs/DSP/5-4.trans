@@ -1,0 +1,314 @@
+那麼為了要做這件事情起見我們就開始講底下一堆事情
+因為我們後面真正要做的最成功的方法是就是用這個所謂的這個cart 也就是classification and regression trees
+用這個來做
+而這個的基本的原理是用所謂的information theory 裡面的entropy 的觀念阿
+那麼因此呢我們這邊要從information theory 開始說起
+那麼就在說這段
+那麼information theory 本身是一個博大精深的學問
+那麼在古典通訊原理裡面是一個非常重要的基礎
+那麼你或許在別的課也學過等等
+那麼也許沒有學過也許學過
+不過我們這裡只用到裡面一個最基本的東西
+所以我們利用這個機會在這邊簡單的說一下它的一個最基本的觀念
+就是在古典的通訊原理裡面的information theory 
+裡面所說的所謂的information 的major 
+那麼那麼這個東西turns out 是非常有用的
+那麼用在非常多的地方
+那麼包括用在我們這邊的要train tri phone 也是用這個方法
+所以我們簡單的來說一下它是
+那麼假設有一個information 的source s 
+那麼它送出一系列的symbol 
+那麼每一個symbol 都是一個random variable
+譬如說m one m two m 三到m j 等等
+其中m j 就是指在時間j 或者說是第j 個的那一個symbol 
+那基本上它們每一個symbol 都是一個random variable 
+那個random variable 都有一定的可能的值
+譬如說有大m 個可能的值
+是x one 到x m 
+ok 那麼因此呢
+我們說這個是這個information source 
+它所送出來的的所謂的information 就是一系列的symbol 
+那麼在在時間j 的時候的第j 個symbol 就是m sub j 
+那麼它呢是一個random variable
+它可以有大m 種可能的值
+就是x one 到x m 
+那麼這個random variable 呢它基本上是有一定的機率的
+所以呢第x i 個第i 個呢有一個機率就是p 的x i 
+那麼那當然囉那就就表示說這個阿第j 個m 的它turns out 它的值是第i 個x 的機率
+就是p 的x i
+而這些所有的p x i 的加起來
+i 從一加到m 的話應該是正一
+每一個是機率所以都是大於零的值
+加起來是一
+這樣樣講有點抽象
+那麼我們用最具體的例子來講
+那麼也許就是零跟一吧那假設說
+我這個送出來就是一個一系列的零跟一的話
+那其實這裡的每一個就是
+第一個bit 就是m one 
+第二個bit 就是是m two
+第三個bit 就是m 三
+那每一個m j 其實就是一個bit 
+那那個bit 本身是random variable
+它可以是一可以是零
+所以呢它基本上呢它的x one x two 呢就是兩個
+就是一跟零
+然後它們的機率呢各是二分之一
+那也就是我們這邊講的p 的x one 等於p 的x two 等於二分之一
+它們加起來要等於一等等
+那這樣子也許是最具體的一個簡單的例子
+那這邊講的當然是比較一個general 的說法
+這個比較general 而這個呢比較specific 
+當然這個specific 例子呢我們也不是一定要這樣
+我也可以把它複雜一點譬如說我兩個兩個當成一個symbol 
+我如果兩兩當成一個symbol 來看的話
+我的我就變成是有四個積x one x two x 三x 四
+我我每兩個bits 是一個symbol 的話
+我有四種symbol 
+分別是譬如說零零零一一零一一
+那如果是這樣的話呢
+我的機率各是四分之一
+各是四分之一
+那這就是我的四個
+這樣子也是可以
+那你如果這樣看的話呢它仍然是在這樣子的model 之下
+那就是我的每一個symbol 是有四種可能
+是有四種可能它們機率各是四分之一等等阿
+這就就是我們這邊舉的這個這個情形
+那在這個情形之下呢
+那麼在information theory 裡面
+它希望為你所看到的每一個symbol
+不管是一個還是不管是這邊的一個bit 還是這邊的兩個bit 的一個symbol 
+你為每看到一個symbol 定義一個它到底它給我多少information
+這個在這個在這個information theory 裡面他們稱之為information 的major 
+它到底給我多少的量information
+的major
+那麼也就是指quantity of information 
+到底這個event 到你看到一個m j 等於x i 的時候
+當你看到這個bit 等於一的時候
+或者當你看到這個bit 是零這個這個symbol 是是零一的時候
+也就是說當你看到m j 等於x i 的時候
+到底獲得多少的information 
+那麼在information theory 裡面它仔細的分析說這個information 怎麼定義呢
+它說它應該要有這些個我們所希望有的probability
+第一個就是當你看到一個symbol 出來的時候
+當你看到一個information 的時候
+它是譬如說m m two 是等於一的時候
+這個bit 等於一的時候
+或這個bit 等於零的時候
+你得到information 絕對是正的
+所以你的information 絕對應該是正的
+它就把這個叫information 量嘛
+i of x i
+就是指你看到一個event 
+它是x i 的時候
+某一個m j 等於x i 的時候
+那麼你得到的information 量它那個量應該是正的
+那第二個呢如果那個的機率趨近於一的話
+你得到information 應該是零
+這話什麼意思呢
+這個如果那個information 如果那個x i 的機率是一的話
+你得到的information 的量應該是零
+我發現我現在走路
+ok 好謝謝
+如果我不能走動的話那一半的黑板就不能用了
+ok 那麼喔什這話是什麼意思
+簡單的解釋就是說你如果你的那個那個bit 那個symbol 出那個出來的全部都是一好了
+如果它永遠是一的話
+這個時候我的一的機率就是一
+這個時候它還帶有information 嗎
+應該沒有帶information
+因為我都可以猜下個一定下個一定是一嘛
+我都可以猜得到一定是一嘛對不對
+我永遠猜得出來它是一嘛
+所以看到一的時候有沒有看到information 沒有看到嘛
+那麼因此呢它就有這個有這個definition
+也就是說我的要求就是應該是如果這個x i 的如果這個x i 的機率是一的話
+它就應該沒有帶information 
+那第三個條件是說呢如果是機率越小的
+帶的information 越多
+機率越多的帶的information 越少
+所以呢如果x i 的機率小於x j 的話
+x i 的information 就大於x j 
+什麼意思呢我們我們說都是一未免是太太誇張一點
+那我們說是這樣子
+它是一很多零很少
+那在這個情形之下呢就是一的機率比零的機率大很多
+如果這樣的話
+你想我看到一個一所看到的information 
+比看到一個零所看到的information
+一樣多不一樣多
+顯然不一樣多
+因為我這邊幾乎可以猜下一個是一八成都會猜對
+所以呢再下一個我再猜是一八成還是會對
+所以呢這個給我一個一的話這個information 是量是很少的
+反過來呢我今天如果看到一個零的話
+這個是給我非常豐富的information 
+為什麼因為我絕對不管誰不敢隨便猜它是零
+要要猜零會八成會錯嘛
+我要猜零而會對的機率是很低的嘛
+所以今天告訴我那個是零的話這是給我非常豐富的information
+所以這所以在這個case 如果一的機率大於零的機率的話
+那麼我一所帶的information 呢
+應該是比零所帶的information 要少很多ok 
+那麼也就是說我如果看到一個零的話
+應該是看到非常多的information 
+看到一個一的話
+大概是沒有看到太多information 因為我都猜的出來
+看到零的話我是不敢隨便說它是零的
+所以呢它顯然是給我比較多的information 的
+那麼因此呢這就這個這是一個decreasing function of x of 這個probability 
+當我機率小的時候我的information 量是大的
+機率大的時候information 量是少的
+第四個條件是說它們是additive 的
+這個比較難解釋什麼叫做information 量是additive 的
+你只能講就是說哦當我不斷的增加獲得新的information 的時候
+我的information 量應該是不斷地在增加嘛我不斷看到新的東西出來
+我的information 量應應該是不斷地加起來的它是additive 的阿
+就是我就一路我一路看到新的東西我就是得到information 量應該是一直可以加上去的
+那麼用我們這邊的例子來講的話呢
+簡單的解釋應該應該可以說是你如果看成是一跟零零跟一各是單獨的一個event 的時候
+那麼你看到它有多少information 看到它有多少information 的話
+跟你現在把一一當成是一個symbol 來看的information 應該是一樣多的
+你在這邊可以兩個看成一個你
+如果兩個看成一個你所那一個能夠給我多少information 
+跟每一個看成一個它給我的information 應該是就是兩個加起來嘛
+ok 所以呢我如果看到這個零跟看到這個一
+得到多少information 
+我把它們當成是individual event 來算的話
+看到看到一個零得到多少information 
+看到一個一得到多少information
+跟我把零一當成一個event 
+看到它多少information照說應該是一樣的
+所以呢這個給我的information
+這個給我的information 
+跟這個給我的information
+照說應該是一樣的阿
+那這是所謂的additive 的意思
+那麼當有了這四個條件的時候
+那麼當初發明information theory 的人
+很聰明他就想了一個方法他說很簡單就是log 
+你只要取這個機率的log 的倒數
+就符合這四個條件
+那麼那麼機率的這個這個這個分之一的log 
+其實就是負的這個log 
+那這個呢就符合這四個條件
+這也就是information 量的quantity information 
+或者是information major 
+的算法就是取log
+那這是什麼呢
+這個我們簡單的畫一個圖就知道
+你知道log 是這樣的
+log 是這樣的
+但是呢我現在是我現在橫軸是log 是什麼log 它它的log 是機率呀
+那機率的log 是最大到一為止嘛
+所以他沒有上面沒有沒有這些呀
+它只有這一段
+只有這個這邊沒有啦
+這沒有只有這個啦
+然後呢你現在是負的嘛
+現在是負的嘛
+所以倒過來你就得到一個這個圖
+就是這樣子的
+這個是一點零
+橫軸是那個機率p of x i
+縱軸就是它的information 的量
+那這條曲線就是這個log 的這條曲線
+變成負的
+就變成這樣子
+那這個的意思其實很簡單就是符合剛才講的這四個條件
+第一個呢它永遠是正的
+它是一個function of probability 所以呢它是在零跟一之間
+在零跟一之間
+在零跟一之間它永遠是正的
+那麼當你如果是趨近於一的機率趨近於一的時候它就是零嘛
+當你機率趨近於一的時候它就變成零
+那也就是說當我如果是永遠都是一的話那個一沒有給我information
+所以它就是零
+那麼同時它是一個decreasing function
+機率越大的information 量越少
+機率越小的information 量越大
+所以呢這是這這是一個一個這樣倒過來的這就是剛符合剛才的關係
+那最後一個所謂的它要additive 的這一點呢
+其實我們如果從這樣來看就很簡單
+因為你的機率是相加的相乘的
+當你譬如說你要看到你要看到到這兩個零一的話
+那麼就是它的看到它的機率乘上它的機率
+如果你看成是independent 阿
+我們姑且假設independent 比較容易解釋
+independent 的時候呢看到這個的機率跟看到這個機率相乘才是看到這個的機率
+所以這個機率是是二分之之一這個機率是二分之一的話你看到這個機率是四分之一嘛
+那那因此呢你如果取log 的話
+就是兩個相加嘛
+所以呢當你把它當成這一個的時候
+你看到它的機率就變成四分之一嘛
+那麼因此呢這個取log 之後就是這兩個的log 相加嘛
+ok 所以呢你如果這樣來想的話這個這個additive 這個也可以解釋啦
+就是如果是independent 的話
+如果這些m m j 彼此都是independent 的話那麼它們的發生的機率
+就應該都是相乘的
+取log 就是相加的所以就是additive 的
+那麼這麼一來呢我們就有這個information 量的這個定義出來了
+有了這個定義之後我們就可以再繼下一步定義這個東西
+就是平均到底每一次會出現多少
+什麼意思呢
+就以這邊為例
+假設說我這個一出現機率很高在這裡
+p of 一等於零點九
+就在這裡
+因此呢它的量很小很小
+那麼零的機率呢只有零點一
+它的機率很大很大
+它的它的這個帶的這個information 量很大很大
+那我真正到底門我每次看到一個bit
+那個bit 就是m
+m j 啦我們這邊講的m j 
+我每次看到一個bit 到底它給我多少information 呢
+那應該是它可能是零點九
+是一可能是零點九
+但是呢它的機率只有喔不對喔它可可能可能是這個值
+就是i 的這個一
+i 的一是是這個值
+但是呢它這個值很小
+但是它的它的機率是零點九
+然後呢這個零的帶的information 量很大
+但它的機率呢是只有零點一
+那這樣子平均起來才是我的那就是這裡的這個東西
+那這就是這個的意思
+也就是說我現在有有零有一嘛
+那麼零出現的機率很小
+所以我帶的information 量很大
+這個量很大
+可是因為出現機率很小阿
+我十次才出現一次呀
+那麼一的時候出這機率很高
+但他帶的information 很少
+這個很小可是呢我十次裡面有九次是它呀
+所以那你平均你每看到一個bit
+在這個例子而言你每看到一個bit 到底看到多少呢就是平均嘛
+平均一下的結果
+那麼這就是我的average quantity of information 
+就是average in average 你每你每看到一個m j
+到底看到多少information 呢
+那麼你看到的應該是它們的平均
+所以就把它們平均一下
+所以呢當你看到的是p 的是x i 的時候
+它的這個information 量是這樣
+但是它的機率是那樣
+你要把機率平均一下阿
+所以就是這個i of x 的這個平均值
+那這就是你所要的你所看到的看到一個m j 的時候它的information 量
+這個就是這個i 的這個也就是這個h of s 的定義
+它有一個名字叫做entropy 
+那麼為什麼叫這個entropy 的名字這個我們底下會再進一步的解釋
+不過我們現在先這樣說
+這是 entropy 的定義就是平均你每次看到一個bit 或者一一個symbol 或者一個m j 
+那麼平均你看到多少的information 的量
+或者說就是quantity of information carry by 這個event of 一個random variable 
+這邊等於一個都等於是一每一個都等於是一個random variable
+因為它有一堆random 的值
+它有一堆值然後都有機率
+所以每一個都是一個random variable
+那麼到底你看到一個random variable 是多少的時候
+到底得到多少information 
+那麼平均可以得到就是所謂的entropy

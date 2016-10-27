@@ -1,0 +1,178 @@
+那底下的多半都是一些比較經驗式的
+譬如人家真的在做是怎麼做的
+那麼第一個呢就是你怎麼把那個dialogue define 它的structure 
+你define 它的structure 之後比較容易去分析它
+那這個structure define 呢就有很多種
+有人用term 有人用這個initiative response pair 
+有的人用act 
+有的用sub dialogue 喔
+那我們姑且說一下譬如說什麼是term 
+我們剛才已經講過了
+就是某一個人不管是user 還是系統
+它講了一段話
+一個uninterrupted 的stream of speech 
+他講那段話
+那麼從一個一個人或者那個user 來的
+那就是一個term 
+於是就會有用term 為單位
+來把一個這個dialogue 的結構分析出來
+那這個時候我們就會有speaking term 跟back channel term 
+有的term 是convey 明顯的訊息
+有些沒有
+它只是一個acknowledgement 
+譬如說ok yes 
+yes 
+你如果光是這樣的話這只是一種back channel 
+並沒有提供太多
+這也是一個term 
+但有的時候term 是有豐富的意思的
+這所謂的term 
+那另外一種說法呢就是說我把它不是用term 來分
+是用initiative 跟response 來分
+那不管是user 還是系統
+會initiative 某一樣東西
+然後user 去然後另外一方去回答
+那這是initiative 跟res response 
+那這兩個跟term 不太一樣
+譬如說一個term 可以同時包括兩個
+那譬如說這個系統說你要的是星期五嗎
+user 說是的星期五我要去美國
+他可能除了是的星期五
+這個是一個response 
+但是他如果說要去美國
+那這個時候已經是下一個initiative 
+那麼因此呢這個這個你如果把它分成initiative 跟response 不是完全就是一個term 
+不一樣
+那這裡面我們很早就說過你有分成system initiative 由系統來主導像填一個表一樣
+但這個時候就是很僵硬的
+那你可以user initiative 完全用user 來主導
+不過這個是非常難的
+我們今天比較希望做到中間這種就是mix initiative 
+也就是兩者都有一點
+通常是盡可能由系統來主導
+系統來主導的話是我比較容易來處理的
+譬如說系統問說你要到哪裡去
+我說去紐約
+你要從哪裡出發從台北
+系統一路問那user 一路回答像填一張表一樣
+這個是最容易的
+但是這樣會很僵硬
+所以呢如果user 沒有照系統問的問去回答的話呢
+只要user 講的是在那個範圍之內
+最好系統也能夠處理
+那這樣的話呢就是mix initiative 
+那最多的人分析dialogue 是用所謂acts 來分析
+那麼這個speech acts 或者dialogue acts 
+這個是喔非常多的文章裡面它們的做法
+就是用acts 來分析
+什麼是acts 
+acts 就是user 的spea 這個speaker 的goal 或者intention 
+他倒底要幹嘛的
+我們把它define 成一個act 
+那基本上來講它是regardless of the detailed linguistic form 
+也就是說你可一個act 裡面可以有很多linguistic form 
+我們用底下例子來看比較清楚
+啊譬如說這個有有很多系統一開一開始就是說may i help you 
+或者說喔查號台你好
+或者說這個您早這是什麼什麼什麼喔
+那這些呢其實都是相同的意思
+就是conversation opening 
+那不是真的在講這個話而只是opening 的意思
+那這個就是一個act 
+那這個呢就是它的linguistic form 
+那有的時候呢像系統說there are three flies from taipei 
+那這個其實這個是一種offer 
+那這個offer 是一種acts 
+這個系統在offer 給user 說有什麼有什麼有什麼
+那裡面linguistic form 很多有各種各樣
+你可以說是有一種是assert 
+這是一種act 
+那reassert 是另外一種
+no i say tuesday 
+那這是reassert 
+那也可以是information request 
+啊譬如說when does it depart 等等
+那這邊的這裡的這些東西
+括號裡面的就是所謂的linguistic form 
+然後這外面這個就是所謂的act 
+所以呢通常很多人把他的dialogue 系統define 成為一堆acts 
+譬如說你如果要去買飛機票
+他可能總共define 二十五種acts 
+那就是說在user 在跟系統對話過程中間
+所有的說的話不外乎分成這二十五類
+那每一類呢就是一個act 
+然後你再去看那一類裡面他的是什麼
+那你每一類可以每一個act 可以自己有自己的model 
+因為在那個act 之下
+它要說的是它會說是那些
+所以你acoustic model language model 都可以在每一個act 不一樣
+那你如果是ok 查天氣
+可能有查天氣的你可以define 成有十六種act 等等等等這樣子
+那剛才那另外一種說法它可以把acts 分成forward looking 跟backward looking 
+剛才講的這些都是forward looking 也就是向前發展
+向前發展的act 
+還可以向後來這backward looking 的
+就是向後的譬如說confirmation yes 
+或者是ok but 
+我又加一點別的東西
+那接受一部分
+或者reject 
+或者說呢不清楚重說一次喔等等等等
+這些東西屬於back backward 
+也就是說它並沒有向前發展新的東西
+而是主要是在confirm 或者是回應原來的東西的
+那基本上來講你可以想像一個act 可以對應到千千萬萬個不同的linguistic form 
+因為你要講某一件事情
+你後面可能有很多種講法啊
+所以呢你的linguistic form 可以有非常多
+但是反過來也有的時候有好多種不同的這個呃同一個linguistic form 可能有不同的act 
+譬如說ok 
+至少有二種
+一種是confirmation 的ok
+一種呢是request ok 喔
+如果你是講ok 的話好像應該是在問對方
+要求對方confirmation 
+ok 那就表示是confirmation 
+所以你也很可能一個linguistic form 這是一個linguistic form 對應到二個不同的act 
+那這裡面的act 有的是task independent 
+不管什麼的dialogue 都可以用的
+有的是task dependent 
+depend on 那個dialogue 幹什麼的
+舉例來講
+這個conversation opening 
+這個是independent 
+任何一個task 都可以由這個開頭
+你說yes 
+這個大概也是任何一個或者說what did you say
+這大概可以任何一個application 都可以用的
+那就是task independent 
+反過來呢你說ok 
+你說there are three flies from taipei 這顯然是買飛機票的
+如果是其它的聲音就是不同的了
+所以這像這個情形的話呢這種買飛機票的就是專門針對買飛機票的裡面的一個act 
+所以這個就是task dependent 
+那當然這樣你當你盡可能分得那麼細的act 之後
+有的act 是task independent 有的是dependent 
+於是呢你那些independent 就可以拿來在所有task 都拿來用
+然後呢你只是在不同的task 做不同的task dependent 的東西等等
+那這樣的話你可以就比較容易
+那麼於是呢我的我要分析我要model 我要train model 等等
+我都可以design 我都可以根據每一個act 來做
+那他們很多的時候譬如說我買飛機票我define 二十五個act 
+於是所有的話只要在這二十五個act 之內
+我depend on 在那裡我就用哪一個act model 去分析它等等
+那還有一種人呢他是把它叫做分成sub dialogue 
+就是譬如說買飛機票的話呢
+一個是要問目的地的
+一個是要問出發地出發時間的
+等等等等
+你把它分成一個一個的小的task 
+那每一個呢就有一個小的sub dialogue 來處理
+於是就變成一堆sub dialogue 
+這樣也可以
+這個跟act 不太一樣喔
+這是一個完整的小dialogue 
+然後每一個完整的小dialogue 他們連起來就構成一個大的dialogue 
+喔等等這是這樣的情形
+所以你有各種不同的做法
+那這是講我們怎麼看這個dialogue 的structure 

@@ -1,0 +1,39 @@
+那怎麼解決這個問題呢那我們後來發現最直接而單純的辦法就是用syllable 
+那麼為什麼是syllable 呢
+那就跟我們之前講這個syllable 跟他們講的的phone 是很像
+其實一個syllable 就是兩三個phone sequence 好
+但是因為中文是一個每一個syllable 是一個字嘛
+所以用syllable 是有很多好處的
+但是呢不是光靠syllable 而是用很多層的syllable 
+這一堆我們叫做做這個overlapping syllable segment with length N 
+N 等於一的時候單一的syllable 
+譬如說這假設我有我辨辨識出來它的他的文章
+或者是你的query 裡面
+有這十個十個syllable 的話
+那麼N 等於一就是每一個syllable 各自都是一個term 
+那麼你譬如說我今天如果如果我要找李登輝
+那至少你在那裡有李有登有輝嘛
+你如如果把每一個單一的syllable 都拿出來做indexing term 的話
+至少有李有登有輝跟你這個是像的嘛
+阿你就不一定要把它連起來看的話
+單一的syllable 是有道理的
+同樣呢你這裡北北部第二至少有北有二有高嗎阿
+所以呢你這個這個我寫在這裡就是說
+這個所有的word 都是compose by syllables 
+所以他基本上你如果用單一的syllable 
+至少你的OOV 都在裡面
+那麼就像譬如說你你也許巴塞隆納翻成成巴瑟隆那翻成這樣子
+但你如果用syllable 來看的話至少對了三個嘛
+這三個syllable 是一樣的嘛
+那那這裡的話至少syllable 會像嘛
+那那所以呢你單一的syllable 是有這個好處的
+我們說這個這個你你所有word 都是是syllable 所構成的
+通常呢如果相關的word 
+常常會有一些syllable 是一樣的
+那那所謂相關的word 會有一些syllable 是一樣的就像我們這邊的例子
+就是像譬如說這個跟這個
+他們是兩個不同的word 
+但是是耶
+他們就是有一些syllable 是一樣的
+就像這個跟這個
+耶他就是有一些SYLLABLE 是一樣的

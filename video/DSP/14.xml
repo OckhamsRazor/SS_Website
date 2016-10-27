@@ -1,0 +1,61 @@
+<playlist version="1" xmlns="http://xspf.org/ns/0/i">
+<title>14</title>
+<tracklist>
+<track>
+<title>Multimedia Content In The Future Network Era</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>167.63</duration>
+<annotation>slides/DSP/14-1.jpg</annotation>
+<location>video/DSP/14-1.mp4</location>
+</track>
+<track>
+<title>Multimedia Spoken Document Understanding And Organization</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>398.659</duration>
+<annotation>slides/DSP/14-2.jpg</annotation>
+<location>video/DSP/14-2.mp4</location>
+</track>
+<track>
+<title>Multi-media/Spoken Document Understanding And Organization (I)</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>449.262</duration>
+<annotation>slides/DSP/14-3.jpg</annotation>
+<location>video/DSP/14-3.mp4</location>
+</track>
+<track>
+<title>Spoken Document Segmentation</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>151.764</duration>
+<annotation>slides/DSP/14-4.jpg</annotation>
+<location>video/DSP/14-4.mp4</location>
+</track>
+<track>
+<title>Spoken Document Summerization</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>78.549</duration>
+<annotation>slides/DSP/14-5.jpg</annotation>
+<location>video/DSP/14-5.mp4</location>
+</track>
+<track>
+<title>Title Generation For Spoken Documents</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>98.202</duration>
+<annotation>slides/DSP/14-6.jpg</annotation>
+<location>video/DSP/14-6.mp4</location>
+</track>
+<track>
+<title>Topic Analysis And Organization For Spoken Documents</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>29.839</duration>
+<annotation>slides/DSP/14-7.jpg</annotation>
+<location>video/DSP/14-7.mp4</location>
+</track>
+<track>
+<title>Integration Relationships Among The Involved Technology Areas</title>
+<creater>NTU Speech Processing Lab</creater>
+<duration>173.814</duration>
+<annotation>slides/DSP/14-8.jpg</annotation>
+<location>video/DSP/14-8.mp4</location>
+</track>
+</tracklist>
+</playlist>

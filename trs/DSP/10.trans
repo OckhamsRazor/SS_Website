@@ -1,0 +1,1159 @@
+那底下我們應該要進入的是第
+我看我們還可以講個兩三分鐘我們稍微開個頭
+就是十點零我們還沒有講
+就是
+utterance verification 
+跟key word spotting 
+那這個其實就是
+我們剛才講的
+譬如說我辨識出來的每一個答案
+我都可以給它一個分數
+怎麼樣做這個分數
+才是可靠的
+那這個分數告訴我
+哪些可信哪些不可信
+那就是所謂的utterance verification 
+verify 它
+那然後這個
+我們做key word spotting 其實是用這套東西來做的等等
+那這個reference 我後面再說
+那基本上
+這裡面一個最基本的精神是來自所謂的likelihood ratio test
+那
+這個東西是
+最古典的通訊原理裡面
+做雷達的時候
+恩
+這個
+他們所謂的detection theory 裡面的核心
+那detection theory 是數十年前的
+最古典的但是也是到今天為止最重要的
+之一
+所謂的detection theory
+那這在幹嘛呢這個是
+雷達裡面偵測敵機有沒有來
+那你知道呢我基本上是放一個訊號出去
+如果前面有敵機的話它會有一些反射的訊號回來
+我從反射回來的那些訊號裡面偵測
+有沒有敵機
+那麼在另外一個例子呢就是
+這個
+海上的冰山
+你知道這個這個在古代
+在北大西洋航行的船隻
+最怕碰到冰山
+那在海面上這個這個大海裡面如果有一個冰山你不容易看得出來
+用人眼睛看不太到
+所以呢你除了用人眼去看之外就是用個雷達
+你放一些訊號出去
+然後如果是海面它也會反射
+如果是冰山它也會反射都不大一樣
+因此你就可以判斷
+用根據那個來判斷它有還是沒有
+那不管是有沒有冰山還是有沒有敵機
+這種detection 就是都只有兩個hypothesis
+就是有還是沒有
+有敵機跟沒有敵機有冰山跟沒有冰山
+所以你收到的某一種observation 
+它會有兩種distribution 
+譬如說這個是這個是零是沒有敵機
+或是前面沒有冰山的話
+我收到的很可能是一個非常random 的某一種樣子的observation 
+那h 零就表示沒有敵機或者沒有冰山或者前面沒有我要我擔心發生的事情
+那可是如果是有的話呢
+如果前面有了敵機或有了冰山的話呢
+它可能會有另一個長相
+這樣子
+那麼於是呢我就要靠這兩種不同的distribution
+我今天如果抓到一個收到一個signal 是這樣子的
+那我應該判斷它是有還是沒有呢
+如果收到一個在這裡的話
+我應該判斷它是有還是沒有呢等等喔
+那這就是所謂的dictation theory 
+也就是所謂的hypothesis testing 阿
+那我基本上就是兩個hypothesis
+就是有跟沒有
+那麼它們各自可能有一個prior probability 
+就是有本來會有多少機率沒有本來會有多少機率
+然後我的observation 是x 
+那這個x 呢我有兩種distribution 
+有的時候跟沒有的時候的distribution是不一樣的
+那於是我現在就根據要根據這個x 我要判斷
+我根據這些假設喔我現在知道這個
+假設這個是知道的這個是知道
+那我要根據這個來看
+那怎麼辦呢
+最基本的原則還是我們所熟悉的m a p 
+那也就是說你看這個其實就是m a p
+就是posterior probability
+當我observe 我要的是這個嘛
+就是當我observe 到x 的時候
+零的機率跟一的機率誰大
+那這個其實就是a posterior probability 
+就是我observe 到這個之後我的我的想要知道那件事情的機率
+那麼如果說是observe 到這個x 之後
+零的機率就比較大
+表示說呢我想可能是沒有
+譬如說我observe 到這個話呢
+零的那個機率比大
+一的機率比較小
+那我猜沒有可能比較合理
+可是如果我observe 到這來的話呢
+那一的機率比較大零的機率比較小
+那我就應該猜它來了
+那於是呢我這個就就可以根據這個這樣來判斷
+如果這樣來判斷的話就是把這兩個m a p 的機率除一除求它的ratio 
+如果它大於它的話這個就大於一小於一嘛
+那我如果這樣的話呢我那拿這兩個a posterior probability 的機率的的ratio 除一除
+看它比一大還比一小來判斷
+那這就是這個m a p 的principle
+那但是這個機率怎麼求呢again 我不會求
+跟我們之前講的都完全一樣我就倒過來
+所以我不會求這個機率我會求反過來的
+因為零跟一的這個是零還是一的這個機的這個機率就在這裡嘛
+我如果倒過來的話這兩個是已知的嘛
+我至少可以可以先量好如果前面有冰山的話它會怎樣
+那如果前面沒有冰山的話我這個可以先量出來得到一個機率嘛
+所以呢我如果倒過來的話呢這個機率就是這個機率就是有的嘛
+然後呢再乘上那個除上那個
+這就是我們講的那個bayes theorem 就倒過來的
+然後呢你如果這樣的話呢
+我這個剛才的這個式子就可以重寫成為這樣子
+於是我就變成為我就會變成拿這兩個機率比一比
+那就兩個機率其實就是這邊講的這個機率跟這個機率或者這個機率跟這個機率
+那這兩個機率比一比
+我跟一個threshold 去比
+就可以判斷了
+那這兩個機率是什麼就是likelihood ratio
+因為它們各自是likelihood function
+這兩個就是就是likelihood function 
+那因此這個叫做likelihood ratio test 
+那這個是古典的雷達理論裡面最核心的一個東西
+所以這兩個ratio 就是 likelihood ratio
+就是用這個方式來判斷喔
+那我想這是一個簡單的introduction
+那我們下週從這裡開始
+我們講用這個觀念來做我們要做的事情
+ok 好今天提到這
+ok 
+我們今天是本學期最後一次上課喔
+我們要把所有沒有講完的都在今天講完
+喔我們先進入第十點零
+就是utterance verification 
+那麼我們上週開始講到這件事
+就是說呃utterance verification 基本觀念來自從前古典的通訊原理裡面的detection theory 
+那這個原來是用來做這個雷達的application 裡面用的
+它就叫detect 
+就是要detect 說前面有沒有某一種我知道可能會發生的事情
+那這種有沒有發生的情形就是所謂hypothesis 
+那麼換句話說呢假設你要判斷前面有沒有敵機
+敵機來了就是一
+沒有敵機來就是零
+或者說是這個海上航行的船隻要看前面有沒有冰山
+那麼有冰山就是一
+沒有就是零
+那麼這個時候呢我有兩個prior probability 
+就是有敵機跟沒有敵機的
+或者是有冰山沒有冰山的一跟零
+這兩個prior probability 
+那麼於是呢我的這個靠什麼呢
+我靠傳一些個訊號出去
+然後呢它會碰到前面的狀況之後
+會有一些反射的訊號回來
+那不管不管是海面有沒有冰山的話呢沒有冰山海面還是會反射一些一些訊號回來
+但是如果有的話呢
+反射的東西會不一樣
+那麼我們舉例來講用最簡單的例子來說呢假設我收到的x 
+那麼這個x 呢這個喔它在如果說是如果說是海面上沒有冰山的話呢你就收到一些這樣子的
+這個那這個就是probability of x 
+那麼given 沒有的時候的情形
+那如果是有的話呢
+如果有的話它可能會有一種譬如說這樣子的
+那這個呢就是probability of x 呢
+如果有的話的distribution 
+當然實際上不是那麼簡單我這只是用一個one d 的簡單的呈現的方式來說假設它們有這樣子不同的話
+那麼因此呢我可以depends on 這個我收到的訊號來判斷
+譬如說我如果今天收收到一個訊號是在這裡的話
+收到一一個訊號在這裡的話
+那麼顯然沒有的如果有有一個前面有某些事情發生了的機率是比較大
+而前面沒有什麼狀況的話呢機率比較小
+反過來呢我如果發生某一件是收到某個訊號在這裡的話呢
+那麼表示說呢顯然是沒有什麼事情的機率比較大
+有的是有什麼事情的機率比較小等等
+那這個想法呢也就是所謂的其實最古老的m a p 來自那個年代
+就是a posterior probability 呢
+我看這個東西
+那這個也是在看這個
+那麼如果說是我收到的這個x 
+那given observation 這個x 之後
+如果沒有的機率比一比有的機率大的話
+那我就假設是沒有
+那就是像這個情形
+沒有的機率比有的機率大的話
+我就假設是沒有
+反過來呢如果有的機率比沒有機率大的話我就算它是發生了
+那就像這樣的情形
+那麼因此呢我就是那這兩個機率是什麼呢
+這兩個機率其實就是a posterior probability 
+也就是在喔given 這個observation 之後
+那我要的事情只有我我想要知道的事情只有零跟一嘛
+有跟沒有
+那就是在這個given observation 之下
+前面有跟沒有的機率差多少
+那麼它們的誰大誰小
+那既然是這樣只有這兩個誰大誰小我就可以做個ratio 來看
+那麼如果是大於一呢就是沒有小於一就是有等等
+那這個a posterior probability 呢不太好算
+但是呢我們可以把它倒過來
+這就是我們之前所一再使用的是完全一樣的做法
+就把它倒過來
+倒過來之後呢
+那這個機率就是我們這邊有的機率
+也就是這邊這兩個機率
+那這兩個機率其實就是likelihood function 
+所以呢我就有了likelihood 在這裡了
+那麼我有了likelihood 之後呢這個我本來就有
+假設這個是這個可以預先量好準備好的
+同理呢這個東西就是prior probability 我可以假設本來就知道的
+那於是呢這些都可以知道了
+那這個呢這個其實不不需要
+就像我們前面說的一樣
+因為你反正是given 一個x 
+所以這個可以不用管
+我只要看哪一個i 比就大
+是零大還是一大所以這個沒有關係
+於是呢剛才這個ratio 又變成這樣子
+當你變成這樣子的時候這兩個就是likelihood function 的ratio 
+跟這個剛好倒過來
+那這兩個likelihood likelihood ratio 的function 呢就是所謂likely ratio 
+那麼那麼既然這個是likely ratio 的話就拿這個去跟這兩個prior probability 的ratio 去比
+那這個就是threshold 
+那麼因此呢這個就是古典的通訊原理裡面或者雷達的problem 所謂的likely ratio test 
+我就是看這個likely ratio 來決定有還是沒有
+那麼這個東西呢
+這個原來是在這個古典的這個雷達裡面的觀念
+那我們現在怎麼拿來做utterance verification 呢
+這個意思是說
+喔假設某一段聲音
+我們現在判斷它是某一個word i 了
+那倒底是不是呢我要不要相信它呢
+因為我們知道我判斷的每一個word 都會有error 嘛
+所以呢你很可能我有我判一句話判斷出來有word one word two word three 
+這樣子到word n 
+我有得到這堆word 
+那麼倒底他們對不對呢
+我們上週曾經說過
+我們可以給它每一個recognized 的word 一個confidence measure 
+就是給它一個分數
+譬如說呢這個我判斷是零點九
+這是零點七這是零點二
+然後這個是零點四
+那這些這些東西呢
+你可以假設我們讓它是介於零跟一之間
+當然你也可以讓它介於不同東西之間
+假設零跟一之間的話呢這個高又表示我相當相信這個答案是正確的
+很低就表示呢八成這個是錯的
+那當然這有很多種方法來做它
+那麼我們這裡講的這個是其中的一種
+最簡單的做法
+那麼今天其實要做這個有很多種方法
+這種東西就是所謂的confidence score 或者confidence measure 
+就是我判斷我的recognize 的result 出來之後我給它一個分數
+我倒底要不要相信它
+那麼你可以猜得到呢如果是這樣的情形的話呢
+你要相信的可能是這個
+你不要相信可能是這個
+那麼呢這個要不要相信就就depend on 狀況了
+因此如果在一個dialogue 系統裡面
+它說我要去我要買飛機票或者我我要幹什麼的話你可以判斷你你所recognize 出來的那些word 
+它的分數高不高
+然後我要不要相信它
+那如果不太可靠的話呢我寧可如果它說的這這個key word 在這裡的話呢
+我不要太相信我寧可重新再問一次等等
+那這樣子的觀念就是所謂的utterance verification 
+那因此呢我要的是說假設某一個聲音這是一個x 是我的observation 
+我把它recognize 成為w i 了
+我認為它是w i 了
+但是到底是不是呢
+那我就做一個這樣子
+那你現在看這個式子就知道這個式子其實跟這個幾乎長得一模一樣
+就是如果它真的是w i 的話
+啊其實是這個式子啦
+啊哦是那個就是那個
+就是說我真的是w i 或是不是w i 的機率喔
+那麼因此呢那就變成說是這個如果我真的是w i 的話
+那麼我我會看到這個x 的機率
+除以不是w i 這個底下這個東西w i 的bar 
+等於是說不是w i 的時候的機率
+那我拿這兩個來ratio 一下
+那這個意思其實就是跟這邊一樣
+為什麼會有這個是跟不是呢
+其實就是原來這邊的有跟沒有嘛
+就這邊有跟沒有是一樣的意思嘛
+那麼因此呢你實際情形就是說
+我現在的這個w i 是那個你所判斷出來那個word 的的hidden markov model 的話呢
+那分子的這個東西
+其實也就是我們平常所說的那一個
+是一樣的嘛
+given lambda 
+就是你如果是那個word 的話那個word 的hidden markov model 
+然後在那個model 之下
+given 那個model 這個的的情形之下的話
+啊我會看到這個聲音的這個observation 是多少
+就是這個東西嘛
+這也就是我們basic problem one 所求的這個東西
+其實也就是這個嘛
+這個w i 就是這個lambda 嘛喔一樣的
+然後這個就是這個的observation 嘛
+那我現在分子再多一個呢就是不是w i 的
+那麼不是w i 那是什麼呢
+這個有很多不同的做法
+基本上我們稱之為anti model 
+或者說是background model 
+或者是類似這樣的名字
+譬如說它叫做這個alternative 這裡寫錯了應該是alternative hypothesis 
+那總之就是不是w i 的意思
+那有很多種做法
+那麼並不確定哪一種才是好的
+因為不同的實驗做出來的的情形可能不太一樣
+那麼你可以猜得出來就是depend on 這些是什麼word 
+然後depend on 你你到底判斷它是怎麼情形
+那麼可能在不同的狀況之下不同的做法各有它的好處
+所以呢我們其實並沒有真正的標準答案說哪一種才是最好的
+這邊有幾個例子就是說你你這個是不是w i 這個model 是什麼
+你可以trained with undesired phone units 
+所謂undesired phone units 就是說不是w i 的unit 
+譬如說假設說你現在是我現在我要算這個w one 的話
+它是phone one phone two 到phone k 
+所排成的這個word 
+那所謂的un undesired phone units 就是
+除了這些以外的其它的phone 
+那那suppose 這個如果是w i 的話剛好跟這些phone 都一樣
+不是的就是其它的phone 
+因此呢我可以用所有其它的phone 
+train 一個model 
+這是一種做法
+那你可想而知它的意思等於是說
+它的這個哦它的這個變成是probability of x 
+given w i 除以probability of x 
+given 不是w i 
+那麼因此呢基本上來講
+如果這個這個這個x 真的是w i 的話呢
+這個分數會比較大一點
+可是呢這裡面都不是這些phone 
+所以呢這個放到這裡面去呢
+應該是積分數會很低
+應應該是很小
+所以呢這個大的除以一個小的越除之後會越變得更大
+所以呢如果說它真的是它它真的是這個word 的話呢
+基本上本來這就會比較大
+而這個因為都是其它的phone 嘛
+就會更小
+那麼這兩個一ratio 的話呢就會使得它變得更大
+反過來如果它不是這個這個word 的話呢
+基本上這裡會比較小一點
+如果這個聲音不是這個word 的話
+它會小一點
+可是呢它不是這個word 它就會有一些其它的phone 
+所以呢這個在其它的phone 裡它的分數會大一點
+那這個一除之後呢小除以大呢會變得更小一點
+因此呢我們平常只看這一個嘛
+對不對
+我們平常講好像是看這個
+那麼這個大看誰大
+那現在除了這個之後呢
+其實是使得大的會變得更大
+因為它要除一個比較小的
+小的會變得更小
+因為它要除一個比較大的
+那麼因此它會把大的跟小的分得更開一點
+那麼你更容易判斷這樣它倒底是不是
+用一個這樣的觀念
+那麼因此這個是講說我可以用這個undesired phone units 
+來train 一個這個這個anti model 
+或者叫做background model 就是要除的這個東西
+那也有的時候人家用所謂的cohort set 
+所謂cohort set 的意思是說
+假設我算出來的時候
+這個w i 的分數是最高的
+所以我判斷這個是w i 
+那麼其它的其他的word 呢
+有差很多很低
+可是有一些是比較接近的
+w k 或者是w j 
+這些是比較近的
+也就是說這些個word 比較會跟它confuse 
+這些個就比較不不會了因為差很多
+那或者說這些裡面其實它有比較接近它的phone 
+會造成困擾的
+那這樣話所謂的cohort set 就是
+我把跟它比較比較接近的這一堆
+其實也就是我的confusing 啊我的competing competing words 
+我把這些東西拿來
+把這些個word 拿來train 一個model 
+那基本上就是我希望能夠跟它分開的地方
+我拿那些東西拿來拿拿這些比較接近的這些東西就是所謂的cohort set 
+就是跟它比較像的這些word 
+把這些word 的聲音拿來train 一個model 
+那這個呢放在這個東西
+那那這個意思呢你可以想像跟剛才這個是有像但是不太一樣
+它變成是說呢
+我現在我那個聲音如果是這些word 的話
+基本上是會跑到這裡面來分數比較高一點
+那在跑到那放到這裡來分數就會低一點
+所以呢我這個就會變成一除之後比較比較小嘛
+那反過來呢我如果是它的話呢
+那這個會比較大嘛
+我等於用這些來做來做對比
+然後make sure 我我不會弄錯我我是這個還是這裡面的
+我要把這些東西是它的還是這些要分清楚
+喔那如果這樣做就是所謂的cohort set 
+那competing units 是說我這個其實我也可以把它變成units 變成phone 
+譬如說我的我的p 這個這個phone one 我有一堆它的competing 的cohort set 
+譬如說這個p 這個phone 的k phone 的j 
+啊這些東西是跟它比較比較容易混淆的
+phone two 的話有這些東西跟它比較混淆的
+那我拿這些東西來train 
+那我等於說是拿這些competing units 
+來弄一個model 
+喔的意思差不多是這樣子的
+等等所以這裡的到這個這個background model 到底要怎麼做其實並沒有一定
+那麼也不見得哪種一定最好
+那麼在實驗裡面顯示是不同的case 不太一樣
+所以我們不太知道exact 到底怎樣
+但基本上這都是很常用的做法
+那於是呢我現在不管怎樣我就是有一個這個真正的model 跟一個competing model 
+一個或者anti model 或者background model 
+那這兩個之之間的關係
+我拿這個ratio 來做其實就是原來這邊的likelihood ratio 的意思
+就是一個有是那個word 或不是那個word 
+好那這樣子做之後
+那這樣子所得到基本上就是我們所謂confidence score 
+或者confidence measure 
+那麼這樣做的話呢我比較可以判斷它啊用這個判斷它好還是不好
+那麼它的正確機率倒底是多高
+當然現在這樣做的時候不一定是介於零跟一之間
+你可能還需要一個另外一個呃另外一個mapping 
+或者是一個normalization 
+你如果希望它是在零跟一之間的話
+那當然也不是一定要
+那這個是早年最最基本的做這個verification 算這個confidence score 的方法
+那當然到到了近年做的方法非常多了
+不限於這一種喔
+那有很多其它的方法可以做的
+那你如果有興趣的話在很多的文章都會看到
+他們怎麼樣做這些東西
+那在在古古典的這個裡面這個threshold 怎麼算的呢
+是它們的這兩個prior probability 的ratio 
+那在這裡我們當然不太知道這裡倒底是多少
+不過事實上呢我們不太需要真的算這個標準的來
+而這個是depend on 我們要它的error 是多少
+那這就是所謂的這個type one error type two error 
+這個這個名詞也都是古典的detection theory 裡面講雷達所用的名詞
+就是所謂的missing 跟false alarm 
+那你知道所謂的false alarm 的意思就是說敵機沒有來
+但是你認為它敵機來了
+所以呢我就這個這個這個拉警急警報
+大家虛警一場
+後來敵機沒有來
+這所謂的false alarm 
+那或者說就是false detection 
+那什麼是missing 呢
+是說敵機來了你不知道
+那這個是missing 
+那這兩種在之所以稱為type one type two 
+是因為這兩種error 並不對稱
+它的後果不同
+那麼也就是說在如果你是其實判斷後來做這個零跟一的數位通訊的時候
+也是用這個做的
+數位通訊的基本原理也是靠這個來判斷零還是一
+可是在數位通訊而言零當成一或者一當成零是對稱的
+都發生一個error 
+所以沒有什麼不同
+可是在這裡的話呢這兩個代代價是不同的
+如果前面有冰山而你沒有發現冰山的話
+很可能因此船就撞到冰山船就沉了
+這個false 這個missing 的代價非常大的
+反過來呢如果你沒有冰山而以為是有的話呢拉個警報
+大家虛警一場後來呢就繼續這沒事
+所以這兩個代價不同所以它們當成兩種不同的error 來看
+就是所謂的type one 跟type two 或者missing 跟false alarm 
+那麼在這個情形之下的話呢
+你就會有這個錯誤率
+false alarm rate 或者是這個false rejection rate 
+那或者說是這個missing rate 等等喔都有
+那麼這些個
+那在我們這裡的話呢我們可以把它看成是
+是一個跟我們之前講這個retrieval 的時候很像的一個問題
+那麼假設說這一堆是正確的字
+correct word 
+那麼這堆呢是這個verified word 
+那麼因為我現在是在做verification 
+我要verify 它對不對喔
+那你會發生這種情形
+這什麼意思呢就是說這個當你判當你得到某一個word 的時候你要再verify 一次它是不是
+如果呢它的分數確實夠高而我認為是了
+那正確的字而且我認為是了在這裡
+但是也很可能它雖然是正確的
+這個字其實辨視是正確的
+但是因為我的這個分數不夠高
+而我就放棄了
+我寧可當它不對
+我放棄掉了是這塊
+那反過來呢這一塊呢是說其實那個word 是錯的
+那個word 是錯的但是呢因為它的分數夠高
+我當它對了
+結果這個是弄錯了
+那如果這樣的話這裡也有三塊就是a b c 
+因此你有兩個正確率
+就是a 除以a 加b 跟a 除以a 加c 
+那a 除以a 加b 的呢這個呢
+其實這個就是相當於我如果一減掉的話那這個其實就是喔missing 
+那如果一除以a 減a 加c 的話呢
+那這個就是相當於false alarm 
+也就是說這個所所謂的一減掉這個a 除以a 加b 
+其實也就是b 除以a 加b 嘛
+那這個意思就是明明是正確的word 而且你已經辨識出來了
+但是你因為分數不夠高你就放棄了的話
+那這個是你miss 掉的東西
+那這個除以a 除以a 加c 其實也就是也就是c 除以a 加c 了
+那就是false alarm 
+就是明明是錯誤的字
+錯誤的word 但是你把它當它是對的了
+那在在你total 裡面你當它是對的有多少
+這是false alarm 
+那麼你如果這樣看的話呢這就是這兩個false alarm rate 跟這個missing rate 之間的關係
+那如果是這樣看的話
+這個跟我們在那這兩個圖你看就跟我們講retrieval 的時候的record 跟precision 
+其實是非常像的
+那我們說的這兩個其實就是一個是record 一個是preci precision 
+這個其實是record 
+這個是precision 
+因此呢其實我們講這些這些正確率錯誤率
+跟record rate precision rate 其實都是同一回事
+那麼這些東西都有其實都有一個關係的
+那我們那個時候說record 跟precision 你可以畫一個圖
+那在這裡其實也是一樣
+record 跟precision 你用一來減就變成missing 跟false alarm 
+差不多的東西
+那麼因此呢我們也可以畫一個圖
+我們舉例來講我如果畫成這個false alarm 在這裡
+這個是一減掉missing 的話呢
+那麼絕大多數的時候你所得到的curve 是是像這樣子的
+那麼換句話說呢
+你如果如果你要false false alarm 低的話
+那麼missing 就會高
+所以一減missing 就會低
+那反過來你如果missing 要低的話呢
+就是就是這個要高
+那於是呢你的fall 你的你你的false alarm 就會高
+那麼那麼事實上你可以想像這個就是選擇這個threshold 的問題
+當你如果threshold 選得低的話
+threshold 選得低的話
+那麼動不動你就會認為是是對的
+動不動你就覺得是有敵機來了
+那麼因此false false alarm rate 就會高
+可是我就比較不會有missing 
+那我如果threshold 選得高的話呢
+我就不太會發生false alarm 
+因為我選得很高大部分都不會發生嘛
+所以false alarm 就會就會低嘛
+可是我的這個我也會missing 
+來了我也沒有會沒有看到
+所以呢你就是depends on 你選擇threshold 的時候呢
+那麼那麼這個false alarm 跟missing 的rate 變化的關係是像這樣
+那麼當然ideal 的case 呢是是是在頭上
+這是ideal case 
+那也就是所謂的ideal 就是你不管不管這個如何
+你的false alarm 永遠是在零
+我的missing 也永遠是在零喔
+那這個是ideal 
+那你真正做的情形就會變成這樣子
+那你越往這裡面越往那個地方貼近的話就表示越好啊等等
+那這個跟我們在講retrieval 的時候的那一個喔喔我們有一個就做這個record precision plot 
+把這二個rate 畫做一張圖是一樣的意思喔
+那現在是在我們用這個false alarm 跟這個missing 來畫的話就是這張圖
+這張圖其實有個名字的這個叫做所謂的r o c curve 
+在古典的在古典的這個detection theory 裡面
+這是所謂這r o c curve 
+就是這個喔receiver operating characteristics 
+也就是你你在你那個你那個雷達或者你那個你那個receiver 你操作的真正的特性就在這裡
+那你如果是這條curve 畫出來越貼近於這個邊的話就表示越好
+你離那個越遠就表示越差啊
+這個等於是
+這樣的關係所以這就是這邊所講就是說你的一個threshold 呢是是這個你真正怎麼調不是根據這個來調
+其實不是跟據這個來調
+那怎麼調呢就是就是看你要怎麼樣的performance rate 
+看你要這兩個precision 跟record 
+或者說是false alarm 跟missing 
+那他們之間你要他們的關係是什麼來來調這條curve 
+好那有了這個之後呢
+我們剛才這個是講的是對每一個word 可以做這樣的事
+那其實不不一定要對每一個word 來做我也可以對每一個frame 來做
+對每一個phone 來做喔
+那這樣的話我真正在辨識的時候我不見得像剛才那樣我只是為辨識到那個word 我來算一算它好不好
+不是這樣子
+我可以從頭在整個recognition 的這個架構裡面我就從頭來做這件事
+那這個就變成所謂frame level 的confidence score 
+我可以每一個frame 都做
+那我如果每一個frame 都做的話就變成這樣
+那這個式子其實就是剛才的這個式子
+是一樣的我剛才我是在看它是是這個word 跟不是這個word 的ratio 
+那現在呢我變成是這個這個frame 是不是那個state 
+所以呢lambda i 呢就是state i of 某一個phone p 的它的hidden markov model 
+所以呢我也只是看那一個frame 我本來剛才是在看整個signal 整個utterance 
+那我現在不是了我現在只是看那一個frame 
+我每一個frame 呢就有那個frame 我我當它是某一個phone p 的hidden markov model 某一個state i 這個lambda i 的話呢
+它在那個lambda i 的的分數
+跟它不是那個的分數
+所以這個是那個不是那個lambda i 的anti model 或者background model 
+那它可以trained with cohort set for the phone unit p 
+就是它的那個phone 的cohort set 等等
+有我們剛才說的那種情形
+那這樣的話我就得到那一個frame 的時候的
+我完全只有那個frame 的那個那個feature vector 
+在是這個state i 跟不是這個state i 的一個這樣子的confidence score 
+那然後呢這個score 可能就是我們剛才提過這這些score 不見得是這個分數剛好在零跟一之間或者怎樣所以你其實可以做一些normalization 
+或者做一些mapping transformation 
+讓它它的range 比較符合我們要的
+像這裡這個case 它是說我可以做一個什麼呢
+我可以做一個這個這個其實是一個log sigmoid function 
+你看這個裡面這個裡面這個東西其實就是我們之前講過的sigmoid 
+那麼外面呢其實是再加了一個log 
+sigmoid 是怎樣呢我們之前說過
+它相當於這種東西
+也就是在這這邊趨近於零這邊趨近於一
+那在零到一之間呢我我有一個transition 
+把它switch 過來
+那個transition 的位置呢
+就是theta 
+然後這個這個這個transition 過去的斜率
+是由這個gama 來決定
+換句話說呢我這個可以可以更更斜
+也可以更陡等等
+那這個時候這個就depends on gama 
+所以gama 決定這個斜率theta 決定我這個transition 的範圍
+那這個是一個sigmoid 介於零跟一的
+是裡面這塊
+現在再加一個log 會怎樣呢
+加這個log 之後呢你可以想像會變成怎樣呢
+log 的一變成零
+所以這邊呢是變成零
+log 的零會變成負的無限大
+所以你得到的是一個這樣子的curve 
+那那這個點呢就是log 零點五的地方就是了
+那現在呢如果不同的那同樣的我這一點仍然是theta 
+這點仍然是theta 
+那我的不同的斜率其實就就造成我不同的這個譬如說我可能有的時候是這樣的
+那也有的時候是這樣的
+喔等等
+那那就是不同的斜率
+那我不同的gama 就造成一個這樣的關係
+那總之呢它是在原來是趨近於這邊的時候是正的趨近無限大它是一的會變成零
+然後負的會變成負無限大
+那這就是所謂的log sigmoid function 
+那如果是這樣的話呢我現在就是把把這個喔我把這樣所得到的這個這個raw i 啊
+就是本來這個東西啊
+我把它放到這來
+放到這來之後呢放進這個function 裡面去呢所以如果說是我們原來這個東西本來就是在算它大小
+看我們原來這個東西本來就是看它的大小
+那麼越大表示它越可可靠越小表示越不可靠
+那我現在是如果每一個frame 都做這件事的話呢
+而且我給它每一個frame 這件事情我都給它做一個log sigmoid 的話呢
+那就是說如果它大的表示比較可靠的呢
+就會趨近於零
+如果是小的話呢就變成負無限大
+那這幹嘛呢
+這個其實就是拿來做在我們正常的辨識裡面
+那這個相當於說我們在八點零裡面所講的那個search 的process 
+我們你記得我們八點零的時候我們說我我現在譬如說有六萬個word 
+構成一個tree 
+我有六萬個word 的一個lexicon 
+你這裡面每一條path 就變成一個word 
+你這個走到底之後你會接下一個去去copy 你又可以走出一堆word 出來
+你如果在這裡的話我也可以接一個下面一個tree 
+然後這個呢走完之後又有又可以接下一個等等等等
+那我們的辨識是在這個上面做一個viterbi 
+那這個viterbi 這樣一路走
+你可以得到譬如說呢這個是這樣子再走過來再走過來
+那這樣就得到某一個word 接某一個word 接某一個word 等等
+這是我們在八點零裡面說的這個辨識的架構
+那這邊講的其實是你在做算這個中間的時候呢
+我隨時可以多加一個這個分數
+我一路加這個分數的時候你記得我們在viterbi 裡面我們是通常譬如說做這個做這個beam search 
+也就是說我會保留分數最高的一堆path 往前走
+那這個時候我中間如果我一路走的時候我每一個frame 都加一個這個的話
+這邊是這個橫軸是時間嘛
+每一個frame 它都在每一個frame 它都有都有一個分數有一個位置又這樣子走過來
+那我每一個frame 每一個t 這邊就是一個o t 
+那我就可以在那個model 裡面的那個state 去算它這個分數
+然後放進這個sigmoid 來
+就會得到像那邊那個情形
+也就是如果是如果這個分數高的話
+它其實就是零
+所以呢沒什麼影響
+所以不怎麼影響
+可是如果說它的分數低的話
+就這個小的話呢
+這個小的話那邊就會變得變得很負的
+變成非常負之後呢就讓你這條path 就不見了
+因為會變成分數這條path 對不對你如果走到這邊的時候
+這個confidence measure 很低的話
+那它就會變成很負的
+於是你那個那個分數就會變得很低
+就會就會被排除在我的那個beam search 裡面喔等等
+所以呢這樣一來的話呢我就可以這樣一路走到中間我可以用這個
+那隨時在看你哪一個frame 走到哪裡覺得很不可靠
+那條path 可能是不對的
+啊就可以這樣子做
+所以這個是在frame level 做的confidence score 
+那光是這個可能還不太夠
+因為frame level 常常不太可靠
+因為那個frame 不太對
+但是也許前後的frame 都對的話表示這個可能還是對的
+因此呢我們再加上phone level 跟word level 
+那phone level 是什麼呢
+就是我在算這個frame level 的同時呢
+我當我辨識到一個phone 的時候
+把那個phone 一路走過來所有的frame 平均一次
+所以這個只是做一個平均的意思
+你看這個raw j 其實就是就是這個東西
+這個raw j 就是這個東西就是它的那個那個frame u 的分數
+那麼我假設我那個phone p 它的長度是tau 的話就是有tau 個frame 是那個phone 的話那我就把那tau 的分數做一次平均去把它通通加起來再除以tau 就
+就做一次平均
+所以你看它這個u 
+就是這個t 
+它是從t 減tau 加一加到t 嘛
+就是你從這個前面tau 個一路平均下來平均到這裡
+所以我就是把它一路做一個平均
+那如果是這樣的話呢
+我就evaluate at the end of phone 
+那現在你如果從這裡走從這裡走走到這邊的時候是一個phone 的話
+譬如說走到這裡是一個phone 的話
+那我在這個中間每一個frame 我都算一個分數
+當這個phone 走完的時候我算一次
+這個phone 的平均分數
+那同理呢我也可以做一個word level 的
+就是當我走走完一個word 的時候那個word 是由好幾個phone 拼成的
+那我那個word 是由好幾個phone 拼成的話我就把所有的那些phone 的分數分數加起來再平均一次
+那我假設那個word 有n 個phone unit 喔
+n 是total number of phone unit in the word 
+那我就是把它那所有那些phone 的分數再平均一次等等
+那它也是evaluate at the end of word 
+當你一路走走到這邊底的時候
+我走到一個end of word 
+那這個時候呢我有我可以把這上面這幾個phone 的分數再平均一次
+那就是這個word 分數等等
+那如果這樣做的話呢我就變成每一個unit 每一個frame 每一個frame 再算一次
+那每一個phone 再算一次
+到每一個word 再算一次
+那用這個方式來做的話我就可以得到一個generalized 的confidence score 
+我一路做都在做
+那跟剛才這個不一樣
+剛才這個是我辨識出某一個word 來去做一次
+那現在這個不是
+現在這個是我一路每一個frame 每一個frame 都在做
+然後呢每走完一個phone 做一個phone 
+每走完一個word 做一個word 
+那於是呢我就有這三種分數
+這個是frame 的那這是phone 的這是word 的
+這個是word 的這是phone 的這是frame 的
+我分這三種分數我分別都weight by 一個加一個weighting factor 之後呢
+這個就是我的multi level confidence score 
+就是包括所謂multi level 就是有phone frame level phone level word level 
+我把它全部weight 起來
+那那這個地方的話呢
+那我們這邊看到是說以這三個weight 呢
+如果不是在end of the phone 的話
+phone 的weight 就是零
+如果不是在end of the word 的話呢word 的weight 就是零
+所以呢那麼它只有在end of phone 的時候算phone 的分數
+end of word 的時候算word 的分數
+那這個point 在這邊講就是你的frame level 的分數
+也許不夠stable 
+所以你average over phone over word 會比較好
+也就是說我這個這個frame 的分數也許算出來不太可靠
+如果前面後面都有一堆的話呢
+你算出來比較可靠所以你把它把整個的前後一起平均一下會比較好
+那這個就是底下啊就是底下這張圖所畫的
+也就是說這個是這個做這個viterbi 過程之中的那個圖
+我們從前在講四點零五點零一直到後面我們常常在用的圖
+橫軸是時間
+縱軸是一系列的state 
+那假設說譬如說這邊走的是這個三個state 是一個phone b 
+這三個state 是一個phone a 
+那它們b 跟a 連起來是一個word w 
+那如果是這樣的話呢
+那這個的意思你看就知道
+就是說我這些frame 這個frame 是在這個state 裡面
+然後這三個frame 呢是在這個state 裡面
+這兩個frame 是在這個state 裡面
+那這些加起來就是這個phone 的三個state 
+同理這個加起來就是這個phone a 的兩個state
+你如果這樣看的話那這些加起來就是這個word w
+那如果這樣它這邊就是說你的phone level frame level 的分數呢
+每一點都加
+每一點都算
+然後呢你如果phone level 的話呢你就是在算譬如說這邊的這五個點這五個frame 是這個phone a 嘛
+所以你就把這些東西平均起來
+你在end of the phone 的時候在這裡的時候你算一次這個phone 的分數
+那你如果要算這個word 的分數的話呢是這個全部平均起來
+這些東西等於是這些通通一起算了
+那這是一個phone 這是一個phone 這個跟這個平均起來
+你會得到一個這樣子的
+那在這裡的時候把這個word 再算進去
+那然後這樣這個分數幹嘛呢
+這個就這個就用在我們這就是我們第八點零所講的viterbi beam search 
+就是在這個裡面算的時候
+我們在當時有過的這個分數
+那這是在intra word transition as example 
+就是在這個裡面嘛
+你如果記得的話就是在這個裡面的某一個transition 的時候
+那這個viterbi 是怎樣的呢
+這個是在時間t 會在state q t 在of word w 的時候的分數
+在時間t 的時候走到state q t of 這個word w 的分數
+那是怎樣呢是在t 減一的時候在q t 減一的w 裡面
+然後呢再加上我從t 減一到t 呢我有transition probability 
+然後我有把新的frame 放在q t 裡面的機率等等加起來
+這個其實就是我們在八點零裡面所說的那個分數
+我現在可以比它再多加一個
+多加了一個這個是什麼呢
+這個就是我們剛才講的這個喔multi level confidence score 
+我把這這confidence 加在這裡
+所以呢我在做的時候這個就是我們原來的做viterbi 時候那個公式的那個分數
+我現在多加一個這個
+那這個呢就是這個raw 的m i t 這個東西
+就是我們剛才講的這個multi m 就是multi level 
+那麼在state i 在時間t 的時候的得到的這個分數
+我把這個分數呢加在這裡
+那它的功能其實就是我們剛才講的這個現象
+也就是說你你如果那個分數大的話呢
+其實就沒有功能
+它就是變成零嘛
+當你分數大時它趨近於零嘛
+趨近於零所以呢就等於沒有一樣
+可是如果分數差的話
+分數小的話呢就變成非常negative 
+變成負得很厲害
+負得很厲害的話呢你就把你那條path 會把你那條path 的分數變得很低
+所以呢只有unlikely path 會被reject 喔
+你越是不太可能的path 中間你你一路走那幾個frame 或幾個phone 越不太可能的話
+分數馬上會變得很低
+就是unlikely 就會被reject 掉
+然後呢你這個對可能的path 沒有什麼影響因為它會變成零
+因此呢你在beam search 很有幫助
+就在中間走的時候呢它會自動把不太可能的東西拿掉等等
+好這個是講這個confidence measure 
+底下我們來說一下key word spotting 
+那key word spotting 是什麼
+那麼我們從開學第一週就說過了
+這個是語音辨識裡面另外一塊很重要的東西
+就是user 講了這段話之後
+我並不是要去辨識從頭到尾他講了什麼話
+我只要抓裡面他有沒有說某一個key word 
+或者說有沒有說某兩個key word 或者等等
+我只要抓裡面的key word 就好了
+至於別的地方他在說什麼其實我不管
+這些東西對我而言是不重要的
+那麼這就是所謂的key word spotting 
+也就是說呢你要決定在你有一個這個key word set 
+這個key word set 是我所pre defined
+我預先訂好的這一組key word set 
+我現在就是要看你這個聲音裡面有沒有那個有沒有任何一個key word 呢在那個裡面
+那別的東西我不管
+因此我並不需要去辨識所有的word in utterance 
+然後呢這個也因為這樣子所以呢我也許不很多辨識不出來沒有關係
+所以呢我我常常會對這個聲音的要求比較unconstrained 一點
+譬如說它也許是比較在吵雜的環境之下
+或者是比較這個讓他隨便說或者怎樣
+你只要把這個key word 說出來我能夠知道
+那這個是用在非常多的地方像speech understanding 
+或者是dialogue 裡面用的很多
+因為你可能就是要知道他講的這個
+舉例來講如果要買飛機票
+你我要問的就是你要從哪裡出發台北
+我要我要從台北出發我要到紐約去
+其實我要從台北出發裡面
+其實key word 只有台北兩個字
+那麼除了台北以外的其它的字呢都是廢話
+你要到哪裡去我要去紐約
+其實我就要抓到紐約那二個字
+其它字都是不重要的
+所以你在spoken diag dialogue 裡面
+或者是這個阿通常我們很講究的就是去抓到這裡面的key word 
+那key word spotting 的方法其實也是很多種
+那千變萬化也很難說哪一種最好
+因為事實上depends on 你你你沒有辦法define 一組key word set 然後說我們以這個為準
+然後把所有的實驗拿來做到底誰比較好
+因為不同的application 我要的key word 就是不一樣的
+那有的時候我要這堆key word 有的時候我要那堆key word 
+那麼到底哪一堆那麼在這堆key word 的時候很可能你用這個方法做出來是最好的
+當你換成另外另外一堆key word 的時候搞不好變成另外一種方法是最好的
+其實也沒有統一說哪一種最好
+那麼這個是一般來講的這個key word spotting 最基本的架構大概就是這樣子
+它包括三種部分
+三個部分第一個就是我用filler model 
+第二就是我用了剛才verification 
+第三個就是我做search 
+那我們來說一下什麼是所謂filler model 呢
+filler model 就是指除了key word 以外其它的所有東西
+我用一些model 去吃它
+讓它吃進去
+舉例來講就剛才這句話而言
+這是一個key word 
+我要抓到這個key word 是某一個key word 
+我要抓到這是某一個key word 
+之外的其它這些聲音呢
+那我希望有另外另外一組model 把它吃下去
+那就是所謂的filler 
+那其實這些我並不需要講究它到底是什麼word 不重要
+所以我不需要每個word 都有一個model 
+而是一大堆這個譬如說等於是就是all others 的意思
+all other words 
+我希望有一個model 是all other words 
+如果不一個不夠的話你給我兩三個也可以四五個也可以
+就這些就是所謂all other words 
+我就把所有的other word 都在這裡吃進去
+那麼因此呢你看到它這邊就像這樣
+譬如說我有一個key word model set 這個是我總共有n 個key word 
+我有n 個key word 
+那麼這裡面就是我的key word 的model 
+每一個key word 有一個hidden markov model 
+另外我還有一個filler set 
+我有m 個filler 
+那麼於是我真正的辭典裡面就只有這麼多了
+我就不需要那麼多word 
+這就是跟大字彙辨識不一樣的地方
+那麼我不見得還需要把六萬個word 都放在這裡
+當然後來也有人是那樣做的
+那是另外一種做法就是我我也就把六萬個word 都放在這裡面然後來辨識也可以
+但是基本上很多時候呢是可以不用那麼麻煩
+假設這邊是一百個key word 
+這邊我放五個filler model 
+那總共一百零五個model 就夠了
+於是你講的那句話裡面
+很可能你講那句話呢只有這個是一個key word k a 
+這是一個key word k b 
+其它這些東西是什麼
+都是我用filler model 來吃它
+所以很可能會發現某一個filler model 適合在這裡
+你因此你辨識出來變成一堆fi 一堆filler 
+然後中間填進來一個key word 
+又一堆filler 填進來一個key word 等等
+你變成一個這樣子的話那其實你就抓到了這兩個key word 
+至於這堆filler 對不對也無所謂啦
+那麼其實那都不重要
+我就要抓到這兩個filler 
+啊抓到這兩個key word 就是了
+那這個filler 是什麼呢
+這個depends 也不一定
+那麼有的時候有的人他只用一個filler model 
+我所有的all other words 通通train 成一個model 之後
+那我就一個就夠了
+那也有的人覺得一個不夠
+我要做兩三個或者四五個
+喔不同的
+讓它們吃一些不同的狀況
+那不管怎樣呢在這個裡面的話呢
+在這種狀況之下如果用這種方式來做的話
+我的總共的這個辭典不太大
+就是只有n 個key word 加上m 個filler 嘛
+所以我的辭典是比較小的
+我辨識起來比較容易
+所以呢我我只要管這樣就夠了
+那這個時候呢凡是你那個聲音裡面真的有key word 的話
+這個key word 的分數照說會比filler 來的高
+所以它比較容易出來
+反過來如果它不是那個key word 的話呢
+它八八成在key word model 裡分數會比較低
+但是在filler 裡面分數比較高
+如果它不是那個key word 的話
+所以那個filler 就會出來
+好這樣子所以呢我辨識出來就會得到一串這樣的東西
+那這就是用filler model 來處理
+再來呢當我知道這個是這個可能是key word a 這個可能是key word b 的時候
+再來我就做一次verification 就是我們剛才講的類似
+那verification 有很多種做法
+那最簡單的做法就是我們剛才講的這種
+用這種confidence measure 這種方法來做
+那你也可以做更複雜一點等等
+那如果是這樣子的話呢
+那我們就可以那這就是verification 
+你有每一個key word 你有n time model set 
+每一個key word 你可以用n time model 
+然後你可以做verification 
+你可以訂一個threshold 去判斷它是不是等等
+那當然你在做recognition 中間這個還是需要做search 嘛
+那只是說我現在這個辭典的詞詞數很少啦
+不要六萬
+我可以少
+所以我這個search 可以容易一點就是了
+那因此呢我們說基本上來講呢要做key 這個key word spotting 呢
+大概要用的東西包括這個filler model verification 還有search 
+那底下這個圖是說呢你可以去規定你的search 可以怎麼走
+譬如說如果你畫成這個圖的話就表示說我一開始可以有可以是從開始
+也可以連續走了好幾個filler 之後才看到一個key word 
+那key word 我可以連續好幾個key word 之後
+後面可以再接filler 等等
+看你這個圖怎麼畫的你就可以允許這個句子裡面出現怎麼樣的結構
+這是另外一種畫法
+那你也可以看到它的意思是說一開始的時候呢可以有一個filler 
+也可以有好幾個filler 
+也可以根本沒有filler 一開始就是進入我的key word 
+那key word 之後也可以就沒有別的東西了
+也可以有一個filler 
+也可以有好幾個filler 
+所以depend on 你這個圖怎麼畫
+你就可以允許這個句子結構是怎樣
+那這個point 是說如果我的key word 夠多的話
+我key word 還是一樣可以做成一個tree 
+就像這個一樣
+只是現在這個tree 很小沒有六萬個就是了
+如果你key word 有很多的話
+我仍然可以變成一個tree 的結構
+變成一個lexicon tree 的結構來做
+就我們做中文的部分而言
+那麼通常我們最可能的做法還是一樣
+譬如說每一個syllable 是一個arc 
+於是如果我的key word 有幾百個的話
+我還是可以變成一個由syllable 構成一個tree 就像這樣子
+那我的filler 會是什麼呢
+我可以把譬如說所有的聲母train 成一個聲母
+所有的韻母train 成一個韻母
+那這個聲母跟韻母的就是一個filler 
+連起來就是一個filler 的syllable 喔等等
+可以用這種方式來做
+那當然我們原來說過的八點零所說過的那些search 方法
+像a star 什麼multi path 等等其實都可以用喔
+這個depend on 你怎麼畫之後你要怎麼做都可以
+那這邊是講再進一步還可以在剛才的基本架構之下你還可以變很多花樣
+有各種各樣情形
+那我想我們這邊就把它跳過去了
+之後呢還可以再進一步呢就是把它變成key phrase 的spotting 
+或者key key phrase 的detection 
+那換句話說呢
+你有的時候其實我真正要抓的不是一個key word 
+而是一個key phrase 
+這個key phrase 是指幾個key word 連起來
+或者是key word 的前後連著function words 
+舉例來講你如果買飛機票你說from taipei to hong kong 
+那這個時後taipei 跟hong kong 是我的key word 
+那個from 跟to 呢就是我的function word 
+那我可以把function word 跟這些key word 連起來
+這就是個key phrase 
+那你可以猜得到為什麼要這樣做的原因是因為我的key word 可能有很多
+譬如說我的其實這個from 後面接一個city name 
+後面接一個to 再接一個city name 就是這樣一個key phrase 
+那所以你你譬如說我的city name 這個航空公司它也許全世界有三百個city 它都會到
+我就把這三百city name 放在那裡
+那whenever 前面接了個from 後面接了個to 我都可以連成一個一個key phrase 
+那這樣的話呢我就可以有很多的key phrase 
+就是由這些key word 所構成的等等
+同理我可以譬如說on sunday 
+這是一個function word 後面接一個key word 等等
+這就變成一個key phrase 
+那這主要的point 是說呢你一個單獨的key word 
+不如把它串成一個key phrase 比較可靠
+為什麼單獨的key word 比較會被local noise 
+或者其它confusing sounds 來trigger 
+舉例來講你說hong kong 
+有一個key word 是hong kong 但是今天剛好你那門一打開有人說kong 這麼一聲
+那麼那個kong 的noise 搞不好就被認為是hong kong 
+因為你那個key word 那個裡面key word hong kong 是一個重要的key word 
+它很容易可以被trigger 到喔
+那麼因此呢你你你與其把每一個key word 當成key word 
+不如把它們串成key phrase 
+這樣比較長
+然後就比較比較穩定一點
+那你可以就把整個phrase 就當成一個unit 來做
+那其它的都跟剛才一樣
+那於是你可以把這些key word 呢拼成像這邊這樣
+在這個例子是是一個network 
+那麼每一個arc 呢代表一個group of 可能的key word 
+譬如說six thirty pm 
+這是講時間
+那既然是six thirty 當然你可以是seven thirty 
+可以eight thirty 
+同樣你可以是six forty 
+或者six fifty 都可以嘛
+所以這個是代表一堆key word 
+這是代表一堆key word 
+那他們都可以連起來
+就構成千千萬萬個不同的key phrase 
+我也後面也可以是後面接monday evening 
+既然是monday 當然也可以是tuesday 可以是e 可以wednesday 
+可以是even evening 當然就可以是morning 或者afternoon 等等
+你都可以嘛
+所以呢你把它連來連去的話就可以構成非常多的
+那這個例子是在講時間
+那這邊可以連這邊可以連那可以這個連連來連去就構成各種狀況
+所以呢每一個arc 代表一個group of 可能的key word 
+然後呢這個那哪一個key word 可以跟哪一個key word 連
+你可以有它的grammar 可以有文法
+這個文法可以是用人define 
+也可以是用統計
+所謂用統計就譬如說像n gram 這種東西啦
+你可以用個語料去算它的n gram 就知道什麼後面會接什麼
+那如果沒有夠多語料就用人去人去set 也可以manually 
+就像six thirty 這種東西其實我們人可以set 說
+或者說from taipei to hong kong 這個人可以來set 
+taipei 這個city name 前面加什麼東西等等
+那這個好處就是說你得到這個key phrase 的話
+通常它比較清楚代表某一種semantic concept semantic concept 
+譬如說代表某一種觀念
+你在做understanding 或者dialogue 的時候就很清楚這代表一個時間
+那這代表某一天等等等等
+那底下這邊它是在說你可以用一些自動的方法去判斷
+哪一個key word 後面會接哪一個key word 
+你可以譬如說把這個某一些代表某一種意義的key word 連成兜在一起
+變成一個concept group 
+譬如說city name 
+那你所有的city name 在一起變成一個group 
+那你可以說誰可以接誰
+誰後面可以接誰
+你可以用一些統計的方法去算它們的黏性
+那它跟它會不會黏在一起
+你可以用數數統計的counts 來算
+那它跟它黏在一起的次數多不多等等
+那這個是講forward backward bi gram 
+假設你有某一個某一個key word 
+譬如說是c 零
+它後面會不會接一個c 呢
+你可以算這個c c 零後面接c 的
+那這個就是bi gram 
+反過來呢你有一個c 的時候它前面有沒有c 零呢
+你也可以統計這個
+那就是反過來的background 反過來的bi gram 
+就是backward bi gram 喔
+所以這個是反過來就是你後面如果有一個c 的話
+後面有一個c 前面會不會有c 零呢
+這也可以統計
+那我們平常講的bi gram 是反過來
+是前面有一個c 零後面有沒有c 
+所以這兩個都可以算你可以把forward 跟backward bi gram 去算一個幾何平均啊等等
+都可以用這個方法來來統計他們黏不黏
+他會不會跟它黏啊等等這類的方法
+好這部分我們說到這裡
+那麼我前面的reference 的話
+啊第一篇就是我們剛才講的generalize confidence score 
+也就是喔這邊的這一套
+我有frame level phone level word level 然後multi level 然後拿來做search 喔
+這一塊其實就是我這邊的reference one 在講的
+那reference two 是比較早的相當早
+那其實是當年的key word spotting 的早年
+剛出來的時候頭幾篇裡面的相當重要的原始paper 
+那它講的方法當然是今天來看是已經比較out of date 
+但是呢大概把重要的觀念都提到了
+所以這仍然是一個非常好的reference 
+這是早年最早的幾篇這個key word spotting 的paper 
+那麼最後這篇就是我們講的key phrase detection 
+就是我剛才講的這堆
+這堆key phrase 喔
+怎麼樣把它key word 黏起來變成key phrase 的
+就是剛才的這個最後這篇
+就是這一篇
+那這兩篇是比較我這邊並沒有提到
+但是大概你可以看得到都是在講怎樣在做verification 
+然後怎麼樣算confidence measure 等等喔
+這些都是相關的reference 
+好關於十點零我們就說到這裡了

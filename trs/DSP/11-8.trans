@@ -1,0 +1,220 @@
+那最後一章是講還有另外一種東西就是speaker 的這個recognition 
+換句話說我的我還有另外一個問題是要判斷它是誰呀
+那我們之前講的都是反過來就是你可以想像
+我有兩種啊就是phonetic variation 跟speaker variation 
+那我們一直之前講的所有的東西都是希望把speaker variation 消掉
+想辦法強調phonetic variation讓我能夠分辨它是ㄚ還還是ㄧ
+但是反過來有另外一種問題是反過來
+我並不care 你講的是什麼話
+我要知道你是誰
+那這就是我要強調speaker variation 的了
+那我目的是要recognize speaker 而不是recognize content 
+那這個的用途你可你可以想像很明顯的有兩大類
+一類就是speaker 的identification 
+就是確認他是誰
+那麼
+舉例來講呢假設有一個有一有一間實驗室那麼只有一群人可以進去
+那那那你說我是誰
+然後它可以確認你是不是那個人
+如果是那個人的話呢就讓他進去
+喔
+那個門就可以打開這個芝麻開門喔等等
+那你也可能是就是基本上就是就是在一群人裡面確認他是誰
+那另外一個很常用的例子就是這個勒索恐那個勒索案
+這個電話勒索的時候你把那個電話拿來那個聲音到底是誰的
+你從所有的有前科犯的聲音裡面去找
+喔等等這就是所謂的identification 
+那verification 是說要verify 是不是他講的那個人
+他說我是某某人
+那你要確認那個人就是他喔
+那這個就是speaker 的verification 
+那這些東西的最基本精神就是所謂的g m m 
+那g m m 其實跟h m m 是一樣的東西它只是少掉時間上的state 
+也就是說我們原來的
+我們原來的h m m 是這樣
+這一個state 一個state 一個state 
+在這個state 裡面有一堆gaussian 
+說明在這個state 裡面它是怎麼distribute 
+在這個state 有另外一個gaussian 
+那麼就不太一樣了
+到這個state 又有另外一個gaussian 
+又不太一樣了等等
+那麼因為我們講一個聲音的時候你本來就是從頭到尾有變化嘛
+那我這個是這個譬如說零
+這個是ㄌ這個是ㄧ這個是ㄣ
+所以呢我這個聲音有變化零一定是這樣過來的所以我這個這樣子變
+但是我現在如果是要分這個是speaker 是誰的話
+我不再需要這樣子
+我不care 你是零還是是ㄌㄧㄣ還是ㄣㄧㄌ不是沒什麼關係
+我只要知道這個是張三發的還是李四發的
+所以呢我不再需要分這個時間上的差異
+我乾脆就把它合成一個model 
+一個model 就夠了
+因此我就把這些全部train 在一起得到一個
+那這個可能是比較複雜的
+我有很多個gaussian 
+那麼通常譬如說
+兩百五十六個或者五百一十二個
+這個gaussian 數目很多
+那麼其實這gaussian 裡面可能有的gaussian 是ㄚ的gaussian 
+有的是ㄨ的gaussian 
+喔
+那反正都在這裡面
+我有一大把
+那每一個人有這麼一個model 
+那這個model 就是所謂的g m m gaussian mixture model 
+那除了說它只剩下一個state 之外其它跟我們之前講的幾乎是完全一樣的
+所以我只要有一個喔我只要有一個state 
+那麼不管你發的是什麼音反正是這個張三有一套他的
+對不對
+那麼張三有他的兩百五十六個gaussian 的一個model 
+李四有另外一個這兩百五十六它的每一個就不太一樣一點就是了
+那於是呢
+每一個人都有一個
+所以呢這就是譬如說這個m 就兩百五十六個model 的gaussian 
+每一個gaussian 就是有一個mean 一個covariance 
+跟一個weight 
+所以呢你要算某一個聲音的話
+就是算這個嘛一樣的
+就把那個把這個聲音裡面的每一個feature vector 代進去
+去算它的gaussian 的分數
+然後呢這個
+你看誰的分數最大嘛
+因此呢你我我如果有三百個speaker 就有三百個這種東西
+我現在一一段聲音進來我就把它的每一個feature vector 
+都放進去
+放進這三百個model 裡面
+看誰的model 最大等等
+那這就是這個
+所以這就還是一樣這是maximum likelihood 
+因為這是個likelihood function 就是球求這個maximum likelihood 
+那當然我現在用的這個嗯parameter 可能有點不同
+因為我們原來
+原來做做這個的時候我們希望儘可能的是
+把speaker variation 拿掉要強調phonetic variation 
+所以在那個時候我們用m f c c 
+那現在呢我現在是要儘可能地把phonetic variation 拿掉
+我要強調speaker variation 所以不見得m f c c 還對
+那你可以用其它的
+喔
+基本上你就是希望找那些參數是帶有speaker 的特性的
+那麼譬如說你在m l l r 裡面的那些a i b i 是可以拿來用的
+eigen voice 裡面的那些a i 
+c a t 裡面的a i 喔
+這些
+c a t 的a i 就是剛才這個嘛
+就是這些a i 嘛
+喔
+那eigen voice a i 就是這些嘛
+那這些應該都代表speaker 的特性
+所以都可以拿來用
+不過其實多數人用的最簡的還是用m f c c 
+換句話說m f c c 其實是包含著這兩者的
+我們很難從m f m f c c 裡面真的把speaker 的特性除掉
+同樣也很難真的把這個除掉它兩兩個都有
+所以呢m f c c 其實是可以拿來分辨是什麼音
+也可以拿來分辨是什麼人
+喔所以其實m f c c 是是是可以用的
+喔
+那這就是所謂的g m m 的基本精神
+那底下的這個verification 呢我們要用到這個likelihood ratio test 
+那這個是我們在這個十點零裡面會講到那個時候我們再來說
+喔ok好我們這個部份今天說到這裡
+那剩下的時間現在應該是助教有把那個期中期中考的考古題拿來哦
+所以我們可以各位可以來拿一下這個這個期中考的題目喔
+ok 好我們今天上到這
+喂
+那個忘記忘記講一件事喔就是我們想要徵求上課的同學有人抄筆記抄得比較完整的
+我們想徵求一份好的筆記來幫助我們就是因為我們後面要做那個這個課程錄影的我們要做那個喔後製作
+那麼在黑板上我我畫的圖啊這些東西不見得拍得那麼清楚所以需要一個比較好的筆記喔
+所以各位如果如果有筆記抄得比較完整的可以跟我們的助教聯絡如果你的可以提供筆記給我們的話
+ㄜ 我們之前所說的這些都是speaker 的adaptation
+也就是如何去調這個acoustic model
+讓他調到調到適合每一個speaker
+恩 也就是調這些個h m m
+讓他適合每一個speaker
+然後我們針對每一個speaker 去做recognition
+那最後的speaker recognition是反過來
+是說我現在不是要去辨識這個speaker在說什麼
+而是去辨識他是什麼人
+當我們要知道他是什麼人的時候呢我們現在變成是要這個把這個speaker 的variation 強調出來
+而把phonetic variation丟掉
+那麼換句話說呢我們要根據這個人的的話在說什ㄜ欸根據這個人說的話來判斷
+這個他是什麼人
+那這個情形其實最標準的作法
+就是把h m m 本來的這個state 全部merge 
+換句話說這個本來我們h m m 裡面為什麼會有這麼多state
+是因為我們我們要分辨他講什麼話顯然是一個phone 接到另外一個phone 
+前面這些個phone 是在講某一個音後面是講某一個音
+那麼因此呢我們講這個話必須是這樣一個音接一個音下去的
+所以呢他有一個順序
+這個時間的順序就是由這不同的state 來描述的
+當我們在考慮一個speaker 的時候呢則不同
+當我們考慮一個speaker 的時候我們只要問這個聲音是誰講的
+並不care 它是什麼音
+因此呢我們不再需要根據這個音的時間順序來考慮了
+因此呢最簡單的辦法就是把它們合成一個大state 
+當我把它們合成一個大state 的時候我只要一個state 
+那裡面有一大堆的gaussian 
+那麼這時候一大堆的gaussian 呢你就可以想像它就是一個只有一個state 的h m m 
+那這個呢就是我們這邊所謂的g m m 
+那不同的speaker 它的這些東西不一樣
+那麼用這個來判斷啊
+這就是所謂的g m m 
+那麼因此呢他它跟我們所說的h m m 其實沒有太大不同
+變成只只有一個state 就是了
+那麼在只有一個state 的情形之下
+在只有一個state 的情形之下那我現在就變成有一堆gaussian 
+然後呢每一個gaussian 有一堆weight 加起來
+那麼我可以為每一個speaker train 這堆東西
+所不同的是我現在這堆gaussian 的數目應該是蠻多的
+因為你可以想像不管它發什麼音
+它的每一個phone 每一個音它都在這裡面呈現
+那麼所以呢你基本上通常我們們都需要比較多的mixture 的數目
+也就是這個大m 要比較大
+這m 要比較大
+那麼舉例來講呢如果我們是有某一種種語言有六十個phone 的話你至少每一個phone 都要呈現在這裡
+那麼每一個phone 如果有兩個三個gaussian 的話
+那就是一百二十八或者兩百五十六個mixture 喔
+才比較足夠一點
+所以通常是一個比較mixture 數目比較大的一個g m m 
+那這樣的話每一個人都做一個這樣的model 之後
+那看是誰的分數比較高就可以了
+這個就是g m m 的做法
+那麼這時候用哪些feature 
+depends on 你喜歡哪一種
+那麼雖然m f c c 我們通常拿來是辨識它的fanatic variation 的
+其實它也帶著speaker variation 我們知道因為不同的speaker 它的distribution 其實不一樣的
+所以以m f c c 是最常用的因為你就直接可以用
+當然你也可以用那些些m m r 裡面的參數
+eigen voice 裡面的參數
+c a t 裡面的參數等等
+都是可以的
+這個是講speaker recognition 
+你要辨識它是什麼人
+那另外一種speaker variation 呢
+是它說它是誰我要確認它是不是
+啊那這個時候呢speaker variation 通常我們分成兩大類
+一個是text dependent 
+就是你要規定它說哪一句話
+那根據那句話來判斷它說的對不對啊
+所以這是所謂text dependent 
+一種是text independent 
+就是隨便它說什麼話我都可以判斷它是不是它講的那個人
+這是text independent 
+那基本上來講呢是text dependent 一般認為比較容易被破解
+那原因很簡單因為你就變成只要講那句話
+那只要那句話這個是誰的聲音就認為是誰的嘛
+所以最最簡單的破解它的辦破解它的辦法就是如果某人他講那句話的時候
+你偷偷把他錄下來
+於是我就可以拿那段他錄好的聲音
+我就可以去破解所有它的東西啊
+所以這個是speaker dependent 的弱點
+但是這樣當然它的正確率比較高因為去針對那句話來做的
+speaker independent 因為不針對某一句話所以呢正確率稍微低一點
+那這裡面一個基本的做法是要做這個likelihood ratio 
+這個東西我們現在還沒有講是在十點零裡面
+不過我已經現在先把十點零先跳掉了
+所以我們現在暫時先不說這塊
+這個呢我們等到十點零的這個likelihood ratio 講過之後
+我們再來講它
